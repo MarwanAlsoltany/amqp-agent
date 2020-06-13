@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendor/autoload.php"
+         backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         verbose="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false">
+    <testsuites>
+        <testsuite name="AMQP Agent Test Suite - Unit Tests">
+            <!--
+                Using file tag instead of directory and execlude because you have to choose between
+                directory tag and exclude tag or file tag. The problem with this testsuite is the
+                ConsumerTest depends on PublisherTest and due to alphabetical order they ran in reverse.
+            -->
+            <file>tests/ClientTest.php</file>
+            <file>tests/ConfigTest.php</file>
+            <file>tests/Exception/AmqpAgentExceptionTest.php</file>
+            <file>tests/Helper/LoggerTest.php</file>
+            <file>tests/Helper/SerializerTest.php</file>
+            <file>tests/Helper/SingletonTest.php</file>
+            <file>tests/Worker/AbstractWorkerTest.php</file>
+            <file>tests/Worker/PublisherTest.php</file>
+            <file>tests/Worker/ConsumerTest.php</file>
+            <file>tests/Worker/PublisherSingletonTest.php</file>
+            <file>tests/Worker/ConsumerSingletonTest.php</file>
+            <!--
+            <directory>tests</directory>
+            <exclude>tests/TestCase.php</exclude>
+            -->
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-html" target="build/phpunit"/>
+        <log type="coverage-text" target="build/coverage/text.txt"/>
+        <log type="coverage-clover" target="build/coverage/clover.xml"/>
+        <log type="coverage-xml" target="build/coverage"/>
+        <log type="junit" target="build/phpunit/coverage.junit.xml"/>
+    </logging>
+</phpunit>
