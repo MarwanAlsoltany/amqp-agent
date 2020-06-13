@@ -1,0 +1,19 @@
+.vscode
+.idea
+
+# build
+vendor
+test.php
+
+*.cache
+*.lock
+*.xml
+*.log
+*.sql
+*.sqlite
+*.db
+.Trashes
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+._*
