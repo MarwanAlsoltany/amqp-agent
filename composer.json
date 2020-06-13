@@ -1,0 +1,49 @@
+{
+    "name": "maks/amqp-agent",
+    "type": "library",
+    "license": "LGPL-2.1-or-later",
+    "description": "An elegant wrapper around the famous php-amqplib for 90% use case.",
+    "keywords": [
+        "amqp",
+        "amqp-agent",
+        "php-amqplib",
+        "rabbitmq",
+        "message-broker",
+        "php",
+        "async",
+        "queues"
+    ],
+    "authors": [
+        {
+            "name": "Marwan Al-Soltany",
+            "email": "MarwanAlsoltany@gmail.com",
+            "homepage": "https://marwanalsoltany.github.io/",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://github.com/MarwanAlsoltany/amqp-agent#readme",
+    "support": {
+        "issues": "https://github.com/MarwanAlsoltany/amqp-agent/issues"
+    },
+    "require": {
+        "php" : "^7.4",
+        "php-amqplib/php-amqplib": "^2.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "MAKS\\AmqpAgent\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MAKS\\AmqpAgent\\": "tests"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
