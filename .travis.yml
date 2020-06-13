@@ -1,0 +1,41 @@
+sudo: required
+
+language: php
+
+php:
+  - 7.4
+
+services:
+  - rabbitmq
+
+addons:
+  apt:
+    packages:
+      - rabbitmq-server
+
+env:
+  matrix:
+    - COMPOSER_FLAGS="--prefer-lowest --prefer-stable"
+    - COVERAGE_PATH="build/coverage/clover.xml"
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+    - $HOME/.local
+
+before_script:
+  - sudo service rabbitmq-server restart
+  - composer self-update
+  - composer update --prefer-dist $COMPOSER_FLAGS
+
+script:
+  - composer run test
+
+after_script:
+  - if [ $COVERAGE_PATH != '' ]; then
+      wget https://scrutinizer-ci.com/ocular.phar
+      php ocular.phar code-coverage:upload --format=php-clover $TRAVIS_BUILD_DIR/$COVERAGE_PATH
+    fi
+
+after_success:
+  - composer run build-prod
