@@ -1,0 +1,113 @@
+<?php
+/**
+ * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
+ * @copyright Marwan Al-Soltany 2020
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
+namespace MAKS\AmqpAgent\Worker;
+
+/**
+ * A trait containing the implementation of members mutation functions.
+ * @since 1.0.0
+ */
+trait WorkerMutationTrait
+{
+    /**
+     * The last mutation happened to a class member (for debugging purposes).
+     * @var array
+     */
+    protected $mutation = [];
+
+    /**
+     * Mutates a subset of an array (class property) and returns the replaced subset.
+     * @param string $member The name of the property.
+     * @param array $overrides An associative array of the overrides.
+     * @return array
+     */
+    protected function mutateClassMember(string $member, array $overrides): array
+    {
+        return $this->mutateClass($member, null, $overrides);
+    }
+
+    /**
+     * Mutates a subset of an array inside a class propery (nested array inside a property) and returns the replaced subset.
+     * @param string $member The name of the property.
+     * @param string $sub The key which under the array stored.
+     * @param array $overrides An associative array of the overrides.
+     * @return array
+     */
+    protected function mutateClassSubMember(string $member, string $sub, array $overrides): array
+    {
+        return $this->mutateClass($member, $sub, $overrides);
+    }
+
+    /**
+     * Mutates a class propery nested or not and returns the replaced subset.
+     * @param string $member The name of the property.
+     * @param string $sub [optional] The key which under the array stored.
+     * @param array $overrides An associative array of the overrides.
+     * @return array
+     */
+    protected function mutateClass(string $member, ?string $sub = null, array $overrides): array
+    {
+        $changes = [];
+        $signature = '__remove_%s__not_default__';
+
+        foreach ($overrides as $key => $value) {
+            if ($sub) {
+                if (isset($this->{$member}[$sub][$key])) {
+                    $changes[$key] = $this->{$member}[$sub][$key];
+                } else {
+                    $changes[$key] = sprintf($signature, $key);
+                }
+                if ($value === sprintf($signature, $key)) {
+                    unset($this->{$member}[$sub][$key]);
+                } else {
+                    $this->{$member}[$sub][$key] = $value;
+                }
+            } else {
+                if (isset($this->{$member}[$key])) {
+                    $changes[$key] = $this->{$member}[$key];
+                } else {
+                    $changes[$key] = sprintf($signature, $key);
+                }
+                if ($value === sprintf($signature, $key)) {
+                    unset($this->{$member}[$key]);
+                } else {
+                    $this->{$member}[$key] = $value;
+                }
+            }
+        }
+
+        $this->mutation = [
+            'member'    =>    $member,
+            'old'       =>    $changes,
+            'new'       =>    $overrides,
+        ];
+
+        return $changes;
+    }
+
+    /**
+     * Mutates a subset of an array (class const property) and returns a new array with the new replacements.
+     * @param string $member The name of the property.
+     * @param array $overrides An associative array of the overrides.
+     * @return array
+     */
+    protected static function mutateClassConst(array $member, ?array $overrides): array
+    {
+        $array = [];
+
+        foreach ($member as $key => $value) {
+            if (is_array($overrides) && array_key_exists($key, $overrides)) {
+                $array[$key] = $overrides[$key];
+            } else {
+                $array[$key] = $value;
+            }
+        }
+
+        return $array;
+    }
+}
