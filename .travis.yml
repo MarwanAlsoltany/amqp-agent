@@ -29,13 +29,11 @@ before_script:
   - composer update --prefer-dist $COMPOSER_FLAGS
 
 script:
-  - composer run test
+  - vendor/bin/phpunit --coverage-clover=coverage.clover
 
 after_script:
-  - if [ $COVERAGE_PATH != '' ]; then
-      wget https://scrutinizer-ci.com/ocular.phar
-      php ocular.phar code-coverage:upload --format=php-clover $TRAVIS_BUILD_DIR/$COVERAGE_PATH
-    fi
+    - wget https://scrutinizer-ci.com/ocular.phar
+    - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
 
-after_success:
-  - composer run build-prod
+# after_success:
+#   - composer run build-prod
