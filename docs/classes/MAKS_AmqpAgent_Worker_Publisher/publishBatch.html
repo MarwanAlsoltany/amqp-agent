@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MAKS\AmqpAgent\Worker\Publisher::publishBatch</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.html">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.html#MAKS_AmqpAgent_Worker">MAKS\AmqpAgent\Worker</a>
+          </li>
+          <li class="separator">
+            <a title="MAKS\AmqpAgent\Worker\Publisher" href="../../classes/MAKS_AmqpAgent_Worker_Publisher.html">Publisher</a>
+          </li>
+          <li class="separator">publishBatch</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="#return">Return</a>
+          </li>
+          <li>
+            <a href="#throws">Throws</a>
+          </li>
+          <li>
+            <a href="#interface">Interface</a>
+          </li>
+          <li>
+            <a href="#tests">Tests</a>
+          </li>
+          <li>
+            <a href="../../source/Worker/Publisher.php.html#line281">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>MAKS\AmqpAgent\Worker\Publisher::</small>publishBatch</h1>
+        <h4>Publishes a batch of messages to the default exchange on the default channel of the worker's connection to RabbitMQ server.</h4>
+        <p/>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function publishBatch(array
+        $messages,
+            [integer
+        $batchSize = 2500,
+            [string
+        $_exchange = NULL,
+            [<a title="PhpAmqpLib\Channel\AMQPChannel" href="../../classes/PhpAmqpLib_Channel_AMQPChannel.html">AMQPChannel</a>
+        $_channel = NULL]]] )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$messages</code>
+                —
+                array</dt>
+          <dd>An array of AMQPMessage objects.<br/><br/><br/>      </dd>
+          <dt><code>$batchSize</code>
+                —
+                integer</dt>
+          <dd>[optional] The number of messages that should be published per batch.</dd>
+          <dt><code>$_exchange</code>
+                —
+                string</dt>
+          <dd>[optional] The name of the exchange that should be used instead of the default worker's exchange name.</dd>
+          <dt><code>$_channel</code>
+                —
+                <a title="PhpAmqpLib\Channel\AMQPChannel" href="../../classes/PhpAmqpLib_Channel_AMQPChannel.html">PhpAmqpLib\Channel\AMQPChannel</a></dt>
+          <dd>[optional] The channel that should be used instead of the default worker's channel.<br/><br/><br/>      </dd>
+        </dl>
+        <h2 id="return">Returns</h2>
+        <dl class="styled">
+          <dt>Publisher</dt>
+          <dd><br/>
+        </dd>
+        </dl>
+        <h2 id="throws">Errors/Exceptions</h2>
+        <dl class="styled">
+          <dt>
+            <code>
+              <a title="MAKS\AmqpAgent\Worker\AMQPInvalidArgumentException|AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException" href="../../classes/MAKS_AmqpAgent_Worker_AMQPInvalidArgumentException|AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException.html">AMQPInvalidArgumentException|AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException</a>
+            </code>
+          </dt>
+          <dd/>
+        </dl>
+        <h2 id="interface">Defined by Interface</h2>
+        <p class="styled">
+          <code>
+            <a title="MAKS\AmqpAgent\Worker\PublisherInterface" href="../../interfaces/MAKS_AmqpAgent_Worker_PublisherInterface.html">PublisherInterface</a>
+          </code>
+        </p>
+        <h2 id="tests">Test Coverage</h2>
+        <div class="styled">
+          <h3>Information</h3>
+          <ul class="styled">
+            <li>Coverage: 14/14 Lines (100%)</li>
+            <li>Tests: 2</li>
+            <li>Passed: 2 (100%)</li>
+          </ul>
+          <h3>Tests</h3>
+          <ul class="styled">
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\PublisherTest::testPublishBatchAndPublishPublishesMessagesToRabbitMQServerAndOverrideParametersTakeEffect</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\PublisherTest::testPublishBatchRaisesAnExceptionIfUnexpectedParameterIsPassed</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

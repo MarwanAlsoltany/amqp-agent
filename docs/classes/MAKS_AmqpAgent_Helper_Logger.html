@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MAKS\AmqpAgent\Helper\Logger</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html#MAKS_AmqpAgent_Helper">MAKS\AmqpAgent\Helper</a>
+          </li>
+          <li class="separator">Logger</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#coverage">Coverage</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/Helper/Logger.php.html#line18">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>MAKS\AmqpAgent\Helper\</small>Logger</h1>
+        <h4>A class to write logs, exposing methods that work statically and on instantiation.</h4>
+        <p/>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Logger
+            {<br/><ul class="none"><li>// members</li><li>public  <a href="#members">$filename</a>;
+                    </li><li>public  <a href="#members">$directory</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/__construct.html">__construct</a>()
+                    </li><li>public bool <a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/write.html">write</a>()
+                    </li><li>public string <a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/getFilename.html">getFilename</a>()
+                    </li><li>public Logger <a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/setFilename.html">setFilename</a>()
+                    </li><li>public string <a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/getDirectory.html">getDirectory</a>()
+                    </li><li>public Logger <a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/setDirectory.html">setDirectory</a>()
+                    </li><li>public static bool <a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/log.html">log</a>()
+                    </li><li>protected static bool <a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/emit.html">emit</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="coverage">Coverage</h2>
+        <table class="styled">
+          <tr>
+            <td>Methods</td>
+            <td class="percent">100%</td>
+            <td class="nummeric">8 / 8</td>
+          </tr>
+          <tr>
+            <td>Lines</td>
+            <td class="percent">100%</td>
+            <td class="nummeric">40 / 40</td>
+          </tr>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>public</h4>
+          <ul class="members">
+            <li id="directory"><strong>$directory</strong>
+                —
+                string<br/><span class="indent">The directory where the log file gets written.</span></li>
+            <li id="filename"><strong>$filename</strong>
+                —
+                string<br/><span class="indent">The filename of the log file.</span></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>protected</h4>
+          <ul>
+            <li id="emit"><a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/emit.html">emit()</a>
+                — Generates a user-level notice, warning or error with styling.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/__construct.html">__construct()</a>
+                — Passing null for $directory will raise a warning and force the logger to find a reasonable directory to write the file in.</li>
+            <li id="getDirectory"><a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/getDirectory.html">getDirectory()</a>
+                — Gets directory property.</li>
+            <li id="getFilename"><a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/getFilename.html">getFilename()</a>
+                — Gets filename property.</li>
+            <li id="log"><a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/log.html">log()</a>
+                — Logs a message to a file, generates it if it does not exist and raises a user-level warning and/or notice on misuse.</li>
+            <li id="setDirectory"><a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/setDirectory.html">setDirectory()</a>
+                — Sets directory property.</li>
+            <li id="setFilename"><a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/setFilename.html">setFilename()</a>
+                — Sets filename property.</li>
+            <li id="write"><a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/write.html">write()</a>
+                — Logs a message to a file, generates it if it does not exist and raises a user-level warning and/or notice on misuse.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

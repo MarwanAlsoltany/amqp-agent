@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MAKS\AmqpAgent\Worker\AbstractWorker</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html#MAKS_AmqpAgent_Worker">MAKS\AmqpAgent\Worker</a>
+          </li>
+          <li class="separator">AbstractWorker</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#coverage">Coverage</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/Worker/AbstractWorker.php.html#line30">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>MAKS\AmqpAgent\Worker\</small>AbstractWorker</h1>
+        <h4>An abstract class implementing the basic functionality of a worker.</h4>
+        <p/>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class AbstractWorker
+                implements
+                <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface.html">AbstractWorkerInterface</a>
+            {<br/><ul class="none"><li>// members</li><li>protected  <a href="#members">$connectionOptions</a>;
+                    </li><li>protected  <a href="#members">$channelOptions</a>;
+                    </li><li>protected  <a href="#members">$queueOptions</a>;
+                    </li><li>public <span title="PhpAmqpLib\Connection\AMQPStreamConnection">AMQPStreamConnection</span> <a href="#members">$connection</a>;
+                    </li><li>public <span title="PhpAmqpLib\Channel\AMQPChannel">AMQPChannel</span> <a href="#members">$channel</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__construct.html">__construct</a>()
+                    </li><li>public void <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__destruct.html">__destruct</a>()
+                    </li><li>public mixed <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__get.html">__get</a>()
+                    </li><li>public void <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__set.html">__set</a>()
+                    </li><li>public mixed <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__call.html">__call</a>()
+                    </li><li>public static mixed <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__callStatic.html">__callStatic</a>()
+                    </li><li>public static bool <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/shutdown.html">shutdown</a>()
+                    </li><li>public <span title="AbstractWorker">AbstractWorker</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/connect.html">connect</a>()
+                    </li><li>public <span title="AbstractWorker">AbstractWorker</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/disconnect.html">disconnect</a>()
+                    </li><li>public <span title="AbstractWorker">AbstractWorker</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/reconnect.html">reconnect</a>()
+                    </li><li>public <span title="AbstractWorker">AbstractWorker</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/queue.html">queue</a>()
+                    </li><li>public <span title="AMQPTable">AMQPTable</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/arguments.html">arguments</a>()
+                    </li><li>public ?<span title="AMQPStreamConnection">AMQPStreamConnection</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getConnection.html">getConnection</a>()
+                    </li><li>public ?<span title="AMQPChannel">AMQPChannel</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getChannel.html">getChannel</a>()
+                    </li><li>public ?<span title="AMQPChannel">AMQPChannel</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getNewChannel.html">getNewChannel</a>()
+                    </li><li>public ?<span title="AMQPChannel">AMQPChannel</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getChannelById.html">getChannelById</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="MAKS\AmqpAgent\Worker\WorkerMutationTrait">WorkerMutationTrait</span></li><li>protected array <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassMember.html">mutateClassMember</a>()
+                        </li><li>protected array <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassSubMember.html">mutateClassSubMember</a>()
+                        </li><li>protected array <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClass.html">mutateClass</a>()
+                        </li><li>protected static array <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassConst.html">mutateClassConst</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="MAKS\AmqpAgent\Worker\WorkerCommandTrait">WorkerCommandTrait</span></li><li>public static array <a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait/makeCommand.html">makeCommand</a>()
+                        </li><li>public static bool <a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait/isCommand.html">isCommand</a>()
+                        </li><li>public static bool <a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait/hasCommand.html">hasCommand</a>()
+                        </li><li>public static mixed <a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait/getCommand.html">getCommand</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Uses</h4>
+          <ul>
+            <li>
+              <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait.html">MAKS\AmqpAgent\Worker\WorkerMutationTrait</a>
+            </li>
+            <li>
+              <a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait.html">MAKS\AmqpAgent\Worker\WorkerCommandTrait</a>
+            </li>
+          </ul>
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface.html">MAKS\AmqpAgent\Worker\AbstractWorkerInterface</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="coverage">Coverage</h2>
+        <table class="styled">
+          <tr>
+            <td>Methods</td>
+            <td class="percent">100%</td>
+            <td class="nummeric">16 / 16</td>
+          </tr>
+          <tr>
+            <td>Lines</td>
+            <td class="percent">100%</td>
+            <td class="nummeric">138 / 138</td>
+          </tr>
+        </table>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="PREFIX">PREFIX</td>
+              <td>'maks.amqp.agent.'</td>
+            </tr>
+            <tr>
+              <td id="CONNECTION_OPTIONS">CONNECTION_OPTIONS</td>
+              <td/>
+            </tr>
+            <tr>
+              <td id="CHANNEL_OPTIONS">CHANNEL_OPTIONS</td>
+              <td/>
+            </tr>
+            <tr>
+              <td id="QUEUE_OPTIONS">QUEUE_OPTIONS</td>
+              <td/>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="channelOptions"><strong>$channelOptions</strong>
+                —
+                array<br/><span class="indent">The default channel options that the worker should use when no overrides are provided.</span></li>
+            <li id="connectionOptions"><strong>$connectionOptions</strong>
+                —
+                array<br/><span class="indent">The default connection options that the worker should use when no overrides are provided.</span></li>
+            <li id="mutation"><strong>$mutation</strong>
+                —
+                array<br/><span class="indent">The last mutation happened to a class member (for debugging purposes).</span></li>
+            <li id="queueOptions"><strong>$queueOptions</strong>
+                —
+                array<br/><span class="indent">The default queue options that the worker should use when no overrides are provided.</span></li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="channel"><strong>$channel</strong>
+                —
+                <a title="PhpAmqpLib\Channel\AMQPChannel" href="../classes/PhpAmqpLib_Channel_AMQPChannel.html">PhpAmqpLib\Channel\AMQPChannel</a><br/><span class="indent">The default channel of the worker.</span></li>
+            <li id="commandPrefix"><strong>$commandPrefix</strong>
+                —
+                string<br/><span class="indent">The prefix that should be used to define an array as a command.</span></li>
+            <li id="commandSyntax"><strong>$commandSyntax</strong>
+                —
+                array<br/><span class="indent">The recommended way of defining a command array.</span></li>
+            <li id="connection"><strong>$connection</strong>
+                —
+                <a title="PhpAmqpLib\Connection\AMQPStreamConnection" href="../classes/PhpAmqpLib_Connection_AMQPStreamConnection.html">PhpAmqpLib\Connection\AMQPStreamConnection</a><br/><span class="indent">The default connection of the worker.</span></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__construct.html">__construct()</a>
+                — AbstractWorker object constuctor.</li>
+            <li id="__destruct"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__destruct.html">__destruct()</a>
+                — Closes the connection with RabbitMQ server before destoring the object.</li>
+            <li id="__call"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__call.html">__call()</a>
+                — Throws an exception for calls to undefined methods.</li>
+            <li id="__callStatic"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__callStatic.html">__callStatic()</a>
+                — Throws an exception for calls to undefined static methods.</li>
+            <li id="__get"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__get.html">__get()</a>
+                — Gets a class member via public property access notation.</li>
+            <li id="__set"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__set.html">__set()</a>
+                — Sets a class member via public property assignment notation.</li>
+            <li id="arguments"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/arguments.html">arguments()</a>
+                — Returns an AMQPTable object.</li>
+            <li id="connect"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/connect.html">connect()</a>
+                — Establishes a connection with RabbitMQ server and opens a channel for the worker in the opened connection.</li>
+            <li id="disconnect"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/disconnect.html">disconnect()</a>
+                — Closes the connection with RabbitMQ server.</li>
+            <li id="getChannel"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getChannel.html">getChannel()</a>
+                — Returns the default channel of the worker. If the worker is not connected, it returns null.</li>
+            <li id="getChannelById"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getChannelById.html">getChannelById()</a>
+                — Fetches a channel object identified by the passed id (channel_id). If not found, it returns null.</li>
+            <li id="getConnection"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getConnection.html">getConnection()</a>
+                — Returns the default connection of the worker. If the worker is not connected, it returns null.</li>
+            <li id="getNewChannel"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getNewChannel.html">getNewChannel()</a>
+                — Returns a new channel on the default connection of the worker. If the worker is not connected, it returns null.</li>
+            <li id="queue"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/queue.html">queue()</a>
+                — Declares a queue on the default channel of the worker's connection with RabbitMQ server.</li>
+            <li id="reconnect"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/reconnect.html">reconnect()</a>
+                — Executes self::disconnect() and self::connect() respectively.</li>
+            <li id="shutdown"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/shutdown.html">shutdown()</a>
+                — Closes the connection or the channel or both with RabbitMQ server.</li>
+          </ul>
+          <h3>Inherited from <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait.html">MAKS\AmqpAgent\Worker\WorkerMutationTrait</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="mutateClass"><a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClass.html">mutateClass()</a>
+                — Mutates a class propery nested or not and returns the replaced subset.</li>
+            <li id="mutateClassConst"><a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassConst.html">mutateClassConst()</a>
+                — Mutates a subset of an array (class const property) and returns a new array with the new replacements.</li>
+            <li id="mutateClassMember"><a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassMember.html">mutateClassMember()</a>
+                — Mutates a subset of an array (class property) and returns the replaced subset.</li>
+            <li id="mutateClassSubMember"><a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassSubMember.html">mutateClassSubMember()</a>
+                — Mutates a subset of an array inside a class propery (nested array inside a property) and returns the replaced subset.</li>
+          </ul>
+          <h3>Inherited from <a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait.html">MAKS\AmqpAgent\Worker\WorkerCommandTrait</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="getCommand"><a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait/getCommand.html">getCommand()</a>
+                — Returns the content of a specific key in the command array, used for example to get the additional parameters.</li>
+            <li id="hasCommand"><a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait/hasCommand.html">hasCommand()</a>
+                — Checks wether a specific command (command name) exists in the command array.</li>
+            <li id="isCommand"><a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait/isCommand.html">isCommand()</a>
+                — Checks wether an array is a command following the recommended pattern.</li>
+            <li id="makeCommand"><a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait/makeCommand.html">makeCommand()</a>
+                — Constructs a command from passed data to a command array following the recommended pattern.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

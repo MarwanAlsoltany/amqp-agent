@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MAKS\AmqpAgent\Worker\AbstractWorkerInterface</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../interfaces.html">Interfaces</a>
+          </li>
+          <li class="separator">
+            <a href="../interfaces.html#MAKS_AmqpAgent_Worker">MAKS\AmqpAgent\Worker</a>
+          </li>
+          <li class="separator">AbstractWorkerInterface</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#violations">Violations</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/Worker/AbstractWorkerInterface.php.html#line20">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>MAKS\AmqpAgent\Worker\</small>AbstractWorkerInterface</h1>
+        <h4>An interface defining the basic methods of a worker.</h4>
+        <p/>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">interface AbstractWorkerInterface
+            {<br/><ul class="none"><li>// constants</li><li>const PREFIX = 'maks.amqp.agent.';</li><li>const CONNECTION_OPTIONS = ;</li><li>const CHANNEL_OPTIONS = ;</li><li>const QUEUE_OPTIONS = ;</li></ul><ul class="none"><li>// methods</li><li>public static bool <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/shutdown.html">shutdown</a>()
+                    </li><li>public <span title="AbstractWorkerInterface">AbstractWorkerInterface</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/connect.html">connect</a>()
+                    </li><li>public <span title="AbstractWorkerInterface">AbstractWorkerInterface</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/disconnect.html">disconnect</a>()
+                    </li><li>public <span title="AbstractWorkerInterface">AbstractWorkerInterface</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/reconnect.html">reconnect</a>()
+                    </li><li>public <span title="AbstractWorkerInterface">AbstractWorkerInterface</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/queue.html">queue</a>()
+                    </li><li>public <span title="AMQPTable">AMQPTable</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/arguments.html">arguments</a>()
+                    </li><li>public ?<span title="AMQPStreamConnection">AMQPStreamConnection</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/getConnection.html">getConnection</a>()
+                    </li><li>public ?<span title="AMQPChannel">AMQPChannel</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/getChannel.html">getChannel</a>()
+                    </li><li>public ?<span title="AMQPChannel">AMQPChannel</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/getNewChannel.html">getNewChannel</a>()
+                    </li><li>public ?<span title="AMQPChannel">AMQPChannel</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/getChannelById.html">getChannelById</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="PREFIX">PREFIX</td>
+              <td>'maks.amqp.agent.'</td>
+            </tr>
+            <tr>
+              <td id="CONNECTION_OPTIONS">CONNECTION_OPTIONS</td>
+              <td/>
+            </tr>
+            <tr>
+              <td id="CHANNEL_OPTIONS">CHANNEL_OPTIONS</td>
+              <td/>
+            </tr>
+            <tr>
+              <td id="QUEUE_OPTIONS">QUEUE_OPTIONS</td>
+              <td/>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="arguments"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/arguments.html">arguments()</a>
+                — Returns an AMQPTable object.</li>
+            <li id="connect"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/connect.html">connect()</a>
+                — Establishes a connection with RabbitMQ server and opens a channel for the worker in the opened connection.</li>
+            <li id="disconnect"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/disconnect.html">disconnect()</a>
+                — Closes the connection with RabbitMQ server.</li>
+            <li id="getChannel"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/getChannel.html">getChannel()</a>
+                — Returns the default channel of the worker. If the worker is not connected, it returns null.</li>
+            <li id="getChannelById"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/getChannelById.html">getChannelById()</a>
+                — Fetches a channel object identified by the passed id (channel_id). If not found, it returns null.</li>
+            <li id="getConnection"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/getConnection.html">getConnection()</a>
+                — Returns the default connection of the worker. If the worker is not connected, it returns null.</li>
+            <li id="getNewChannel"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/getNewChannel.html">getNewChannel()</a>
+                — Returns a new channel on the default connection of the worker. If the worker is not connected, it returns null.</li>
+            <li id="queue"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/queue.html">queue()</a>
+                — Declares a queue on the default channel of the worker's connection with RabbitMQ server.</li>
+            <li id="reconnect"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/reconnect.html">reconnect()</a>
+                — Executes self::disconnect() and self::connect() respectively.</li>
+            <li id="shutdown"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/shutdown.html">shutdown()</a>
+                — Closes the connection or the channel or both with RabbitMQ server.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

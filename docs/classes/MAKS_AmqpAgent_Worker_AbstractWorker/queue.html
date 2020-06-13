@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MAKS\AmqpAgent\Worker\AbstractWorker::queue</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.html">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.html#MAKS_AmqpAgent_Worker">MAKS\AmqpAgent\Worker</a>
+          </li>
+          <li class="separator">
+            <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../../classes/MAKS_AmqpAgent_Worker_AbstractWorker.html">AbstractWorker</a>
+          </li>
+          <li class="separator">queue</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="#return">Return</a>
+          </li>
+          <li>
+            <a href="#throws">Throws</a>
+          </li>
+          <li>
+            <a href="#interface">Interface</a>
+          </li>
+          <li>
+            <a href="#tests">Tests</a>
+          </li>
+          <li>
+            <a href="../../source/Worker/AbstractWorker.php.html#line333">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>MAKS\AmqpAgent\Worker\AbstractWorker::</small>queue</h1>
+        <h4>Declares a queue on the default channel of the worker's connection with RabbitMQ server.</h4>
+        <p/>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function queue([array
+        $parameters = NULL,
+            [<a title="PhpAmqpLib\Channel\AMQPChannel" href="../../classes/PhpAmqpLib_Channel_AMQPChannel.html">AMQPChannel</a>
+        $_channel = NULL]] )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$parameters</code>
+                —
+                array</dt>
+          <dd>[optional] The overrides for the default queue options of the worker.</dd>
+          <dt><code>$_channel</code>
+                —
+                <a title="PhpAmqpLib\Channel\AMQPChannel" href="../../classes/PhpAmqpLib_Channel_AMQPChannel.html">PhpAmqpLib\Channel\AMQPChannel</a></dt>
+          <dd>[optional] The channel that should be used instead of the default worker's channel.<br/><br/><br/>      </dd>
+        </dl>
+        <h2 id="return">Returns</h2>
+        <dl class="styled">
+          <dt>AbstractWorker</dt>
+          <dd><br/>
+        </dd>
+        </dl>
+        <h2 id="throws">Errors/Exceptions</h2>
+        <dl class="styled">
+          <dt>
+            <code>
+              <a title="PhpAmqpLib\Exception\AMQPTimeoutException" href="../../classes/PhpAmqpLib_Exception_AMQPTimeoutException.html">AMQPTimeoutException</a>
+            </code>
+          </dt>
+          <dd/>
+        </dl>
+        <h2 id="interface">Defined by Interface</h2>
+        <p class="styled">
+          <code>
+            <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface.html">AbstractWorkerInterface</a>
+          </code>
+        </p>
+        <h2 id="tests">Test Coverage</h2>
+        <div class="styled">
+          <h3>Information</h3>
+          <ul class="styled">
+            <li>Coverage: 16/16 Lines (100%)</li>
+            <li>Tests: 18</li>
+            <li>Passed: 18 (100%)</li>
+          </ul>
+          <h3>Tests</h3>
+          <ul class="styled">
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\AbstractWorkerTest::testQueueReturnsSelf</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\AbstractWorkerTest::testMutateClassMemberTakesEffectByRevertingPropertyToItsState</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\PublisherTest::testQueueReturnsSelfAndOverrideParametersTakeEffect</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\PublisherTest::testExchangeReturnsSelfAndOverrideParametersTakeEffect</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\PublisherTest::testBindReturnsSelfAndOverrideParametersTakeEffect</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\PublisherTest::testPublishRaisesAnExceptionIfUnexpectedParameterIsPassed</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\PublisherTest::testPublishBatchAndPublishPublishesMessagesToRabbitMQServerAndOverrideParametersTakeEffect</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\PublisherTest::testPublishBatchRaisesAnExceptionIfUnexpectedParameterIsPassed</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\PublisherTest::testPublishPublishesMessagesToRabbitMQServerWithDifferentTypesOfMessages</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\PublisherTest::testPublishingMessagesToRabbitMQServerViaWorkMethod</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\ConsumerTest::testQosReturnsSelfAndOverrideParametersTakeEffect</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\ConsumerTest::testConsumeConsumesMessagesFromRabbitMQServerAndAknowledgesThem</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\ConsumerTest::testConsumeRaisesAnExceptionIfInvalidCallbackIsPassed</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\ConsumerTest::testWaitForAllWaitsForMultipleChannelAndReturnsSelf</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\ConsumerTest::testConsumingMessagesFromRabbitMQServerViaWorkMethod</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\ConsumerTest::testGetGetsAMessageFromRabbitMQServer</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\ConsumerTest::testCancelCancelsAConsumerAndRedeiliversMessagesToRabbitMQServer</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\ConsumerTest::testRecoverRedeliversAllUnaknowledgeMessagesToRabbitMQServer</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

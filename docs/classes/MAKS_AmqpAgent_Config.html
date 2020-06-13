@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MAKS\AmqpAgent\Config</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html#MAKS_AmqpAgent">MAKS\AmqpAgent</a>
+          </li>
+          <li class="separator">Config</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#coverage">Coverage</a>
+          </li>
+          <li>
+            <a href="#violations">Violations</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/Config.php.html#line30">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>MAKS\AmqpAgent\</small>Config</h1>
+        <h4>A class that turns the configuration file into an object.</h4>
+        <p/>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Config
+            {<br/><ul class="none"><li>// constants</li><li>const DEFAULT_CONFIG_FILE_NAME = 'maks-amqp-agent-config';</li><li>const DEFAULT_CONFIG_FILE_PATH = __DIR__ . DIRECTORY_SEPARATOR . 'Config' . DIRECTORY_SEPARATOR . self::DEFAULT_CONFIG_FILE_NAME . '.php;</li></ul><ul class="none"><li>// members</li><li>private  <a href="#members">$config</a>;
+                    </li><li>private  <a href="#members">$configFlat</a>;
+                    </li><li>private  <a href="#members">$configPath</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/__construct.html">__construct</a>()
+                    </li><li>public mixed <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/__get.html">__get</a>()
+                    </li><li>public void <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/__set.html">__set</a>()
+                    </li><li>public string <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/__toString.html">__toString</a>()
+                    </li><li>private void <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/repair.html">repair</a>()
+                    </li><li>public mixed <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/get.html">get</a>()
+                    </li><li>public array <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/getDefaultConfig.html">getDefaultConfig</a>()
+                    </li><li>public array <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/getConfig.html">getConfig</a>()
+                    </li><li>public <span title="Config">Config</span> <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/setConfig.html">setConfig</a>()
+                    </li><li>public string <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/getConfigPath.html">getConfigPath</a>()
+                    </li><li>public <span title="Config">Config</span> <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/setConfigPath.html">setConfigPath</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="coverage">Coverage</h2>
+        <table class="styled">
+          <tr>
+            <td>Methods</td>
+            <td class="percent">90.91%</td>
+            <td class="nummeric">10 / 11</td>
+          </tr>
+          <tr>
+            <td>Lines</td>
+            <td class="percent">97.56%</td>
+            <td class="nummeric">40 / 41</td>
+          </tr>
+        </table>
+        <h2 id="violations">Violations</h2>
+        <div class="styled">
+          <h3>PHPMessDetector</h3>
+          <table class="styled">
+            <thead>
+              <tr>
+                <th>Line</th>
+                <th>Rule</th>
+                <th>Message</th>
+              </tr>
+            </thead>
+            <tr>
+              <td class="line">122</td>
+              <td>
+                <a href="https://phpmd.org/rules/unusedcode.html#unusedlocalvariable" target="_blank" title="Unused Code Rules">UnusedLocalVariable</a>
+              </td>
+              <td>Avoid unused local variables such as '$value'.</td>
+            </tr>
+          </table>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="DEFAULT_CONFIG_FILE_NAME">DEFAULT_CONFIG_FILE_NAME</td>
+              <td>'maks-amqp-agent-config'</td>
+            </tr>
+            <tr>
+              <td id="DEFAULT_CONFIG_FILE_PATH">DEFAULT_CONFIG_FILE_PATH</td>
+              <td>__DIR__ . DIRECTORY_SEPARATOR . 'Config' . DIRECTORY_SEPARATOR . self::DEFAULT_CONFIG_FILE_NAME . '.php</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="config"><strong>$config</strong>
+                —
+                array<br/><span class="indent">The multidimensional configuration array.</span></li>
+            <li id="configFlat"><strong>$configFlat</strong>
+                —
+                array<br/><span class="indent">A flat version of the configuration array.</span></li>
+            <li id="configPath"><strong>$configPath</strong>
+                —
+                string<br/><span class="indent">Configuration file path.</span></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="repair"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/repair.html">repair()</a>
+                — Repairs the config array if first-level of the passed array does not have all keys.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/__construct.html">__construct()</a>
+                — Config object constroctor.</li>
+            <li id="__get"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/__get.html">__get()</a>
+                — Gets the the given key from the configuration array via public property access notation.</li>
+            <li id="__set"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/__set.html">__set()</a>
+                — Sets the the given key in the configuration array via public property assginment notation.</li>
+            <li id="__toString"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/__toString.html">__toString()</a>
+                — Returns config file path if the object was casted to a string.</li>
+            <li id="get"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/get.html">get()</a>
+                — Gets a value of a key from the configuation array. Use with caution.</li>
+            <li id="getConfig"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/getConfig.html">getConfig()</a>
+                — Returns the current configuration array.</li>
+            <li id="getConfigPath"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/getConfigPath.html">getConfigPath()</a>
+                — Returns the path of the configuration file.</li>
+            <li id="getDefaultConfig"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/getDefaultConfig.html">getDefaultConfig()</a>
+                — Returns the default configuration array.</li>
+            <li id="setConfig"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/setConfig.html">setConfig()</a>
+                — Sets a new configuration array to be used instead of the current and generates a new flat version of it.</li>
+            <li id="setConfigPath"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/setConfigPath.html">setConfigPath()</a>
+                — Sets the path of the configuration file and rebuilds the internal state of the object.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

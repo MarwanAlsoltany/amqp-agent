@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MAKS\AmqpAgent\Worker\ConsumerInterface</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../interfaces.html">Interfaces</a>
+          </li>
+          <li class="separator">
+            <a href="../interfaces.html#MAKS_AmqpAgent_Worker">MAKS\AmqpAgent\Worker</a>
+          </li>
+          <li class="separator">ConsumerInterface</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#violations">Violations</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/Worker/ConsumerInterface.php.html#line20">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>MAKS\AmqpAgent\Worker\</small>ConsumerInterface</h1>
+        <h4>An interface defining the basic methods of a consumer.</h4>
+        <p/>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">interface ConsumerInterface
+                extends <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface.html">AbstractWorkerInterface</a>
+            {<br/><ul class="none"><li>// constants</li><li>const QOS_OPTIONS = ;</li><li>const WAIT_OPTIONS = ;</li><li>const CONSUME_OPTIONS = ;</li><li>const ACK_OPTIONS = ;</li><li>const NACK_OPTIONS = ;</li><li>const GET_OPTIONS = ;</li><li>const CANCEL_OPTIONS = ;</li><li>const RECOVER_OPTIONS = ;</li><li>const REJECT_OPTIONS = ;</li></ul><ul class="none"><li>// Inherited constants from <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface.html">AbstractWorkerInterface</a></li><li>const <a href="#PREFIX">PREFIX</a> = 'maks.amqp.agent.';</li><li>const <a href="#CONNECTION_OPTIONS">CONNECTION_OPTIONS</a> = ;</li><li>const <a href="#CHANNEL_OPTIONS">CHANNEL_OPTIONS</a> = ;</li><li>const <a href="#QUEUE_OPTIONS">QUEUE_OPTIONS</a> = ;</li></ul><ul class="none"><li>// methods</li><li>public static void <a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/ack.html">ack</a>()
+                    </li><li>public static void <a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/nack.html">nack</a>()
+                    </li><li>public static ?<span title="AMQPMessage">AMQPMessage</span> <a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/get.html">get</a>()
+                    </li><li>public static mixed <a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/cancel.html">cancel</a>()
+                    </li><li>public static mixed <a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/recover.html">recover</a>()
+                    </li><li>public static void <a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/reject.html">reject</a>()
+                    </li><li>public <span title="ConsumerInterface">ConsumerInterface</span> <a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/qos.html">qos</a>()
+                    </li><li>public <span title="ConsumerInterface">ConsumerInterface</span> <a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/consume.html">consume</a>()
+                    </li><li>public bool <a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/isConsuming.html">isConsuming</a>()
+                    </li><li>public <span title="ConsumerInterface">ConsumerInterface</span> <a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/wait.html">wait</a>()
+                    </li><li>public <span title="ConsumerInterface">ConsumerInterface</span> <a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/waitForAll.html">waitForAll</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface">AbstractWorkerInterface</span></li><li>public static bool <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/shutdown.html">shutdown</a>()
+                        </li><li>public AbstractWorkerInterface <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/connect.html">connect</a>()
+                        </li><li>public AbstractWorkerInterface <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/disconnect.html">disconnect</a>()
+                        </li><li>public AbstractWorkerInterface <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/reconnect.html">reconnect</a>()
+                        </li><li>public AbstractWorkerInterface <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/queue.html">queue</a>()
+                        </li><li>public AMQPTable <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/arguments.html">arguments</a>()
+                        </li><li>public AMQPStreamConnection <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/getConnection.html">getConnection</a>()
+                        </li><li>public AMQPChannel <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/getChannel.html">getChannel</a>()
+                        </li><li>public AMQPChannel|null <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/getNewChannel.html">getNewChannel</a>()
+                        </li><li>public AMQPChannel|null <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/getChannelById.html">getChannelById</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface.html">MAKS\AmqpAgent\Worker\AbstractWorkerInterface</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="QOS_OPTIONS">QOS_OPTIONS</td>
+              <td/>
+            </tr>
+            <tr>
+              <td id="WAIT_OPTIONS">WAIT_OPTIONS</td>
+              <td/>
+            </tr>
+            <tr>
+              <td id="CONSUME_OPTIONS">CONSUME_OPTIONS</td>
+              <td/>
+            </tr>
+            <tr>
+              <td id="ACK_OPTIONS">ACK_OPTIONS</td>
+              <td/>
+            </tr>
+            <tr>
+              <td id="NACK_OPTIONS">NACK_OPTIONS</td>
+              <td/>
+            </tr>
+            <tr>
+              <td id="GET_OPTIONS">GET_OPTIONS</td>
+              <td/>
+            </tr>
+            <tr>
+              <td id="CANCEL_OPTIONS">CANCEL_OPTIONS</td>
+              <td/>
+            </tr>
+            <tr>
+              <td id="RECOVER_OPTIONS">RECOVER_OPTIONS</td>
+              <td/>
+            </tr>
+            <tr>
+              <td id="REJECT_OPTIONS">REJECT_OPTIONS</td>
+              <td/>
+            </tr>
+            <tr>
+              <td id="PREFIX">PREFIX</td>
+              <td>'maks.amqp.agent.'</td>
+            </tr>
+            <tr>
+              <td id="CONNECTION_OPTIONS">CONNECTION_OPTIONS</td>
+              <td/>
+            </tr>
+            <tr>
+              <td id="CHANNEL_OPTIONS">CHANNEL_OPTIONS</td>
+              <td/>
+            </tr>
+            <tr>
+              <td id="QUEUE_OPTIONS">QUEUE_OPTIONS</td>
+              <td/>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="ack"><a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/ack.html">ack()</a>
+                — Acknowledges an AMQP message object.</li>
+            <li id="cancel"><a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/cancel.html">cancel()</a>
+                — Ends a queue consumer.</li>
+            <li id="consume"><a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/consume.html">consume()</a>
+                — Consumes messages from the default channel of the worker's connection to RabbitMQ server.</li>
+            <li id="get"><a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/get.html">get()</a>
+                — Gets a message object from a channel, direct access to a queue.</li>
+            <li id="isConsuming"><a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/isConsuming.html">isConsuming()</a>
+                — Checks wether the default channel is consuming.</li>
+            <li id="nack"><a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/nack.html">nack()</a>
+                — Unacknowledges an AMQP message object.</li>
+            <li id="qos"><a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/qos.html">qos()</a>
+                — Specifies the quility of service on the default channel of the worker's connection to RabbitMQ server.</li>
+            <li id="recover"><a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/recover.html">recover()</a>
+                — Redelivers unacknowledged messages</li>
+            <li id="reject"><a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/reject.html">reject()</a>
+                — Rejects an AMQP message object.</li>
+            <li id="wait"><a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/wait.html">wait()</a>
+                — Keeps the connection to RabbitMQ server alive as long as the default channel is in used.</li>
+            <li id="waitForAll"><a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/waitForAll.html">waitForAll()</a>
+                — Tries to keep the connection to RabbitMQ server alive as long as there are channels in used (default or not).</li>
+          </ul>
+          <h3>Inherited from <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface.html">MAKS\AmqpAgent\Worker\AbstractWorkerInterface</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="arguments"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/arguments.html">arguments()</a>
+                — Returns an AMQPTable object.</li>
+            <li id="connect"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/connect.html">connect()</a>
+                — Establishes a connection with RabbitMQ server and opens a channel for the worker in the opened connection.</li>
+            <li id="disconnect"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/disconnect.html">disconnect()</a>
+                — Closes the connection with RabbitMQ server.</li>
+            <li id="getChannel"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/getChannel.html">getChannel()</a>
+                — Returns the default channel of the worker. If the worker is not connected, it returns null.</li>
+            <li id="getChannelById"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/getChannelById.html">getChannelById()</a>
+                — Fetches a channel object identified by the passed id (channel_id). If not found, it returns null.</li>
+            <li id="getConnection"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/getConnection.html">getConnection()</a>
+                — Returns the default connection of the worker. If the worker is not connected, it returns null.</li>
+            <li id="getNewChannel"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/getNewChannel.html">getNewChannel()</a>
+                — Returns a new channel on the default connection of the worker. If the worker is not connected, it returns null.</li>
+            <li id="queue"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/queue.html">queue()</a>
+                — Declares a queue on the default channel of the worker's connection with RabbitMQ server.</li>
+            <li id="reconnect"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/reconnect.html">reconnect()</a>
+                — Executes self::disconnect() and self::connect() respectively.</li>
+            <li id="shutdown"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/shutdown.html">shutdown()</a>
+                — Closes the connection or the channel or both with RabbitMQ server.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>
