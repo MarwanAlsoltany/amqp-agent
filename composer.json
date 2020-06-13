@@ -36,6 +36,24 @@
         "phploc/phploc": "^5.0.0",
         "phpmd/phpmd": "^2.8.1"
     },
+    "scripts": {
+        "sniff": "vendor/bin/phpcs --report=xml --report-file=build/phpcs/index.xml src",
+        "sniff-global": "phpcs --report=xml --report-file=build/phpcs/index.xml src",
+        "detect": "vendor/bin/phpmd src xml naming,unusedcode --reportfile build/phpmd/index.xml --strict --ignore-violations-on-exit",
+        "detect-global": "phpmd src xml naming,unusedcode --reportfile build/phpmd/index.xml --strict --ignore-violations-on-exit",
+        "test": "vendor/bin/phpunit --do-not-cache-result",
+        "test-global": "phpunit --do-not-cache-result",
+        "measure": "vendor/bin/phploc src --log-xml=build/phploc/index.xml",
+        "measure-global": "phploc src --log-xml=build/phploc/index.xml",
+        "document": "vendor/bin/phpdox",
+        "document-global": "phpdox",
+        "build": "composer run sniff && composer run detect && composer run test && composer run measure && composer run document",
+        "build-global": "composer run sniff-global && composer run detect-global && composer run test-global && composer run measure-global && composer run document-global",
+        "build-dev": "composer run-script --dev --verbose build && echo \"Development build completed!\"",
+        "build-dev-global": "composer run-script --dev --verbose build-global && echo \"Development build completed! [GLOBAL]\"",
+        "build-prod": "composer run-script --quiet build && echo \"Production build completed!\"",
+        "build-prod-global": "composer run-script --quiet build-global && echo \"Production build completed! [GLOBAL]\""
+    },
     "autoload": {
         "psr-4": {
             "MAKS\\AmqpAgent\\": "src"
