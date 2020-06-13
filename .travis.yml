@@ -16,7 +16,6 @@ addons:
 env:
   matrix:
     - COMPOSER_FLAGS="--prefer-lowest --prefer-stable"
-    - COVERAGE_PATH="build/coverage/clover.xml"
 
 cache:
   directories:
@@ -34,6 +33,3 @@ script:
 after_script:
     - wget https://scrutinizer-ci.com/ocular.phar
     - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-
-# after_success:
-#   - composer run build-prod
