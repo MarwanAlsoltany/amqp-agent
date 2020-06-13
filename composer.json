@@ -29,6 +29,13 @@
         "php" : "^7.4",
         "php-amqplib/php-amqplib": "^2.11"
     },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.5.5",
+        "theseer/phpdox": "^0.12.0",
+        "phpunit/phpunit": "~8.5",
+        "phploc/phploc": "^5.0.0",
+        "phpmd/phpmd": "^2.8.1"
+    },
     "autoload": {
         "psr-4": {
             "MAKS\\AmqpAgent\\": "src"
@@ -43,6 +50,11 @@
         "branch-alias": {
             "dev-master": "1.0-dev"
         }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": false,
+        "process-timeout": 0
     },
     "minimum-stability": "dev",
     "prefer-stable": true
