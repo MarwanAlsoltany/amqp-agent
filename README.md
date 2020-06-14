@@ -214,52 +214,10 @@ $consumer3 = $client->getConsumer(); // or $client->get('consumer');
 
 #### Here are some examples of a publisher
 
-1. **Variant I:** Overwriting parameters per method call
+1. **Variant I:** Passing parameters in workers constructor
 
 ```php
 // Publisher Demo 1
-
-$messages = [
-    'This is an example message. ID [1].',
-    'This is an example message. ID [2].',
-    'This is an example message. ID [3].'
-];
-
-$publisher = new Publisher();
-
-$publisher->connect([
-    'host' => 'localhost',
-    'user' => 'guest',
-    'password' => 'guest'
-])->queue([
-    'queue' => 'test.messages.queue'
-])->exchange([
-    'exchange' => 'test.messages.exchange'
-])->bind([
-    'queue' => 'test.messages.queue',
-    'exchange' => 'test.messages.exchange'
-]);
-foreach ($messages as $message) {
-    $publisher->publish(
-        [
-            'body' => $message,
-            'properties' => [
-                'content_type' => 'text/plain',
-            ]
-        ],
-        [
-            'exchange' => 'test.messages.exchange'
-        ]
-    );
-}
-$publisher->disconnect();
-
-```
-
-2. **Variant II:** Passing parameters in workers constructor
-
-```php
-// Publisher Demo 2
 
 $messages = [
     'This is an example message. ID [1].',
@@ -323,43 +281,58 @@ $publisher->disconnect();
 
 ```
 
-#### Here are some examples of a consumer
-
-1. **Variant I:** Overwriting parameters per method call
+2. **Variant II:** Overwriting parameters per method call
 
 ```php
-// Consumer Demo 1
+// Publisher Demo 2
 
-$consumer = new Consumer();
-$variable = 'This variable is needed in your callback. It will be the second, the first is always the message!';
+$messages = [
+    'This is an example message. ID [1].',
+    'This is an example message. ID [2].',
+    'This is an example message. ID [3].'
+];
 
-$consumer->connect([
+// connect() method does not take any parameters.
+// Public assginment notation is used instead.
+$publisher->connectionOptions = [
     'host' => 'localhost',
     'user' => 'guest',
     'password' => 'guest'
-])->queue([
+];
+$consumer->connect();
+$consumer->queue([
     'queue' => 'test.messages.queue'
-])->qos([
-        'prefetch_count' => 10
-])->consume(
-    [
-        'YourNamespace\YourClass',
-        'yourCallback'
-    ],
-    [
-        $variable
-    ],
-    [
-        'queue' => 'test.messages.queue'
-    ]
-)->wait()->disconnect();
+]);
+$consumer->exchange([
+    'exchange' => 'test.messages.exchange'
+]);
+$consumer->bind([
+    'queue' => 'test.messages.queue',
+    'exchange' => 'test.messages.exchange'
+]);
+foreach ($messages as $message) {
+    $publisher->publish(
+        [
+            'body' => $message,
+            'properties' => [
+                'content_type' => 'text/plain',
+            ]
+        ],
+        [
+            'exchange' => 'test.messages.exchange'
+        ]
+    );
+}
+$publisher->disconnect();
 
 ```
 
-2. **Variant II:** Passing parameters in workers constructor
+#### Here are some examples of a consumer
+
+1. **Variant I:** Passing parameters in workers constructor
 
 ```php
-// Consumer Demo 2
+// Consumer Demo 1
 
 $consumer = new Consumer(
     [
@@ -406,6 +379,45 @@ $consumer->prepare()->consume()->wait()->disconnect();
 
 // Variant II (C)
 $consumer->work('YourNamespace\YourClass::yourCallback');
+$consumer->disconnect();
+
+```
+
+2. **Variant II:** Overwriting parameters per method call
+
+```php
+// Consumer Demo 2
+
+$consumer = new Consumer();
+$variable = 'This variable is needed in your callback. It will be the second, the first is always the message!';
+
+// connect() method does not take any parameters.
+// Public assginment notation is used instead.
+$consumer->connectionOptions = [
+    'host' => 'localhost',
+    'user' => 'guest',
+    'password' => 'guest'
+];
+$consumer->connect();
+$consumer->queue([
+    'queue' => 'test.messages.queue'
+]);
+$consumer->qos([
+        'prefetch_count' => 10
+]);
+$consumer->consume(
+    [
+        'YourNamespace\YourClass',
+        'yourCallback'
+    ],
+    [
+        $variable
+    ],
+    [
+        'queue' => 'test.messages.queue'
+    ]
+);
+$consumer->wait();
 $consumer->disconnect();
 
 ```
