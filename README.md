@@ -30,7 +30,7 @@ Try AMQP Agent out now:
 #### Composer using Packagist:
 
 ```sh
-composer require maks/amqp-agent
+composer require marwanalsoltany/amqp-agent
 ```
 
 #### Composer using GitHub Repo:
@@ -45,7 +45,7 @@ Copy this configuration in your `composer.json`:
     }
 },
 "require": {
-    "maks/amqp-agent": "dev-master"
+    "marwanalsoltany/amqp-agent": "dev-master"
 }
 ```
 
