@@ -13,7 +13,7 @@ use Exception;
 use MAKS\AmqpAgent\Exception\SerializerViolationException;
 
 /**
- * A flexible serilizer to be used in conjuction with the workers.
+ * A flexible serializer to be used in conjuction with the workers.
  * @since 1.0.0
  */
 class Serializer
@@ -45,7 +45,7 @@ class Serializer
 
 
     /**
-     * Serilizer object constuctor.
+     * Serializer object constuctor.
      * @param mixed $data [optional] The data to serialize. Defaults to null.
      * @param string $type [optional] The type of serialization. Defaults to JSON.
      */

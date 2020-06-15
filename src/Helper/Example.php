@@ -15,7 +15,7 @@ use MAKS\AmqpAgent\Worker\Consumer;
 use PhpAmqpLib\Message\AMQPMessage;
 
 /**
- * An abstarct class used as a default callback for the consumer.
+ * An abstract class used as a default callback for the consumer.
  * @since 1.0.0
  */
 abstract class Example
