@@ -1,7 +1,6 @@
+<h1><center><a href="https://marwanalsoltany.github.io/amqp-agent/" title="Documentation" target="_blank">AMQP Agent</a></center></h1>
+
 <div align="center">
-
-# [AMQP Agent](https://marwanalsoltany.github.io/amqp-agent/ "Documentation")
-
 
 An elegant wrapper around the famous php-amqplib for 90% use case.
 
@@ -261,21 +260,21 @@ $publisher = new Publisher(
     ]
 );
 
-// Variant II (A)
+// Variant I (1)
 $publisher->connect()->queue()->exchange()->bind();
 foreach ($messages as $message) {
     $publisher->publish($message);
 }
 $publisher->disconnect();
 
-// Variant II (B)
+// Variant I (2)
 $publisher->prepare();
 foreach ($messages as $message) {
     $publisher->publish($message);
 }
 $publisher->disconnect();
 
-// Variant II (C)
+// Variant I (3)
 $publisher->work($messages);
 $publisher->disconnect();
 
@@ -366,7 +365,7 @@ $consumer = new Consumer(
     ]
 );
 
-// Variant II (A)
+// Variant I (1)
 $consumer->connect();
 $consumer->queue();
 $consumer->qos();
@@ -374,10 +373,10 @@ $consumer->consume();
 $consumer->wait();
 $consumer->disconnect();
 
-// Variant II (B)
+// Variant I (2)
 $consumer->prepare()->consume()->wait()->disconnect();
 
-// Variant II (C)
+// Variant I (3)
 $consumer->work('YourNamespace\YourClass::yourCallback');
 $consumer->disconnect();
 
