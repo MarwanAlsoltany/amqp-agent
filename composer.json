@@ -1,5 +1,5 @@
 {
-    "name": "maks/amqp-agent",
+    "name": "marwanalsoltany/amqp-agent",
     "type": "library",
     "license": "LGPL-2.1-or-later",
     "description": "An elegant wrapper around the famous php-amqplib for 90% use case.",
