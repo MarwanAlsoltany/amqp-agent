@@ -281,7 +281,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
     public function publishBatch(array $messages, int $batchSize = 2500, ?string $_exchange = null, ?AMQPChannel $_channel = null): self
     {
         $channel = $_channel ?: $this->channel;
-        $exchange = $_exchange ?: $this->exchangeOptions['exchange'];
+        $exchange = $_exchange ?: $this->publishOptions['exchange'];
 
         $count = count($messages);
         for ($i = 0; $i < $count; $i++) {
@@ -327,7 +327,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
     }
 
     /**
-     * Executes self::connect(), self::queue(), self::exchange, self::bind() respectively.
+     * Executes self::connect(), self::queue(), self::exchange, and self::bind() respectively.
      * @return self
      */
     public function prepare(): self
@@ -341,7 +341,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
     }
 
     /**
-     * Executes self::connect(), self::queue(), self::exchange, self::bind() and self::publish() respectively.
+     * Executes self::connect(), self::queue(), self::exchange, self::bind(), self::publish(), and self::disconnect() respectively.
      * @param string[] $messages An array of strings.
      * @return bool
      */
@@ -351,6 +351,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
         foreach ($messages as $message) {
             $this->publish($message);
         }
+        $this->disconnect();
 
         return true;
     }
