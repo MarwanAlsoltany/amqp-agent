@@ -490,7 +490,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
     }
 
     /**
-     * Executes self::connect(), self::queue(), self::qos, self::consume(), and self::wait() respectively.
+     * Executes self::connect(), self::queue(), self::qos, self::consume(), self::wait(), and self::disconnect() respectively.
      * @param callback|array|string $callback The callback that the consumer should use to process the messages.
      * @return bool
      */
@@ -499,6 +499,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
         $this->prepare();
         $this->consume($callback);
         $this->wait();
+        $this->disconnect();
 
         return true;
     }
