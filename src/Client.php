@@ -55,10 +55,10 @@ class Client
 
     /**
      * Client object constuctor.
-     * @param Config|string $config [optional] An instance of the Config class or a path to a config file. If nothing was provided, default config will be used.
+     * @param Config|string $config An instance of the Config class or a path to a config file.
      * @throws AmqpAgentException
      */
-    public function __construct($config = null)
+    public function __construct($config)
     {
         if ($config instanceof Config) {
             $this->config = $config;
