@@ -1,4 +1,4 @@
-<h1><center><a href="https://marwanalsoltany.github.io/amqp-agent/" title="Documentation" target="_blank">AMQP Agent</a></center></h1>
+<h1 align="center"><a href="https://marwanalsoltany.github.io/amqp-agent/" title="Documentation" target="_blank">AMQP Agent</a></h1>
 
 <div align="center">
 
@@ -276,7 +276,6 @@ $publisher->disconnect();
 
 // Variant I (3)
 $publisher->work($messages);
-$publisher->disconnect();
 
 ```
 
@@ -378,7 +377,6 @@ $consumer->prepare()->consume()->wait()->disconnect();
 
 // Variant I (3)
 $consumer->work('YourNamespace\YourClass::yourCallback');
-$consumer->disconnect();
 
 ```
 
