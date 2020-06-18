@@ -62,11 +62,11 @@ composer update
 
 AMQP Agent tries to simplify the implementation of a message-broker in a PHP project. It takes away the entire overhead of building and configuring objects that you would need in order to talk with RabbitMQ server (through php-amqplib) and exposes a tested, fully configurable, and flexible API that fits almost any project.
 
-The php-amqplib library is awesome and works very well. The one and only problem is, it's pretty bare-bone to be used in a project. Without remaking your own wrapper classes, it's almost impossible to not write spaghetti code. Plus the enormous amount of functions, methods, and configurations (parameters) that come with it make it really hard to implement a reasonable API to be used. AMQP Agent tries to solve this problem by making as much abstraction as possible without losing control over the workers and by bringing back the terminology associated with message-brokers, a Publisher and a Consumer is all that you need to deal with if you are a newcomer.
+The php-amqplib library is awesome and works very well. The one and only problem is, it's pretty bare-bone to be used in a project. Without remaking your own wrapper classes, it's almost impossible to not write spaghetti code. Plus the enormous amount of functions, methods, and configurations (parameters) that come with it make it really hard to implement a reasonable API to be used. AMQP Agent solves this problem by making as much abstraction as possible without losing control over the workers and by bringing back the terminology associated with message-brokers, a Publisher and a Consumer is all that you need to deal with if you are a newcomer.
 
 According to this motto, AMQP Agent makes working with RabbitMQ as fun and elegant as possible by exposing some fluent interfaces that are cleverly implemented, fit modern PHP development, nice to work with and very simple to use; yet very powerful and can overwrite the smallest quirks at any point of working with the worker. With AMQP Agent you can start publishing and consuming messages with just a few lines of code!
 
-AMQP Agent does not overwrite anything of php-amqplib nor it does change the terminology associated with the functions. It only simplifies it and takes out the noise of function names and extend it in some places. It also adds some nice features like workers-commands, dynamic channel-waiting, and facilitation methods.
+AMQP Agent does not overwrite anything of php-amqplib nor it does change the terminology associated with its functions. It only simplifies it; takes out the noise of functions' names and extend it in some places. It also adds some nice features like workers-commands, dynamic channel-waiting, and facilitation methods.
 
 
 ---
@@ -100,7 +100,7 @@ AMQP Agent exposes a number of concrete classes that can be directly used and ot
 * <code>*R</code> **Recommended:** This class is recommended to be used when working with AMQP Agent (best practice).
 * <code>*S</code> **Singleton:** This class has a singleton version available via suffixing the class name with `Singleton` i.e. `PublisherSingleton` and can be retrieved via `*Singleton::getInstance()`.
 
-![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *Singleton is considered anti-pattern, try avoiding them as much as possible, though there are use-cases for it. Use singletons only if you know what you are doing.*
+![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *Singleton is considered anti-pattern, try avoiding it as much as possible, though there are use-cases for it. Use singletons only if you know what you are doing.*
 
 
 ---
@@ -112,7 +112,7 @@ If you just quickly want to publish and consume messages, everything is ready an
 
 If you want to fine-tune and tweak AMQP Agent configuration to your exact needs, there is a bit of work to do. You have to supply a config file (see: [maks-amqp-agent-config.php](./src/Config/maks-amqp-agent-config.php) and pay attention to the comments). You don't have to supply everything, you can simply only write the parameters you want to overwrite, AMQP Agent is smart enough to append the deficiency. These parameters can also be overwritten later through public assignment notation or per method call.
 
-![#1e90ff](https://via.placeholder.com/11/1e90ff/000000?text=+) **Fact:** *AMQP Agent uses the same parameter names as php-amqplib in the config file and in the overrides array passed on the method call.*
+![#1e90ff](https://via.placeholder.com/11/1e90ff/000000?text=+) **Fact:** *AMQP Agent uses the same parameter names as php-amqplib in the config file and in the parameters array passed on the method call.*
 
 #### Here is an example of a config file
 
@@ -182,7 +182,7 @@ Before we start with examples, we have to clarify a few things. It's worth menti
 #### The ways a worker can be retrieved
 
 1. The simplest way is to instantiate a worker directly i.e. using `new` keyword. This way requires passing parameters via constructor, method calls, or public property assginment.
-2. The more advanced way is retriving a singleton worker i.e `*Singleton::getInstance()`. This way requires passing parameters via `getInstance()` method, method calls, or public property assginment.
+2. The more advanced way is Retrieving a singleton worker i.e `PublisherSingleton::getInstance()`. This way requires passing parameters via `getInstance()` method, method calls, or public property assginment.
 3. The more advanced but recommended way is to use an instance of the `Client` class. This way also makes code more readable as the parameters are retrived from the passed config.
 
 
@@ -421,9 +421,276 @@ $consumer->disconnect();
 
 ![#1e90ff](https://via.placeholder.com/11/1e90ff/000000?text=+) **Fact:** *When supplying parameters provide only the parameters you need. AMQP Agent is smart enough to append the deficiency.*
 
-![#32cd32](https://via.placeholder.com/11/32cd32/000000?text=+) **Advice:** *You can simplifiy the heavy constructors written in the examples above if you use `getPublisher()` on an instance of the `Client` class after providing a config file with the parameters you want.*
+![#32cd32](https://via.placeholder.com/11/32cd32/000000?text=+) **Advice:** *You can simplifiy the heavy constructors written in the examples above if you use `get($className)` on an instance of the `Client` class after providing a config file with the parameters you want.*
 
 ![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *Refere to [AMQP Agent Docs](https://marwanalsoltany.github.io/amqp-agent/) for the full explanation of the methods. Refere to [RabbitMQ Documentation](https://www.rabbitmq.com/documentation.html) and [php-amqplib](https://github.com/php-amqplib/php-amqplib) for the full explanation of the parameters.*
+
+### Advanced Examples
+
+In these example you will see how you would work with AMQP Agent in a real-world scenario.
+
+* **Publisher Example:**
+    You will see here how you would publish messages with prority to a queue. Use workers-commands to start additional consumers (sub-processes/threads) for redundancy in case a consumer fails and publish channel-closing commands to close consumers' channels after they finish.
+
+```php
+// Advanced Publisher Demo
+
+use MAKS\AmqpAgent\Client;
+use MAKS\AmqpAgent\Config;
+use MAKS\AmqpAgent\Worker\Publisher;
+use MAKS\AmqpAgent\Helper\Serializer;
+
+// Preparing some data to work with.
+$data = [];
+for ($i = 0; $i < 10000; $i++) {
+    $data[] = [
+        'id' => $i,
+        'importance' => $i % 3 == 0 ? 'high' : 'low', // Tag 1/3 of the messages with high importance.
+        'text' => 'Test message with ID ' . $i
+    ];
+}
+
+// Instantiating a config object.
+// Note that not passing a config file
+// path falls back to the default config.
+$config = new Config();
+
+// Instantiating a client.
+$client = new Client($config);
+
+// Retrieving a serializer from the client.
+/** @var Serializer */
+$serializer = $client->get('serializer');
+
+// Retrieving a publisher from the client.
+/** @var Publisher */
+$publisher = $client->get('publisher');
+
+// Connecting to RabbitMQ server using default config.
+// host: localhost, username: guest, password: guest.
+$publisher->connect();
+
+// Declaring high and low importance messages queue.
+// Note that this queue is lazy and accept priority messages.
+$publisher->queue([
+    'queue' => 'high.and.low.importance.queue',
+    'arguments' => $publisher->arguments([
+        'x-max-priority' => 2,
+        'x-queue-mode' => 'lazy'
+    ])
+]);
+
+// Declaring a direct exchange to publish messages to.
+$publisher->exchange([
+    'exchange' => 'high.and.low.importance.exchange',
+    'type' => 'direct'
+]);
+
+// Binding the queue with the exchange.
+$publisher->bind([
+    'queue' => 'high.and.low.importance.queue',
+    'exchange' => 'high.and.low.importance.exchange'
+]);
+
+// Publishing messages according to their priorty.
+foreach ($data as $item) {
+    $payload = $serializer->serialize($item, 'JSON');
+    if ($item['importance'] == 'high') {
+        $publisher->publish(
+            [
+                'body' => $payload,
+                'properties' => [
+                    'priority' => 2
+                ],
+            ],
+            [
+                'exchange' => 'high.and.low.importance.exchange'
+            ]
+        );
+        continue;
+    }
+    $publisher->publish(
+        $payload, // Not providing priorty will fallback to 0
+        [
+            'exchange' => 'high.and.low.importance.exchange'
+        ]
+    );
+}
+
+// Starting a new consumer after messages with high importance are consumed.
+// Pay attention to the priorty, this message will be placed just after
+// high importance messages but before low importance messages.
+$publisher->publish(
+    [
+        'body' => $serializer->serialize(
+            Publisher::makeCommand('start', 'consumer'),
+            'JSON'
+        ),
+        'properties' => [
+            'priority' => 1
+        ],
+    ],
+    [
+        'exchange' => 'high.and.low.importance.exchange'
+    ]
+);
+
+// Since we have two consumer now, one from the original worker
+// and the one other gets started later in the callback. We have
+// to publish two channel closing commands to stop the consumers.
+// These will be added at the end after low importance messages.
+$index = 2;
+do {
+    $publisher->publish(
+        [
+            'body' => $serializer->serialize(
+                Publisher::makeCommand('close', 'channel'),
+                'JSON'
+            ),
+            'properties' => [
+                'priority' => 0
+            ],
+        ],
+        [
+            'exchange' => 'high.and.low.importance.exchange'
+        ]
+    );
+    $index--;
+} while ($index != 0);
+
+// Close the connection with RabbitMQ server.
+$publisher->disconnect();
+
+```
+
+* **Consumer Example:**
+    You will see here how you would consume messages. Read workers-commands to start additional consumers (sub-processes/threads) and close consumers' channels.
+
+```php
+// Advanced Consumer Demo
+
+use MAKS\AmqpAgent\Client;
+use MAKS\AmqpAgent\Config;
+use MAKS\AmqpAgent\Worker\Consumer;
+use MAKS\AmqpAgent\Helper\Serializer;
+use MAKS\AmqpAgent\Helper\Logger;
+
+$config = new Config();
+$client = new Client($config);
+
+// Retrieving a logger from the client.
+// And setting its write directory and filename.
+/** @var Logger */
+$logger = $client->get('logger');
+$logger->setDirectory(__DIR__);
+$logger->setFilename('high-and-low-importance-messages');
+
+// Retrieving a serializer from the client.
+/** @var Serializer */
+$serializer = $client->get('serializer');
+
+// Retrieving a consumer from the client.
+/** @var Consumer */
+$consumer = $client->get('consumer');
+
+$consumer->connect();
+
+// Declaring high and low importance messages queue for the consumer.
+// The declaration here must match the one on the publisher. This step
+// can also be omitted if you're sure that the queue exists on the server.
+$consumer->queue([
+    'queue' => 'high.and.low.importance.queue',
+    'arguments' => $consumer->arguments([
+        'x-max-priority' => 2,
+        'x-queue-mode' => 'lazy'
+    ])
+]);
+
+// Overwriting the dafault quality of service.
+$consumer->qos([
+    'prefetch_count' => 1,
+]);
+
+// The callback is defined here for demonstration purposes
+// Normally you should separate this in its own class.
+$callback = function($message, &$client, $callback) {
+    $data = $client->getSerializer()->unserialize($message->body, 'JSON');
+
+    if (Consumer::isCommand($data)) {
+        Consumer::ack($message);
+        if (Consumer::hasCommand($data, 'close', 'channel')) {
+            // Giving time for acknowledgements to take effect,
+            // because the channel will be closed shortly
+            sleep(5);
+            // Close the channel using the delivery info of the message.
+            Consumer::shutdown($message);
+        } elseif (Consumer::hasCommand($data, 'start', 'consumer')) {
+            $consumer = $client->getConsumer();
+            // Getting a new channel on the same connection.
+            $channel = $consumer->getNewChannel();
+            $consumer->queue(
+                [
+                    'queue' => 'high.and.low.importance.queue',
+                    'arguments' => $consumer->arguments([
+                        'x-max-priority' => 2,
+                        'x-queue-mode' => 'lazy'
+                    ])
+                ],
+                $channel
+            );
+            $consumer->qos(
+                [
+                    'prefetch_count' => 1,
+                ],
+                $channel
+            );
+            $consumer->consume(
+                $callback,
+                [
+                    &$client,
+                    $callback
+                ],
+                [
+                    'queue' => 'high.and.low.importance.queue',
+                    'consumer_tag' => 'callback.consumer-' . uniqid()
+                ],
+                $channel
+            );
+        }
+        return;
+    }
+
+    $client->getLogger()->write("({$data['importance']}) - {$data['text']}");
+    // Sleep for 50ms to mimic some processing.
+    usleep(50000);
+
+    // The final step is aknowledgment so that no data is lost.
+    Consumer::ack($message);
+};
+
+$consumer->consume(
+    $callback,
+    [
+        &$client, // Is used to refetch the consumer, serlializer, and logger.
+        $callback // This gets passed to the consumer that get started by the callback.
+    ],
+    [
+        'queue' => 'high.and.low.importance.queue'
+    ]
+);
+
+// Here we have to wait using waitForAll() method
+// because we have consumers that start dynamicly.
+$consumer->waitForAll();
+
+// Close the connection with RabbitMQ server.
+$consumer->disconnect();
+
+```
+
+![#1e90ff](https://via.placeholder.com/11/1e90ff/000000?text=+) **Fact:** *You can make the code in Publisher/Consumer Advanced Examples way more easer if you make all parameters' changes in a config file and pass it to the client instead of the default.*
+
+![#32cd32](https://via.placeholder.com/11/32cd32/000000?text=+) **Advice:** *AMQP Agent code-base is well document, please refere to [this link](https://marwanalsoltany.github.io/amqp-agent/classes.html) to have a look over all classes and methods.*
 
 
 ---
