@@ -154,7 +154,7 @@ class Logger
 
             $stream = fopen($file, 'a+');
             if (is_resource($stream)) {
-                fwrite($stream, $log . PHP_EOL);
+                fwrite($stream, $log);
                 fclose($stream);
                 $passed = true;
             }

@@ -4,8 +4,7 @@
 
 An elegant wrapper around the famous php-amqplib for 90% use case.
 
-[![PHP](https://img.shields.io/badge/PHP-%5E7.4-yellow)](https://github.com/MarwanAlsoltany/amqp-agent/search?l=php) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://travis-ci.org/MarwanAlsoltany/amqp-agent/graphs/commit-activity) [![Doc](https://img.shields.io/website-up-down-blue-red/http/marwanalsoltany.github.io/amqp-agent.svg)](http://marwanalsoltany.github.io/amqp-agent/) [![Licence()](https://img.shields.io/github/license/MarwanAlsoltany/amqp-agent.svg)](./LICENCE)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/?branch=master) [![Code Intelligence Status](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence) [![Code Coverage](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/badges/build.png?b=master)](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/build-status/master) [![Build Status](https://travis-ci.org/MarwanAlsoltany/amqp-agent.svg?branch=master)](https://travis-ci.org/MarwanAlsoltany/amqp-agent) [![StyleCI](https://github.styleci.io/repos/271944962/shield?branch=master)](https://github.styleci.io/repos/271944962)
+[![PHP](https://img.shields.io/badge/PHP-%5E7.4-yellow)](https://github.com/MarwanAlsoltany/amqp-agent/search?l=php) [![Latest Stable Version](https://poser.pugx.org/marwanalsoltany/amqp-agent/v)](https://github.com/MarwanAlsoltany/amqp-agent/tree/master) [![Latest Unstable Version](https://poser.pugx.org/marwanalsoltany/amqp-agent/v/unstable)](https://github.com/MarwanAlsoltany/amqp-agent/tree/dev) [![License](https://poser.pugx.org/marwanalsoltany/amqp-agent/license)](./LICENSE) [![Total Downloads](https://poser.pugx.org/marwanalsoltany/amqp-agent/downloads)](//packagist.org/packages/marwanalsoltany/amqp-agent/stats) [![Documentation](https://img.shields.io/website-up-down-blue-red/http/marwanalsoltany.github.io/amqp-agent.svg)](http://marwanalsoltany.github.io/amqp-agent) [![Maintenance](https://img.shields.io/badge/maintained-yes-green.svg)](https://travis-ci.org/MarwanAlsoltany/amqp-agent/graphs/commit-activity) [![Build Status](https://travis-ci.org/MarwanAlsoltany/amqp-agent.svg?branch=master)](https://travis-ci.org/MarwanAlsoltany/amqp-agent)  [![Build Status](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/badges/build.png?b=master)](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/build-status/master) [![Code Coverage](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/?branch=master) [![Code Intelligence Status](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/?branch=master) [![StyleCI](https://github.styleci.io/repos/271944962/shield?branch=master)](https://github.styleci.io/repos/271944962)
 
 <details><summary>Table of Contents</summary>
 <p>
@@ -23,7 +22,7 @@ An elegant wrapper around the famous php-amqplib for 90% use case.
 ---
 
 
-## Installtion
+## Installation
 
 Try AMQP Agent out now:
 
@@ -66,7 +65,7 @@ The php-amqplib library is awesome and works very well. The one and only problem
 
 According to this motto, AMQP Agent makes working with RabbitMQ as fun and elegant as possible by exposing some fluent interfaces that are cleverly implemented, fit modern PHP development, nice to work with and very simple to use; yet very powerful and can overwrite the smallest quirks at any point of working with the worker. With AMQP Agent you can start publishing and consuming messages with just a few lines of code!
 
-AMQP Agent does not overwrite anything of php-amqplib nor it does change the terminology associated with its functions. It only simplifies it; takes out the noise of functions' names and extend it in some places. It also adds some nice features like workers-commands, dynamic channel-waiting, and facilitation methods.
+AMQP Agent does not overwrite anything of php-amqplib nor it does change the terminology associated with its functions. It only simplifies it; takes out the noise of functions' names and extends it in some places. It also adds some nice features like workers-commands, dynamic channel-waiting, and facilitation methods.
 
 
 ---
@@ -83,7 +82,7 @@ AMQP Agent exposes a number of concrete classes that can be directly used and ot
 | --- | --- | --- |
 | [Publisher](./src/Worker/Publisher.php) <sup><code>*C\*S</code></sup> | A class specialized in publishing. Implementing only the methods needed for a publisher. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Worker_Publisher.html) |
 | [Consumer](./src/Worker/Consumer.php) <sup><code>*C\*S</code></sup> | A class specialized in consuming. Implementing only the methods needed for a consumer. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Worker_Consumer.html) |
-| [Serializer](./src/Helper/Serializer.php) <sup><code>*C\*H</code></sup> | A flexible serializer to be used in conjuction with the workers. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Helper_Serializer.html) |
+| [Serializer](./src/Helper/Serializer.php) <sup><code>*C\*H</code></sup> | A flexible serializer to be used in conjunction with the workers. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Helper_Serializer.html) |
 | [Logger](./src/Helper/Logger.php) <sup><code>*C\*H</code></sup> | A class to write logs, exposing methods that work statically and on instantiation. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Helper_Logger.html) |
 | [Config](./src/Config.php) <sup><code>*C\*R</code></sup> | A class that turns the configuration file into an object. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Config.html) |
 | [Client](./src/Client.php) <sup><code>*C\*R</code></sup> | A class returns everything AMQP Agent has to offer. A simple service container so to say. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Client.html) |
@@ -100,7 +99,7 @@ AMQP Agent exposes a number of concrete classes that can be directly used and ot
 * <code>*R</code> **Recommended:** This class is recommended to be used when working with AMQP Agent (best practice).
 * <code>*S</code> **Singleton:** This class has a singleton version available via suffixing the class name with `Singleton` i.e. `PublisherSingleton` and can be retrieved via `*Singleton::getInstance()`.
 
-![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *Singleton is considered anti-pattern, try avoiding it as much as possible, though there are use-cases for it. Use singletons only if you know what you are doing.*
+![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *Singleton is considered an anti-pattern, try avoiding it as much as possible, though there are use-cases for it. Use singletons only if you know what you are doing.*
 
 
 ---
@@ -181,9 +180,9 @@ Before we start with examples, we have to clarify a few things. It's worth menti
 
 #### The ways a worker can be retrieved
 
-1. The simplest way is to instantiate a worker directly i.e. using `new` keyword. This way requires passing parameters via constructor, method calls, or public property assginment.
-2. The more advanced way is Retrieving a singleton worker i.e `PublisherSingleton::getInstance()`. This way requires passing parameters via `getInstance()` method, method calls, or public property assginment.
-3. The more advanced but recommended way is to use an instance of the `Client` class. This way also makes code more readable as the parameters are retrived from the passed config.
+1. The simplest way is to instantiate a worker directly i.e. using `new` keyword. This way requires passing parameters via the constructor, method calls, or public property assignment.
+2. The more advanced way is Retrieving a singleton worker i.e `PublisherSingleton::getInstance()`. This way requires passing parameters via `getInstance()` method, method calls, or public property assignment.
+3. The more advanced but recommended way is to use an instance of the `Client` class. This way also makes code more readable as the parameters are retrieved from the passed config.
 
 
 ```php
@@ -213,7 +212,7 @@ $consumer3 = $client->getConsumer(); // or $client->get('consumer');
 
 #### Here are some examples of a publisher
 
-1. **Variant I:** Passing parameters in workers constructor
+1. **Variant I:** Passing parameters in workers constructor.
 
 ```php
 // Publisher Demo 1
@@ -279,7 +278,7 @@ $publisher->work($messages);
 
 ```
 
-2. **Variant II:** Overwriting parameters per method call
+2. **Variant II:** Overwriting parameters per method call.
 
 ```php
 // Publisher Demo 2
@@ -291,7 +290,7 @@ $messages = [
 ];
 
 // connect() method does not take any parameters.
-// Public assginment notation is used instead.
+// Public assignment notation is used instead.
 $publisher->connectionOptions = [
     'host' => 'localhost',
     'user' => 'guest',
@@ -327,7 +326,7 @@ $publisher->disconnect();
 
 #### Here are some examples of a consumer
 
-1. **Variant I:** Passing parameters in workers constructor
+1. **Variant I:** Passing parameters in workers constructor.
 
 ```php
 // Consumer Demo 1
@@ -380,7 +379,7 @@ $consumer->work('YourNamespace\YourClass::yourCallback');
 
 ```
 
-2. **Variant II:** Overwriting parameters per method call
+2. **Variant II:** Overwriting parameters per method call.
 
 ```php
 // Consumer Demo 2
@@ -389,7 +388,7 @@ $consumer = new Consumer();
 $variable = 'This variable is needed in your callback. It will be the second, the first is always the message!';
 
 // connect() method does not take any parameters.
-// Public assginment notation is used instead.
+// Public assignment notation is used instead.
 $consumer->connectionOptions = [
     'host' => 'localhost',
     'user' => 'guest',
@@ -421,16 +420,16 @@ $consumer->disconnect();
 
 ![#1e90ff](https://via.placeholder.com/11/1e90ff/000000?text=+) **Fact:** *When supplying parameters provide only the parameters you need. AMQP Agent is smart enough to append the deficiency.*
 
-![#32cd32](https://via.placeholder.com/11/32cd32/000000?text=+) **Advice:** *You can simplifiy the heavy constructors written in the examples above if you use `get($className)` on an instance of the `Client` class after providing a config file with the parameters you want.*
+![#32cd32](https://via.placeholder.com/11/32cd32/000000?text=+) **Advice:** *You can simplify the heavy constructors written in the examples above if you use `get($className)` on an instance of the `Client` class after providing a config file with the parameters you want.*
 
 ![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *Refere to [AMQP Agent Docs](https://marwanalsoltany.github.io/amqp-agent/) for the full explanation of the methods. Refere to [RabbitMQ Documentation](https://www.rabbitmq.com/documentation.html) and [php-amqplib](https://github.com/php-amqplib/php-amqplib) for the full explanation of the parameters.*
 
 ### Advanced Examples
 
-In these example you will see how you would work with AMQP Agent in a real-world scenario.
+In these examples, you will see how you would work with AMQP Agent in a real-world scenario.
 
 * **Publisher Example:**
-    You will see here how you would publish messages with prority to a queue. Use workers-commands to start additional consumers (sub-processes/threads) for redundancy in case a consumer fails and publish channel-closing commands to close consumers' channels after they finish.
+    You will see here how you would publish messages with priority to a queue. Use workers-commands to start additional consumers (sub-processes/threads) for redundancy in case a consumer fails and publish channel-closing commands to close consumers' channels after they finish.
 
 ```php
 // Advanced Publisher Demo
@@ -466,8 +465,8 @@ $serializer = $client->get('serializer');
 /** @var Publisher */
 $publisher = $client->get('publisher');
 
-// Connecting to RabbitMQ server using default config.
-// host: localhost, username: guest, password: guest.
+// Connecting to RabbitMQ server using the default config.
+// host: localhost, port: 5672, username: guest, password: guest.
 $publisher->connect();
 
 // Declaring high and low importance messages queue.
@@ -510,7 +509,7 @@ foreach ($data as $item) {
         continue;
     }
     $publisher->publish(
-        $payload, // Not providing priorty will fallback to 0
+        $payload, // Not providing priorty will fall back to 0
         [
             'exchange' => 'high.and.low.importance.exchange'
         ]
@@ -518,7 +517,7 @@ foreach ($data as $item) {
 }
 
 // Starting a new consumer after messages with high importance are consumed.
-// Pay attention to the priorty, this message will be placed just after
+// Pay attention to the priority, this message will be placed just after
 // high importance messages but before low importance messages.
 $publisher->publish(
     [
@@ -535,11 +534,11 @@ $publisher->publish(
     ]
 );
 
-// Since we have two consumer now, one from the original worker
+// Since we have two consumers now, one from the original worker
 // and the one other gets started later in the callback. We have
-// to publish two channel closing commands to stop the consumers.
+// to publish two channel-closing commands to stop the consumers.
 // These will be added at the end after low importance messages.
-$index = 2;
+$iterator = 2;
 do {
     $publisher->publish(
         [
@@ -555,8 +554,8 @@ do {
             'exchange' => 'high.and.low.importance.exchange'
         ]
     );
-    $index--;
-} while ($index != 0);
+    $iterator--;
+} while ($iterator != 0);
 
 // Close the connection with RabbitMQ server.
 $publisher->disconnect();
