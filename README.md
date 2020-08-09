@@ -4,12 +4,56 @@
 
 An elegant wrapper around the famous php-amqplib for 90% use case.
 
-[![PHP](https://img.shields.io/badge/PHP-%5E7.4-yellow)](https://github.com/MarwanAlsoltany/amqp-agent/search?l=php) [![Latest Stable Version](https://poser.pugx.org/marwanalsoltany/amqp-agent/v)](https://github.com/MarwanAlsoltany/amqp-agent/tree/master) [![Latest Unstable Version](https://poser.pugx.org/marwanalsoltany/amqp-agent/v/unstable)](https://github.com/MarwanAlsoltany/amqp-agent/tree/dev) [![License](https://poser.pugx.org/marwanalsoltany/amqp-agent/license)](./LICENSE) [![Total Downloads](https://poser.pugx.org/marwanalsoltany/amqp-agent/downloads)](//packagist.org/packages/marwanalsoltany/amqp-agent/stats) [![Documentation](https://img.shields.io/website-up-down-blue-red/http/marwanalsoltany.github.io/amqp-agent.svg)](http://marwanalsoltany.github.io/amqp-agent) [![Maintenance](https://img.shields.io/badge/maintained-yes-green.svg)](https://travis-ci.org/MarwanAlsoltany/amqp-agent/graphs/commit-activity) [![Build Status](https://travis-ci.org/MarwanAlsoltany/amqp-agent.svg?branch=master)](https://travis-ci.org/MarwanAlsoltany/amqp-agent)  [![Build Status](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/badges/build.png?b=master)](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/build-status/master) [![Code Coverage](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/?branch=master) [![Code Intelligence Status](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/?branch=master) [![StyleCI](https://github.styleci.io/repos/271944962/shield?branch=master)](https://github.styleci.io/repos/271944962)
 
-<details><summary>Table of Contents</summary>
+[![PHP Version][php-icon]][php-href]
+[![Latest Version on Packagist][version-icon]][version-href]
+[![License][license-icon]][license-href]
+[![Maintenance][maintenance-icon]][maintenance-href]
+[![Documentation][documentation-icon]][documentation-href]
+[![Total Downloads][downloads-icon]][downloads-href]
+[![Scrutinizer Build Status][scrutinizer-icon]][scrutinizer-href]
+[![Scrutinizer Code Coverage][scrutinizer-coverage-icon]][scrutinizer-coverage-href]
+[![Scrutinizer Code Quality][scrutinizer-quality-icon]][scrutinizer-quality-href]
+[![Travis Build Status][travis-icon]][travis-href]
+[![StyleCI Code Style][styleci-icon]][styleci-href]
+
+[php-icon]: https://img.shields.io/badge/php-%5E7.4-yellow?style=flat-square
+[version-icon]: https://img.shields.io/packagist/v/marwanalsoltany/amqp-agent.svg?style=flat-square
+[license-icon]: https://img.shields.io/badge/license-LGPL_2.1_or_later-red.svg?style=flat-square
+[maintenance-icon]: https://img.shields.io/badge/maintained-yes-orange.svg?style=flat-square
+[documentation-icon]: https://img.shields.io/website-up-down-blue-red/http/marwanalsoltany.github.io/amqp-agent.svg?style=flat-square
+[downloads-icon]: https://img.shields.io/packagist/dt/marwanalsoltany/amqp-agent.svg?style=flat-square
+[travis-icon]: https://img.shields.io/travis/MarwanAlsoltany/amqp-agent/master.svg?style=flat-square
+[scrutinizer-icon]: https://img.shields.io/scrutinizer/build/g/MarwanAlsoltany/amqp-agent/master?style=flat-square
+[scrutinizer-coverage-icon]: https://img.shields.io/scrutinizer/coverage/g/MarwanAlsoltany/amqp-agent.svg?style=flat-square
+[scrutinizer-quality-icon]: https://img.shields.io/scrutinizer/g/MarwanAlsoltany/amqp-agent.svg?style=flat-square
+[styleci-icon]: https://github.styleci.io/repos/271944962/shield?branch=master
+
+[php-href]: https://github.com/MarwanAlsoltany/amqp-agent/search?l=php
+[version-href]: https://github.com/MarwanAlsoltany/amqp-agent/tree/master
+[license-href]: ./LICENSE
+[maintenance-href]: https://github.com/MarwanAlsoltany/amqp-agent/graphs/commit-activity
+[documentation-href]: http://marwanalsoltany.github.io/amqp-agent
+[downloads-href]: https://packagist.org/packages/marwanalsoltany/amqp-agent
+[travis-href]: https://travis-ci.org/MarwanAlsoltany/amqp-agent
+[scrutinizer-href]: https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/build-status/master
+[scrutinizer-coverage-href]: https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/?branch=master
+[scrutinizer-quality-href]: https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/?branch=maste
+[styleci-href]: https://github.styleci.io/repos/271944962
+
+<details>
+<summary>Table of Contents</summary>
 <p>
 
-[Installtion](#installtion)<br/> [About AMQP Agent](#about-amqp-agent)<br/> [API](#api)<br/> <a href="https://marwanalsoltany.github.io/amqp-agent/" target="_blank">Documentation</a><br/> [Configuration](#configuration)<br/> [Examples](#examples)<br/> [Links](#links)<br/> [License](#license)<br/> [Changelog](./CHANGELOG.md)
+[Installation](#installation)<br/>
+[About AMQP Agent](#about-amqp-agent)<br/>
+[API](#api)<br/>
+<a href="https://marwanalsoltany.github.io/amqp-agent/" target="_blank">Documentation</a><br/>
+[Configuration](#configuration)<br/>
+[Examples](#examples)<br/>
+[Links](#links)<br/>
+[License](#license)<br/>
+[Changelog](./CHANGELOG.md)
 
 </p>
 </details>
@@ -32,11 +76,10 @@ Try AMQP Agent out now:
 composer require marwanalsoltany/amqp-agent
 ```
 
-#### Composer using GitHub Repo:
+#### Composer using GitHub Repo (unstable):
 
 Copy this configuration in your `composer.json`:
 ```json
-"minimum-stability": "dev",
 "repositories": {
     "amqp-agent-repo": {
         "type": "vcs",
@@ -44,8 +87,9 @@ Copy this configuration in your `composer.json`:
     }
 },
 "require": {
-    "marwanalsoltany/amqp-agent": "dev-master"
-}
+    "marwanalsoltany/amqp-agent": "dev-dev"
+},
+"minimum-stability": "dev"
 ```
 
 Run:
@@ -116,9 +160,8 @@ If you want to fine-tune and tweak AMQP Agent configuration to your exact needs,
 #### Here is an example of a config file
 
 ```php
-<?php
 
-return [
+<?php return [
     // Global
     'connectionOptions' => [
         'host'                   =>    'your-rabbitmq-server.com',
@@ -289,21 +332,26 @@ $messages = [
     'This is an example message. ID [3].'
 ];
 
+
+$publisher = new Publisher();
+
 // connect() method does not take any parameters.
 // Public assignment notation is used instead.
+// Starting from v1.1.0, you can use getNewConnection(),
+// setConnection(), getNewChannel, and setChannel() instead.
 $publisher->connectionOptions = [
     'host' => 'localhost',
     'user' => 'guest',
     'password' => 'guest'
 ];
-$consumer->connect();
-$consumer->queue([
+$publisher->connect();
+$publisher->queue([
     'queue' => 'test.messages.queue'
 ]);
-$consumer->exchange([
+$publisher->exchange([
     'exchange' => 'test.messages.exchange'
 ]);
-$consumer->bind([
+$publisher->bind([
     'queue' => 'test.messages.queue',
     'exchange' => 'test.messages.exchange'
 ]);
@@ -384,11 +432,15 @@ $consumer->work('YourNamespace\YourClass::yourCallback');
 ```php
 // Consumer Demo 2
 
-$consumer = new Consumer();
 $variable = 'This variable is needed in your callback. It will be the second, the first is always the message!';
+
+
+$consumer = new Consumer();
 
 // connect() method does not take any parameters.
 // Public assignment notation is used instead.
+// Starting from v1.1.0, you can use getNewConnection(),
+// setConnection(), getNewChannel, and setChannel() instead.
 $consumer->connectionOptions = [
     'host' => 'localhost',
     'user' => 'guest',
@@ -458,11 +510,11 @@ $config = new Config();
 $client = new Client($config);
 
 // Retrieving a serializer from the client.
-/** @var Serializer */
+/** @var \MAKS\AmqpAgent\Helper\Serializer */
 $serializer = $client->get('serializer');
 
 // Retrieving a publisher from the client.
-/** @var Publisher */
+/** @var \MAKS\AmqpAgent\Worker\Publisher */
 $publisher = $client->get('publisher');
 
 // Connecting to RabbitMQ server using the default config.
@@ -579,17 +631,17 @@ $client = new Client($config);
 
 // Retrieving a logger from the client.
 // And setting its write directory and filename.
-/** @var Logger */
+/** @var \MAKS\AmqpAgent\Helper\Logger */
 $logger = $client->get('logger');
 $logger->setDirectory(__DIR__);
 $logger->setFilename('high-and-low-importance-messages');
 
 // Retrieving a serializer from the client.
-/** @var Serializer */
+/** @var \MAKS\AmqpAgent\Helper\Serializer */
 $serializer = $client->get('serializer');
 
 // Retrieving a consumer from the client.
-/** @var Consumer */
+/** @var \MAKS\AmqpAgent\Worker\Consumer */
 $consumer = $client->get('consumer');
 
 $consumer->connect();
