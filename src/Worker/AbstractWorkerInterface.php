@@ -81,13 +81,13 @@ interface AbstractWorkerInterface
 
 
     /**
-     * Establishes a connection with RabbitMQ server and opens a channel for the worker in the opened connection.
+     * Establishes a connection with RabbitMQ server and opens a channel for the worker in the opened connection, it also sets both of them as defaults.
      * @return self
      */
     public function connect(): self;
 
     /**
-     * Closes the connection with RabbitMQ server.
+     * Closes all open channels and connections with RabbitMQ server.
      * @return self
      */
     public function disconnect(): self;
@@ -115,26 +115,48 @@ interface AbstractWorkerInterface
 
     /**
      * Returns the default connection of the worker. If the worker is not connected, it returns null.
-     * @return AMQPStreamConnection
+     * @return AMQPStreamConnection|null
      */
     public function getConnection(): ?AMQPStreamConnection;
 
     /**
+     * Sets the passed connection as the default connection of the worker.
+     * @param AMQPStreamConnection $connection The connection that should be as the default connection of the worker.
+     * @return self
+     */
+    public function setConnection(AMQPStreamConnection $connection): self;
+
+    /**
+     * Opens a new connection to RabbitMQ server and returns it. Connections returned by this method pushed to connections array and are not set as default automaticly.
+     * @return AMQPStreamConnection
+     */
+    public function getNewConnection(array $parameters = null): AMQPStreamConnection;
+
+    /**
      * Returns the default channel of the worker. If the worker is not connected, it returns null.
-     * @return AMQPChannel
+     * @return AMQPChannel|null
      */
     public function getChannel(): ?AMQPChannel;
 
     /**
-     * Returns a new channel on the default connection of the worker. If the worker is not connected, it returns null.
+     * Sets the passed channel as the default channel of the worker.
+     * @param AMQPChannel $channel The channel that should be as the default channel of the worker.
+     * @return self
+     */
+    public function setChannel(AMQPChannel $channel): self;
+
+    /**
+     * Returns a new channel on the the passed connection of the worker. If no connection is passed, it uses the default connection. If the worker is not connected, it returns null.
      * @param array $parameters [optional] The overrides for the default channel options of the worker.
+     * @param AMQPStreamConnection $_connection [optional] The connection that should be used instead of the default worker's connection.
      * @return AMQPChannel|null
      */
-    public function getNewChannel(array $parameters = null): ?AMQPChannel;
+    public function getNewChannel(array $parameters = null, ?AMQPStreamConnection $_connection = null): ?AMQPChannel;
 
     /**
      * Fetches a channel object identified by the passed id (channel_id). If not found, it returns null.
      * @param int $channleId The id of the channel wished to be fetched.
+     * @param AMQPStreamConnection $_connection [optional] The connection that should be used instead of the default worker's connection.
      * @return AMQPChannel|null
      */
     public function getChannelById(int $channleId): ?AMQPChannel;

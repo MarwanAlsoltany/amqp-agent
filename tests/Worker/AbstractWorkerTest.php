@@ -113,6 +113,25 @@ class AbstractWorkerTest extends TestCase
         $this->assertEquals($connection, $this->worker->connection);
     }
 
+    public function testGetNewConnectionReturnsANewConnectionAndUsesOverrideParameters()
+    {
+        $connection = $this->worker->connect()->getNewConnection([
+            'host' => 'localhost'
+        ]);
+        $this->assertInstanceOf(AMQPStreamConnection::class, $connection);
+        $this->assertNotEquals($connection, $this->worker->connection);
+    }
+
+    public function testSetConnectionSetsAnotherConnectionAsDefaultAndReturnsSelf()
+    {
+        $oldConnection = $this->worker->connect()->getConnection();
+        $newConnection = $this->worker->connect()->getNewConnection();
+        $worker = $this->worker->setConnection($newConnection);
+        $this->assertEquals($worker, $this->worker);
+        $this->assertNotEquals($oldConnection, $newConnection);
+        $this->assertEquals($this->worker->connect()->getConnection(), $newConnection);
+    }
+
     public function testGetChannelReturnsTheDefaultChannel()
     {
         $channel = $this->worker->connect()->getChannel();
@@ -120,6 +139,16 @@ class AbstractWorkerTest extends TestCase
     }
 
     public function testGetNewChannelReturnsANewChannelAndUsesOverrideParameters()
+    {
+        $oldChannel = $this->worker->connect()->getChannel();
+        $newChannel = $this->worker->connect()->getNewChannel();
+        $worker = $this->worker->setChannel($newChannel);
+        $this->assertEquals($worker, $this->worker);
+        $this->assertNotEquals($oldChannel, $newChannel);
+        $this->assertEquals($this->worker->connect()->getChannel(), $newChannel);
+    }
+
+    public function testSetChannelSetsAnotherChannelAsDefaultAndReturnsSelf()
     {
         /** @var AMQPChannel */
         $newChannel = $this->worker->connect()->getNewChannel(['channel_id' => 1968]);

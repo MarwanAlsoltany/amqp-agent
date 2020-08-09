@@ -62,6 +62,18 @@ abstract class AbstractWorker implements AbstractWorkerInterface
      */
     public $channel;
 
+    /**
+     * All opened connections of the worker.
+     * @var AMQPStreamConnection[]
+     */
+    public $connections = [];
+
+    /**
+     * All opened channels of the the worker.
+     * @var AMQPChannel[]
+     */
+    public $channels = [];
+
 
     /**
      * AbstractWorker object constuctor.
@@ -257,55 +269,42 @@ abstract class AbstractWorker implements AbstractWorkerInterface
 
 
     /**
-     * Establishes a connection with RabbitMQ server and opens a channel for the worker in the opened connection.
+     * Establishes a connection with RabbitMQ server and opens a channel for the worker in the opened connection, it also sets both of them as defaults.
      * @return self
      */
     public function connect(): self
     {
         if (empty($this->connection)) {
-            $this->connection = new AMQPStreamConnection(
-                $this->connectionOptions['host'],
-                $this->connectionOptions['port'],
-                $this->connectionOptions['user'],
-                $this->connectionOptions['password'],
-                $this->connectionOptions['vhost'],
-                $this->connectionOptions['insist'],
-                $this->connectionOptions['login_method'],
-                $this->connectionOptions['login_response'],
-                $this->connectionOptions['locale'],
-                $this->connectionOptions['connection_timeout'],
-                $this->connectionOptions['read_write_timeout'],
-                $this->connectionOptions['context'],
-                $this->connectionOptions['keepalive'],
-                $this->connectionOptions['heartbeat'],
-                $this->connectionOptions['channel_rpc_timeout'],
-                $this->connectionOptions['ssl_protocol']
-            );
+            $this->connection = $this->getNewConnection();
         }
 
         if (empty($this->channel)) {
-            $this->channel = $this->connection->channel(
-                $this->channelOptions['channel_id']
-            );
+            $this->channel = $this->getNewChannel();
         }
 
         return $this;
     }
 
     /**
-     * Closes the connection with RabbitMQ server.
+     * Closes all open channels and connections with RabbitMQ server.
      * @return self
      */
     public function disconnect(): self
     {
-        if (!empty($this->channel)) {
-            $this->channel->close();
+        if (count($this->channels)) {
+            foreach ($this->channels as $channel) {
+                $channel->close();
+            }
             $this->channel = null;
+            $this->channels = [];
         }
 
-        if (!empty($this->connection)) {
-            $this->connection->close();
+        if (count($this->connections)) {
+            foreach ($this->connections as $connection) {
+                $connection->close();
+            }
             $this->connection = null;
+            $this->connections = [];
         }
 
         return $this;
@@ -373,7 +372,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
 
     /**
      * Returns the default connection of the worker. If the worker is not connected, it returns null.
-     * @return AMQPStreamConnection
+     * @return AMQPStreamConnection|null
      */
     public function getConnection(): ?AMQPStreamConnection
     {
@@ -381,8 +380,56 @@ abstract class AbstractWorker implements AbstractWorkerInterface
     }
 
     /**
+     * Sets the passed connection as the default connection of the worker.
+     * @param AMQPStreamConnection $connection The connection that should be as the default connection of the worker.
+     * @return self
+     */
+    public function setConnection(AMQPStreamConnection $connection): self
+    {
+        $this->connection = $connection;
+        return $this;
+    }
+
+    /**
+     * Opens a new connection to RabbitMQ server and returns it. Connections returned by this method pushed to connections array and are not set as default automaticly.
+     * @return AMQPStreamConnection
+     */
+    public function getNewConnection(array $parameters = null): AMQPStreamConnection
+    {
+        $changes = null;
+        if ($parameters) {
+            $changes = $this->mutateClassMember('connectionOptions', $parameters);
+        }
+
+        $this->connections[] = $connection = new AMQPStreamConnection(
+            $this->connectionOptions['host'],
+            $this->connectionOptions['port'],
+            $this->connectionOptions['user'],
+            $this->connectionOptions['password'],
+            $this->connectionOptions['vhost'],
+            $this->connectionOptions['insist'],
+            $this->connectionOptions['login_method'],
+            $this->connectionOptions['login_response'],
+            $this->connectionOptions['locale'],
+            $this->connectionOptions['connection_timeout'],
+            $this->connectionOptions['read_write_timeout'],
+            $this->connectionOptions['context'],
+            $this->connectionOptions['keepalive'],
+            $this->connectionOptions['heartbeat'],
+            $this->connectionOptions['channel_rpc_timeout'],
+            $this->connectionOptions['ssl_protocol']
+        );
+
+        if ($changes) {
+            $this->mutateClassMember('connectionOptions', $changes);
+        }
+
+        return $connection;
+    }
+
+    /**
      * Returns the default channel of the worker. If the worker is not connected, it returns null.
-     * @return AMQPChannel
+     * @return AMQPChannel|null
      */
     public function getChannel(): ?AMQPChannel
     {
@@ -390,20 +437,34 @@ abstract class AbstractWorker implements AbstractWorkerInterface
     }
 
     /**
-     * Returns a new channel on the default connection of the worker. If the worker is not connected, it returns null.
+     * Sets the passed channel as the default channel of the worker.
+     * @param AMQPChannel $channel The channel that should be as the default channel of the worker.
+     * @return self
+     */
+    public function setChannel(AMQPChannel $channel): self
+    {
+        $this->channel = $channel;
+        return $this;
+    }
+
+    /**
+     * Returns a new channel on the the passed connection of the worker. If no connection is passed, it uses the default connection. If the worker is not connected, it returns null.
      * @param array $parameters [optional] The overrides for the default channel options of the worker.
+     * @param AMQPStreamConnection $_connection [optional] The connection that should be used instead of the default worker's connection.
      * @return AMQPChannel|null
      */
-    public function getNewChannel(array $parameters = null): ?AMQPChannel
+    public function getNewChannel(array $parameters = null, ?AMQPStreamConnection $_connection = null): ?AMQPChannel
     {
         $changes = null;
         if ($parameters) {
             $changes = $this->mutateClassMember('channelOptions', $parameters);
         }
 
+        $connection = $_connection ?: $this->connection;
+
         $channel = null;
-        if (isset($this->connection)) {
-            $channel = $this->connection->channel(
+        if (isset($connection)) {
+            $this->channels[] = $channel = $connection->channel(
                 $this->channelOptions['channel_id']
             );
         }
@@ -418,11 +479,13 @@ abstract class AbstractWorker implements AbstractWorkerInterface
     /**
      * Fetches a channel object identified by the passed id (channel_id). If not found, it returns null.
      * @param int $channleId The id of the channel wished to be fetched.
+     * @param AMQPStreamConnection $_connection [optional] The connection that should be used instead of the default worker's connection.
      * @return AMQPChannel|null
      */
-    public function getChannelById(int $channleId): ?AMQPChannel
+    public function getChannelById(int $channleId, ?AMQPStreamConnection $_connection = null): ?AMQPChannel
     {
-        $channels = $this->connection->channels;
+        $connection = $_connection ?: $this->connection;
+        $channels = $connection->channels;
 
         if (array_key_exists($channleId, $channels)) {
             return $channels[$channleId];

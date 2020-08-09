@@ -65,19 +65,21 @@
             <a href="#return">Return</a>
           </li>
           <li>
-            <a href="../../source/Worker/AbstractWorkerInterface.php.html#line133">Source</a>
+            <a href="../../source/Worker/AbstractWorkerInterface.php.html#line154">Source</a>
           </li>
         </ul>
       </nav>
       <section>
         <h1><small>MAKS\AmqpAgent\Worker\AbstractWorkerInterface::</small>getNewChannel</h1>
-        <h4>Returns a new channel on the default connection of the worker. If the worker is not connected, it returns null.</h4>
+        <h4>Returns a new channel on the the passed connection of the worker. If no connection is passed, it uses the default connection. If the worker is not connected, it returns null.</h4>
         <p/>
         <ul/>
         <h2 id="signature">Signature</h2>
         <div class="styled synopsis">
           <code>public function getNewChannel([array
-        $parameters = NULL] )
+        $parameters = NULL,
+            [<a title="PhpAmqpLib\Connection\AMQPStreamConnection" href="../../interfaces/PhpAmqpLib_Connection_AMQPStreamConnection.html">AMQPStreamConnection</a>
+        $_connection = NULL]] )
             </code>
         </div>
         <h2 id="parameterlist">Parameters</h2>
@@ -86,6 +88,10 @@
                 —
                 array</dt>
           <dd>[optional] The overrides for the default channel options of the worker.</dd>
+          <dt><code>$_connection</code>
+                —
+                <a title="PhpAmqpLib\Connection\AMQPStreamConnection" href="../../interfaces/PhpAmqpLib_Connection_AMQPStreamConnection.html">PhpAmqpLib\Connection\AMQPStreamConnection</a></dt>
+          <dd>[optional] The connection that should be used instead of the default worker's connection.<br/><br/><br/>      </dd>
         </dl>
         <h2 id="return">Returns</h2>
         <dl class="styled">

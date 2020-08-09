@@ -2,7 +2,7 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <title>phpDox - MAKS\AmqpAgent\Worker\AbstractWorker::getChannelById</title>
+    <title>phpDox - MAKS\AmqpAgent\Worker\AbstractWorker::setConnection</title>
     <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
@@ -47,7 +47,7 @@
           <li class="separator">
             <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../../classes/MAKS_AmqpAgent_Worker_AbstractWorker.html">AbstractWorker</a>
           </li>
-          <li class="separator">getChannelById</li>
+          <li class="separator">setConnection</li>
         </ul>
       </div>
       <nav class="box">
@@ -71,37 +71,31 @@
             <a href="#tests">Tests</a>
           </li>
           <li>
-            <a href="../../source/Worker/AbstractWorker.php.html#line485">Source</a>
+            <a href="../../source/Worker/AbstractWorker.php.html#line387">Source</a>
           </li>
         </ul>
       </nav>
       <section>
-        <h1><small>MAKS\AmqpAgent\Worker\AbstractWorker::</small>getChannelById</h1>
-        <h4>Fetches a channel object identified by the passed id (channel_id). If not found, it returns null.</h4>
+        <h1><small>MAKS\AmqpAgent\Worker\AbstractWorker::</small>setConnection</h1>
+        <h4>Sets the passed connection as the default connection of the worker.</h4>
         <p/>
         <ul/>
         <h2 id="signature">Signature</h2>
         <div class="styled synopsis">
-          <code>public function getChannelById(int
-        $channleId,
-            [<a title="PhpAmqpLib\Connection\AMQPStreamConnection" href="../../classes/PhpAmqpLib_Connection_AMQPStreamConnection.html">AMQPStreamConnection</a>
-        $_connection = NULL] )
+          <code>public function setConnection(<a title="PhpAmqpLib\Connection\AMQPStreamConnection" href="../../classes/PhpAmqpLib_Connection_AMQPStreamConnection.html">AMQPStreamConnection</a>
+        $connection )
             </code>
         </div>
         <h2 id="parameterlist">Parameters</h2>
         <dl class="styled">
-          <dt><code>$channleId</code>
-                —
-                int</dt>
-          <dd>The id of the channel wished to be fetched.</dd>
-          <dt><code>$_connection</code>
+          <dt><code>$connection</code>
                 —
                 <a title="PhpAmqpLib\Connection\AMQPStreamConnection" href="../../classes/PhpAmqpLib_Connection_AMQPStreamConnection.html">PhpAmqpLib\Connection\AMQPStreamConnection</a></dt>
-          <dd>[optional] The connection that should be used instead of the default worker's connection.<br/><br/><br/>      </dd>
+          <dd>The connection that should be as the default connection of the worker.<br/><br/><br/>      </dd>
         </dl>
         <h2 id="return">Returns</h2>
         <dl class="styled">
-          <dt>AMQPChannel|null</dt>
+          <dt>AbstractWorker</dt>
           <dd><br/>
         </dd>
         </dl>
@@ -115,14 +109,13 @@
         <div class="styled">
           <h3>Information</h3>
           <ul class="styled">
-            <li>Coverage: 5/5 Lines (100%)</li>
-            <li>Tests: 2</li>
-            <li>Passed: 2 (100%)</li>
+            <li>Coverage: 2/2 Lines (100%)</li>
+            <li>Tests: 1</li>
+            <li>Passed: 1 (100%)</li>
           </ul>
           <h3>Tests</h3>
           <ul class="styled">
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\AbstractWorkerTest::testGetChannelByIdReturnsAChannelWithThatId</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\AbstractWorkerTest::testGetChannelByIdReturnsNullForRandomChannelId</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\AbstractWorkerTest::testSetConnectionSetsAnotherConnectionAsDefaultAndReturnsSelf</li>
           </ul>
         </div>
       </section>
