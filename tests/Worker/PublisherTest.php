@@ -231,11 +231,13 @@ class PublisherTest extends TestCase
             $timestamp = time();
             $date = date('F j, Y, H:m:s', $timestamp);
             $messages[] = $this->serializer->serialize(
-                ["MSG-{$timestamp}-{$i}" => "Test message number {$i}. This message was published on {$date}."], 'JSON'
+                ["MSG-{$timestamp}-{$i}" => "Test message number {$i}. This message was published on {$date}."],
+                'JSON'
             );
             if ($i % 2000 == 0 && $i < 9000) {
                 $messages[] = $this->serializer->serialize(
-                    Publisher::makeCommand('start', 'consumer'), 'JSON'
+                    Publisher::makeCommand('start', 'consumer'),
+                    'JSON'
                 );
             }
         }
