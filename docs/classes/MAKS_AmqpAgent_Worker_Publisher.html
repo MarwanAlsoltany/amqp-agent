@@ -94,6 +94,8 @@
                         </li><li>protected  <a href="#members">$queueOptions</a>;
                         </li><li>public <span title="PhpAmqpLib\Connection\AMQPStreamConnection">AMQPStreamConnection</span> <a href="#members">$connection</a>;
                         </li><li>public <span title="PhpAmqpLib\Channel\AMQPChannel">AMQPChannel</span> <a href="#members">$channel</a>;
+                        </li><li>public array <a href="#members">$connections</a>;
+                        </li><li>public array <a href="#members">$channels</a>;
                         </li></ul><ul class="none"><li>// methods</li><li>public void <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/__construct.html">__construct</a>()
                     </li><li>public <span title="Publisher">Publisher</span> <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/exchange.html">exchange</a>()
                     </li><li>public <span title="Publisher">Publisher</span> <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/bind.html">bind</a>()
@@ -114,8 +116,11 @@
                         </li><li>public AbstractWorker <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/reconnect.html">reconnect</a>()
                         </li><li>public AbstractWorker <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/queue.html">queue</a>()
                         </li><li>public AMQPTable <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/arguments.html">arguments</a>()
-                        </li><li>public AMQPStreamConnection <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getConnection.html">getConnection</a>()
-                        </li><li>public AMQPChannel <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getChannel.html">getChannel</a>()
+                        </li><li>public AMQPStreamConnection|null <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getConnection.html">getConnection</a>()
+                        </li><li>public AbstractWorker <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/setConnection.html">setConnection</a>()
+                        </li><li>public AMQPStreamConnection <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getNewConnection.html">getNewConnection</a>()
+                        </li><li>public AMQPChannel|null <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getChannel.html">getChannel</a>()
+                        </li><li>public AbstractWorker <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/setChannel.html">setChannel</a>()
                         </li><li>public AMQPChannel|null <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getNewChannel.html">getNewChannel</a>()
                         </li><li>public AMQPChannel|null <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getChannelById.html">getChannelById</a>()
                         </li></ul><ul class="none"><li>// Inherited methods from <span title="MAKS\AmqpAgent\Worker\WorkerMutationTrait">WorkerMutationTrait</span></li><li>protected array <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassMember.html">mutateClassMember</a>()
@@ -237,6 +242,9 @@
             <li id="channel"><strong>$channel</strong>
                 —
                 <a title="PhpAmqpLib\Channel\AMQPChannel" href="../classes/PhpAmqpLib_Channel_AMQPChannel.html">PhpAmqpLib\Channel\AMQPChannel</a><br/><span class="indent">The default channel of the worker.</span></li>
+            <li id="channels"><strong>$channels</strong>
+                —
+                array<br/><span class="indent">All opened channels of the the worker.</span></li>
             <li id="commandPrefix"><strong>$commandPrefix</strong>
                 —
                 string<br/><span class="indent">The prefix that should be used to define an array as a command.</span></li>
@@ -246,6 +254,9 @@
             <li id="connection"><strong>$connection</strong>
                 —
                 <a title="PhpAmqpLib\Connection\AMQPStreamConnection" href="../classes/PhpAmqpLib_Connection_AMQPStreamConnection.html">PhpAmqpLib\Connection\AMQPStreamConnection</a><br/><span class="indent">The default connection of the worker.</span></li>
+            <li id="connections"><strong>$connections</strong>
+                —
+                array<br/><span class="indent">All opened connections of the worker.</span></li>
           </ul>
         </div>
         <h2 id="methods">Methods</h2>
@@ -283,9 +294,9 @@
             <li id="arguments"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/arguments.html">arguments()</a>
                 — Returns an AMQPTable object.</li>
             <li id="connect"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/connect.html">connect()</a>
-                — Establishes a connection with RabbitMQ server and opens a channel for the worker in the opened connection.</li>
+                — Establishes a connection with RabbitMQ server and opens a channel for the worker in the opened connection, it also sets both of them as defaults.</li>
             <li id="disconnect"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/disconnect.html">disconnect()</a>
-                — Closes the connection with RabbitMQ server.</li>
+                — Closes all open channels and connections with RabbitMQ server.</li>
             <li id="getChannel"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getChannel.html">getChannel()</a>
                 — Returns the default channel of the worker. If the worker is not connected, it returns null.</li>
             <li id="getChannelById"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getChannelById.html">getChannelById()</a>
@@ -293,11 +304,17 @@
             <li id="getConnection"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getConnection.html">getConnection()</a>
                 — Returns the default connection of the worker. If the worker is not connected, it returns null.</li>
             <li id="getNewChannel"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getNewChannel.html">getNewChannel()</a>
-                — Returns a new channel on the default connection of the worker. If the worker is not connected, it returns null.</li>
+                — Returns a new channel on the the passed connection of the worker. If no connection is passed, it uses the default connection. If the worker is not connected, it returns null.</li>
+            <li id="getNewConnection"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getNewConnection.html">getNewConnection()</a>
+                — Opens a new connection to RabbitMQ server and returns it. Connections returned by this method pushed to connections array and are not set as default automaticly.</li>
             <li id="queue"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/queue.html">queue()</a>
                 — Declares a queue on the default channel of the worker's connection with RabbitMQ server.</li>
             <li id="reconnect"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/reconnect.html">reconnect()</a>
                 — Executes self::disconnect() and self::connect() respectively.</li>
+            <li id="setChannel"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/setChannel.html">setChannel()</a>
+                — Sets the passed channel as the default channel of the worker.</li>
+            <li id="setConnection"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/setConnection.html">setConnection()</a>
+                — Sets the passed connection as the default connection of the worker.</li>
             <li id="shutdown"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/shutdown.html">shutdown()</a>
                 — Closes the connection or the channel or both with RabbitMQ server.</li>
           </ul>

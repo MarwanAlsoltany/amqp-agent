@@ -2,7 +2,7 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <title>phpDox - MAKS\AmqpAgent\Worker\AbstractWorkerInterface::getChannelById</title>
+    <title>phpDox - MAKS\AmqpAgent\Worker\AbstractWorkerInterface::setChannel</title>
     <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
@@ -47,7 +47,7 @@
           <li class="separator">
             <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface.html">AbstractWorkerInterface</a>
           </li>
-          <li class="separator">getChannelById</li>
+          <li class="separator">setChannel</li>
         </ul>
       </div>
       <nav class="box">
@@ -65,31 +65,31 @@
             <a href="#return">Return</a>
           </li>
           <li>
-            <a href="../../source/Worker/AbstractWorkerInterface.php.html#line162">Source</a>
+            <a href="../../source/Worker/AbstractWorkerInterface.php.html#line146">Source</a>
           </li>
         </ul>
       </nav>
       <section>
-        <h1><small>MAKS\AmqpAgent\Worker\AbstractWorkerInterface::</small>getChannelById</h1>
-        <h4>Fetches a channel object identified by the passed id (channel_id). If not found, it returns null.</h4>
+        <h1><small>MAKS\AmqpAgent\Worker\AbstractWorkerInterface::</small>setChannel</h1>
+        <h4>Sets the passed channel as the default channel of the worker.</h4>
         <p/>
         <ul/>
         <h2 id="signature">Signature</h2>
         <div class="styled synopsis">
-          <code>public function getChannelById(int
-        $channleId )
+          <code>public function setChannel(<a title="PhpAmqpLib\Channel\AMQPChannel" href="../../interfaces/PhpAmqpLib_Channel_AMQPChannel.html">AMQPChannel</a>
+        $channel )
             </code>
         </div>
         <h2 id="parameterlist">Parameters</h2>
         <dl class="styled">
-          <dt><code>$channleId</code>
+          <dt><code>$channel</code>
                 —
-                int</dt>
-          <dd>The id of the channel wished to be fetched.</dd>
+                <a title="PhpAmqpLib\Channel\AMQPChannel" href="../../interfaces/PhpAmqpLib_Channel_AMQPChannel.html">PhpAmqpLib\Channel\AMQPChannel</a></dt>
+          <dd>The channel that should be as the default channel of the worker.<br/><br/><br/>      </dd>
         </dl>
         <h2 id="return">Returns</h2>
         <dl class="styled">
-          <dt>AMQPChannel|null</dt>
+          <dt>AbstractWorkerInterface</dt>
           <dd><br/>
         </dd>
         </dl>

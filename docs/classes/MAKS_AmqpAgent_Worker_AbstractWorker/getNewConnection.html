@@ -2,7 +2,7 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <title>phpDox - MAKS\AmqpAgent\Worker\AbstractWorker::getNewChannel</title>
+    <title>phpDox - MAKS\AmqpAgent\Worker\AbstractWorker::getNewConnection</title>
     <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
@@ -47,7 +47,7 @@
           <li class="separator">
             <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../../classes/MAKS_AmqpAgent_Worker_AbstractWorker.html">AbstractWorker</a>
           </li>
-          <li class="separator">getNewChannel</li>
+          <li class="separator">getNewConnection</li>
         </ul>
       </div>
       <nav class="box">
@@ -71,21 +71,19 @@
             <a href="#tests">Tests</a>
           </li>
           <li>
-            <a href="../../source/Worker/AbstractWorker.php.html#line456">Source</a>
+            <a href="../../source/Worker/AbstractWorker.php.html#line397">Source</a>
           </li>
         </ul>
       </nav>
       <section>
-        <h1><small>MAKS\AmqpAgent\Worker\AbstractWorker::</small>getNewChannel</h1>
-        <h4>Returns a new channel on the the passed connection of the worker. If no connection is passed, it uses the default connection. If the worker is not connected, it returns null.</h4>
+        <h1><small>MAKS\AmqpAgent\Worker\AbstractWorker::</small>getNewConnection</h1>
+        <h4>Opens a new connection to RabbitMQ server and returns it. Connections returned by this method pushed to connections array and are not set as default automaticly.</h4>
         <p/>
         <ul/>
         <h2 id="signature">Signature</h2>
         <div class="styled synopsis">
-          <code>public function getNewChannel([array
-        $parameters = NULL,
-            [<a title="PhpAmqpLib\Connection\AMQPStreamConnection" href="../../classes/PhpAmqpLib_Connection_AMQPStreamConnection.html">AMQPStreamConnection</a>
-        $_connection = NULL]] )
+          <code>public function getNewConnection([array
+        $parameters = NULL] )
             </code>
         </div>
         <h2 id="parameterlist">Parameters</h2>
@@ -93,15 +91,11 @@
           <dt><code>$parameters</code>
                 —
                 array</dt>
-          <dd>[optional] The overrides for the default channel options of the worker.</dd>
-          <dt><code>$_connection</code>
-                —
-                <a title="PhpAmqpLib\Connection\AMQPStreamConnection" href="../../classes/PhpAmqpLib_Connection_AMQPStreamConnection.html">PhpAmqpLib\Connection\AMQPStreamConnection</a></dt>
-          <dd>[optional] The connection that should be used instead of the default worker's connection.<br/><br/><br/>      </dd>
+          <dd/>
         </dl>
         <h2 id="return">Returns</h2>
         <dl class="styled">
-          <dt>AMQPChannel|null</dt>
+          <dt>AMQPStreamConnection</dt>
           <dd><br/>
         </dd>
         </dl>
@@ -115,7 +109,7 @@
         <div class="styled">
           <h3>Information</h3>
           <ul class="styled">
-            <li>Coverage: 11/11 Lines (100%)</li>
+            <li>Coverage: 23/23 Lines (100%)</li>
             <li>Tests: 35</li>
             <li>Passed: 35 (100%)</li>
           </ul>
