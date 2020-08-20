@@ -17,7 +17,7 @@ An elegant wrapper around the famous php-amqplib for 90% use case.
 [![Travis Build Status][travis-icon]][travis-href]
 [![StyleCI Code Style][styleci-icon]][styleci-href]
 
-[php-icon]: https://img.shields.io/badge/php-%5E7.4-yellow?style=flat-square
+[php-icon]: https://img.shields.io/badge/php-%5E7.1-yellow?style=flat-square
 [version-icon]: https://img.shields.io/packagist/v/marwanalsoltany/amqp-agent.svg?style=flat-square
 [license-icon]: https://img.shields.io/badge/license-LGPL_2.1_or_later-red.svg?style=flat-square
 [maintenance-icon]: https://img.shields.io/badge/maintained-yes-orange.svg?style=flat-square
@@ -73,7 +73,7 @@ Try AMQP Agent out now:
 #### Composer using Packagist:
 
 ```sh
-composer require marwanalsoltany/amqp-agent
+composer require marwanalsoltany/amqp-agent:php7.1-compatibilty
 ```
 
 #### Composer using GitHub Repo (unstable):
@@ -87,7 +87,7 @@ Copy this configuration in your `composer.json`:
     }
 },
 "require": {
-    "marwanalsoltany/amqp-agent": "dev-dev"
+    "marwanalsoltany/amqp-agent": "dev-php7.1-compatibilty"
 },
 "minimum-stability": "dev"
 ```

@@ -110,7 +110,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
      * @return self
      * @throws AMQPTimeoutException
      */
-    public function exchange(?array $parameters = null, ?AMQPChannel $_channel = null): self
+    public function exchange(?array $parameters = null, ?AMQPChannel $_channel = null)
     {
         $changes = null;
         if ($parameters) {
@@ -149,7 +149,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
      * @return self
      * @throws AMQPTimeoutException
      */
-    public function bind(?array $parameters = null, ?AMQPChannel $_channel = null): self
+    public function bind(?array $parameters = null, ?AMQPChannel $_channel = null)
     {
         $changes = null;
         if ($parameters) {
@@ -215,7 +215,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
      * @return self
      * @throws AMQPInvalidArgumentException|AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException
      */
-    public function publish($payload, ?array $parameters = null, ?AMQPChannel $_channel = null): self
+    public function publish($payload, ?array $parameters = null, ?AMQPChannel $_channel = null)
     {
         $changes = null;
         if ($parameters) {
@@ -278,7 +278,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
      * @return self
      * @throws AMQPInvalidArgumentException|AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException
      */
-    public function publishBatch(array $messages, int $batchSize = 2500, ?string $_exchange = null, ?AMQPChannel $_channel = null): self
+    public function publishBatch(array $messages, int $batchSize = 2500, ?string $_exchange = null, ?AMQPChannel $_channel = null)
     {
         $channel = $_channel ?: $this->channel;
         $exchange = $_exchange ?: $this->publishOptions['exchange'];
@@ -330,7 +330,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
      * Executes self::connect(), self::queue(), self::exchange, and self::bind() respectively.
      * @return self
      */
-    public function prepare(): self
+    public function prepare()
     {
         $this->connect();
         $this->queue();

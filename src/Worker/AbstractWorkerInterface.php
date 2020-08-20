@@ -84,19 +84,19 @@ interface AbstractWorkerInterface
      * Establishes a connection with RabbitMQ server and opens a channel for the worker in the opened connection, it also sets both of them as defaults.
      * @return self
      */
-    public function connect(): self;
+    public function connect();
 
     /**
      * Closes all open channels and connections with RabbitMQ server.
      * @return self
      */
-    public function disconnect(): self;
+    public function disconnect();
 
     /**
      * Executes self::disconnect() and self::connect() respectively.
      * @return self
      */
-    public function reconnect(): self;
+    public function reconnect();
 
     /**
      * Declares a queue on the default channel of the worker's connection with RabbitMQ server.
@@ -104,7 +104,7 @@ interface AbstractWorkerInterface
      * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
      */
-    public function queue(?array $parameters = null, ?AMQPChannel $_channel = null): self;
+    public function queue(?array $parameters = null, ?AMQPChannel $_channel = null);
 
     /**
      * Returns an AMQPTable object.
@@ -124,7 +124,7 @@ interface AbstractWorkerInterface
      * @param AMQPStreamConnection $connection The connection that should be as the default connection of the worker.
      * @return self
      */
-    public function setConnection(AMQPStreamConnection $connection): self;
+    public function setConnection(AMQPStreamConnection $connection);
 
     /**
      * Opens a new connection to RabbitMQ server and returns it. Connections returned by this method pushed to connections array and are not set as default automaticly.
@@ -143,7 +143,7 @@ interface AbstractWorkerInterface
      * @param AMQPChannel $channel The channel that should be as the default channel of the worker.
      * @return self
      */
-    public function setChannel(AMQPChannel $channel): self;
+    public function setChannel(AMQPChannel $channel);
 
     /**
      * Returns a new channel on the the passed connection of the worker. If no connection is passed, it uses the default connection. If the worker is not connected, it returns null.

@@ -81,7 +81,7 @@ interface PublisherInterface extends AbstractWorkerInterface
      * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
      */
-    public function exchange(?array $parameters = null, ?AMQPChannel $_channel = null): self;
+    public function exchange(?array $parameters = null, ?AMQPChannel $_channel = null);
 
     /**
      * Bindes the default queue to the default exchange on the default channel of the worker's connection to RabbitMQ server.
@@ -89,7 +89,7 @@ interface PublisherInterface extends AbstractWorkerInterface
      * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
      */
-    public function bind(?array $parameters = null, ?AMQPChannel $_channel = null): self;
+    public function bind(?array $parameters = null, ?AMQPChannel $_channel = null);
 
     /**
      * Returns an AMQPMessage object.
@@ -106,7 +106,7 @@ interface PublisherInterface extends AbstractWorkerInterface
      * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
      */
-    public function publish($payload, ?array $parameters = null, ?AMQPChannel $_channel = null): self;
+    public function publish($payload, ?array $parameters = null, ?AMQPChannel $_channel = null);
 
     /**
      * Publishes a batch of messages to the default exchange on the default channel of the worker's connection to RabbitMQ server.
@@ -116,5 +116,5 @@ interface PublisherInterface extends AbstractWorkerInterface
      * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
      */
-    public function publishBatch(array $messages, int $batchSize = 2500, ?string $_exchange = null, ?AMQPChannel $_channel = null): self;
+    public function publishBatch(array $messages, int $batchSize = 2500, ?string $_exchange = null, ?AMQPChannel $_channel = null);
 }

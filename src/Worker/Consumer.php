@@ -254,7 +254,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
      * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
      */
-    public function qos(?array $parameters = null, ?AMQPChannel $_channel = null): self
+    public function qos(?array $parameters = null, ?AMQPChannel $_channel = null)
     {
         $changes = null;
         if ($parameters) {
@@ -285,7 +285,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
      * @return self
      * @throws CallbackDoesNotExistException|AMQPTimeoutException
      */
-    public function consume($callback = null, ?array $variables = null, ?array $parameters = null, ?AMQPChannel $_channel = null): self
+    public function consume($callback = null, ?array $variables = null, ?array $parameters = null, ?AMQPChannel $_channel = null)
     {
         $changes = null;
         if ($parameters) {
@@ -379,7 +379,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
      * @return self
      * @throws AMQPOutOfBoundsException|AMQPRuntimeException|AMQPTimeoutException
      */
-    public function wait(?array $parameters = null, ?AMQPChannel $_channel = null): self
+    public function wait(?array $parameters = null, ?AMQPChannel $_channel = null)
     {
         $changes = null;
         if ($parameters) {
@@ -417,7 +417,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
      * @return self
      * @throws AMQPOutOfBoundsException|AMQPRuntimeException|AMQPTimeoutException
      */
-    public function waitForAll(?array $parameters = null, ?AMQPStreamConnection $_connection = null): self
+    public function waitForAll(?array $parameters = null, ?AMQPStreamConnection $_connection = null)
     {
         $changes = null;
         if ($parameters) {
@@ -480,7 +480,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
      * Executes self::connect(), self::queue(), and self::qos respectively (self::wait needs to be executed after self::consume()).
      * @return self
      */
-    public function prepare(): self
+    public function prepare()
     {
         $this->connect();
         $this->queue();
