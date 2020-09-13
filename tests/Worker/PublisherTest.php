@@ -105,7 +105,7 @@ class PublisherTest extends TestCase
         ]);
 
         $messages = [];
-        for ($i = 1; $i <= 5000; $i++) {
+        for ($i = 1; $i <= 1000; $i++) {
             $timestamp = time();
             $date = date('F j, Y, H:m:s', $timestamp);
             $messages[] = $this->publisher->message(
@@ -121,7 +121,7 @@ class PublisherTest extends TestCase
 
         $publisher = $this->publisher->publishBatch(
             $messages,
-            1250,
+            250,
             'maks.amqp.agent.exchange.test'
         );
 
@@ -227,14 +227,14 @@ class PublisherTest extends TestCase
     {
         $messages = [];
 
-        for ($i = 1; $i <= 10000; $i++) {
+        for ($i = 1; $i <= 4000; $i++) {
             $timestamp = time();
             $date = date('F j, Y, H:m:s', $timestamp);
             $messages[] = $this->serializer->serialize(
                 ["MSG-{$timestamp}-{$i}" => "Test message number {$i}. This message was published on {$date}."],
                 'JSON'
             );
-            if ($i % 2000 == 0 && $i < 9000) {
+            if ($i % 1000 == 0 && $i != 4000) {
                 $messages[] = $this->serializer->serialize(
                     Publisher::makeCommand('start', 'consumer'),
                     'JSON'
@@ -243,8 +243,9 @@ class PublisherTest extends TestCase
         }
 
         // This queue will be consumed by multiple consumers.
-        // That's why it has 6 channel closing command.
-        for ($i = 1; $i < 7; $i++) {
+        // That's why it has 5 channel closing command.
+        $i = 5;
+        while ($i >= 1) {
             $messages[] = [
                 'body' => $this->serializer->serialize(
                     Publisher::makeCommand('close', 'channel'),
@@ -254,11 +255,12 @@ class PublisherTest extends TestCase
                     'expiration' => 3.6e+6
                 ]
             ];
+            $i--;
         }
 
         $true = $this->publisher->work($messages);
 
-        // CONFIRMED: 10000 + 11 messages where published to the queue successfuly.
+        // CONFIRMED: 4000 + 9 messages where published to the queue successfuly.
         // Note that ConsumerTest will fail if the messages were not published
         $this->assertTrue($true);
     }
