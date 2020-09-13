@@ -241,7 +241,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
                         $class->close();
                         continue;
                     }
-                    $class->delivery_info['channel']->close();
+                    $class->getChannel()->close();
                 } catch (AMQPConnectionClosedException $e) {
                     // No need to throw the exception here as it's extraneous. This error
                     // happens when a channel gets closed multiple times in different ways.
@@ -372,6 +372,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
 
     /**
      * Returns the default connection of the worker. If the worker is not connected, it returns null.
+     * @since 1.1.0
      * @return AMQPStreamConnection|null
      */
     public function getConnection(): ?AMQPStreamConnection
@@ -381,6 +382,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
 
     /**
      * Sets the passed connection as the default connection of the worker.
+     * @since 1.1.0
      * @param AMQPStreamConnection $connection The connection that should be as the default connection of the worker.
      * @return self
      */
@@ -392,6 +394,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
 
     /**
      * Opens a new connection to RabbitMQ server and returns it. Connections returned by this method pushed to connections array and are not set as default automaticly.
+     * @since 1.1.0
      * @return AMQPStreamConnection
      */
     public function getNewConnection(array $parameters = null): AMQPStreamConnection
@@ -438,6 +441,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
 
     /**
      * Sets the passed channel as the default channel of the worker.
+     * @since 1.1.0
      * @param AMQPChannel $channel The channel that should be as the default channel of the worker.
      * @return self
      */

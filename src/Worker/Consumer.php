@@ -103,6 +103,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
 
     /**
      * Acknowledges an AMQP message object.
+     * Starting from v1.1.1, you can use php-amqplib AMQPMessage::ack() method instead.
      * @param AMQPMessage $_message The message object that should be acknowledged.
      * @param array $parameters [optional] The overrides for the default acknowledge options.
      * @return void
@@ -119,9 +120,9 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
          */
         try {
             /** @var AMQPChannel */
-            $channel = $_message->delivery_info['channel'];
+            $channel = $_message->getChannel();
             $channel->basic_ack(
-                $_message->delivery_info['delivery_tag'],
+                $_message->getDeliveryTag(),
                 $parameters['multiple']
             );
         } catch (AMQPRuntimeException $error) { // @codeCoverageIgnore
@@ -131,7 +132,8 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
 
     /**
      * Unacknowledges an AMQP message object.
-     * @param AMQPChannel $_channel [optional] The channel that should be used. The method will try use the channel attached with the message if no channel was specified, although there is no guarantee this will work as this depends on the way the message was fetched.
+     * Starting from v1.1.1, you can use php-amqplib AMQPMessage::nack() method instead.
+     * @param AMQPChannel $_channel [optional] The channel that should be used. The method will try using the channel attached with the message if no channel was specified, although there is no guarantee this will work as this depends on the way the message was fetched.
      * @param AMQPMessage $_message The message object that should be unacknowledged.
      * @param array $parameters [optional] The overrides for the default exchange options.
      * @return void
@@ -143,9 +145,9 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
 
         try {
             /** @var AMQPChannel */
-            $channel = $_channel ?? $_message->delivery_info['channel'];
+            $channel = $_channel ?? $_message->getChannel();
             $channel->basic_nack(
-                $_message->delivery_info['delivery_tag'],
+                $_message->getDeliveryTag(),
                 $parameters['multiple'],
                 $parameters['requeue']
             );
@@ -227,6 +229,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
 
     /**
      * Rejects an AMQP message object.
+     * @deprecated Starting from v1.1.1, you can use php-amqplib native AMQPMessage::reject() method instead.
      * @param AMQPChannel $_channel The channel that should be used.
      * @param AMQPMessage $_message The message object that should be rejected.
      * @param array $parameters [optional] The overrides for the default reject options.
@@ -239,7 +242,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
 
         try {
             $_channel->basic_reject(
-                $_message->delivery_info['delivery_tag'],
+                $_message->getDeliveryTag(),
                 $parameters['requeue']
             );
         } catch (AMQPRuntimeException $error) { // @codeCoverageIgnore

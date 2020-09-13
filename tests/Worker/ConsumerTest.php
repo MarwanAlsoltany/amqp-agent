@@ -289,7 +289,7 @@ class ConsumerTest extends TestCase
         );
 
         // if regect worked the second get must get the same message.
-        $this->assertEquals($messageTwo->delivery_info['message_count'], $messageOne->delivery_info['message_count']);
+        $this->assertEquals($messageTwo->getMessageCount(), $messageOne->getMessageCount());
     }
 
     public function testConsumingMessagesFromRabbitMQServerUsingConfigCallback()
