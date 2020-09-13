@@ -8,13 +8,12 @@
 
 namespace MAKS\AmqpAgent\Worker;
 
-use Exception;
 use ReflectionClass;
 use MAKS\AmqpAgent\Helper\Singleton;
 use MAKS\AmqpAgent\Worker\AbstractWorker;
 
 /**
- * An abstract class implementing mapping functions to turn a normal worker into a singleton.
+ * An abstract class implementing mapping functions (proxy functions) to turn a normal worker into a singleton.
  * @since 1.0.0
  */
 abstract class AbstractWorkerSingleton extends Singleton
@@ -109,9 +108,10 @@ abstract class AbstractWorkerSingleton extends Singleton
      */
     public function __call(string $method, array $arguments)
     {
-        $return = $this->worker->{$method}(...$arguments);
+        $function = [$this->worker, $method];
+        $return = call_user_func_array($function, $arguments);
 
-        // check to return the right object to allow for triuble-free chaining.
+        // check to return the right object to allow for trouble-free chaining.
         if ($return instanceof $this->worker) {
             return $this;
         }
@@ -128,7 +128,9 @@ abstract class AbstractWorkerSingleton extends Singleton
      */
     public static function __callStatic(string $method, array $arguments)
     {
-        $function = static::$class . '::' . $method;
-        return forward_static_call_array($function, $arguments);
+        $function = [static::$class, $method];
+        $return = forward_static_call_array($function, $arguments);
+
+        return $return;
     }
 }
