@@ -167,7 +167,7 @@ interface ConsumerInterface extends AbstractWorkerInterface
      * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
      */
-    public function qos(?array $parameters = null, ?AMQPChannel $_channel = null): self;
+    public function qos(?array $parameters = null, ?AMQPChannel $_channel = null);
 
     /**
      * Consumes messages from the default channel of the worker's connection to RabbitMQ server.
@@ -177,7 +177,7 @@ interface ConsumerInterface extends AbstractWorkerInterface
      * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
      */
-    public function consume($callback = null, ?array $variables = null, ?array $parameters = null, ?AMQPChannel $_channel = null): self;
+    public function consume($callback = null, ?array $variables = null, ?array $parameters = null, ?AMQPChannel $_channel = null);
 
     /**
      * Checks wether the default channel is consuming.
@@ -192,7 +192,7 @@ interface ConsumerInterface extends AbstractWorkerInterface
      * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
      */
-    public function wait(?array $parameters = null, ?AMQPChannel $_channel = null): self;
+    public function wait(?array $parameters = null, ?AMQPChannel $_channel = null);
 
     /**
      * Tries to keep the connection to RabbitMQ server alive as long as there are channels in used (default or not).
@@ -200,5 +200,5 @@ interface ConsumerInterface extends AbstractWorkerInterface
      * @param AMQPStreamConnection $_connection [optional] The connection that should be used instead of the default worker's connection.
      * @return self
      */
-    public function waitForAll(?array $parameters = null, ?AMQPStreamConnection $_connection = null): self;
+    public function waitForAll(?array $parameters = null, ?AMQPStreamConnection $_connection = null);
 }

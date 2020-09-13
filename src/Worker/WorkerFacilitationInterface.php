@@ -19,7 +19,7 @@ interface WorkerFacilitationInterface
      * Executes all essential methods the worker needs before running its prime method.
      * @return self
      */
-    public function prepare(): self;
+    public function prepare();
 
     /**
      * A function that takes the entire overhead of running a worker and wraps it in one single method with a possibilty to change only to the prime parameter of the worker.
