@@ -5,7 +5,8 @@ namespace MAKS\AmqpAgent\Worker;
 use MAKS\AmqpAgent\Worker\Publisher;
 
 /**
- * A singleton version of the Publisher class. Static and const properties are accessed via object operator (-> not ::).
+ * A singleton version of the Publisher class.
+ * Static and constant properties are accessed via object operator (-> not ::).
  * @since 1.0.0
  * @api
  * @see \MAKS\AmqpAgent\Worker\Publisher for the full API.
@@ -13,7 +14,6 @@ use MAKS\AmqpAgent\Worker\Publisher;
  * @method self disconnect()
  * @method self reconnect()
  * @method self queue(?array $parameters = null, ?AMQPChannel $_channel = null)
- * @method AMQPTable arguments(array $array)
  * @method ?AMQPStreamConnection getConnection()
  * @method self setConnection(AMQPStreamConnection $connection)
  * @method ?AMQPChannel getChannel()
@@ -27,6 +27,7 @@ use MAKS\AmqpAgent\Worker\Publisher;
  * @method self publishBatch(array $messages, int $batchSize = 2500, ?string $_exchange = null, ?AMQPChannel $_channel = null)
  * @method self prepare()
  * @method void work($messages)
+ * @method static AMQPTable arguments(array $array)
  * @method static bool shutdown(...$object)
  * @method static array makeCommand(string $name, string $value, $parameters = null, string $argument = 'params')
  * @method static bool isCommand($data)

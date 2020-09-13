@@ -79,6 +79,13 @@ interface AbstractWorkerInterface
      */
     public static function shutdown(...$object): bool;
 
+    /**
+     * Returns an AMQPTable object.
+     * @param array $array An array of the option wished to be turn into the an arguments object.
+     * @return AMQPTable
+     */
+    public static function arguments(array $array): AMQPTable;
+
 
     /**
      * Establishes a connection with RabbitMQ server and opens a channel for the worker in the opened connection, it also sets both of them as defaults.
@@ -105,13 +112,6 @@ interface AbstractWorkerInterface
      * @return self
      */
     public function queue(?array $parameters = null, ?AMQPChannel $_channel = null): self;
-
-    /**
-     * Returns an AMQPTable object.
-     * @param array $array An array of the option wished to be turn into the an arguments object.
-     * @return AMQPTable
-     */
-    public function arguments(array $array): AMQPTable;
 
     /**
      * Returns the default connection of the worker. If the worker is not connected, it returns null.

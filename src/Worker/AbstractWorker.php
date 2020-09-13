@@ -267,6 +267,16 @@ abstract class AbstractWorker implements AbstractWorkerInterface
         );
     }
 
+    /**
+     * Returns an AMQPTable object.
+     * @param array $array An array of the option wished to be turn into the an arguments object.
+     * @return AMQPTable
+     */
+    public static function arguments(array $array): AMQPTable
+    {
+        return new AMQPTable($array);
+    }
+
 
     /**
      * Establishes a connection with RabbitMQ server and opens a channel for the worker in the opened connection, it also sets both of them as defaults.
@@ -358,16 +368,6 @@ abstract class AbstractWorker implements AbstractWorkerInterface
         }
 
         return $this;
-    }
-
-    /**
-     * Returns an AMQPTable object.
-     * @param array $array An array of the option wished to be turn into the an arguments object.
-     * @return AMQPTable
-     */
-    public function arguments(array $array): AMQPTable
-    {
-        return new AMQPTable($array);
     }
 
     /**
