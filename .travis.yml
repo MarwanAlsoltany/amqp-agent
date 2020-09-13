@@ -3,6 +3,9 @@ sudo: required
 language: php
 
 php:
+  - 7.1
+  - 7.2
+  - 7.3
   - 7.4
 
 services:
@@ -15,7 +18,7 @@ addons:
 
 env:
   matrix:
-    - COMPOSER_FLAGS="--prefer-lowest --prefer-stable"
+    - COMPOSER_FLAGS="--prefer-stable --prefer-dist"
 
 cache:
   directories:
@@ -25,11 +28,11 @@ cache:
 before_script:
   - sudo service rabbitmq-server restart
   - composer self-update
-  - composer update --prefer-dist $COMPOSER_FLAGS
+  - composer update $COMPOSER_FLAGS
 
 script:
   - vendor/bin/phpunit --coverage-clover=coverage.clover
 
 after_script:
-    - wget https://scrutinizer-ci.com/ocular.phar
-    - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
