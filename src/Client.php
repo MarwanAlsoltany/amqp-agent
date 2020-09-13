@@ -26,31 +26,31 @@ class Client
      * An instance of the configuration object.
      * @var Config
      */
-    private $config;
+    protected $config;
 
     /**
      * An instance of the Publisher worker class.
      * @var Publisher
      */
-    private $publisher;
+    protected $publisher;
 
     /**
      * An instance of the Consumer worker class.
      * @var Consumer
      */
-    private $consumer;
+    protected $consumer;
 
     /**
      * An instance of the Serializer class.
      * @var Serializer
      */
-    private $serializer;
+    protected $serializer;
 
     /**
      * An instance of the Logger class.
      * @var Logger
      */
-    private $logger;
+    protected $logger;
 
 
     /**
@@ -62,7 +62,7 @@ class Client
     {
         if ($config instanceof Config) {
             $this->config = $config;
-        } elseif (is_string($config)) {
+        } elseif (is_string($config) && strlen(trim($config)) > 0) {
             $this->config = new Config($config);
         } else {
             throw new AmqpAgentException(
