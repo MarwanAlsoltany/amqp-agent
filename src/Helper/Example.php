@@ -53,12 +53,10 @@ abstract class Example
 
         Consumer::ack($message);
 
-        if ($data) {
-            if (Consumer::isCommand($data)) {
-                usleep(25000); // For acknowledgment to take effect.
-                if (Consumer::hasCommand($data, 'close')) {
-                    Consumer::shutdown($message);
-                }
+        if ($data && Consumer::isCommand($data)) {
+            usleep(25000); // For acknowledgment to take effect.
+            if (Consumer::hasCommand($data, 'close')) {
+                Consumer::shutdown($message);
             }
         }
 
