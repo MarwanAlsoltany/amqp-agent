@@ -17,7 +17,7 @@ An elegant wrapper around the famous php-amqplib for 90% use case.
 [![Travis Build Status][travis-icon]][travis-href]
 [![StyleCI Code Style][styleci-icon]][styleci-href]
 
-[php-icon]: https://img.shields.io/badge/php-%5E7.4-yellow?style=flat-square
+[php-icon]: https://img.shields.io/badge/php-%5E7.1-yellow?style=flat-square
 [version-icon]: https://img.shields.io/packagist/v/marwanalsoltany/amqp-agent.svg?style=flat-square
 [license-icon]: https://img.shields.io/badge/license-LGPL_2.1_or_later-red.svg?style=flat-square
 [maintenance-icon]: https://img.shields.io/badge/maintained-yes-orange.svg?style=flat-square
@@ -98,6 +98,8 @@ Run:
 composer update
 ```
 
+![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *AMQP Agent supports now PHP 7.1 by default starting from version v1.1.1, if you used the `php7.1-compatibility` branch in older versions, update your composer.json!*
+
 ---
 
 
@@ -164,54 +166,54 @@ If you want to fine-tune and tweak AMQP Agent configuration to your exact needs,
 <?php return [
     // Global
     'connectionOptions' => [
-        'host'                   =>    'your-rabbitmq-server.com',
-        'port'                   =>    5672,
-        'user'                   =>    'your-username',
-        'password'               =>    'your-password',
-        'vhost'                  =>    '/'
+        'host'     => 'your-rabbitmq-server.com',
+        'port'     => 5672,
+        'user'     => 'your-username',
+        'password' => 'your-password',
+        'vhost'    => '/'
     ],
     'queueOptions' => [
-        'queue'          =>    'your.queue.name',
-        'durable'        =>    true,
-        'nowait'         =>    false
+        'queue'   => 'your.queue.name',
+        'durable' => true,
+        'nowait'  => false
     ],
     // Publisher
     'exchangeOptions' => [
-        'exchange'       =>    'your.exchange.name',
-        'type'           =>    'direct'
+        'exchange' => 'your.exchange.name',
+        'type'     => 'direct'
     ],
     'bindOptions' => [
-        'queue'          =>    'your.queue.name',
-        'exchange'       =>    'your.exchange.name'
+        'queue'    => 'your.queue.name',
+        'exchange' => 'your.exchange.name'
     ],
     'messageOptions' => [
-        'properties'    =>    [
-            'content_type'        =>    'application/json',
-            'content_encoding'    =>    'UTF-8',
-            'delivery_mode'       =>    2
+        'properties' => [
+            'content_type'     => 'application/json',
+            'content_encoding' => 'UTF-8',
+            'delivery_mode'    => 2
         ]
     ],
     'publishOptions' => [
-        'exchange'       =>    'your.exchange.name',
-        'routing_key'    =>    'your.route.name'
+        'exchange'    => 'your.exchange.name',
+        'routing_key' => 'your.route.name'
     ],
     // Consumer
     'qosOptions' => [
-        'prefetch_count'    =>    25
+        'prefetch_count' => 25
     ],
     'waitOptions' => [
-        'timeout'            =>    3600
+        'timeout' => 3600
     ],
     'consumeOptions' => [
-        'queue'           =>    'your.queue.name',
-        'consumer_tag'    =>    'your.consumer.name',
-        'callback'        =>    'YourNamespace\YourClass::yourCallback'
+        'queue'        => 'your.queue.name',
+        'consumer_tag' => 'your.consumer.name',
+        'callback'     => 'YourNamespace\YourClass::yourCallback'
     ]
 ];
 
 ```
 
-![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *Array key names suffixed with `Option` are specific to AMQP Agent.*
+![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *Array key names suffixed with `Options` are specific to AMQP Agent.*
 
 
 ---
@@ -224,7 +226,7 @@ Before we start with examples, we have to clarify a few things. It's worth menti
 #### The ways a worker can be retrieved
 
 1. The simplest way is to instantiate a worker directly i.e. using `new` keyword. This way requires passing parameters via the constructor, method calls, or public property assignment.
-2. The more advanced way is Retrieving a singleton worker i.e `PublisherSingleton::getInstance()`. This way requires passing parameters via `getInstance()` method, method calls, or public property assignment.
+2. The more advanced way is retrieving a singleton worker i.e `PublisherSingleton::getInstance()`. This way requires passing parameters via `getInstance()` method, method calls, or public property assignment.
 3. The more advanced but recommended way is to use an instance of the `Client` class. This way also makes code more readable as the parameters are retrieved from the passed config.
 
 
@@ -587,7 +589,7 @@ $publisher->publish(
 );
 
 // Since we have two consumers now, one from the original worker
-// and the one other gets started later in the callback. We have
+// and the other gets started later in the callback. We have
 // to publish two channel-closing commands to stop the consumers.
 // These will be added at the end after low importance messages.
 $iterator = 2;
@@ -657,7 +659,7 @@ $consumer->queue([
     ])
 ]);
 
-// Overwriting the dafault quality of service.
+// Overwriting the default quality of service.
 $consumer->qos([
     'prefetch_count' => 1,
 ]);
@@ -722,7 +724,7 @@ $callback = function($message, &$client, $callback) {
 $consumer->consume(
     $callback,
     [
-        &$client, // Is used to refetch the consumer, serlializer, and logger.
+        &$client, // Is used to refetch the consumer, serializer, and logger.
         $callback // This gets passed to the consumer that get started by the callback.
     ],
     [
@@ -731,7 +733,7 @@ $consumer->consume(
 );
 
 // Here we have to wait using waitForAll() method
-// because we have consumers that start dynamicly.
+// because we have consumers that start dynamically.
 $consumer->waitForAll();
 
 // Close the connection with RabbitMQ server.
@@ -741,7 +743,7 @@ $consumer->disconnect();
 
 ![#1e90ff](https://via.placeholder.com/11/1e90ff/000000?text=+) **Fact:** *You can make the code in Publisher/Consumer Advanced Examples way more easer if you make all parameters' changes in a config file and pass it to the client instead of the default.*
 
-![#32cd32](https://via.placeholder.com/11/32cd32/000000?text=+) **Advice:** *AMQP Agent code-base is well document, please refere to [this link](https://marwanalsoltany.github.io/amqp-agent/classes.html) to have a look over all classes and methods.*
+![#32cd32](https://via.placeholder.com/11/32cd32/000000?text=+) **Advice:** *AMQP Agent code-base is well documented, please refere to [this link](https://marwanalsoltany.github.io/amqp-agent/classes.html) to have a look over all classes and methods.*
 
 
 ---

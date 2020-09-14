@@ -111,6 +111,7 @@ interface ConsumerInterface extends AbstractWorkerInterface
 
     /**
      * Acknowledges an AMQP message object.
+     * Starting from v1.1.1, you can use php-amqplib AMQPMessage::ack() method instead.
      * @param AMQPMessage $_message The message object that should be acknowledged.
      * @param array $parameters [optional] The overrides for the default acknowledge options.
      * @return void
@@ -119,7 +120,8 @@ interface ConsumerInterface extends AbstractWorkerInterface
 
     /**
      * Unacknowledges an AMQP message object.
-     * @param AMQPChannel $_channel [optional] The channel that should be used. The method will try use the channel attached with the message if no channel was specified, although there is no guarantee this will work as this depends on the way the message was fetched.
+     * Starting from v1.1.1, you can use php-amqplib AMQPMessage::nack() method instead.
+     * @param AMQPChannel $_channel [optional] The channel that should be used. The method will try using the channel attached with the message if no channel was specified, although there is no guarantee this will work as this depends on the way the message was fetched.
      * @param AMQPMessage $_message The message object that should be unacknowledged.
      * @param array $parameters [optional] The overrides for the default exchange options.
      * @return void
@@ -153,6 +155,7 @@ interface ConsumerInterface extends AbstractWorkerInterface
 
     /**
      * Rejects an AMQP message object.
+     * @deprecated Starting from v1.1.1, you can use php-amqplib native AMQPMessage::reject() method instead.
      * @param AMQPChannel $_channel The channel that should be used.
      * @param AMQPMessage $_message The message object that should be rejected.
      * @param array $parameters [optional] The overrides for the default reject options.
@@ -167,7 +170,7 @@ interface ConsumerInterface extends AbstractWorkerInterface
      * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
      */
-    public function qos(?array $parameters = null, ?AMQPChannel $_channel = null): self;
+    public function qos(?array $parameters = null, ?AMQPChannel $_channel = null);
 
     /**
      * Consumes messages from the default channel of the worker's connection to RabbitMQ server.
@@ -177,7 +180,7 @@ interface ConsumerInterface extends AbstractWorkerInterface
      * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
      */
-    public function consume($callback = null, ?array $variables = null, ?array $parameters = null, ?AMQPChannel $_channel = null): self;
+    public function consume($callback = null, ?array $variables = null, ?array $parameters = null, ?AMQPChannel $_channel = null);
 
     /**
      * Checks wether the default channel is consuming.
@@ -192,7 +195,7 @@ interface ConsumerInterface extends AbstractWorkerInterface
      * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
      */
-    public function wait(?array $parameters = null, ?AMQPChannel $_channel = null): self;
+    public function wait(?array $parameters = null, ?AMQPChannel $_channel = null);
 
     /**
      * Tries to keep the connection to RabbitMQ server alive as long as there are channels in used (default or not).
@@ -200,5 +203,5 @@ interface ConsumerInterface extends AbstractWorkerInterface
      * @param AMQPStreamConnection $_connection [optional] The connection that should be used instead of the default worker's connection.
      * @return self
      */
-    public function waitForAll(?array $parameters = null, ?AMQPStreamConnection $_connection = null): self;
+    public function waitForAll(?array $parameters = null, ?AMQPStreamConnection $_connection = null);
 }

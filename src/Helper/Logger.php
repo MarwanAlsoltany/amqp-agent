@@ -11,9 +11,8 @@ namespace MAKS\AmqpAgent\Helper;
 use DateTime;
 
 /**
- * A class to write logs, exposing methods that work statically and on instantiation.
+ * A class to write logs, exposing methods that work statically and on instantiation. This class DOES NOT implement \Psr\Log\LoggerInterface.
  * @since 1.0.0
- * @method bool log(string $message, string $filename, string $directory)
  */
 class Logger
 {
@@ -105,10 +104,13 @@ class Logger
         $passed = false;
 
         if (null === $filename) {
-            $filename = 'maks-amqp-agent-log-' . date("d-m-Y");
+            $filename = 'maks-amqp-agent-log-' . date("Ymd");
             static::emit(
-                [__METHOD__.'() was called without specifying a filename.', 'style' => 'Log file will be named: ' . $filename . '.'],
-                'yellow',
+                [
+                    'yellow' => sprintf('%s() was called without specifying a filename.', __METHOD__),
+                    'green'  => sprintf('Log file will be named: "%s".', $filename)
+                ],
+                null,
                 1024
             );
         }
@@ -117,8 +119,11 @@ class Logger
             [0 => ['file' => $fallback]] = array_reverse(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS));
             $directory = strlen($_SERVER["DOCUMENT_ROOT"]) ? $_SERVER["DOCUMENT_ROOT"] : dirname($fallback);
             static::emit(
-                [__METHOD__.'() was called without specifying a directory.', 'style' => 'Log file will be written in: ' . $directory . '.'],
-                'red',
+                [
+                    'yellow' => sprintf('%s() was called without specifying a directory.', __METHOD__),
+                    'red'    => sprintf('Log file will be written in: "%s".', $directory)
+                ],
+                null,
                 512
             );
         }
@@ -164,71 +169,62 @@ class Logger
     }
 
     /**
-     * Generates a user-level notice, warning or error with styling.
-     * @param array|string|null $text The text wished to be styled (when passing an array styled elements must have string keys).
-     * @param string $color (red, green, yellow, magenta, cyan, gray) or their initial letter other values translate to white.
-     * @param int $type Error type (E_USER family). 1024 E_USER_NOTICE, 512 E_USER_WARNING, 256 E_USER_ERROR, 16384 E_USER_DEPRECATED.
+     * Generates a user-level notice, warning, or an error with styling.
+     * @param array|string|null [optional] $text The text wished to be styled (when passing an array, if array key is a valid color it will style this array element value with its key).
+     * @param string [optional] $color Case sensitive color name in this list [red, green, yellow, magenta, cyan, gray] (when passing array, this parameter will be the fallback).
+     * @param int [optional] $type Error type (E_USER family). 1024 E_USER_NOTICE, 512 E_USER_WARNING, 256 E_USER_ERROR, 16384 E_USER_DEPRECATED.
      * @return bool True if error type is accepted.
      * @codeCoverageIgnore
      */
     protected static function emit($text = null, ?string $color = 'yellow', int $type = E_USER_NOTICE): bool
     {
-        switch ($color) {
-            case 'r':
-            case 'red':
-                $color = '[31m';
-                break;
-            case 'g':
-            case 'green':
-                $color = '[32m';
-                break;
-            case 'y':
-            case 'yellow':
-                $color = '[33m';
-                break;
-            case 'b':
-            case 'blue':
-                $color = '[34m';
-                break;
-            case 'm':
-            case 'magenta':
-                $color = '[35m';
-                break;
-            case 'c':
-            case 'cyan':
-                $color = '[36m';
-                break;
-            case 'g':
-            case 'gray':
-                $color = '[37m';
-                break;
-            default:
-                $color = '[39m';
-        }
+        $colors = [
+            'red'     => 31,
+            'green'   => 32,
+            'yellow'  => 33,
+            'blue'    => 34,
+            'magenta' => 35,
+            'cyan'    => 36,
+            'gray'    => 37,
+            'default' => 39,
+        ];
 
+        $types = [
+            E_USER_NOTICE     => E_USER_NOTICE,
+            E_USER_WARNING    => E_USER_WARNING,
+            E_USER_ERROR      => E_USER_ERROR,
+            E_USER_DEPRECATED => E_USER_DEPRECATED,
+        ];
+
+        $cli = php_sapi_name() == 'cli';
         $trim = ' \t\0\x0B';
         $backspace = chr(8);
-        $wrapper = "\033" . $color . ' %s' . "\033[39m";
+        $wrapper = $cli ? "\033[%dm %s\033[39m" : "@CLR[%d] %s";
+        $color = $colors[$color] ?? 39;
+        $type = $types[$type] ?? 1024;
         $message = '';
 
         if (is_array($text)) {
-            foreach ($text as $name => $value) {
-                $string = trim($value, $trim);
-                if (is_string($name)) {
+            foreach ($text as $segmentColor => $string) {
+                $string = trim($string, $trim);
+                if (is_string($segmentColor)) {
+                    $segmentColor = $colors[$segmentColor] ?? $color;
                     $message .= !strlen($message)
-                        ? sprintf($wrapper, $backspace . $string)
-                        : sprintf($wrapper, $string);
+                        ? sprintf($wrapper, $segmentColor, $backspace . $string)
+                        : sprintf($wrapper, $segmentColor, $string);
                     continue;
                 }
                 $message = $message . $string;
             }
         } elseif (is_string($text)) {
             $string = $backspace . trim($text, $trim);
-            $message = sprintf($wrapper, $string);
+            $message = sprintf($wrapper, $color, $string);
         } else {
             $string = $backspace . 'From ' . __CLASS__ . ': No message was specified!';
-            $message = sprintf($wrapper, $string);
+            $message = sprintf($wrapper, $color, $string);
         }
+
+        $message = $cli ? $message : preg_replace('/@CLR\[\d+\]/', '', $message);
 
         return trigger_error($message, $type);
     }

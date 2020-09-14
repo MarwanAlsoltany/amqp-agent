@@ -289,7 +289,7 @@ class ConsumerTest extends TestCase
         );
 
         // if regect worked the second get must get the same message.
-        $this->assertEquals($messageTwo->delivery_info['message_count'], $messageOne->delivery_info['message_count']);
+        $this->assertEquals($messageTwo->getMessageCount(), $messageOne->getMessageCount());
     }
 
     public function testConsumingMessagesFromRabbitMQServerUsingConfigCallback()
@@ -340,17 +340,16 @@ class ConsumerTest extends TestCase
      * @param AMQPMessage $message
      * @param array $messages
      * @param Serializer $serializer
+     * @param Consumer $consumer
      * @return void
      */
     public static function consumerTestCallback(AMQPMessage $message, array &$messages, Serializer &$serializer, Consumer &$consumer = null)
     {
-        usleep(10000);
-
         $data = $serializer->unserialize($message->body, 'JSON');
 
         if (Consumer::isCommand($data)) {
             Consumer::ack($message);
-            usleep(25000); // For acknowledgment to take effect.
+            usleep(1000000); // For acknowledgment to take effect.
             if (Consumer::hasCommand($data, 'close', 'channel')) {
                 Consumer::shutdown($message);
             } elseif (Consumer::getCommand($data, 'start') === 'consumer') {
@@ -384,6 +383,9 @@ class ConsumerTest extends TestCase
         }
 
         $messages[] = $message->body;
+
+        usleep(10000); // Sleep for 10ms to mimic some processing.
+
         Consumer::ack($message);
     }
 }

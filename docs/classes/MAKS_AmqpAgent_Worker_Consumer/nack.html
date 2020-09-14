@@ -74,14 +74,14 @@
             <a href="#tests">Tests</a>
           </li>
           <li>
-            <a href="../../source/Worker/Consumer.php.html#line140">Source</a>
+            <a href="../../source/Worker/Consumer.php.html#line142">Source</a>
           </li>
         </ul>
       </nav>
       <section>
         <h1><small>MAKS\AmqpAgent\Worker\Consumer::</small>nack</h1>
         <h4>Unacknowledges an AMQP message object.</h4>
-        <p/>
+        <p>Starting from v1.1.1, you can use php-amqplib AMQPMessage::nack() method instead.</p>
         <ul/>
         <h2 id="signature">Signature</h2>
         <div class="styled synopsis">
@@ -98,7 +98,7 @@
           <dt><code>$_channel</code>
                 —
                 <a title="PhpAmqpLib\Channel\AMQPChannel" href="../../classes/PhpAmqpLib_Channel_AMQPChannel.html">PhpAmqpLib\Channel\AMQPChannel</a></dt>
-          <dd>[optional] The channel that should be used. The method will try use the channel attached with the message if no channel was specified, although there is no guarantee this will work as this depends on the way the message was fetched.<br/><br/><br/>      </dd>
+          <dd>[optional] The channel that should be used. The method will try using the channel attached with the message if no channel was specified, although there is no guarantee this will work as this depends on the way the message was fetched.<br/><br/><br/>      </dd>
           <dt><code>$_message</code>
                 —
                 <a title="PhpAmqpLib\Message\AMQPMessage" href="../../classes/PhpAmqpLib_Message_AMQPMessage.html">PhpAmqpLib\Message\AMQPMessage</a></dt>
