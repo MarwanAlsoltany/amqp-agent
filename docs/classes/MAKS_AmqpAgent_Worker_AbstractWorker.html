@@ -62,6 +62,9 @@
             <a href="#coverage">Coverage</a>
           </li>
           <li>
+            <a href="#violations">Violations</a>
+          </li>
+          <li>
             <a href="#constants">Constants</a>
           </li>
           <li>
@@ -100,11 +103,11 @@
                     </li><li>public mixed <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__call.html">__call</a>()
                     </li><li>public static mixed <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__callStatic.html">__callStatic</a>()
                     </li><li>public static bool <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/shutdown.html">shutdown</a>()
+                    </li><li>public static <span title="AMQPTable">AMQPTable</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/arguments.html">arguments</a>()
                     </li><li>public <span title="AbstractWorker">AbstractWorker</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/connect.html">connect</a>()
                     </li><li>public <span title="AbstractWorker">AbstractWorker</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/disconnect.html">disconnect</a>()
                     </li><li>public <span title="AbstractWorker">AbstractWorker</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/reconnect.html">reconnect</a>()
                     </li><li>public <span title="AbstractWorker">AbstractWorker</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/queue.html">queue</a>()
-                    </li><li>public <span title="AMQPTable">AMQPTable</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/arguments.html">arguments</a>()
                     </li><li>public ?<span title="AMQPStreamConnection">AMQPStreamConnection</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getConnection.html">getConnection</a>()
                     </li><li>public <span title="AbstractWorker">AbstractWorker</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/setConnection.html">setConnection</a>()
                     </li><li>public <span title="AMQPStreamConnection">AMQPStreamConnection</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getNewConnection.html">getNewConnection</a>()
@@ -151,9 +154,29 @@
           <tr>
             <td>Lines</td>
             <td class="percent">100%</td>
-            <td class="nummeric">154 / 154</td>
+            <td class="nummeric">158 / 158</td>
           </tr>
         </table>
+        <h2 id="violations">Violations</h2>
+        <div class="styled">
+          <h3>PHPMessDetector</h3>
+          <table class="styled">
+            <thead>
+              <tr>
+                <th>Line</th>
+                <th>Rule</th>
+                <th>Message</th>
+              </tr>
+            </thead>
+            <tr>
+              <td class="line">245</td>
+              <td>
+                <a href="https://phpmd.org/rules/naming.html#shortvariable" target="_blank" title="Naming Rules">ShortVariable</a>
+              </td>
+              <td>Avoid variables with short names like $e. Configured minimum length is 3.</td>
+            </tr>
+          </table>
+        </div>
         <h2 id="constants">Constants</h2>
         <table class="styled">
           <thead>
