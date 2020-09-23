@@ -140,8 +140,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
         }
 
         throw new PropertyDoesNotExistException(
-            sprintf( // @codeCoverageIgnore
-                // PHPUnit reports the line above as uncovered although the entire block is tested.
+            sprintf(
                 'The requested property with the name "%s" does not exist!',
                 $member
             )
@@ -171,8 +170,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
         }
 
         throw new PropertyDoesNotExistException(
-            sprintf( // @codeCoverageIgnore
-                // PHPUnit reports the line above as uncovered although the entire block is tested.
+            sprintf(
                 'A property with the name "%s" is immutable or does not exist!',
                 $member
             )
@@ -189,8 +187,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
     public function __call(string $function, array $arguments)
     {
         throw new MethodDoesNotExistException(
-            sprintf( // @codeCoverageIgnore
-                // PHPUnit reports the line above as uncovered although the entire block is tested.
+            sprintf(
                 'The called method "%s" with the parameters "%s" does not exist!',
                 $function,
                 implode(', ', $arguments)
@@ -208,8 +205,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
     public static function __callStatic(string $function, array $arguments)
     {
         throw new MethodDoesNotExistException(
-            sprintf( // @codeCoverageIgnore
-                // PHPUnit reports the line above as uncovered although the entire block is tested.
+            sprintf(
                 'The called static method "%s" with the parameters "%s" does not exist!',
                 $function,
                 implode(', ', $arguments)
@@ -256,8 +252,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
         }
 
         throw new AMQPInvalidArgumentException(
-            sprintf( // @codeCoverageIgnore
-                // PHPUnit reports the line above as uncovered although the entire block is tested.
+            sprintf(
                 'The passed parameter must be of type %s, %s or %s or a combination of them. Given parameter(s) has/have the type(s): %s!',
                 AMQPStreamConnection::class,
                 AMQPChannel::class,

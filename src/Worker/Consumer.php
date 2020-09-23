@@ -337,8 +337,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
             }
         } else {
             throw new CallbackDoesNotExistException(
-                sprintf( // @codeCoverageIgnore
-                    // PHPUnit reports the line above as uncovered although the entire block is tested.
+                sprintf(
                     'The first parameter must be a valid callable, a callback, a variable containing a callback, a name of a function as string, a string like %s, or an array like %s. The given parameter (data-type: %s) was none of them.',
                     '"Foo\Bar\Baz::qux"',
                     '["Foo\Bar\Baz", "qux"]',

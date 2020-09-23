@@ -248,8 +248,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
             $this->publishOptions['msg'] = $this->message($message);
         } else {
             throw new AMQPInvalidArgumentException(
-                sprintf( // @codeCoverageIgnore
-                    // PHPUnit reports the line above as uncovered although the entire block is tested.
+                sprintf(
                     'Payload must be a string, an array like %s, or an instance of "%s". The given parameter (data-type: %s) was none of them.',
                     '["body" => "Message body!", "properties" ["key" => "value"]]',
                     AMQPMessage::class,
@@ -301,8 +300,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
                 $channel->batch_basic_publish($messages[$i], $exchange);
             } else {
                 throw new AMQPInvalidArgumentException(
-                    sprintf( // @codeCoverageIgnore
-                        // PHPUnit reports the line above as uncovered although the entire block is tested.
+                    sprintf(
                         'Messages array elements must be of type "%s". Element in index "%d" was of type "%s".',
                         AMQPMessage::class,
                         $i,
