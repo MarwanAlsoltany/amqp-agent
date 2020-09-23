@@ -17,6 +17,15 @@ use MAKS\AmqpAgent\Exception\AmqpAgentException;
 
 /**
  * A class returns everything AMQP Agent has to offer. A simple service container so to say.
+ *
+ * Example:
+ * ```
+ * $config = new Config('path/to/some/config-file.php');
+ * $client = new Client($config);
+ * $publisher = $client->getPublisher(); // or $client->get('publisher');
+ * $consumer = $client->getConsumer(); // or $client->get('consumer');
+ * ```
+ *
  * @since 1.0.0
  * @api
  */
@@ -54,7 +63,7 @@ class Client
 
 
     /**
-     * Client object constuctor.
+     * Client object constructor.
      * @param Config|string $config An instance of the Config class or a path to a config file.
      * @throws AmqpAgentException
      */
@@ -66,7 +75,7 @@ class Client
             $this->config = new Config($config);
         } else {
             throw new AmqpAgentException(
-                'A Config instance or a valid path to a config file must be specifed.'
+                'A Config instance or a valid path to a config file must be specified.'
             );
         }
     }

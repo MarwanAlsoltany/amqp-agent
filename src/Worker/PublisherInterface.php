@@ -20,7 +20,7 @@ use MAKS\AmqpAgent\Worker\AbstractWorkerInterface;
 interface PublisherInterface extends AbstractWorkerInterface
 {
     /**
-     * The default exchange options that the worker should use when no overwrides are provided.
+     * The default exchange options that the worker should use when no overrides are provided.
      * @var array
      */
     public const EXCHANGE_OPTIONS = [
@@ -36,7 +36,7 @@ interface PublisherInterface extends AbstractWorkerInterface
     ];
 
     /**
-     * The default bind options that the worker should use when no overwrides are provided.
+     * The default bind options that the worker should use when no overrides are provided.
      * @var array
      */
     public const BIND_OPTIONS = [
@@ -49,7 +49,7 @@ interface PublisherInterface extends AbstractWorkerInterface
     ];
 
     /**
-     * The default message options that the worker should use when no overwrides are provided.
+     * The default message options that the worker should use when no overrides are provided.
      * @var array
      */
     public const MESSAGE_OPTIONS = [
@@ -62,7 +62,7 @@ interface PublisherInterface extends AbstractWorkerInterface
     ];
 
     /**
-     * The default publish options that the worker should use when no overwrides are provided.
+     * The default publish options that the worker should use when no overrides are provided.
      * @var array
      */
     public const PUBLISH_OPTIONS = [
@@ -84,7 +84,7 @@ interface PublisherInterface extends AbstractWorkerInterface
     public function exchange(?array $parameters = null, ?AMQPChannel $_channel = null);
 
     /**
-     * Bindes the default queue to the default exchange on the default channel of the worker's connection to RabbitMQ server.
+     * Binds the default queue to the default exchange on the default channel of the worker's connection to RabbitMQ server.
      * @param array $parameters [optional] The overrides for the default bind options of the worker.
      * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self

@@ -11,7 +11,20 @@ namespace MAKS\AmqpAgent\Helper;
 use DateTime;
 
 /**
- * A class to write logs, exposing methods that work statically and on instantiation. This class DOES NOT implement \Psr\Log\LoggerInterface.
+ * A class to write logs, exposing methods that work statically and on instantiation.
+ * This class DOES NOT implement `Psr\Log\LoggerInterface`.
+ *
+ * Example:
+ * ```
+ * // static
+ * Logger::log('Some message to log.', 'filename', 'path/to/some/directory');
+ * // instantiated
+ * $logger = new Logger();
+ * $logger->setFilename('filename');
+ * $logger->setDirectory('path/to/some/directory');
+ * $logger->write('Some message to log.');
+ * ```
+ *
  * @since 1.0.0
  */
 class Logger
@@ -145,7 +158,7 @@ class Logger
             if (filesize($file) > 6.4e+7) {
                 $stream = fopen($file, 'r');
                 if (is_resource($stream)) {
-                    $signature = fgets($stream) . 'For exceeding 64MB, it was overwitten on ' . date('l jS \of F Y h:i:s A (Ymdhis)') . PHP_EOL;
+                    $signature = fgets($stream) . 'For exceeding 64MB, it was overwritten on ' . date('l jS \of F Y h:i:s A (Ymdhis)') . PHP_EOL;
                     fclose($stream);
                     file_put_contents($file, $signature, null, stream_context_create());
                     chmod($file, 0775);

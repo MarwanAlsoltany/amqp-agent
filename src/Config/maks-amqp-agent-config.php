@@ -3,8 +3,8 @@
 return [
     // Global
     // Start of static/const class properties. specific to AMQP Agent.
-    // Only for reference, modifing them won't change anything.
-    'prefix' => 'maks.amqp.agent.', // defualt
+    // Only for reference, modifying them won't change anything.
+    'prefix' => 'maks.amqp.agent.', // default
     // If you want to modify command* use ClassName::$variableName.
     'commandPrefix' => '__COMMAND__',
     'commandSyntax' => [
@@ -111,7 +111,7 @@ return [
     ],
 
     // Start of const class properties.
-    // Only for reference, modifing them won't change anything
+    // Only for reference, modifying them won't change anything
     'ackOptions' => [
         'multiple'    =>    false
     ],

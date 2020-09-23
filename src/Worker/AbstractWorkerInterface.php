@@ -100,7 +100,7 @@ interface AbstractWorkerInterface
     public function disconnect();
 
     /**
-     * Executes self::disconnect() and self::connect() respectively.
+     * Executes `self::disconnect()` and `self::connect()` respectively.
      * @return self
      */
     public function reconnect();
@@ -127,7 +127,7 @@ interface AbstractWorkerInterface
     public function setConnection(AMQPStreamConnection $connection);
 
     /**
-     * Opens a new connection to RabbitMQ server and returns it. Connections returned by this method pushed to connections array and are not set as default automaticly.
+     * Opens a new connection to RabbitMQ server and returns it. Connections returned by this method pushed to connections array and are not set as default automatically.
      * @return AMQPStreamConnection
      */
     public function getNewConnection(array $parameters = null): AMQPStreamConnection;
@@ -155,9 +155,9 @@ interface AbstractWorkerInterface
 
     /**
      * Fetches a channel object identified by the passed id (channel_id). If not found, it returns null.
-     * @param int $channleId The id of the channel wished to be fetched.
+     * @param int $channelId The id of the channel wished to be fetched.
      * @param AMQPStreamConnection $_connection [optional] The connection that should be used instead of the default worker's connection.
      * @return AMQPChannel|null
      */
-    public function getChannelById(int $channleId): ?AMQPChannel;
+    public function getChannelById(int $channelId): ?AMQPChannel;
 }

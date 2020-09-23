@@ -22,6 +22,18 @@ use MAKS\AmqpAgent\Exception\CallbackDoesNotExistException;
 
 /**
  * A class specialized in consuming. Implementing only the methods needed for a consumer.
+ *
+ * Example:
+ * ```
+ * $consumer = new Consumer();
+ * $consumer->connect();
+ * $consumer->queue();
+ * $consumer->qos();
+ * $consumer->consume('SomeNamespace\SomeClass::someCallback');
+ * $consumer->wait();
+ * $consumer->disconnect();
+ * ```
+ *
  * @since 1.0.0
  * @api
  */
@@ -46,20 +58,20 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
     protected $consumeOptions;
 
     /**
-     * The full acknowledge options that should be used for the worker.
+     * The full acknowledgment options that should be used for the worker.
      * @var array
      */
     protected $ackOptions;
 
     /**
-     * The full unacknowledge options that should be used for the worker.
+     * The full unacknowledgment options that should be used for the worker.
      * @var array
      */
     protected $nackOptions;
 
 
     /**
-     * Consumer object constuctor.
+     * Consumer object constructor.
      * @param array $connectionOptions [optional] The overrides for the default connection options of the worker.
      * @param array $channelOptions [optional] The overrides for the default channel options of the worker.
      * @param array $queueOptions [optional] The overrides for the default queue options of the worker.
@@ -158,7 +170,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
 
     /**
      * Gets a message object from a channel, direct access to a queue.
-     * @deprecated 1.0.0 Direct queue access is not recommended. Use self::consume() instead.
+     * @deprecated 1.0.0 Direct queue access is not recommended. Use `self::consume()` instead.
      * @param AMQPChannel $_channel The channel that should be used.
      * @param array $parameters [optional] The overrides for the default get options.
      * @return AMQPMessage|null
@@ -252,7 +264,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
 
 
     /**
-     * Specifies the quility of service on the default channel of the worker's connection to RabbitMQ server.
+     * Specifies the quality of service on the default channel of the worker's connection to RabbitMQ server.
      * @param array $parameters [optional] The overrides for the default quality of service options of the worker.
      * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
@@ -327,7 +339,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
             throw new CallbackDoesNotExistException(
                 sprintf( // @codeCoverageIgnore
                     // PHPUnit reports the line above as uncovered although the entire block is tested.
-                    'The first parameter must be a vaild callable, a callback, a variable containing a callback, a name of a function as string, a string like %s, or an array like %s. The given parameter (data-type: %s) was none of them.',
+                    'The first parameter must be a valid callable, a callback, a variable containing a callback, a name of a function as string, a string like %s, or an array like %s. The given parameter (data-type: %s) was none of them.',
                     '"Foo\Bar\Baz::qux"',
                     '["Foo\Bar\Baz", "qux"]',
                     is_object($callback) ? get_class($callback) : gettype($callback)
@@ -480,7 +492,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
     }
 
     /**
-     * Executes self::connect(), self::queue(), and self::qos respectively (self::wait needs to be executed after self::consume()).
+     * Executes `self::connect()`, `self::queue()`, and `self::qos()` respectively (note that `self::wait()` needs to be executed after `self::consume()`).
      * @return self
      */
     public function prepare(): self
@@ -493,7 +505,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
     }
 
     /**
-     * Executes self::connect(), self::queue(), self::qos, self::consume(), self::wait(), and self::disconnect() respectively.
+     * Executes `self::connect()`, `self::queue()`, `self::qos()`, `self::consume()`, `self::wait()`, and `self::disconnect()` respectively.
      * @param callback|array|string $callback The callback that the consumer should use to process the messages.
      * @return bool
      */

@@ -32,7 +32,7 @@ trait WorkerMutationTrait
     }
 
     /**
-     * Mutates a subset of an array inside a class propery (nested array inside a property) and returns the replaced subset.
+     * Mutates a subset of an array inside a class property (nested array inside a property) and returns the replaced subset.
      * @param string $member The name of the property.
      * @param string $sub The key which under the array stored.
      * @param array $overrides An associative array of the overrides.
@@ -44,7 +44,7 @@ trait WorkerMutationTrait
     }
 
     /**
-     * Mutates a class propery nested or not and returns the replaced subset.
+     * Mutates a class property nested or not and returns the replaced subset.
      * @param string $member The name of the property.
      * @param string $sub [optional] The key which under the array stored.
      * @param array $overrides An associative array of the overrides.
@@ -53,7 +53,7 @@ trait WorkerMutationTrait
     protected function mutateClass(string $member, ?string $sub = null, array $overrides): array
     {
         $changes = [];
-        $signature = '__remove_%s__not_default__';
+        $signature = '@UNKNOWN[%s]';
 
         foreach ($overrides as $key => $value) {
             if ($sub) {

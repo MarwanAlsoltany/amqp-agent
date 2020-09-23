@@ -76,7 +76,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
 
 
     /**
-     * AbstractWorker object constuctor.
+     * AbstractWorker object constructor.
      * @param array $connectionOptions [optional] The overrides for the default connection options of the worker.
      * @param array $channelOptions [optional] The overrides for the default channel options of the worker.
      * @param array $queueOptions [optional] The overrides for the default queue options of the worker.
@@ -119,7 +119,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
     }
 
     /**
-     * Closes the connection with RabbitMQ server before destoring the object.
+     * Closes the connection with RabbitMQ server before destroying the object.
      */
     public function __destruct()
     {
@@ -151,7 +151,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
     /**
      * Sets a class member via public property assignment notation.
      * @param string $member Property name.
-     * @param array $array Array of overrides. The array type here is important, because only *Options properties should be overwritable.
+     * @param array $array Array of overrides. The array type here is important, because only *Options properties should be overridable.
      * @return void
      * @throws PropertyDoesNotExistException
      */
@@ -321,7 +321,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
     }
 
     /**
-     * Executes self::disconnect() and self::connect() respectively.
+     * Executes `self::disconnect()` and `self::connect()` respectively.
      * @return self
      */
     public function reconnect(): self
@@ -393,7 +393,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
     }
 
     /**
-     * Opens a new connection to RabbitMQ server and returns it. Connections returned by this method pushed to connections array and are not set as default automaticly.
+     * Opens a new connection to RabbitMQ server and returns it. Connections returned by this method pushed to connections array and are not set as default automatically.
      * @since 1.1.0
      * @return AMQPStreamConnection
      */
@@ -482,17 +482,17 @@ abstract class AbstractWorker implements AbstractWorkerInterface
 
     /**
      * Fetches a channel object identified by the passed id (channel_id). If not found, it returns null.
-     * @param int $channleId The id of the channel wished to be fetched.
+     * @param int $channelId The id of the channel wished to be fetched.
      * @param AMQPStreamConnection $_connection [optional] The connection that should be used instead of the default worker's connection.
      * @return AMQPChannel|null
      */
-    public function getChannelById(int $channleId, ?AMQPStreamConnection $_connection = null): ?AMQPChannel
+    public function getChannelById(int $channelId, ?AMQPStreamConnection $_connection = null): ?AMQPChannel
     {
         $connection = $_connection ?: $this->connection;
         $channels = $connection->channels;
 
-        if (array_key_exists($channleId, $channels)) {
-            return $channels[$channleId];
+        if (array_key_exists($channelId, $channels)) {
+            return $channels[$channelId];
         }
 
         return null;

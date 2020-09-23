@@ -39,7 +39,7 @@ trait WorkerCommandTrait
     /**
      * Constructs a command from passed data to a command array following the recommended pattern.
      * @param string $name The name of the command.
-     * @param string $value The vlaue of the command.
+     * @param string $value The value of the command.
      * @param mixed $parameters [optional] Additional parameters to add to the command.
      * @param string $argument [optional] The key to use to store the parameters under.
      * @return array

@@ -37,7 +37,7 @@ class AmqpAgentException extends CoreException
     }
 
     /**
-     * Rethrows an exception with additional message.
+     * Rethrows an exception with an additional message.
      * @param CoreException $exception
      * @param string $message
      * @return void

@@ -20,7 +20,7 @@ use MAKS\AmqpAgent\Worker\AbstractWorkerInterface;
 interface ConsumerInterface extends AbstractWorkerInterface
 {
     /**
-     * The default quality of service options that the worker should use when no overwrides are provided.
+     * The default quality of service options that the worker should use when no overwrites are provided.
      * @var array
      */
     public const QOS_OPTIONS = [
@@ -30,7 +30,7 @@ interface ConsumerInterface extends AbstractWorkerInterface
     ];
 
     /**
-     * The default wait options that the worker should use when no overwrides are provided.
+     * The default wait options that the worker should use when no overrides are provided.
      * @var array
      */
     public const WAIT_OPTIONS = [
@@ -40,7 +40,7 @@ interface ConsumerInterface extends AbstractWorkerInterface
     ];
 
     /**
-     * The default consume options that the worker should use when no overwrides are provided.
+     * The default consume options that the worker should use when no overrides are provided.
      * @var array
      */
     public const CONSUME_OPTIONS = [
@@ -56,7 +56,7 @@ interface ConsumerInterface extends AbstractWorkerInterface
     ];
 
     /**
-     * The default acknowledge options that the worker should use when no overwrides are provided.
+     * The default acknowledgment options that the worker should use when no overrides are provided.
      * @var array
      */
     public const ACK_OPTIONS = [
@@ -64,7 +64,7 @@ interface ConsumerInterface extends AbstractWorkerInterface
     ];
 
     /**
-     * The default unacknowledge options that the worker should use when no overwrides are provided.
+     * The default unacknowledgment options that the worker should use when no overrides are provided.
      * @var array
      */
     public const NACK_OPTIONS = [
@@ -165,7 +165,7 @@ interface ConsumerInterface extends AbstractWorkerInterface
 
 
     /**
-     * Specifies the quility of service on the default channel of the worker's connection to RabbitMQ server.
+     * Specifies the quality of service on the default channel of the worker's connection to RabbitMQ server.
      * @param array $parameters [optional] The overrides for the default quality of service options of the worker.
      * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self

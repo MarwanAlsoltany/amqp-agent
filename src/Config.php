@@ -15,6 +15,13 @@ use MAKS\AmqpAgent\Exception\ConfigFileNotFoundException;
 
 /**
  * A class that turns the configuration file into an object.
+ *
+ * Example:
+ * ```
+ * $config = new Config('path/to/some/config-file.php'); // specific config
+ * $config = new Config(); // default config
+ * ```
+ *
  * @since 1.0.0
  * @property array $connectionOptions
  * @property array $channelOptions
@@ -61,7 +68,7 @@ final class Config
 
 
     /**
-     * Config object constroctor.
+     * Config object constructor.
      * @param string|null $configPath [optional] The path to AMQP Agent configuration file.
      */
     public function __construct(?string $configPath = null)
@@ -70,7 +77,7 @@ final class Config
 
         if (!file_exists($configFile)) {
             throw new ConfigFileNotFoundException(
-                "AMQP Agent configurartion file cloud not be found, check if the given path \"{$configPath}\" exists."
+                "AMQP Agent configuration file cloud not be found, check if the given path \"{$configPath}\" exists."
             );
         }
 
@@ -91,7 +98,7 @@ final class Config
     }
 
     /**
-     * Sets the the given key in the configuration array via public property assginment notation.
+     * Sets the the given key in the configuration array via public property assignment notation.
      * @param string $key
      * @param mixed $value
      * @return void
@@ -129,8 +136,8 @@ final class Config
     }
 
     /**
-     * Gets a value of a key from the configuation array. Use with caution.
-     * Please note that this function returns the last occurence of a key.
+     * Gets a value of a key from the configuration array. Use with caution.
+     * Please note that this function returns the last occurrence of a key.
      * That's why it's not recommended to rely on the values provided by it.
      * @deprecated 1.0.0 Use public property access notation instead.
      * @param string $key
@@ -203,7 +210,7 @@ final class Config
             $this->repair();
         } catch (Exception $error) {
             throw new ConfigFileNotFoundException(
-                "Something went wrong when trying to include the file and rebuild the confguration, check if the given path \"{$configPath}\" exists.",
+                "Something went wrong when trying to include the file and rebuild the configuration, check if the given path \"{$configPath}\" exists.",
                 (int)$error->getCode(),
                 $error
             );

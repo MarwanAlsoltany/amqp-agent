@@ -22,6 +22,18 @@ use MAKS\AmqpAgent\Exception\AmqpAgentException;
 
 /**
  * A class specialized in publishing. Implementing only the methods needed for a publisher.
+ *
+ * Example:
+ * ```
+ * $publisher = new Publisher();
+ * $publisher->connect();
+ * $publisher->queue();
+ * $publisher->exchange();
+ * $publisher->bind();
+ * $publisher->publish('Some message!');
+ * $publisher->disconnect();
+ * ```
+ *
  * @since 1.0.0
  * @api
  */
@@ -53,7 +65,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
 
 
     /**
-     * Publisher object constuctor.
+     * Publisher object constructor.
      * @param array $connectionOptions [optional] The overrides for the default connection options of the worker.
      * @param array $channelOptions [optional] The overrides for the default channel options of the worker.
      * @param array $queueOptions [optional] The overrides for the default queue options of the worker.
@@ -143,7 +155,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
     }
 
     /**
-     * Bindes the default queue to the default exchange on the default channel of the worker's connection to RabbitMQ server.
+     * Binds the default queue to the default exchange on the default channel of the worker's connection to RabbitMQ server.
      * @param array $parameters [optional] The overrides for the default bind options of the worker.
      * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
@@ -327,7 +339,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
     }
 
     /**
-     * Executes self::connect(), self::queue(), self::exchange, and self::bind() respectively.
+     * Executes `self::connect()`, `self::queue()`, `self::exchange`, and `self::bind()` respectively.
      * @return self
      */
     public function prepare(): self
@@ -341,7 +353,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
     }
 
     /**
-     * Executes self::connect(), self::queue(), self::exchange, self::bind(), self::publish(), and self::disconnect() respectively.
+     * Executes `self::connect()`, `self::queue()`, `self::exchange`, and `self::bind()`, `self::publish()`, and `self::disconnect()` respectively.
      * @param string[] $messages An array of strings.
      * @return bool
      */

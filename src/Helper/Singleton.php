@@ -24,7 +24,7 @@ abstract class Singleton
 
 
     /**
-     * Can't be private if we want to allow subclassing.
+     * Can't be private if we want to allow sub-classing.
      */
     protected function __construct()
     {

@@ -6,7 +6,13 @@ use MAKS\AmqpAgent\Worker\Consumer;
 
 /**
  * A singleton version of the Consumer class.
- * Static and constant properties are accessed via object operator (-> not ::).
+ * Static and constant properties are accessed via object operator (`->` not `::`).
+ *
+ * Example:
+ * ```
+ * $consumer = ConsumerSingleton::getInstance();
+ * ```
+ *
  * @since 1.0.0
  * @api
  * @see \MAKS\AmqpAgent\Worker\Consumer for the full API.
