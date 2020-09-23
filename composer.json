@@ -23,6 +23,7 @@
     ],
     "homepage": "https://github.com/MarwanAlsoltany/amqp-agent#readme",
     "support": {
+        "docs": "https://marwanalsoltany.github.io/amqp-agent",
         "issues": "https://github.com/MarwanAlsoltany/amqp-agent/issues"
     },
     "require": {
@@ -38,6 +39,25 @@
     },
     "conflict": {
         "php": "7.4.0 - 7.4.1"
+    },
+    "suggest": {
+        "symfony/console": "Symfony console component allows you to create CLI commands. Your console commands can be used for any recurring task, such as cronjobs, imports, or other batch jobs.",
+        "monolog/monolog": "Monolog sends your logs to files, sockets, inboxes, databases and various web services."
+    },
+    "autoload": {
+        "psr-4": {
+            "MAKS\\AmqpAgent\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MAKS\\AmqpAgent\\": "tests"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.1-dev"
+        }
     },
     "scripts": {
         "sniff": "vendor/bin/phpcs --report=xml --report-file=build/phpcs/index.xml src",
@@ -56,21 +76,6 @@
         "build-dev-global": "composer run-script --dev --verbose build-global && echo \"Development build completed! [GLOBAL]\"",
         "build-prod": "composer run-script --quiet build && echo \"Production build completed!\"",
         "build-prod-global": "composer run-script --quiet build-global && echo \"Production build completed! [GLOBAL]\""
-    },
-    "autoload": {
-        "psr-4": {
-            "MAKS\\AmqpAgent\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "MAKS\\AmqpAgent\\": "tests"
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.1-dev"
-        }
     },
     "config": {
         "optimize-autoloader": true,
