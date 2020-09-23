@@ -9,10 +9,10 @@
 namespace MAKS\AmqpAgent\Helper;
 
 use Exception;
+use PhpAmqpLib\Message\AMQPMessage;
 use MAKS\AmqpAgent\Helper\Logger;
 use MAKS\AmqpAgent\Helper\Serializer;
 use MAKS\AmqpAgent\Worker\Consumer;
-use PhpAmqpLib\Message\AMQPMessage;
 
 /**
  * An abstract class used as a default callback for the consumer.
