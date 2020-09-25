@@ -8,7 +8,7 @@
 
 namespace MAKS\AmqpAgent\Helper;
 
-use DateTime;
+use MAKS\AmqpAgent\Helper\Utility;
 
 /**
  * A class to write logs, exposing methods that work statically and on instantiation.
@@ -118,7 +118,7 @@ class Logger
 
         if (null === $filename) {
             $filename = 'maks-amqp-agent-log-' . date("Ymd");
-            static::emit(
+            Utility::emit(
                 [
                     'yellow' => sprintf('%s() was called without specifying a filename.', __METHOD__),
                     'green'  => sprintf('Log file will be named: "%s".', $filename)
@@ -129,9 +129,9 @@ class Logger
         }
 
         if (null === $directory) {
-            [0 => ['file' => $fallback]] = array_reverse(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS));
-            $directory = strlen($_SERVER["DOCUMENT_ROOT"]) ? $_SERVER["DOCUMENT_ROOT"] : dirname($fallback);
-            static::emit(
+            $fallback = dirname(Utility::backtrace('file'));
+            $directory = strlen($_SERVER["DOCUMENT_ROOT"]) ? $_SERVER["DOCUMENT_ROOT"] : $fallback;
+            Utility::emit(
                 [
                     'yellow' => sprintf('%s() was called without specifying a directory.', __METHOD__),
                     'red'    => sprintf('Log file will be written in: "%s".', $directory)
@@ -166,8 +166,7 @@ class Logger
             }
             // @codeCoverageIgnoreEnd
 
-            $date = new DateTime('now');
-            $timestamp = $date->format(DateTime::ISO8601);
+            $timestamp = Utility::time()->format(DATE_ISO8601);
             $log = $timestamp . ' ' . $message . PHP_EOL;
 
             $stream = fopen($file, 'a+');
@@ -179,66 +178,5 @@ class Logger
         }
 
         return $passed;
-    }
-
-    /**
-     * Generates a user-level notice, warning, or an error with styling.
-     * @param array|string|null [optional] $text The text wished to be styled (when passing an array, if array key is a valid color it will style this array element value with its key).
-     * @param string [optional] $color Case sensitive color name in this list [red, green, yellow, magenta, cyan, gray] (when passing array, this parameter will be the fallback).
-     * @param int [optional] $type Error type (E_USER family). 1024 E_USER_NOTICE, 512 E_USER_WARNING, 256 E_USER_ERROR, 16384 E_USER_DEPRECATED.
-     * @return bool True if error type is accepted.
-     * @codeCoverageIgnore
-     */
-    protected static function emit($text = null, ?string $color = 'yellow', int $type = E_USER_NOTICE): bool
-    {
-        $colors = [
-            'red'     => 31,
-            'green'   => 32,
-            'yellow'  => 33,
-            'blue'    => 34,
-            'magenta' => 35,
-            'cyan'    => 36,
-            'gray'    => 37,
-            'default' => 39,
-        ];
-
-        $types = [
-            E_USER_NOTICE     => E_USER_NOTICE,
-            E_USER_WARNING    => E_USER_WARNING,
-            E_USER_ERROR      => E_USER_ERROR,
-            E_USER_DEPRECATED => E_USER_DEPRECATED,
-        ];
-
-        $cli = php_sapi_name() == 'cli';
-        $trim = ' \t\0\x0B';
-        $backspace = chr(8);
-        $wrapper = $cli ? "\033[%dm %s\033[39m" : "@CLR[%d] %s";
-        $color = $colors[$color] ?? 39;
-        $type = $types[$type] ?? 1024;
-        $message = '';
-
-        if (is_array($text)) {
-            foreach ($text as $segmentColor => $string) {
-                $string = trim($string, $trim);
-                if (is_string($segmentColor)) {
-                    $segmentColor = $colors[$segmentColor] ?? $color;
-                    $message .= !strlen($message)
-                        ? sprintf($wrapper, $segmentColor, $backspace . $string)
-                        : sprintf($wrapper, $segmentColor, $string);
-                    continue;
-                }
-                $message = $message . $string;
-            }
-        } elseif (is_string($text)) {
-            $string = $backspace . trim($text, $trim);
-            $message = sprintf($wrapper, $color, $string);
-        } else {
-            $string = $backspace . 'From ' . __CLASS__ . ': No message was specified!';
-            $message = sprintf($wrapper, $color, $string);
-        }
-
-        $message = $cli ? $message : preg_replace('/@CLR\[\d+\]/', '', $message);
-
-        return trigger_error($message, $type);
     }
 }
