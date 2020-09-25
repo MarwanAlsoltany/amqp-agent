@@ -20,59 +20,6 @@ use PhpAmqpLib\Wire\AMQPTable;
 interface AbstractWorkerInterface
 {
     /**
-     * The default prefix for naming that is used when no name is provided.
-     * @var array
-     */
-    public const PREFIX = 'maks.amqp.agent.';
-
-    /**
-     * The default connection options that the worker should use when no overrides are provided.
-     * @var array
-     */
-    public const CONNECTION_OPTIONS = [
-        'host'                   =>    'localhost',
-        'port'                   =>    5672,
-        'user'                   =>    'guest',
-        'password'               =>    'guest',
-        'vhost'                  =>    '/',
-        'insist'                 =>    false,
-        'login_method'           =>    'AMQPLAIN',
-        'login_response'         =>    null,
-        'locale'                 =>    'en_US',
-        'connection_timeout'     =>    120,
-        'read_write_timeout'     =>    120,
-        'context'                =>    null,
-        'keepalive'              =>    true,
-        'heartbeat'              =>    60,
-        'channel_rpc_timeout'    =>    120,
-        'ssl_protocol'           =>    null
-    ];
-
-    /**
-     * The default channel options that the worker should use when no overrides are provided.
-     * @var array
-     */
-    public const CHANNEL_OPTIONS = [
-        'channel_id'    =>    null
-    ];
-
-    /**
-     * The default queue options that the worker should use when no overrides are provided.
-     * @var array
-     */
-    public const QUEUE_OPTIONS = [
-        'queue'          =>    self::PREFIX . 'queue',
-        'passive'        =>    false,
-        'durable'        =>    true,
-        'exclusive'      =>    false,
-        'auto_delete'    =>    false,
-        'nowait'         =>    false,
-        'arguments'      =>    [],
-        'ticket'         =>    null
-    ];
-
-
-    /**
      * Closes the connection or the channel or both with RabbitMQ server.
      * @param AMQPStreamConnection|AMQPChannel|AMQPMessage ...$object The object that should be used to close the channel or the connection.
      * @return bool True on success.
