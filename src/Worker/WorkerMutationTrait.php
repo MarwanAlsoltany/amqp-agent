@@ -89,25 +89,4 @@ trait WorkerMutationTrait
 
         return $changes;
     }
-
-    /**
-     * Mutates a subset of an array (class const property) and returns a new array with the new replacements.
-     * @param string $member The name of the property.
-     * @param array $overrides An associative array of the overrides.
-     * @return array
-     */
-    protected static function mutateClassConst(array $member, ?array $overrides): array
-    {
-        $array = [];
-
-        foreach ($member as $key => $value) {
-            if (is_array($overrides) && array_key_exists($key, $overrides)) {
-                $array[$key] = $overrides[$key];
-            } else {
-                $array[$key] = $value;
-            }
-        }
-
-        return $array;
-    }
 }
