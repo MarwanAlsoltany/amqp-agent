@@ -10,6 +10,8 @@
 
 namespace MAKS\AmqpAgent\Worker;
 
+use MAKS\AmqpAgent\Config\AmqpAgentParameters;
+
 /**
  * A trait containing the implementation of the workers command interface/functions.
  * @since 1.0.0
@@ -20,20 +22,13 @@ trait WorkerCommandTrait
      * The prefix that should be used to define an array as a command.
      * @var string
      */
-    public static $commandPrefix = '__COMMAND__';
+    public static $commandPrefix = AmqpAgentParameters::COMMAND_PREFIX;
 
     /**
      * The recommended way of defining a command array.
      * @var array
      */
-    public static $commandSyntax = [
-        '__COMMAND__'    =>    [
-            'ACTION'    =>    'OBJECT',
-            'PARAMS'    =>    [
-                'NAME'    =>    'VALUE'
-            ]
-        ]
-    ];
+    public static $commandSyntax = AmqpAgentParameters::COMMAND_SYNTAX;
 
 
     /**
