@@ -18,7 +18,8 @@ use PhpAmqpLib\Exception\AMQPChannelClosedException;
 use MAKS\AmqpAgent\Worker\AbstractWorker;
 use MAKS\AmqpAgent\Worker\PublisherInterface;
 use MAKS\AmqpAgent\Worker\WorkerFacilitationInterface;
-use MAKS\AmqpAgent\Exception\AmqpAgentException;
+use MAKS\AmqpAgent\Exception\AmqpAgentException as Exception;
+use MAKS\AmqpAgent\Config\PublisherParameters as Parameters;
 
 /**
  * A class specialized in publishing. Implementing only the methods needed for a publisher.
@@ -76,40 +77,10 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
      */
     public function __construct(array $connectionOptions = [], array $channelOptions = [], array $queueOptions = [], array $exchangeOptions = [], array $bindOptions = [], array $messageOptions = [], array $publishOptions = [])
     {
-        $this->exchangeOptions = [
-            'exchange'       =>    $exchangeOptions['exchange'] ?? self::EXCHANGE_OPTIONS['exchange'],
-            'type'           =>    $exchangeOptions['type'] ?? self::EXCHANGE_OPTIONS['type'],
-            'passive'        =>    $exchangeOptions['passive'] ?? self::EXCHANGE_OPTIONS['passive'],
-            'durable'        =>    $exchangeOptions['durable'] ?? self::EXCHANGE_OPTIONS['durable'],
-            'auto_delete'    =>    $exchangeOptions['auto_delete'] ?? self::EXCHANGE_OPTIONS['auto_delete'],
-            'internal'       =>    $exchangeOptions['internal'] ?? self::EXCHANGE_OPTIONS['internal'],
-            'nowait'         =>    $exchangeOptions['nowait'] ?? self::EXCHANGE_OPTIONS['nowait'],
-            'arguments'      =>    $exchangeOptions['arguments'] ?? self::EXCHANGE_OPTIONS['arguments'],
-            'ticket'         =>    $exchangeOptions['ticket'] ?? self::EXCHANGE_OPTIONS['ticket']
-        ];
-
-        $this->bindOptions = [
-            'queue'          =>    $bindOptions['queue'] ?? self::BIND_OPTIONS['queue'],
-            'exchange'       =>    $bindOptions['exchange'] ?? self::BIND_OPTIONS['exchange'],
-            'routing_key'    =>    $bindOptions['routing_key'] ?? self::BIND_OPTIONS['routing_key'],
-            'nowait'         =>    $bindOptions['nowait'] ?? self::BIND_OPTIONS['nowait'],
-            'arguments'      =>    $bindOptions['arguments'] ?? self::BIND_OPTIONS['arguments'],
-            'ticket'         =>    $bindOptions['ticket'] ?? self::BIND_OPTIONS['ticket']
-        ];
-
-        $this->messageOptions = [
-            'body'           =>    $messageOptions['body'] ?? self::MESSAGE_OPTIONS['body'],
-            'properties'     =>    $messageOptions['properties'] ?? self::MESSAGE_OPTIONS['properties']
-        ];
-
-        $this->publishOptions = [
-            'msg'            =>    $publishOptions['msg'] ?? self::PUBLISH_OPTIONS['msg'],
-            'exchange'       =>    $publishOptions['exchange'] ?? self::PUBLISH_OPTIONS['exchange'],
-            'routing_key'    =>    $publishOptions['routing_key'] ?? self::PUBLISH_OPTIONS['routing_key'],
-            'mandatory'      =>    $publishOptions['mandatory'] ?? self::PUBLISH_OPTIONS['mandatory'],
-            'immediate'      =>    $publishOptions['immediate'] ?? self::PUBLISH_OPTIONS['immediate'],
-            'ticket'         =>    $publishOptions['ticket'] ?? self::PUBLISH_OPTIONS['ticket']
-        ];
+        $this->exchangeOptions = Parameters::patch($exchangeOptions, 'EXCHANGE_OPTIONS');
+        $this->bindOptions     = Parameters::patch($bindOptions, 'BIND_OPTIONS');
+        $this->messageOptions  = Parameters::patch($messageOptions, 'MESSAGE_OPTIONS');
+        $this->publishOptions  = Parameters::patch($publishOptions, 'PUBLISH_OPTIONS');
 
         parent::__construct($connectionOptions, $channelOptions, $queueOptions);
     }
@@ -144,7 +115,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
                 $this->exchangeOptions['ticket']
             );
         } catch (AMQPTimeoutException $error) { // @codeCoverageIgnore
-            AmqpAgentException::rethrowException($error, __METHOD__ . '() failed!'); // @codeCoverageIgnore
+            Exception::rethrow($error); // @codeCoverageIgnore
         }
 
         if ($changes) {
@@ -180,7 +151,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
                 $this->bindOptions['ticket']
             );
         } catch (AMQPTimeoutException $error) { // @codeCoverageIgnore
-            AmqpAgentException::rethrowException($error, __METHOD__ . '() failed!'); // @codeCoverageIgnore
+            Exception::rethrow($error); // @codeCoverageIgnore
         }
 
         if ($changes) {
@@ -267,7 +238,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
                 $this->publishOptions['ticket']
             );
         } catch (AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException $error) { // @codeCoverageIgnore
-            AmqpAgentException::rethrowException($error, __METHOD__ . '() failed!'); // @codeCoverageIgnore
+            Exception::rethrow($error); // @codeCoverageIgnore
         } finally {
             // reverting messageOptions back to its state.
             $this->publishOptions['msg'] = $originalMessage;
@@ -321,7 +292,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
 
                     $channel->publish_batch();
                 } catch (AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException $error) {
-                    AmqpAgentException::rethrowException($error, __METHOD__ . '() failed!');
+                    Exception::rethrow($error);
                     // @codeCoverageIgnoreEnd
                 }
             }
@@ -330,7 +301,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
         try {
             $channel->publish_batch();
         } catch (AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException $error) { // @codeCoverageIgnore
-            AmqpAgentException::rethrowException($error, __METHOD__ . '() failed!'); // @codeCoverageIgnore
+            Exception::rethrow($error); // @codeCoverageIgnore
         }
 
         return $this;
