@@ -10,7 +10,6 @@ namespace MAKS\AmqpAgent\Worker;
 
 use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Message\AMQPMessage;
-use PhpAmqpLib\Exchange\AMQPExchangeType;
 use MAKS\AmqpAgent\Worker\AbstractWorkerInterface;
 
 /**
@@ -19,62 +18,6 @@ use MAKS\AmqpAgent\Worker\AbstractWorkerInterface;
  */
 interface PublisherInterface extends AbstractWorkerInterface
 {
-    /**
-     * The default exchange options that the worker should use when no overrides are provided.
-     * @var array
-     */
-    public const EXCHANGE_OPTIONS = [
-        'exchange'       =>    self::PREFIX . 'exchange',
-        'type'           =>    AMQPExchangeType::HEADERS,
-        'passive'        =>    false,
-        'durable'        =>    true,
-        'auto_delete'    =>    false,
-        'internal'       =>    false,
-        'nowait'         =>    false,
-        'arguments'      =>    [],
-        'ticket'         =>    null
-    ];
-
-    /**
-     * The default bind options that the worker should use when no overrides are provided.
-     * @var array
-     */
-    public const BIND_OPTIONS = [
-        'queue'          =>    self::PREFIX . 'queue',
-        'exchange'       =>    self::PREFIX . 'exchange',
-        'routing_key'    =>    self::PREFIX . 'routing',
-        'nowait'         =>    false,
-        'arguments'      =>    [],
-        'ticket'         =>    null
-    ];
-
-    /**
-     * The default message options that the worker should use when no overrides are provided.
-     * @var array
-     */
-    public const MESSAGE_OPTIONS = [
-        'body'          =>    '{}',
-        'properties'    =>    [
-            'content_type'        =>    'application/json',
-            'content_encoding'    =>    'UTF-8',
-            'delivery_mode'       =>    AMQPMessage::DELIVERY_MODE_PERSISTENT
-        ]
-    ];
-
-    /**
-     * The default publish options that the worker should use when no overrides are provided.
-     * @var array
-     */
-    public const PUBLISH_OPTIONS = [
-        'msg'            =>    null,
-        'exchange'       =>    self::PREFIX . 'exchange',
-        'routing_key'    =>    self::PREFIX . 'routing',
-        'mandatory'      =>    false,
-        'immediate'      =>    false,
-        'ticket'         =>    null
-    ];
-
-
     /**
      * Declares an exchange on the default channel of the worker's connection to RabbitMQ server.
      * @param array $parameters [optional] The overrides for the default exchange options of the worker.
