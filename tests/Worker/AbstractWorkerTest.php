@@ -2,6 +2,7 @@
 
 namespace MAKS\AmqpAgent\Test\Worker;
 
+use MAKS\AmqpAgent\Config\AmqpAgentParameters;
 use MAKS\AmqpAgent\TestCase;
 use MAKS\AmqpAgent\Worker\AbstractWorker;
 use MAKS\AmqpAgent\Exception\MethodDoesNotExistException;
@@ -187,10 +188,10 @@ class AbstractWorkerTest extends TestCase
     public function testMutateClassMemberTakesEffectByRevertingPropertyToItsState()
     {
         $this->worker->connect();
-        $defaultQueueName = $this->worker->queueOptions['queue'];
         $this->worker->queue(['queue' => 'this.is.not.a.normal.queue.name']);
+        $defaultQueueName = $this->worker->queueOptions['queue'];
         // Queue name should be reverted back to maks.amqp.agent.queue
-        $this->assertEquals(AbstractWorkerMock::PREFIX . 'queue', $defaultQueueName);
+        $this->assertEquals(AmqpAgentParameters::PREFIX . 'queue', $defaultQueueName);
     }
 
     public function testMakeCommandReturnsTheExpectedFormat()
