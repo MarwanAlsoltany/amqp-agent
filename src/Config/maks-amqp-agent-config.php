@@ -1,139 +1,42 @@
 <?php
 
+namespace MAKS\AmqpAgent\Config;
+
+use MAKS\AmqpAgent\Config\AmqpAgentParameters;
+
 return [
     // Global
-    // Start of static/const class properties. specific to AMQP Agent.
+    // Start of static/constant class properties. specific to AMQP Agent.
     // Only for reference, modifying them won't change anything.
-    'prefix' => 'maks.amqp.agent.', // default
+    'prefix' => AmqpAgentParameters::PREFIX, // default
     // If you want to modify command* use ClassName::$variableName.
-    'commandPrefix' => '__COMMAND__',
-    'commandSyntax' => [
-        '__COMMAND__'    =>    [
-            'ACTION'    =>    'OBJECT',
-            'PARAMS'    =>    [
-                'NAME'    =>    'VALUE'
-            ]
-        ]
-    ],
-    // End of static/const class properties. specific to AMQP Agent.
+    'commandPrefix' => AmqpAgentParameters::COMMAND_PREFIX,
+    'commandSyntax' => AmqpAgentParameters::COMMAND_SYNTAX,
+    // End of static/constant class properties. specific to AMQP Agent.
 
-    // Global
-    'connectionOptions' => [
-        'host'                   =>    'localhost',
-        'port'                   =>    5672,
-        'user'                   =>    'guest',
-        'password'               =>    'guest',
-        'vhost'                  =>    '/',
-        'insist'                 =>    false,
-        'login_method'           =>    'AMQPLAIN',
-        'login_response'         =>    null,
-        'locale'                 =>    'en_US',
-        'connection_timeout'     =>    120,
-        'read_write_timeout'     =>    120,
-        'context'                =>    null,
-        'keepalive'              =>    true,
-        'heartbeat'              =>    60,
-        'channel_rpc_timeout'    =>    120,
-        'ssl_protocol'           =>    null
-    ],
-    'channelOptions' => [
-        'channel_id'    =>    null
-    ],
-    'queueOptions' => [
-        'queue'          =>    'maks.amqp.agent.queue',
-        'passive'        =>    false,
-        'durable'        =>    true,
-        'exclusive'      =>    false,
-        'auto_delete'    =>    false,
-        'nowait'         =>    false,
-        'arguments'      =>    [],
-        'ticket'         =>    null
-    ],
+    // AbstractWorker
+    'connectionOptions' => AmqpAgentParameters::CONNECTION_OPTIONS,
+    'channelOptions'    => AmqpAgentParameters::CHANNEL_OPTIONS,
+    'queueOptions'      => AmqpAgentParameters::QUEUE_OPTIONS,
 
     // Publisher
-    'exchangeOptions' => [
-        'exchange'       =>    'maks.amqp.agent.exchange',
-        'type'           =>    'headers',
-        'passive'        =>    false,
-        'durable'        =>    true,
-        'auto_delete'    =>    false,
-        'internal'       =>    false,
-        'nowait'         =>    false,
-        'arguments'      =>    [],
-        'ticket'         =>    null
-    ],
-    'bindOptions' => [
-        'queue'          =>    'maks.amqp.agent.queue',
-        'exchange'       =>    'maks.amqp.agent.exchange',
-        'routing_key'    =>    'maks.amqp.agent.routing',
-        'nowait'         =>    false,
-        'arguments'      =>    [],
-        'ticket'         =>    null
-    ],
-    'messageOptions' => [
-        'body'          =>    '{}',
-        'properties'    =>    [
-            'content_type'        =>    'application/json',
-            'content_encoding'    =>    'UTF-8',
-            'delivery_mode'       =>    2
-        ]
-    ],
-    'publishOptions' => [
-        'msg'            =>    null,
-        'exchange'       =>    'maks.amqp.agent.exchange',
-        'routing_key'    =>    'maks.amqp.agent.routing',
-        'mandatory'      =>    false,
-        'immediate'      =>    false,
-        'ticket'         =>    null
-    ],
+    'exchangeOptions' => AmqpAgentParameters::EXCHANGE_OPTIONS,
+    'bindOptions'     => AmqpAgentParameters::BIND_OPTIONS,
+    'messageOptions'  => AmqpAgentParameters::MESSAGE_OPTIONS,
+    'publishOptions'  => AmqpAgentParameters::PUBLISH_OPTIONS,
 
     // Consumer
-    'qosOptions' => [
-        'prefetch_size'     =>    null,
-        'prefetch_count'    =>    5,
-        'a_global'          =>    null
-    ],
-    'waitOptions' => [
-        'allowed_methods'    =>    null,
-        'non_blocking'       =>    true,
-        'timeout'            =>    3600
-    ],
-    'consumeOptions' => [
-        'queue'           =>    'maks.amqp.agent.queue',
-        'consumer_tag'    =>    'maks.amqp.agent.consumer',
-        'no_local'        =>    false,
-        'no_ack'          =>    false,
-        'exclusive'       =>    false,
-        'nowait'          =>    false,
-        'callback'        =>    'MAKS\AmqpAgent\Helper\Example::callback',
-        'ticket'          =>    null,
-        'arguments'       =>    []
-    ],
+    'qosOptions'     => AmqpAgentParameters::QOS_OPTIONS,
+    'waitOptions'    => AmqpAgentParameters::WAIT_OPTIONS,
+    'consumeOptions' => AmqpAgentParameters::CONSUME_OPTIONS,
 
-    // Start of const class properties.
+    // Start of constant class properties.
     // Only for reference, modifying them won't change anything
-    'ackOptions' => [
-        'multiple'    =>    false
-    ],
-    'nackOptions' => [
-        'multiple'    =>    false,
-        'requeue'     =>    true
-    ],
-    'getOptions' => [
-        'queue'    =>    'maks.amqp.agent.queue',
-        'no_ack'   =>    false,
-        'ticket'   =>    null
-    ],
-    'cancelOptions' => [
-        'consumer_tag'    =>    'maks.amqp.agent.consumer',
-        'nowait'          =>    false,
-        'noreturn'        =>    false
-    ],
-    'recoverOptions' => [
-        'requeue'    =>    true,
-    ],
-    'rejectOptions' => [
-        'requeue'    =>    true,
-    ],
-    // End of const class properties.
+    'ackOptions'     => AmqpAgentParameters::ACK_OPTIONS,
+    'nackOptions'    => AmqpAgentParameters::NACK_OPTIONS,
+    'getOptions'     => AmqpAgentParameters::GET_OPTIONS,
+    'cancelOptions'  => AmqpAgentParameters::CANCEL_OPTIONS,
+    'recoverOptions' => AmqpAgentParameters::RECOVER_OPTIONS,
+    'rejectOptions'  => AmqpAgentParameters::REJECT_OPTIONS,
+    // End of constant class properties.
 ];
