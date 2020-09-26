@@ -6,7 +6,8 @@ use MAKS\AmqpAgent\TestCase;
 use MAKS\AmqpAgent\Config\AbstractParameters;
 use MAKS\AmqpAgent\Exception\ConstantDoesNotExistException;
 
-class AbstractParametersMock extends AbstractParameters {
+class AbstractParametersMock extends AbstractParameters
+{
     public const TEST_CONST = [
         'library' => 'amqp-agent',
         'author' => 'Marwan Al-Soltany',
