@@ -1,41 +1,86 @@
 # Changelog
 
-All notable changes to AMQP Agent will be documented in this file.
+All notable changes to **AMQP Agent** will be documented in this file.
+
 
 ## [Unreleased]
+
 
 ## [1.0.0] - 2020-06-15
 - Initial release.
 
+
 ## [1.0.1] - 2020-06-23
-- Fix issue with Logger class
-  - Fix addtional line breaks when writing to log file.
+- Fix issue with Logger class:
+    - Fix additional line breaks when writing to log file.
+
 
 ## [1.1.0] - 2020-08-10
-- Add the possiblity to open multiple connection by a worker
-- Update AbstractWorker class
-  - Add connections array and channels array.
-  - Add setConnection(), getNewConnection() and setChannel() methods.
-  - Modify old methods to make use of the newly created methods internally.
-  - Add new tests to the newly created methods.
-  - Update methods signature on the corresponding interface (AbstractWorkerInterface)
-  - Update DocBlocks of other classes to reference the newly created methods.
-  - Rebuild documentation.
+- Add the possibility to open multiple connection by a worker.
+- Update `AbstractWorker` class:
+    - Add connections array and channels array.
+    - Add `setConnection()`, `getNewConnection()`, and `setChannel()` methods.
+    - Modify old methods to make use of the newly created methods internally.
+    - Add new tests to the newly created methods.
+    - Update methods signature on the corresponding interface (`AbstractWorkerInterface`)
+    - Update DocBlocks of other classes to reference the newly created methods.
+    - Rebuild documentation.
+
 
 ## [1.1.1] - 2020-09-14
-- Update composer.json
-    - Pump minimum php-amqplib version.
+- Update `composer.json`:
+    - Pump minimum **php-amqplib** version.
     - Downgrade minimum php version.
     - Update dev requirements versions to match php version.
     - Update branch-alias.
     - Update scripts field.
     - Add conflict field.
-- Fix php < 7.4 type hinting incompatibility
-    - remove return type "self" from methods signature in all interfaces.
-- Fix php-amqplib v2.12.0 deprecations
-    - Fix references to deprecated properties in php-amqplib v2.12.0.
-- Change AbstractWorker arguments method to a static method
-- Refactor some internal functionalities in different classes
-- Update tests so that they run faster
-- Update Travis config
-- Rebuild documentation
+- Fix **php < 7.4** type hinting incompatibility:
+    - Remove return type "self" from methods signature in all interfaces.
+- Fix **php-amqplib** v2.12.0 deprecations:
+    - Fix references to deprecated properties in **php-amqplib** v2.12.0.
+- Change `AbstractWorker` arguments method to a static method.
+- Refactor some internal functionalities in different classes.
+- Update tests so that they run faster.
+- Update Travis config.
+- Rebuild documentation.
+
+
+## [1.2.0] - 2020-09-26
+- Update `composer.json`:
+    - Add a link for the documentation.
+    - Add some suggestions.
+    - Update `dev-autoload` namespace.
+- Fix typos and update DocBlocks:
+    - Fix some typos in DocBlocks and other parts of the codebase.
+    - Add examples to major classes DocBlocks.
+- Add `Utility` class to contain some miscellaneous reusable functions.
+- Refactor `Logger` class:
+    - Internal changes to make use of the `Utility` class.
+    - Better writing directory guessing when no path is specified.
+- Update `AmqpAgentException` class:
+    - Fix issue of wrong fully-qualified name when casting the class to a string.
+    - Change default message of `rethrowException` method to a more useful one.
+    - Add a new parameter to change the wrapping thrown exception class.
+    - Rename the method `rethrowException` to `rethrow` and add the old name as an alias.
+- Add `MagicMethodsExceptionsTrait` to unify error messages of calls to magic methods.
+- Add `AbstractParameters` class to simplify working with parameters:
+    - Add `AmqpAgentParameters` as global class for all parameters.
+    - Add worker specific parameters class (`AbstractWorkerParameters`, `PublisherParameters`, `ConsumerParameters`).
+- Update configuration file (`maks-amqp-agent-config.php`) to make use of the newly created `AmqpAgentParameters` class.
+- Refactor workers classes (`AbstractWorker`, `Publisher`, `Consumer`):
+    - Make use of the newly created `*Parameters` class.
+    - Make use of the newly created `MagicMethodsExceptionsTrait`.
+    - Remove `@codeCoverageIgnore` annotations from the workers classes.
+    - Remove constants from the corresponding (`*Interface`) as they are available now via (`*Parameters`).
+    - Update the class in different places to make use of the new additions.
+- Update `WorkerCommandTrait` to make use of the newly created `AmqpAgentParameters` class.
+- Remove protected method `mutateClassConst` from `WorkerMutationTrait` as it is not used anymore (usage replaced with `*Parameters::patchWith()`).
+- Update old tests to cover the new changes.
+- Update tests
+  - Add new tests for the newly created classes and functions.
+  - Update `phpunit.xml.dist` to run the new tests.
+  - Update namespace across all test classes.
+  - Remove `*Mock` classes from `*Test` classes and move them to their own namespace.
+- Rebuild documentation.
+- Update formatting of `CHANGELOG.md`.
