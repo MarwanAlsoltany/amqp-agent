@@ -1,8 +1,8 @@
 <?php
 
-namespace MAKS\AmqpAgent\Test\Config;
+namespace MAKS\AmqpAgent\Tests\Config;
 
-use MAKS\AmqpAgent\TestCase;
+use MAKS\AmqpAgent\Tests\TestCase;
 use MAKS\AmqpAgent\Config\AbstractParameters;
 use MAKS\AmqpAgent\Exception\ConstantDoesNotExistException;
 

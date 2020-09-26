@@ -1,8 +1,8 @@
 <?php
 
-namespace MAKS\AmqpAgent\Test\Helper;
+namespace MAKS\AmqpAgent\Tests\Helper;
 
-use MAKS\AmqpAgent\TestCase;
+use MAKS\AmqpAgent\Tests\TestCase;
 use MAKS\AmqpAgent\Helper\Utility;
 
 class UtilityTest extends TestCase

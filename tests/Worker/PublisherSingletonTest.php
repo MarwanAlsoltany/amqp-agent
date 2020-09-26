@@ -1,8 +1,8 @@
 <?php
 
-namespace MAKS\AmqpAgent\Test\Worker;
+namespace MAKS\AmqpAgent\Tests\Worker;
 
-use MAKS\AmqpAgent\TestCase;
+use MAKS\AmqpAgent\Tests\TestCase;
 use MAKS\AmqpAgent\Worker\Publisher;
 use MAKS\AmqpAgent\Worker\PublisherSingleton;
 use MAKS\AmqpAgent\Worker\AbstractWorkerSingleton;

@@ -1,8 +1,8 @@
 <?php
 
-namespace MAKS\AmqpAgent\Test;
+namespace MAKS\AmqpAgent\Tests;
 
-use PHPUnit\Framework\TestCase;
+use MAKS\AmqpAgent\Tests\TestCase;
 use MAKS\AmqpAgent\Config;
 use MAKS\AmqpAgent\Exception\ConfigFileNotFoundException;
 

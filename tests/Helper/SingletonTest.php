@@ -1,8 +1,8 @@
 <?php
 
-namespace MAKS\AmqpAgent\Test\Helper;
+namespace MAKS\AmqpAgent\Tests\Helper;
 
-use MAKS\AmqpAgent\TestCase;
+use MAKS\AmqpAgent\Tests\TestCase;
 use MAKS\AmqpAgent\Helper\Singleton;
 use MAKS\AmqpAgent\Exception\SingletonViolationException;
 
@@ -44,7 +44,7 @@ class SingletonTest extends TestCase
     public function testSingletonExceptionIsRaisedWhenTryingToUnerializeTheSingleton()
     {
         $this->expectException(SingletonViolationException::class);
-        $singleton = 'O:40:"MAKS\\AmqpAgent\\Test\\Helper\\SingletonMock":0:{}';
+        $singleton = 'O:41:"MAKS\\AmqpAgent\\Tests\\Helper\\SingletonMock":0:{}';
         $error = unserialize($singleton);
     }
 }

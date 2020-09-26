@@ -1,8 +1,8 @@
 <?php
 
-namespace MAKS\AmqpAgent\Test\Worker;
+namespace MAKS\AmqpAgent\Tests\Worker;
 
-use MAKS\AmqpAgent\TestCase;
+use MAKS\AmqpAgent\Tests\TestCase;
 use MAKS\AmqpAgent\Worker\Consumer;
 use MAKS\AmqpAgent\Helper\Serializer;
 use MAKS\AmqpAgent\Helper\Example;
@@ -367,7 +367,7 @@ class ConsumerTest extends TestCase
                     $channel
                 );
                 $consumer->consume(
-                    'MAKS\AmqpAgent\Test\Worker\ConsumerTest::consumerTestCallback',
+                    'MAKS\AmqpAgent\Tests\Worker\ConsumerTest::consumerTestCallback',
                     [
                         &$messages,
                         &$serializer,

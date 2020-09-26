@@ -1,9 +1,9 @@
 <?php
 
-namespace MAKS\AmqpAgent\Test\Worker;
+namespace MAKS\AmqpAgent\Tests\Worker;
 
 use MAKS\AmqpAgent\Config\AmqpAgentParameters;
-use MAKS\AmqpAgent\TestCase;
+use MAKS\AmqpAgent\Tests\TestCase;
 use MAKS\AmqpAgent\Worker\AbstractWorker;
 use MAKS\AmqpAgent\Exception\MethodDoesNotExistException;
 use MAKS\AmqpAgent\Exception\PropertyDoesNotExistException;

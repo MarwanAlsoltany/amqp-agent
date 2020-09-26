@@ -1,6 +1,6 @@
 <?php
 
-namespace MAKS\AmqpAgent;
+namespace MAKS\AmqpAgent\Tests;
 
 use PHPUnit\Framework\TestCase as PHPUnit;
 
