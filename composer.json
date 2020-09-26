@@ -51,7 +51,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "MAKS\\AmqpAgent\\": "tests"
+            "MAKS\\AmqpAgent\\Tests\\": "tests"
         }
     },
     "extra": {
