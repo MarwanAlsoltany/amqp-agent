@@ -65,14 +65,14 @@
             <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="../source/Helper/Logger.php.html#line17">Source</a>
+            <a href="../source/Helper/Logger.php.html#line30">Source</a>
           </li>
         </ul>
       </nav>
       <section>
         <h1 id="introduction"><small>MAKS\AmqpAgent\Helper\</small>Logger</h1>
-        <h4>A class to write logs, exposing methods that work statically and on instantiation. This class DOES NOT implement \Psr\Log\LoggerInterface.</h4>
-        <p/>
+        <h4>A class to write logs, exposing methods that work statically and on instantiation.</h4>
+        <p>This class DOES NOT implement `Psr\Log\LoggerInterface`.<br/><br/>Example:<br/>```<br/>// static<br/>Logger::log('Some message to log.', 'filename', 'path/to/some/directory');<br/>// instantiated<br/>$logger = new Logger();<br/>$logger-&gt;setFilename('filename');<br/>$logger-&gt;setDirectory('path/to/some/directory');<br/>$logger-&gt;write('Some message to log.');<br/>```</p>
         <ul/>
         <h2 id="synopsis">Synopsis</h2>
         <div class="synopsis">class Logger
@@ -85,7 +85,6 @@
                     </li><li>public string <a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/getDirectory.html">getDirectory</a>()
                     </li><li>public Logger <a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/setDirectory.html">setDirectory</a>()
                     </li><li>public static bool <a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/log.html">log</a>()
-                    </li><li>protected static bool <a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/emit.html">emit</a>()
                     </li></ul>
 
             }<br/></div>
@@ -94,12 +93,12 @@
           <tr>
             <td>Methods</td>
             <td class="percent">100%</td>
-            <td class="nummeric">8 / 8</td>
+            <td class="nummeric">7 / 7</td>
           </tr>
           <tr>
             <td>Lines</td>
             <td class="percent">100%</td>
-            <td class="nummeric">42 / 42</td>
+            <td class="nummeric">43 / 43</td>
           </tr>
         </table>
         <h2 id="members">Members</h2>
@@ -116,11 +115,6 @@
         </div>
         <h2 id="methods">Methods</h2>
         <div class="styled">
-          <h4>protected</h4>
-          <ul>
-            <li id="emit"><a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/emit.html">emit()</a>
-                — Generates a user-level notice, warning, or an error with styling.</li>
-          </ul>
           <h4>public</h4>
           <ul>
             <li id="__construct"><a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger/__construct.html">__construct()</a>

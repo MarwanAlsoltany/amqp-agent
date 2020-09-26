@@ -16,13 +16,13 @@ namespace MAKS\AmqpAgent\Worker;
 interface WorkerFacilitationInterface
 {
     /**
-     * Executes all essential methods the worker needs before running its prime method.
+     * Executes all essential methods the worker needs before running its prime method (publish/consume).
      * @return self
      */
     public function prepare();
 
     /**
-     * A function that takes the entire overhead of running a worker and wraps it in one single method with a possibilty to change only to the prime parameter of the worker.
+     * A function that takes the entire overhead of running a worker and wraps it in one single method with a possibility to change only the prime parameter of the worker (messages/callback).
      * @return bool True on finish.
      */
     public function work($parameter): bool;

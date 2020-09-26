@@ -20,96 +20,6 @@ use MAKS\AmqpAgent\Worker\AbstractWorkerInterface;
 interface ConsumerInterface extends AbstractWorkerInterface
 {
     /**
-     * The default quality of service options that the worker should use when no overwrides are provided.
-     * @var array
-     */
-    public const QOS_OPTIONS = [
-        'prefetch_size'     =>    null,
-        'prefetch_count'    =>    5,
-        'a_global'          =>    null
-    ];
-
-    /**
-     * The default wait options that the worker should use when no overwrides are provided.
-     * @var array
-     */
-    public const WAIT_OPTIONS = [
-        'allowed_methods'    =>    null,
-        'non_blocking'       =>    true,
-        'timeout'            =>    3600
-    ];
-
-    /**
-     * The default consume options that the worker should use when no overwrides are provided.
-     * @var array
-     */
-    public const CONSUME_OPTIONS = [
-        'queue'           =>    self::PREFIX . 'queue',
-        'consumer_tag'    =>    self::PREFIX . 'consumer',
-        'no_local'        =>    false,
-        'no_ack'          =>    false,
-        'exclusive'       =>    false,
-        'nowait'          =>    false,
-        'callback'        =>    'MAKS\AmqpAgent\Helper\Example::callback',
-        'ticket'          =>    null,
-        'arguments'       =>    []
-    ];
-
-    /**
-     * The default acknowledge options that the worker should use when no overwrides are provided.
-     * @var array
-     */
-    public const ACK_OPTIONS = [
-        'multiple'    =>    false
-    ];
-
-    /**
-     * The default unacknowledge options that the worker should use when no overwrides are provided.
-     * @var array
-     */
-    public const NACK_OPTIONS = [
-        'multiple'    =>    false,
-        'requeue'     =>    true
-    ];
-
-    /**
-     * The default get options that the worker should use when no overrides are provided.
-     * @var array
-     */
-    public const GET_OPTIONS = [
-        'queue'    =>    self::PREFIX . 'queue',
-        'no_ack'   =>    false,
-        'ticket'   =>    null
-    ];
-
-    /**
-     * The default cancel options that the worker should use when no overrides are provided.
-     * @var array
-     */
-    public const CANCEL_OPTIONS = [
-        'consumer_tag'    =>    self::PREFIX . 'consumer',
-        'nowait'          =>    false,
-        'noreturn'        =>    false
-    ];
-
-    /**
-     * The default recover options that the worker should use when no overrides are provided.
-     * @var array
-     */
-    public const RECOVER_OPTIONS = [
-        'requeue'    =>    true,
-    ];
-
-    /**
-     * The default reject options that the worker should use when no overrides are provided.
-     * @var array
-     */
-    public const REJECT_OPTIONS = [
-        'requeue'    =>    true,
-    ];
-
-
-    /**
      * Acknowledges an AMQP message object.
      * Starting from v1.1.1, you can use php-amqplib AMQPMessage::ack() method instead.
      * @param AMQPMessage $_message The message object that should be acknowledged.
@@ -165,7 +75,7 @@ interface ConsumerInterface extends AbstractWorkerInterface
 
 
     /**
-     * Specifies the quility of service on the default channel of the worker's connection to RabbitMQ server.
+     * Specifies the quality of service on the default channel of the worker's connection to RabbitMQ server.
      * @param array $parameters [optional] The overrides for the default quality of service options of the worker.
      * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self

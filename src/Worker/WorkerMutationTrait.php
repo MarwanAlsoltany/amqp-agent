@@ -32,7 +32,7 @@ trait WorkerMutationTrait
     }
 
     /**
-     * Mutates a subset of an array inside a class propery (nested array inside a property) and returns the replaced subset.
+     * Mutates a subset of an array inside a class property (nested array inside a property) and returns the replaced subset.
      * @param string $member The name of the property.
      * @param string $sub The key which under the array stored.
      * @param array $overrides An associative array of the overrides.
@@ -44,7 +44,7 @@ trait WorkerMutationTrait
     }
 
     /**
-     * Mutates a class propery nested or not and returns the replaced subset.
+     * Mutates a class property nested or not and returns the replaced subset.
      * @param string $member The name of the property.
      * @param string $sub [optional] The key which under the array stored.
      * @param array $overrides An associative array of the overrides.
@@ -53,7 +53,7 @@ trait WorkerMutationTrait
     protected function mutateClass(string $member, ?string $sub = null, array $overrides): array
     {
         $changes = [];
-        $signature = '__remove_%s__not_default__';
+        $signature = '@UNKNOWN[%s]';
 
         foreach ($overrides as $key => $value) {
             if ($sub) {
@@ -88,26 +88,5 @@ trait WorkerMutationTrait
         ];
 
         return $changes;
-    }
-
-    /**
-     * Mutates a subset of an array (class const property) and returns a new array with the new replacements.
-     * @param string $member The name of the property.
-     * @param array $overrides An associative array of the overrides.
-     * @return array
-     */
-    protected static function mutateClassConst(array $member, ?array $overrides): array
-    {
-        $array = [];
-
-        foreach ($member as $key => $value) {
-            if (is_array($overrides) && array_key_exists($key, $overrides)) {
-                $array[$key] = $overrides[$key];
-            } else {
-                $array[$key] = $value;
-            }
-        }
-
-        return $array;
     }
 }

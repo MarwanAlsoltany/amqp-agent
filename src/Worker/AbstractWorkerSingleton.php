@@ -13,19 +13,19 @@ use MAKS\AmqpAgent\Helper\Singleton;
 use MAKS\AmqpAgent\Worker\AbstractWorker;
 
 /**
- * An abstract class implementing mapping functions (proxy functions) to turn a normal worker into a singleton.
+ * An abstract decorator class implementing mapping functions (proxy functions) to turn a normal worker into a singleton.
  * @since 1.0.0
  */
 abstract class AbstractWorkerSingleton extends Singleton
 {
     /**
-     * The full qualified name of the instanciated class.
+     * The full qualified name of the instantiated class.
      * @var string
      */
     protected static $class;
 
     /**
-     * The instance of the worker class (a class that extends AbstactWorker).
+     * The instance of the worker class (a class that extends AbstractWorker).
      * Sub-classes of this class should instantiate a worker and set it
      * to the protected $worker property in their __construct() method.
      * @var AbstractWorker
@@ -104,7 +104,6 @@ abstract class AbstractWorkerSingleton extends Singleton
      * @param string $function Function name.
      * @param array $arguments Function arguments.
      * @return mixed
-     * @throws MethodDoesNotExistException
      */
     public function __call(string $method, array $arguments)
     {
@@ -124,7 +123,6 @@ abstract class AbstractWorkerSingleton extends Singleton
      * @param string $function Function name.
      * @param array $arguments Function arguments.
      * @return mixed
-     * @throws MethodDoesNotExistException
      */
     public static function __callStatic(string $method, array $arguments)
     {

@@ -65,14 +65,14 @@
             <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="../source/Client.php.html#line23">Source</a>
+            <a href="../source/Client.php.html#line32">Source</a>
           </li>
         </ul>
       </nav>
       <section>
         <h1 id="introduction"><small>MAKS\AmqpAgent\</small>Client</h1>
         <h4>A class returns everything AMQP Agent has to offer. A simple service container so to say.</h4>
-        <p/>
+        <p>Example:<br/>```<br/>$config = new Config('path/to/some/config-file.php');<br/>$client = new Client($config);<br/>$publisher = $client-&gt;getPublisher(); // or $client-&gt;get('publisher');<br/>$consumer = $client-&gt;getConsumer(); // or $client-&gt;get('consumer');<br/>```</p>
         <ul/>
         <h2 id="synopsis">Synopsis</h2>
         <div class="synopsis">class Client
@@ -131,7 +131,7 @@
           <h4>public</h4>
           <ul>
             <li id="__construct"><a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/__construct.html">__construct()</a>
-                — Client object constuctor.</li>
+                — Client object constructor.</li>
             <li id="__get"><a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/__get.html">__get()</a>
                 — Gets a class member via public property access notation.</li>
             <li id="get"><a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/get.html">get()</a>

@@ -1,8 +1,10 @@
 <?php
 
-namespace MAKS\AmqpAgent\Test\Worker;
+namespace MAKS\AmqpAgent\Tests\Worker;
 
-use MAKS\AmqpAgent\TestCase;
+use MAKS\AmqpAgent\Tests\TestCase;
+use MAKS\AmqpAgent\Tests\Mocks\PublisherWithConstantMock;
+use MAKS\AmqpAgent\Tests\Mocks\PublisherSingletonWithConstantMock;
 use MAKS\AmqpAgent\Worker\Publisher;
 use MAKS\AmqpAgent\Worker\PublisherSingleton;
 
@@ -79,9 +81,9 @@ class PublisherSingletonTest extends TestCase
     public function testSingletonInstanceRetrievingStaticOrConstProperty()
     {
         $commandSyntax = ['ABC' => 'D'];
-        $this->assertEquals(Publisher::PREFIX, $this->publisher->PREFIX);
         $this->assertEquals(Publisher::$commandPrefix, $this->publisher->commandPrefix);
         $this->publisher->commandSyntax = $commandSyntax;
         $this->assertEquals($commandSyntax, $this->publisher->commandSyntax);
+        $this->assertEquals(PublisherWithConstantMock::TEST_CONSTANT, PublisherSingletonWithConstantMock::getInstance()->TEST_CONSTANT);
     }
 }

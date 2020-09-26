@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MAKS\AmqpAgent\Config\AbstractParameters::patchWith</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.html">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.html#MAKS_AmqpAgent_Config">MAKS\AmqpAgent\Config</a>
+          </li>
+          <li class="separator">
+            <a title="MAKS\AmqpAgent\Config\AbstractParameters" href="../../classes/MAKS_AmqpAgent_Config_AbstractParameters.html">AbstractParameters</a>
+          </li>
+          <li class="separator">patchWith</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="#return">Return</a>
+          </li>
+          <li>
+            <a href="#tests">Tests</a>
+          </li>
+          <li>
+            <a href="../../source/Config/AbstractParameters.php.html#line56">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>MAKS\AmqpAgent\Config\AbstractParameters::</small>patchWith</h1>
+        <h4>Patches the passed array with another array.</h4>
+        <p/>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function patchWith(array
+        $partialArray,
+            array
+        $fullArray,
+            [boolean
+        $values = false] )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$partialArray</code>
+                —
+                array</dt>
+          <dd>The partial array.</dd>
+          <dt><code>$fullArray</code>
+                —
+                array</dt>
+          <dd>The full array.</dd>
+          <dt><code>$values</code>
+                —
+                boolean</dt>
+          <dd>Wether to return values only or an associative array.<br/><br/><br/>      </dd>
+        </dl>
+        <h2 id="return">Returns</h2>
+        <dl class="styled">
+          <dt>array</dt>
+          <dd>The final patched array.</dd>
+        </dl>
+        <h2 id="tests">Test Coverage</h2>
+        <div class="styled">
+          <h3>Information</h3>
+          <ul class="styled">
+            <li>Coverage: 6/6 Lines (100%)</li>
+            <li>Tests: 52</li>
+            <li>Passed: 52 (100%)</li>
+          </ul>
+          <h3>Tests</h3>
+          <ul class="styled">
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\ClientTest::testGetPublisherInstance</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\ClientTest::testGetConsumerInstance</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Config\AbstractParametersTest::testPatchPatchesAnArray</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testMethodDoesNotExistExceptionIsRaisedWhenCallingANonExistenceMethod</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testMethodDoesNotExistExceptionIsRaisedWhenCallingANonExistenceStaticMethod</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testPropertyDoesNotExistExceptionIsRaisedViaPublicAccessNotation</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testPropertyDoesNotExistExceptionIsRaisedViaPublicAssignmentNotation</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testShutdownMethodRaisesAnExceptionIfUnexpectedParameterIsPassed</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testGetAndSetPropertyViaPublicAccessNotation</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testConnectReturnsAnAMQPStreamConnection</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testDisconnectUnsetsTheClassProperties</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testReconnectRepopulatesClassPropertiesAndReturnsSelf</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testQueueReturnsSelf</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testArgumentsReturnsAMQPTable</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testGetConnectionReturnsTheDefaultConnection</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testGetNewConnectionReturnsANewConnectionAndUsesOverrideParameters</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testSetConnectionSetsAnotherConnectionAsDefaultAndReturnsSelf</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testGetChannelReturnsTheDefaultChannel</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testGetNewChannelReturnsANewChannelAndUsesOverrideParameters</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testSetChannelSetsAnotherChannelAsDefaultAndReturnsSelf</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testGetChannelByIdReturnsAChannelWithThatId</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testGetChannelByIdReturnsNullForRandomChannelId</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testWorkerShutdownFunction</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testMutateClassMemberTakesEffectByRevertingPropertyToItsState</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testMakeCommandReturnsTheExpectedFormat</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testIsCommandChecksIfThePassedArrayIsACommand</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testHasCommandReturnsTrueIfCommandWasFoundOtherwiseFalse</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testGetCommandReturnsTheParametersOrASubsetOfIt</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testQueueReturnsSelfAndOverrideParametersTakeEffect</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testExchangeReturnsSelfAndOverrideParametersTakeEffect</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testBindReturnsSelfAndOverrideParametersTakeEffect</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testMessageReturnsAnAMQPMessageAndThePassedParametersWorkAsExpected</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testPublishRaisesAnExceptionIfUnexpectedParameterIsPassed</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testPublishBatchAndPublishPublishesMessagesToRabbitMQServerAndOverrideParametersTakeEffect</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testPublishBatchRaisesAnExceptionIfUnexpectedParameterIsPassed</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testPublishPublishesMessagesToRabbitMQServerWithDifferentTypesOfMessages</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testPublishingMessagesToRabbitMQServerViaWorkMethod</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testQosReturnsSelfAndOverrideParametersTakeEffect</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testIsConsumingReturnsFalseWhenCalledOnAnIdleChannel</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testConsumeConsumesMessagesFromRabbitMQServerAndAknowledgesThem</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testConsumeRaisesAnExceptionIfInvalidCallbackIsPassed</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testWaitForAllWaitsForMultipleChannelAndReturnsSelf</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testConsumingMessagesFromRabbitMQServerViaWorkMethod</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testGetGetsAMessageFromRabbitMQServer</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testGetGetsMessagesFromRabbitMQServerAndUnaknowledgesThem</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testCancelCancelsAConsumerAndRedeiliversMessagesToRabbitMQServer</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testRecoverRedeliversAllUnaknowledgeMessagesToRabbitMQServer</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testRejectRejectsAMessageAndRedeiliversMessagesToRabbitMQServer</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testConsumingMessagesFromRabbitMQServerUsingConfigCallback</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherSingletonTest::testSingleton</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherSingletonTest::testSingletonInstanceRetrievingStaticOrConstProperty</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerSingletonTest::testSingleton</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

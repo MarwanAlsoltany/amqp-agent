@@ -1,8 +1,10 @@
 <?php
 
-namespace MAKS\AmqpAgent\Test\Worker;
+namespace MAKS\AmqpAgent\Tests\Worker;
 
-use MAKS\AmqpAgent\TestCase;
+use MAKS\AmqpAgent\Tests\TestCase;
+use MAKS\AmqpAgent\Tests\Mocks\AbstractWorkerMock;
+use MAKS\AmqpAgent\Config\AmqpAgentParameters;
 use MAKS\AmqpAgent\Worker\AbstractWorker;
 use MAKS\AmqpAgent\Exception\MethodDoesNotExistException;
 use MAKS\AmqpAgent\Exception\PropertyDoesNotExistException;
@@ -10,11 +12,6 @@ use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Wire\AMQPTable;
 use PhpAmqpLib\Exception\AMQPInvalidArgumentException;
-
-final class AbstractWorkerMock extends AbstractWorker
-{
-    // Mock
-}
 
 class AbstractWorkerTest extends TestCase
 {
@@ -187,10 +184,10 @@ class AbstractWorkerTest extends TestCase
     public function testMutateClassMemberTakesEffectByRevertingPropertyToItsState()
     {
         $this->worker->connect();
-        $defaultQueueName = $this->worker->queueOptions['queue'];
         $this->worker->queue(['queue' => 'this.is.not.a.normal.queue.name']);
+        $defaultQueueName = $this->worker->queueOptions['queue'];
         // Queue name should be reverted back to maks.amqp.agent.queue
-        $this->assertEquals(AbstractWorkerMock::PREFIX . 'queue', $defaultQueueName);
+        $this->assertEquals(AmqpAgentParameters::PREFIX . 'queue', $defaultQueueName);
     }
 
     public function testMakeCommandReturnsTheExpectedFormat()

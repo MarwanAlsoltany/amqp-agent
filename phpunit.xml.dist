@@ -16,9 +16,11 @@
                 directory tag and exclude tag or file tag. The problem with this testsuite is the
                 ConsumerTest depends on PublisherTest and due to alphabetical order they ran in reverse.
             -->
+            <file>tests/Exception/AmqpAgentExceptionTest.php</file>
             <file>tests/ClientTest.php</file>
             <file>tests/ConfigTest.php</file>
-            <file>tests/Exception/AmqpAgentExceptionTest.php</file>
+            <file>tests/Config/AbstractParametersTest.php</file>
+            <file>tests/Helper/UtilityTest.php</file>
             <file>tests/Helper/LoggerTest.php</file>
             <file>tests/Helper/SerializerTest.php</file>
             <file>tests/Helper/SingletonTest.php</file>

@@ -68,13 +68,13 @@
             <a href="#tests">Tests</a>
           </li>
           <li>
-            <a href="../../source/Exception/AmqpAgentException.php.html#line45">Source</a>
+            <a href="../../source/Exception/AmqpAgentException.php.html#line81">Source</a>
           </li>
         </ul>
       </nav>
       <section>
         <h1><small>MAKS\AmqpAgent\Exception\AmqpAgentException::</small>rethrowException</h1>
-        <h4>Rethrows an exception with additional message.</h4>
+        <h4>Rethrows an exception with an additional message.</h4>
         <p/>
         <ul/>
         <h2 id="signature">Signature</h2>
@@ -82,7 +82,9 @@
           <code>public function rethrowException(<a title="Exception" href="../../classes/Exception.html">Exception</a>
         $exception,
             [string
-        $message = 'Rethrown Exception!'] )
+        $message = NULL,
+            [boolean
+        $wrap = false]] )
             </code>
         </div>
         <h2 id="parameterlist">Parameters</h2>
@@ -90,11 +92,15 @@
           <dt><code>$exception</code>
                 —
                 <a title="Exception" href="../../classes/Exception.html">Exception</a></dt>
-          <dd><br/><br/><br/>      </dd>
+          <dd>The exception to rethrow.<br/><br/><br/>      </dd>
           <dt><code>$message</code>
                 —
                 string</dt>
-          <dd/>
+          <dd>An additional message to add to the wrapping exception before the message of the passed exception.<br/><br/><br/>      </dd>
+          <dt><code>$wrap</code>
+                —
+                boolean</dt>
+          <dd>Wether to throw the exception using the passed class (FQN), in the same exception type (true), or wrap it with the class this method was called on (false). Any other value will be translated to false.<br/><br/><br/>      </dd>
         </dl>
         <h2 id="return">Returns</h2>
         <dl class="styled">
@@ -106,13 +112,13 @@
         <div class="styled">
           <h3>Information</h3>
           <ul class="styled">
-            <li>Coverage: 2/2 Lines (100%)</li>
+            <li>Coverage: 1/2 Lines (50%)</li>
             <li>Tests: 1</li>
             <li>Passed: 1 (100%)</li>
           </ul>
           <h3>Tests</h3>
           <ul class="styled">
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\AmqpAgentExceptionTest::testAmqpAgentExceptionRethrow</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Exception\AmqpAgentExceptionTest::testAmqpAgentExceptionRethrowViaAliasMethod</li>
           </ul>
         </div>
       </section>

@@ -62,23 +62,20 @@
             <a href="#coverage">Coverage</a>
           </li>
           <li>
-            <a href="#constants">Constants</a>
-          </li>
-          <li>
             <a href="#members">Members</a>
           </li>
           <li>
             <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="../source/Worker/Publisher.php.html#line28">Source</a>
+            <a href="../source/Worker/Publisher.php.html#line41">Source</a>
           </li>
         </ul>
       </nav>
       <section>
         <h1 id="introduction"><small>MAKS\AmqpAgent\Worker\</small>Publisher</h1>
         <h4>A class specialized in publishing. Implementing only the methods needed for a publisher.</h4>
-        <p/>
+        <p>Example:<br/>```<br/>$publisher = new Publisher();<br/>$publisher-&gt;connect();<br/>$publisher-&gt;queue();<br/>$publisher-&gt;exchange();<br/>$publisher-&gt;bind();<br/>$publisher-&gt;publish('Some message!');<br/>$publisher-&gt;disconnect();<br/>```</p>
         <ul/>
         <h2 id="synopsis">Synopsis</h2>
         <div class="synopsis">class Publisher
@@ -108,8 +105,6 @@
                         </li><li>public void <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__destruct.html">__destruct</a>()
                         </li><li>public mixed <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__get.html">__get</a>()
                         </li><li>public void <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__set.html">__set</a>()
-                        </li><li>public mixed <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__call.html">__call</a>()
-                        </li><li>public static mixed <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__callStatic.html">__callStatic</a>()
                         </li><li>public static bool <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/shutdown.html">shutdown</a>()
                         </li><li>public static AMQPTable <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/arguments.html">arguments</a>()
                         </li><li>public AbstractWorker <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/connect.html">connect</a>()
@@ -123,10 +118,13 @@
                         </li><li>public AbstractWorker <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/setChannel.html">setChannel</a>()
                         </li><li>public AMQPChannel|null <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getNewChannel.html">getNewChannel</a>()
                         </li><li>public AMQPChannel|null <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getChannelById.html">getChannelById</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait">MagicMethodsExceptionsTrait</span></li><li>public void <a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait/__get.html">__get</a>()
+                        </li><li>public void <a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait/__set.html">__set</a>()
+                        </li><li>public mixed <a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait/__call.html">__call</a>()
+                        </li><li>public static mixed <a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait/__callStatic.html">__callStatic</a>()
                         </li></ul><ul class="none"><li>// Inherited methods from <span title="MAKS\AmqpAgent\Worker\WorkerMutationTrait">WorkerMutationTrait</span></li><li>protected array <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassMember.html">mutateClassMember</a>()
                         </li><li>protected array <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassSubMember.html">mutateClassSubMember</a>()
                         </li><li>protected array <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClass.html">mutateClass</a>()
-                        </li><li>protected static array <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassConst.html">mutateClassConst</a>()
                         </li></ul><ul class="none"><li>// Inherited methods from <span title="MAKS\AmqpAgent\Worker\WorkerCommandTrait">WorkerCommandTrait</span></li><li>public static array <a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait/makeCommand.html">makeCommand</a>()
                         </li><li>public static bool <a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait/isCommand.html">isCommand</a>()
                         </li><li>public static bool <a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait/hasCommand.html">hasCommand</a>()
@@ -162,51 +160,8 @@
           <tr>
             <td>Lines</td>
             <td class="percent">100%</td>
-            <td class="nummeric">125 / 125</td>
+            <td class="nummeric">104 / 104</td>
           </tr>
-        </table>
-        <h2 id="constants">Constants</h2>
-        <table class="styled">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td id="PREFIX">PREFIX</td>
-              <td>'maks.amqp.agent.'</td>
-            </tr>
-            <tr>
-              <td id="CONNECTION_OPTIONS">CONNECTION_OPTIONS</td>
-              <td/>
-            </tr>
-            <tr>
-              <td id="CHANNEL_OPTIONS">CHANNEL_OPTIONS</td>
-              <td/>
-            </tr>
-            <tr>
-              <td id="QUEUE_OPTIONS">QUEUE_OPTIONS</td>
-              <td/>
-            </tr>
-            <tr>
-              <td id="EXCHANGE_OPTIONS">EXCHANGE_OPTIONS</td>
-              <td/>
-            </tr>
-            <tr>
-              <td id="BIND_OPTIONS">BIND_OPTIONS</td>
-              <td/>
-            </tr>
-            <tr>
-              <td id="MESSAGE_OPTIONS">MESSAGE_OPTIONS</td>
-              <td/>
-            </tr>
-            <tr>
-              <td id="PUBLISH_OPTIONS">PUBLISH_OPTIONS</td>
-              <td/>
-            </tr>
-          </tbody>
         </table>
         <h2 id="members">Members</h2>
         <div class="styled members">
@@ -264,29 +219,25 @@
           <h4>public</h4>
           <ul>
             <li id="__construct"><a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/__construct.html">__construct()</a>
-                — Publisher object constuctor.</li>
+                — Publisher object constructor.</li>
             <li id="bind"><a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/bind.html">bind()</a>
-                — Bindes the default queue to the default exchange on the default channel of the worker's connection to RabbitMQ server.</li>
+                — Binds the default queue to the default exchange on the default channel of the worker's connection to RabbitMQ server.</li>
             <li id="exchange"><a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/exchange.html">exchange()</a>
                 — Declares an exchange on the default channel of the worker's connection to RabbitMQ server.</li>
             <li id="message"><a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/message.html">message()</a>
                 — Returns an AMQPMessage object.</li>
             <li id="prepare"><a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/prepare.html">prepare()</a>
-                — Executes self::connect(), self::queue(), self::exchange, and self::bind() respectively.</li>
+                — Executes `self::connect()`, `self::queue()`, `self::exchange`, and `self::bind()` respectively.</li>
             <li id="publish"><a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/publish.html">publish()</a>
                 — Publishes a message to the default exchange on the default channel of the worker's connection to RabbitMQ server.</li>
             <li id="publishBatch"><a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/publishBatch.html">publishBatch()</a>
                 — Publishes a batch of messages to the default exchange on the default channel of the worker's connection to RabbitMQ server.</li>
             <li id="work"><a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/work.html">work()</a>
-                — Executes self::connect(), self::queue(), self::exchange, self::bind(), self::publish(), and self::disconnect() respectively.</li>
+                — Executes `self::connect()`, `self::queue()`, `self::exchange`, and `self::bind()`, `self::publish()`, and `self::disconnect()` respectively.</li>
           </ul>
           <h3>Inherited from <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker.html">MAKS\AmqpAgent\Worker\AbstractWorker</a></h3>
           <h4>public</h4>
           <ul>
-            <li id="__call"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__call.html">__call()</a>
-                — Throws an exception for calls to undefined methods.</li>
-            <li id="__callStatic"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__callStatic.html">__callStatic()</a>
-                — Throws an exception for calls to undefined static methods.</li>
             <li id="__get"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__get.html">__get()</a>
                 — Gets a class member via public property access notation.</li>
             <li id="__set"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__set.html">__set()</a>
@@ -306,11 +257,11 @@
             <li id="getNewChannel"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getNewChannel.html">getNewChannel()</a>
                 — Returns a new channel on the the passed connection of the worker. If no connection is passed, it uses the default connection. If the worker is not connected, it returns null.</li>
             <li id="getNewConnection"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/getNewConnection.html">getNewConnection()</a>
-                — Opens a new connection to RabbitMQ server and returns it. Connections returned by this method pushed to connections array and are not set as default automaticly.</li>
+                — Opens a new connection to RabbitMQ server and returns it. Connections returned by this method pushed to connections array and are not set as default automatically.</li>
             <li id="queue"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/queue.html">queue()</a>
                 — Declares a queue on the default channel of the worker's connection with RabbitMQ server.</li>
             <li id="reconnect"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/reconnect.html">reconnect()</a>
-                — Executes self::disconnect() and self::connect() respectively.</li>
+                — Executes `self::disconnect()` and `self::connect()` respectively. Note that this method will not restore old channels.</li>
             <li id="setChannel"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/setChannel.html">setChannel()</a>
                 — Sets the passed channel as the default channel of the worker.</li>
             <li id="setConnection"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/setConnection.html">setConnection()</a>
@@ -318,17 +269,27 @@
             <li id="shutdown"><a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/shutdown.html">shutdown()</a>
                 — Closes the connection or the channel or both with RabbitMQ server.</li>
           </ul>
+          <h3>Inherited from <a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait.html">MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="__call"><a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait/__call.html">__call()</a>
+                — Throws an exception for calls to undefined methods.</li>
+            <li id="__callStatic"><a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait/__callStatic.html">__callStatic()</a>
+                — Throws an exception for calls to undefined static methods.</li>
+            <li id="__get"><a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait/__get.html">__get()</a>
+                — Throws an exception when trying to get a class member via public property assignment notation.</li>
+            <li id="__set"><a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait/__set.html">__set()</a>
+                — Throws an exception when trying to set a class member via public property assignment notation.</li>
+          </ul>
           <h3>Inherited from <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait.html">MAKS\AmqpAgent\Worker\WorkerMutationTrait</a></h3>
           <h4>protected</h4>
           <ul>
             <li id="mutateClass"><a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClass.html">mutateClass()</a>
-                — Mutates a class propery nested or not and returns the replaced subset.</li>
-            <li id="mutateClassConst"><a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassConst.html">mutateClassConst()</a>
-                — Mutates a subset of an array (class const property) and returns a new array with the new replacements.</li>
+                — Mutates a class property nested or not and returns the replaced subset.</li>
             <li id="mutateClassMember"><a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassMember.html">mutateClassMember()</a>
                 — Mutates a subset of an array (class property) and returns the replaced subset.</li>
             <li id="mutateClassSubMember"><a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassSubMember.html">mutateClassSubMember()</a>
-                — Mutates a subset of an array inside a class propery (nested array inside a property) and returns the replaced subset.</li>
+                — Mutates a subset of an array inside a class property (nested array inside a property) and returns the replaced subset.</li>
           </ul>
           <h3>Inherited from <a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait.html">MAKS\AmqpAgent\Worker\WorkerCommandTrait</a></h3>
           <h4>public</h4>

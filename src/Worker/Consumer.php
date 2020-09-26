@@ -17,11 +17,24 @@ use PhpAmqpLib\Exception\AMQPOutOfBoundsException;
 use MAKS\AmqpAgent\Worker\AbstractWorker;
 use MAKS\AmqpAgent\Worker\ConsumerInterface;
 use MAKS\AmqpAgent\Worker\WorkerFacilitationInterface;
-use MAKS\AmqpAgent\Exception\AmqpAgentException;
 use MAKS\AmqpAgent\Exception\CallbackDoesNotExistException;
+use MAKS\AmqpAgent\Exception\AmqpAgentException as Exception;
+use MAKS\AmqpAgent\Config\ConsumerParameters as Parameters;
 
 /**
  * A class specialized in consuming. Implementing only the methods needed for a consumer.
+ *
+ * Example:
+ * ```
+ * $consumer = new Consumer();
+ * $consumer->connect();
+ * $consumer->queue();
+ * $consumer->qos();
+ * $consumer->consume('SomeNamespace\SomeClass::someCallback');
+ * $consumer->wait();
+ * $consumer->disconnect();
+ * ```
+ *
  * @since 1.0.0
  * @api
  */
@@ -46,20 +59,20 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
     protected $consumeOptions;
 
     /**
-     * The full acknowledge options that should be used for the worker.
+     * The full acknowledgment options that should be used for the worker.
      * @var array
      */
     protected $ackOptions;
 
     /**
-     * The full unacknowledge options that should be used for the worker.
+     * The full unacknowledgment options that should be used for the worker.
      * @var array
      */
     protected $nackOptions;
 
 
     /**
-     * Consumer object constuctor.
+     * Consumer object constructor.
      * @param array $connectionOptions [optional] The overrides for the default connection options of the worker.
      * @param array $channelOptions [optional] The overrides for the default channel options of the worker.
      * @param array $queueOptions [optional] The overrides for the default queue options of the worker.
@@ -69,33 +82,11 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
      */
     public function __construct(array $connectionOptions = [], array $channelOptions = [], array $queueOptions = [], array $qosOptions = [], array $waitOptions = [], array $consumeOptions = [])
     {
-        $this->qosOptions = [
-            'prefetch_size'     =>    $qosOptions['prefetch_size'] ?? self::QOS_OPTIONS['prefetch_size'],
-            'prefetch_count'    =>    $qosOptions['prefetch_count'] ?? self::QOS_OPTIONS['prefetch_count'],
-            'a_global'          =>    $qosOptions['a_global'] ?? self::QOS_OPTIONS['a_global']
-        ];
-
-        $this->waitOptions = [
-            'allowed_methods'    =>    $waitOptions['allowed_methods'] ?? self::WAIT_OPTIONS['allowed_methods'],
-            'non_blocking'       =>    $waitOptions['non_blocking'] ?? self::WAIT_OPTIONS['non_blocking'],
-            'timeout'            =>    $waitOptions['timeout'] ?? self::WAIT_OPTIONS['timeout']
-        ];
-
-        $this->consumeOptions = [
-            'queue'           =>    $consumeOptions['queue'] ?? self::CONSUME_OPTIONS['queue'],
-            'consumer_tag'    =>    $consumeOptions['consumer_tag'] ?? self::CONSUME_OPTIONS['consumer_tag'],
-            'no_local'        =>    $consumeOptions['no_local'] ?? self::CONSUME_OPTIONS['no_local'],
-            'no_ack'          =>    $consumeOptions['no_ack'] ?? self::CONSUME_OPTIONS['no_ack'],
-            'exclusive'       =>    $consumeOptions['exclusive'] ?? self::CONSUME_OPTIONS['exclusive'],
-            'nowait'          =>    $consumeOptions['nowait'] ?? self::CONSUME_OPTIONS['nowait'],
-            'callback'        =>    $consumeOptions['callback'] ?? self::CONSUME_OPTIONS['callback'],
-            'ticket'          =>    $consumeOptions['ticket'] ?? self::CONSUME_OPTIONS['ticket'],
-            'arguments'       =>    $consumeOptions['arguments'] ?? self::CONSUME_OPTIONS['arguments']
-        ];
-
-        $this->ackOptions = self::ACK_OPTIONS;
-
-        $this->nackOptions = self::NACK_OPTIONS;
+        $this->qosOptions     = Parameters::patch($qosOptions, 'QOS_OPTIONS');
+        $this->waitOptions    = Parameters::patch($waitOptions, 'WAIT_OPTIONS');
+        $this->consumeOptions = Parameters::patch($consumeOptions, 'CONSUME_OPTIONS');
+        $this->ackOptions     = Parameters::ACK_OPTIONS;
+        $this->nackOptions    = Parameters::NACK_OPTIONS;
 
         parent::__construct($connectionOptions, $channelOptions, $queueOptions);
     }
@@ -111,7 +102,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
      */
     public static function ack(AMQPMessage $_message, ?array $parameters = null): void
     {
-        $parameters = static::mutateClassConst(self::ACK_OPTIONS, $parameters);
+        $parameters = Parameters::patch($parameters ?? [], 'ACK_OPTIONS');
 
         /**
          * If a consumer dies without sending an acknowledgement the AMQP broker will redeliver it
@@ -126,7 +117,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
                 $parameters['multiple']
             );
         } catch (AMQPRuntimeException $error) { // @codeCoverageIgnore
-            AmqpAgentException::rethrowException($error, __METHOD__ . '() failed!'); // @codeCoverageIgnore
+            Exception::rethrow($error); // @codeCoverageIgnore
         }
     }
 
@@ -141,7 +132,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
      */
     public static function nack(?AMQPChannel $_channel = null, AMQPMessage $_message, ?array $parameters = null): void
     {
-        $parameters = static::mutateClassConst(self::NACK_OPTIONS, $parameters);
+        $parameters = Parameters::patch($parameters ?? [], 'NACK_OPTIONS');
 
         try {
             /** @var AMQPChannel */
@@ -152,13 +143,13 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
                 $parameters['requeue']
             );
         } catch (AMQPRuntimeException $error) { // @codeCoverageIgnore
-            AmqpAgentException::rethrowException($error, __METHOD__ . '() failed!'); // @codeCoverageIgnore
+            Exception::rethrow($error); // @codeCoverageIgnore
         }
     }
 
     /**
      * Gets a message object from a channel, direct access to a queue.
-     * @deprecated 1.0.0 Direct queue access is not recommended. Use self::consume() instead.
+     * @deprecated 1.0.0 Direct queue access is not recommended. Use `self::consume()` instead.
      * @param AMQPChannel $_channel The channel that should be used.
      * @param array $parameters [optional] The overrides for the default get options.
      * @return AMQPMessage|null
@@ -166,7 +157,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
      */
     public static function get(AMQPChannel $_channel, ?array $parameters = null): ?AMQPMessage
     {
-        $parameters = static::mutateClassConst(self::GET_OPTIONS, $parameters);
+        $parameters = Parameters::patch($parameters ?? [], 'GET_OPTIONS');
 
         try {
             $return = $_channel->basic_get(
@@ -175,7 +166,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
                 $parameters['ticket']
             );
         } catch (AMQPTimeoutException $error) { // @codeCoverageIgnore
-            AmqpAgentException::rethrowException($error, __METHOD__ . '() failed!'); // @codeCoverageIgnore
+            Exception::rethrow($error); // @codeCoverageIgnore
         }
 
         return $return;
@@ -190,7 +181,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
      */
     public static function cancel(AMQPChannel $_channel, ?array $parameters = null)
     {
-        $parameters = static::mutateClassConst(self::CANCEL_OPTIONS, $parameters);
+        $parameters = Parameters::patch($parameters ?? [], 'CANCEL_OPTIONS');
 
         try {
             $return = $_channel->basic_cancel(
@@ -199,7 +190,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
                 $parameters['noreturn']
             );
         } catch (AMQPTimeoutException $error) { // @codeCoverageIgnore
-            AmqpAgentException::rethrowException($error, __METHOD__ . '() failed!'); // @codeCoverageIgnore
+            Exception::rethrow($error); // @codeCoverageIgnore
         }
 
         return $return;
@@ -214,14 +205,14 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
      */
     public static function recover(AMQPChannel $_channel, ?array $parameters = null)
     {
-        $parameters = static::mutateClassConst(self::RECOVER_OPTIONS, $parameters);
+        $parameters = Parameters::patch($parameters ?? [], 'RECOVER_OPTIONS');
 
         try {
             $return = $_channel->basic_recover(
                 $parameters['requeue']
             );
         } catch (AMQPTimeoutException $error) { // @codeCoverageIgnore
-            AmqpAgentException::rethrowException($error, __METHOD__ . '() failed!'); // @codeCoverageIgnore
+            Exception::rethrow($error); // @codeCoverageIgnore
         }
 
         return $return;
@@ -238,7 +229,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
      */
     public static function reject(AMQPChannel $_channel, AMQPMessage $_message, ?array $parameters = null): void
     {
-        $parameters = static::mutateClassConst(self::REJECT_OPTIONS, $parameters);
+        $parameters = Parameters::patch($parameters ?? [], 'REJECT_OPTIONS');
 
         try {
             $_channel->basic_reject(
@@ -246,13 +237,13 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
                 $parameters['requeue']
             );
         } catch (AMQPRuntimeException $error) { // @codeCoverageIgnore
-            AmqpAgentException::rethrowException($error, __METHOD__ . '() failed!'); // @codeCoverageIgnore
+            Exception::rethrow($error); // @codeCoverageIgnore
         }
     }
 
 
     /**
-     * Specifies the quility of service on the default channel of the worker's connection to RabbitMQ server.
+     * Specifies the quality of service on the default channel of the worker's connection to RabbitMQ server.
      * @param array $parameters [optional] The overrides for the default quality of service options of the worker.
      * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
@@ -325,9 +316,8 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
             }
         } else {
             throw new CallbackDoesNotExistException(
-                sprintf( // @codeCoverageIgnore
-                    // PHPUnit reports the line above as uncovered although the entire block is tested.
-                    'The first parameter must be a vaild callable, a callback, a variable containing a callback, a name of a function as string, a string like %s, or an array like %s. The given parameter (data-type: %s) was none of them.',
+                sprintf(
+                    'The first parameter must be a valid callable, a callback, a variable containing a callback, a name of a function as string, a string like %s, or an array like %s. The given parameter (data-type: %s) was none of them.',
                     '"Foo\Bar\Baz::qux"',
                     '["Foo\Bar\Baz", "qux"]',
                     is_object($callback) ? get_class($callback) : gettype($callback)
@@ -348,7 +338,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
                 $this->consumeOptions['arguments']
             );
         } catch (AMQPTimeoutException $error) { // @codeCoverageIgnore
-            AmqpAgentException::rethrowException($error, __METHOD__ . '() failed!'); // @codeCoverageIgnore
+            Exception::rethrow($error); // @codeCoverageIgnore
         } finally {
             // reverting consumeOptions back to its state.
             $this->consumeOptions['callback'] = $originalCallback;
@@ -402,7 +392,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
                     $this->waitOptions['timeout']
                 );
             } catch (AMQPOutOfBoundsException|AMQPRuntimeException|AMQPTimeoutException $error) { // @codeCoverageIgnore
-                AmqpAgentException::rethrowException($error, __METHOD__ . '() failed!'); // @codeCoverageIgnore
+                Exception::rethrow($error); // @codeCoverageIgnore
             }
         }
 
@@ -468,7 +458,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
                     break;
                 }
             } catch (AMQPOutOfBoundsException|AMQPRuntimeException|AMQPTimeoutException $error) { // @codeCoverageIgnore
-                AmqpAgentException::rethrowException($error, __METHOD__ . '() failed!'); // @codeCoverageIgnore
+                Exception::rethrow($error); // @codeCoverageIgnore
             }
         }
 
@@ -480,7 +470,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
     }
 
     /**
-     * Executes self::connect(), self::queue(), and self::qos respectively (self::wait needs to be executed after self::consume()).
+     * Executes `self::connect()`, `self::queue()`, and `self::qos()` respectively (note that `self::wait()` needs to be executed after `self::consume()`).
      * @return self
      */
     public function prepare(): self
@@ -493,7 +483,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
     }
 
     /**
-     * Executes self::connect(), self::queue(), self::qos, self::consume(), self::wait(), and self::disconnect() respectively.
+     * Executes `self::connect()`, `self::queue()`, `self::qos()`, `self::consume()`, `self::wait()`, and `self::disconnect()` respectively.
      * @param callback|array|string $callback The callback that the consumer should use to process the messages.
      * @return bool
      */

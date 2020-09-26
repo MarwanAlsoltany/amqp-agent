@@ -59,9 +59,6 @@
             <a href="#violations">Violations</a>
           </li>
           <li>
-            <a href="#constants">Constants</a>
-          </li>
-          <li>
             <a href="#methods">Methods</a>
           </li>
           <li>
@@ -76,7 +73,7 @@
         <ul/>
         <h2 id="synopsis">Synopsis</h2>
         <div class="synopsis">interface AbstractWorkerInterface
-            {<br/><ul class="none"><li>// constants</li><li>const PREFIX = 'maks.amqp.agent.';</li><li>const CONNECTION_OPTIONS = ;</li><li>const CHANNEL_OPTIONS = ;</li><li>const QUEUE_OPTIONS = ;</li></ul><ul class="none"><li>// methods</li><li>public static bool <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/shutdown.html">shutdown</a>()
+            {<br/><ul class="none"><li>// methods</li><li>public static bool <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/shutdown.html">shutdown</a>()
                     </li><li>public static <span title="AMQPTable">AMQPTable</span> <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/arguments.html">arguments</a>()
                     </li><li>public AbstractWorkerInterface <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/connect.html">connect</a>()
                     </li><li>public AbstractWorkerInterface <a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/disconnect.html">disconnect</a>()
@@ -92,33 +89,6 @@
                     </li></ul>
 
             }<br/></div>
-        <h2 id="constants">Constants</h2>
-        <table class="styled">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td id="PREFIX">PREFIX</td>
-              <td>'maks.amqp.agent.'</td>
-            </tr>
-            <tr>
-              <td id="CONNECTION_OPTIONS">CONNECTION_OPTIONS</td>
-              <td/>
-            </tr>
-            <tr>
-              <td id="CHANNEL_OPTIONS">CHANNEL_OPTIONS</td>
-              <td/>
-            </tr>
-            <tr>
-              <td id="QUEUE_OPTIONS">QUEUE_OPTIONS</td>
-              <td/>
-            </tr>
-          </tbody>
-        </table>
         <h2 id="methods">Methods</h2>
         <div class="styled">
           <h4>public</h4>
@@ -138,11 +108,11 @@
             <li id="getNewChannel"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/getNewChannel.html">getNewChannel()</a>
                 — Returns a new channel on the the passed connection of the worker. If no connection is passed, it uses the default connection. If the worker is not connected, it returns null.</li>
             <li id="getNewConnection"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/getNewConnection.html">getNewConnection()</a>
-                — Opens a new connection to RabbitMQ server and returns it. Connections returned by this method pushed to connections array and are not set as default automaticly.</li>
+                — Opens a new connection to RabbitMQ server and returns it. Connections returned by this method pushed to connections array and are not set as default automatically.</li>
             <li id="queue"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/queue.html">queue()</a>
                 — Declares a queue on the default channel of the worker's connection with RabbitMQ server.</li>
             <li id="reconnect"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/reconnect.html">reconnect()</a>
-                — Executes self::disconnect() and self::connect() respectively.</li>
+                — Executes `self::disconnect()` and `self::connect()` respectively.</li>
             <li id="setChannel"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/setChannel.html">setChannel()</a>
                 — Sets the passed channel as the default channel of the worker.</li>
             <li id="setConnection"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/setConnection.html">setConnection()</a>

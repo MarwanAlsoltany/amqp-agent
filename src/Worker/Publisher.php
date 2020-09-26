@@ -18,10 +18,23 @@ use PhpAmqpLib\Exception\AMQPChannelClosedException;
 use MAKS\AmqpAgent\Worker\AbstractWorker;
 use MAKS\AmqpAgent\Worker\PublisherInterface;
 use MAKS\AmqpAgent\Worker\WorkerFacilitationInterface;
-use MAKS\AmqpAgent\Exception\AmqpAgentException;
+use MAKS\AmqpAgent\Exception\AmqpAgentException as Exception;
+use MAKS\AmqpAgent\Config\PublisherParameters as Parameters;
 
 /**
  * A class specialized in publishing. Implementing only the methods needed for a publisher.
+ *
+ * Example:
+ * ```
+ * $publisher = new Publisher();
+ * $publisher->connect();
+ * $publisher->queue();
+ * $publisher->exchange();
+ * $publisher->bind();
+ * $publisher->publish('Some message!');
+ * $publisher->disconnect();
+ * ```
+ *
  * @since 1.0.0
  * @api
  */
@@ -53,7 +66,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
 
 
     /**
-     * Publisher object constuctor.
+     * Publisher object constructor.
      * @param array $connectionOptions [optional] The overrides for the default connection options of the worker.
      * @param array $channelOptions [optional] The overrides for the default channel options of the worker.
      * @param array $queueOptions [optional] The overrides for the default queue options of the worker.
@@ -64,40 +77,10 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
      */
     public function __construct(array $connectionOptions = [], array $channelOptions = [], array $queueOptions = [], array $exchangeOptions = [], array $bindOptions = [], array $messageOptions = [], array $publishOptions = [])
     {
-        $this->exchangeOptions = [
-            'exchange'       =>    $exchangeOptions['exchange'] ?? self::EXCHANGE_OPTIONS['exchange'],
-            'type'           =>    $exchangeOptions['type'] ?? self::EXCHANGE_OPTIONS['type'],
-            'passive'        =>    $exchangeOptions['passive'] ?? self::EXCHANGE_OPTIONS['passive'],
-            'durable'        =>    $exchangeOptions['durable'] ?? self::EXCHANGE_OPTIONS['durable'],
-            'auto_delete'    =>    $exchangeOptions['auto_delete'] ?? self::EXCHANGE_OPTIONS['auto_delete'],
-            'internal'       =>    $exchangeOptions['internal'] ?? self::EXCHANGE_OPTIONS['internal'],
-            'nowait'         =>    $exchangeOptions['nowait'] ?? self::EXCHANGE_OPTIONS['nowait'],
-            'arguments'      =>    $exchangeOptions['arguments'] ?? self::EXCHANGE_OPTIONS['arguments'],
-            'ticket'         =>    $exchangeOptions['ticket'] ?? self::EXCHANGE_OPTIONS['ticket']
-        ];
-
-        $this->bindOptions = [
-            'queue'          =>    $bindOptions['queue'] ?? self::BIND_OPTIONS['queue'],
-            'exchange'       =>    $bindOptions['exchange'] ?? self::BIND_OPTIONS['exchange'],
-            'routing_key'    =>    $bindOptions['routing_key'] ?? self::BIND_OPTIONS['routing_key'],
-            'nowait'         =>    $bindOptions['nowait'] ?? self::BIND_OPTIONS['nowait'],
-            'arguments'      =>    $bindOptions['arguments'] ?? self::BIND_OPTIONS['arguments'],
-            'ticket'         =>    $bindOptions['ticket'] ?? self::BIND_OPTIONS['ticket']
-        ];
-
-        $this->messageOptions = [
-            'body'           =>    $messageOptions['body'] ?? self::MESSAGE_OPTIONS['body'],
-            'properties'     =>    $messageOptions['properties'] ?? self::MESSAGE_OPTIONS['properties']
-        ];
-
-        $this->publishOptions = [
-            'msg'            =>    $publishOptions['msg'] ?? self::PUBLISH_OPTIONS['msg'],
-            'exchange'       =>    $publishOptions['exchange'] ?? self::PUBLISH_OPTIONS['exchange'],
-            'routing_key'    =>    $publishOptions['routing_key'] ?? self::PUBLISH_OPTIONS['routing_key'],
-            'mandatory'      =>    $publishOptions['mandatory'] ?? self::PUBLISH_OPTIONS['mandatory'],
-            'immediate'      =>    $publishOptions['immediate'] ?? self::PUBLISH_OPTIONS['immediate'],
-            'ticket'         =>    $publishOptions['ticket'] ?? self::PUBLISH_OPTIONS['ticket']
-        ];
+        $this->exchangeOptions = Parameters::patch($exchangeOptions, 'EXCHANGE_OPTIONS');
+        $this->bindOptions     = Parameters::patch($bindOptions, 'BIND_OPTIONS');
+        $this->messageOptions  = Parameters::patch($messageOptions, 'MESSAGE_OPTIONS');
+        $this->publishOptions  = Parameters::patch($publishOptions, 'PUBLISH_OPTIONS');
 
         parent::__construct($connectionOptions, $channelOptions, $queueOptions);
     }
@@ -132,7 +115,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
                 $this->exchangeOptions['ticket']
             );
         } catch (AMQPTimeoutException $error) { // @codeCoverageIgnore
-            AmqpAgentException::rethrowException($error, __METHOD__ . '() failed!'); // @codeCoverageIgnore
+            Exception::rethrow($error); // @codeCoverageIgnore
         }
 
         if ($changes) {
@@ -143,7 +126,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
     }
 
     /**
-     * Bindes the default queue to the default exchange on the default channel of the worker's connection to RabbitMQ server.
+     * Binds the default queue to the default exchange on the default channel of the worker's connection to RabbitMQ server.
      * @param array $parameters [optional] The overrides for the default bind options of the worker.
      * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
@@ -168,7 +151,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
                 $this->bindOptions['ticket']
             );
         } catch (AMQPTimeoutException $error) { // @codeCoverageIgnore
-            AmqpAgentException::rethrowException($error, __METHOD__ . '() failed!'); // @codeCoverageIgnore
+            Exception::rethrow($error); // @codeCoverageIgnore
         }
 
         if ($changes) {
@@ -236,8 +219,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
             $this->publishOptions['msg'] = $this->message($message);
         } else {
             throw new AMQPInvalidArgumentException(
-                sprintf( // @codeCoverageIgnore
-                    // PHPUnit reports the line above as uncovered although the entire block is tested.
+                sprintf(
                     'Payload must be a string, an array like %s, or an instance of "%s". The given parameter (data-type: %s) was none of them.',
                     '["body" => "Message body!", "properties" ["key" => "value"]]',
                     AMQPMessage::class,
@@ -256,7 +238,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
                 $this->publishOptions['ticket']
             );
         } catch (AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException $error) { // @codeCoverageIgnore
-            AmqpAgentException::rethrowException($error, __METHOD__ . '() failed!'); // @codeCoverageIgnore
+            Exception::rethrow($error); // @codeCoverageIgnore
         } finally {
             // reverting messageOptions back to its state.
             $this->publishOptions['msg'] = $originalMessage;
@@ -289,8 +271,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
                 $channel->batch_basic_publish($messages[$i], $exchange);
             } else {
                 throw new AMQPInvalidArgumentException(
-                    sprintf( // @codeCoverageIgnore
-                        // PHPUnit reports the line above as uncovered although the entire block is tested.
+                    sprintf(
                         'Messages array elements must be of type "%s". Element in index "%d" was of type "%s".',
                         AMQPMessage::class,
                         $i,
@@ -311,7 +292,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
 
                     $channel->publish_batch();
                 } catch (AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException $error) {
-                    AmqpAgentException::rethrowException($error, __METHOD__ . '() failed!');
+                    Exception::rethrow($error);
                     // @codeCoverageIgnoreEnd
                 }
             }
@@ -320,14 +301,14 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
         try {
             $channel->publish_batch();
         } catch (AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException $error) { // @codeCoverageIgnore
-            AmqpAgentException::rethrowException($error, __METHOD__ . '() failed!'); // @codeCoverageIgnore
+            Exception::rethrow($error); // @codeCoverageIgnore
         }
 
         return $this;
     }
 
     /**
-     * Executes self::connect(), self::queue(), self::exchange, and self::bind() respectively.
+     * Executes `self::connect()`, `self::queue()`, `self::exchange`, and `self::bind()` respectively.
      * @return self
      */
     public function prepare(): self
@@ -341,7 +322,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
     }
 
     /**
-     * Executes self::connect(), self::queue(), self::exchange, self::bind(), self::publish(), and self::disconnect() respectively.
+     * Executes `self::connect()`, `self::queue()`, `self::exchange`, and `self::bind()`, `self::publish()`, and `self::disconnect()` respectively.
      * @param string[] $messages An array of strings.
      * @return bool
      */

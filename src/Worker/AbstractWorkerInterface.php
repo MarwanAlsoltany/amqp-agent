@@ -20,59 +20,6 @@ use PhpAmqpLib\Wire\AMQPTable;
 interface AbstractWorkerInterface
 {
     /**
-     * The default prefix for naming that is used when no name is provided.
-     * @var array
-     */
-    public const PREFIX = 'maks.amqp.agent.';
-
-    /**
-     * The default connection options that the worker should use when no overrides are provided.
-     * @var array
-     */
-    public const CONNECTION_OPTIONS = [
-        'host'                   =>    'localhost',
-        'port'                   =>    5672,
-        'user'                   =>    'guest',
-        'password'               =>    'guest',
-        'vhost'                  =>    '/',
-        'insist'                 =>    false,
-        'login_method'           =>    'AMQPLAIN',
-        'login_response'         =>    null,
-        'locale'                 =>    'en_US',
-        'connection_timeout'     =>    120,
-        'read_write_timeout'     =>    120,
-        'context'                =>    null,
-        'keepalive'              =>    true,
-        'heartbeat'              =>    60,
-        'channel_rpc_timeout'    =>    120,
-        'ssl_protocol'           =>    null
-    ];
-
-    /**
-     * The default channel options that the worker should use when no overrides are provided.
-     * @var array
-     */
-    public const CHANNEL_OPTIONS = [
-        'channel_id'    =>    null
-    ];
-
-    /**
-     * The default queue options that the worker should use when no overrides are provided.
-     * @var array
-     */
-    public const QUEUE_OPTIONS = [
-        'queue'          =>    self::PREFIX . 'queue',
-        'passive'        =>    false,
-        'durable'        =>    true,
-        'exclusive'      =>    false,
-        'auto_delete'    =>    false,
-        'nowait'         =>    false,
-        'arguments'      =>    [],
-        'ticket'         =>    null
-    ];
-
-
-    /**
      * Closes the connection or the channel or both with RabbitMQ server.
      * @param AMQPStreamConnection|AMQPChannel|AMQPMessage ...$object The object that should be used to close the channel or the connection.
      * @return bool True on success.
@@ -100,7 +47,7 @@ interface AbstractWorkerInterface
     public function disconnect();
 
     /**
-     * Executes self::disconnect() and self::connect() respectively.
+     * Executes `self::disconnect()` and `self::connect()` respectively.
      * @return self
      */
     public function reconnect();
@@ -127,7 +74,7 @@ interface AbstractWorkerInterface
     public function setConnection(AMQPStreamConnection $connection);
 
     /**
-     * Opens a new connection to RabbitMQ server and returns it. Connections returned by this method pushed to connections array and are not set as default automaticly.
+     * Opens a new connection to RabbitMQ server and returns it. Connections returned by this method pushed to connections array and are not set as default automatically.
      * @return AMQPStreamConnection
      */
     public function getNewConnection(array $parameters = null): AMQPStreamConnection;
@@ -155,9 +102,9 @@ interface AbstractWorkerInterface
 
     /**
      * Fetches a channel object identified by the passed id (channel_id). If not found, it returns null.
-     * @param int $channleId The id of the channel wished to be fetched.
+     * @param int $channelId The id of the channel wished to be fetched.
      * @param AMQPStreamConnection $_connection [optional] The connection that should be used instead of the default worker's connection.
      * @return AMQPChannel|null
      */
-    public function getChannelById(int $channleId): ?AMQPChannel;
+    public function getChannelById(int $channelId): ?AMQPChannel;
 }

@@ -6,7 +6,13 @@ use MAKS\AmqpAgent\Worker\Publisher;
 
 /**
  * A singleton version of the Publisher class.
- * Static and constant properties are accessed via object operator (-> not ::).
+ * Static and constant properties are accessed via object operator (`->` not `::`).
+ *
+ * Example:
+ * ```
+ * $publisher = PublisherSingleton::getInstance();
+ * ```
+ *
  * @since 1.0.0
  * @api
  * @see \MAKS\AmqpAgent\Worker\Publisher for the full API.

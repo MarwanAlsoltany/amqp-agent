@@ -13,7 +13,7 @@ use Exception;
 use MAKS\AmqpAgent\Exception\SerializerViolationException;
 
 /**
- * A flexible serializer to be used in conjuction with the workers.
+ * A flexible serializer to be used in conjunction with the workers.
  * @since 1.0.0
  */
 class Serializer
@@ -45,7 +45,7 @@ class Serializer
 
 
     /**
-     * Serializer object constuctor.
+     * Serializer object constructor.
      * @param mixed $data [optional] The data to serialize. Defaults to null.
      * @param string $type [optional] The type of serialization. Defaults to JSON.
      */
@@ -99,7 +99,7 @@ class Serializer
         } elseif ($this->type === 'JSON') {
             return json_encode($this->data);
         }
-        throw new SerializerViolationException("\"{$this->type}\" is unsupported serilaization type. Supported types are (JSON, PHP)!");
+        throw new SerializerViolationException("\"{$this->type}\" is unsupported serialization type. Supported types are (JSON, PHP)!");
     }
 
     /**
@@ -122,7 +122,7 @@ class Serializer
         } elseif ($this->type === 'JSON') {
             return json_decode($this->data, true);
         }
-        throw new SerializerViolationException("\"{$this->type}\" is unsupported unserilaization type. Supported types are (JSON, PHP)!");
+        throw new SerializerViolationException("\"{$this->type}\" is unsupported unserialization type. Supported types are (JSON, PHP)!");
     }
 
     /**
@@ -166,7 +166,7 @@ class Serializer
     }
 
     /**
-     * Alias for self::serialize that does not accept any parameters (works with currently registered parameters).
+     * Alias for `self::serialize()` that does not accept any parameters (works with currently registered parameters).
      * @return string The serialized data.
      */
     public function getSerialized(): string
@@ -175,7 +175,7 @@ class Serializer
     }
 
     /**
-     * Alias for self::unserialize that does not accept any parameters (works with currently registered parameters).
+     * Alias for `self::unserialize()` that does not accept any parameters (works with currently registered parameters).
      * @return mixed The unserialized data.
      */
     public function getUnserialized()
