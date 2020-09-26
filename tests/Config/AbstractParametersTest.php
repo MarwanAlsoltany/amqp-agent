@@ -3,22 +3,8 @@
 namespace MAKS\AmqpAgent\Tests\Config;
 
 use MAKS\AmqpAgent\Tests\TestCase;
-use MAKS\AmqpAgent\Config\AbstractParameters;
+use MAKS\AmqpAgent\Tests\Mocks\AbstractParametersMock;
 use MAKS\AmqpAgent\Exception\ConstantDoesNotExistException;
-
-class AbstractParametersMock extends AbstractParameters
-{
-    public const TEST_CONST = [
-        'library' => 'amqp-agent',
-        'author' => 'Marwan Al-Soltany',
-        'stable' => true,
-        'rank' => 999999,
-        'keywords' => [
-            'rabbitmq',
-            'php-amqplib'
-        ]
-    ];
-}
 
 class AbstractParametersTest extends TestCase
 {

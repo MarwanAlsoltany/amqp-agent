@@ -3,21 +3,11 @@
 namespace MAKS\AmqpAgent\Tests\Worker;
 
 use MAKS\AmqpAgent\Tests\TestCase;
+use MAKS\AmqpAgent\Tests\Mocks\PublisherWithConstantMock;
+use MAKS\AmqpAgent\Tests\Mocks\PublisherSingletonWithConstantMock;
 use MAKS\AmqpAgent\Worker\Publisher;
 use MAKS\AmqpAgent\Worker\PublisherSingleton;
-use MAKS\AmqpAgent\Worker\AbstractWorkerSingleton;
 
-final class PublisherWithConstantMock extends Publisher
-{
-    public const TEST_CONSTANT = 'TEST';
-}
-final class PublisherSingletonWithConstantMock extends AbstractWorkerSingleton
-{
-    public function __construct()
-    {
-        $this->worker = new PublisherWithConstantMock();
-    }
-}
 class PublisherSingletonTest extends TestCase
 {
     /**
