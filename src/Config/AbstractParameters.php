@@ -49,13 +49,12 @@ abstract class AbstractParameters
     /**
      * Patches the passed array with another array.
      * @param array $partialArray The partial array.
-     * @param array $fullArray The full name.
+     * @param array $fullArray The full array.
      * @param bool $values Wether to return values only or an associative array.
      * @return array The final patched array.
      */
     final public static function patchWith(array $partialArray, array $fullArray, bool $values = false): array
     {
-        $final = null;
         $final = (
             array_merge(
                 $fullArray,
