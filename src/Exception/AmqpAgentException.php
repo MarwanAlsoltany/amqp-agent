@@ -55,9 +55,17 @@ class AmqpAgentException extends CoreException
             $message = strlen($message) ? $message . ' ' : $message;
         }
 
-        $error = $wrap === true
-            ? get_class($exception)
-            : (class_exists($wrap) && is_subclass_of($wrap, 'Exception') ? $wrap : static::class);
+        $error = is_string($wrap)
+            ? (
+                class_exists($wrap) && is_subclass_of($wrap, 'Exception')
+                    ? $wrap
+                    : static::class
+            )
+            : (
+                boolval($wrap)
+                    ? get_class($exception)
+                    : static::class
+            );
 
         throw new $error($message . (string)$exception->getMessage(), (int)$exception->getCode(), $exception);
     }
@@ -70,8 +78,8 @@ class AmqpAgentException extends CoreException
      * @param string|bool $wrap Wether to throw the exception using the passed class (FQN), in the same exception type (true), or wrap it with the class this method was called on (false). Any other value will be translated to false.
      * @return void
      */
-    public static function rethrowException(): void
+    public static function rethrowException(CoreException $exception, ?string $message = null, $wrap = false): void
     {
-        static::rethrow(...func_get_args());
+        static::rethrow($exception, $message, $wrap);
     }
 }
