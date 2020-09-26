@@ -129,9 +129,10 @@ class Logger
         }
 
         if (null === $directory) {
-            $fallback = $_SERVER["DOCUMENT_ROOT"];
             $backtrace = Utility::backtrace(['file']);
-            $directory = strlen($fallback) ? $fallback : (isset($backtrace['file']) ? dirname($backtrace['file']) : __DIR__);
+            $fallback1 = strlen($_SERVER["DOCUMENT_ROOT"]) ? $_SERVER["DOCUMENT_ROOT"] : null;
+            $fallback2 = isset($backtrace['file']) ? dirname($backtrace['file']) : __DIR__;
+            $directory = $fallback1 ?? $fallback2;
             Utility::emit(
                 [
                     'yellow' => sprintf('%s() was called without specifying a directory.', __METHOD__),
@@ -147,7 +148,7 @@ class Logger
 
         // create log file if it does not exist
         if (!is_file($file) && is_writable($directory)) {
-            $signature = 'Created by ' . __METHOD__ . date('() \on l jS \of F Y h:i:s A (Ymdhis)') . PHP_EOL;
+            $signature = 'Created by ' . __METHOD__ . date('() \o\\n l jS \of F Y h:i:s A (Ymdhis)') . PHP_EOL;
             file_put_contents($file, $signature, null, stream_context_create());
             chmod($file, 0775);
         }
