@@ -63,7 +63,7 @@ trait MagicMethodsExceptionsTrait
             sprintf(
                 'The called method "%s" with the parameter(s) "%s" does not exist!',
                 $method,
-                is_array($parameters) ? implode(', ', $parameters) : $parameters
+                implode(', ', $parameters)
             )
         );
     }
@@ -81,7 +81,7 @@ trait MagicMethodsExceptionsTrait
             sprintf(
                 'The called static method "%s" with the parameter(s) "%s" does not exist',
                 $method,
-                is_array($parameters) ? implode(', ', $parameters) : $parameters
+                implode(', ', $parameters)
             )
         );
     }
