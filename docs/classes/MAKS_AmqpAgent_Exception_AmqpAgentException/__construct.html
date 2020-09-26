@@ -65,7 +65,7 @@
             <a href="#tests">Tests</a>
           </li>
           <li>
-            <a href="../../source/Exception/AmqpAgentException.php.html#line25">Source</a>
+            <a href="../../source/Exception/AmqpAgentException.php.html#line26">Source</a>
           </li>
         </ul>
       </nav>
@@ -104,28 +104,33 @@
           <h3>Information</h3>
           <ul class="styled">
             <li>Coverage: 2/2 Lines (100%)</li>
-            <li>Tests: 17</li>
-            <li>Passed: 17 (100%)</li>
+            <li>Tests: 22</li>
+            <li>Passed: 22 (100%)</li>
           </ul>
           <h3>Tests</h3>
           <ul class="styled">
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\ClientTest::testAmqpAgentExceptionViaConstructorIsRaisedWhenUnSupportedArgumentIsProvided</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\ClientTest::testGetInstanceRaisesExceptionIfMemberCouldNotBeFetched</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\ConfigTest::testConfigFileNotFoundExceptionIsRaisedViaConstructor</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\ConfigTest::testConfigFileNotFoundExceptionIsRaisedViaSetConfigPath</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\AmqpAgentExceptionTest::testAmqpAgentExceptionCanBeCastedToString</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\AmqpAgentExceptionTest::testAmqpAgentExceptionRethrow</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenUnsuppotedTypeIsProvidedToSerialize</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenUnsuppotedTypeIsProvidedToUnserialize</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenTheObjectIsCalledAsAFunction</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Helper\SingletonTest::testSingletonExceptionIsRaisedWhenTryingToCloneTheSingleton</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Helper\SingletonTest::testSingletonExceptionIsRaisedWhenTryingToSerializeTheSingleton</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Helper\SingletonTest::testSingletonExceptionIsRaisedWhenTryingToUnerializeTheSingleton</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\AbstractWorkerTest::testMethodDoesNotExistExceptionIsRaisedWhenCallingANonExistenceMethod</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\AbstractWorkerTest::testMethodDoesNotExistExceptionIsRaisedWhenCallingANonExistenceStaticMethod</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\AbstractWorkerTest::testPropertyDoesNotExistExceptionIsRaisedViaPublicAccessNotation</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\AbstractWorkerTest::testPropertyDoesNotExistExceptionIsRaisedViaPublicAssignmentNotation</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Test\Worker\ConsumerTest::testConsumeRaisesAnExceptionIfInvalidCallbackIsPassed</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Exception\AmqpAgentExceptionTest::testAmqpAgentExceptionCanBeCastedToString</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Exception\AmqpAgentExceptionTest::testAmqpAgentExceptionRethrow</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Exception\AmqpAgentExceptionTest::testAmqpAgentExceptionRethrowViaAliasMethod</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Exception\AmqpAgentExceptionTest::testAmqpAgentExceptionRethrowWithMessageParameter</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Exception\AmqpAgentExceptionTest::testAmqpAgentExceptionRethrowStringWrapParameter</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Exception\AmqpAgentExceptionTest::testAmqpAgentExceptionRethrowBooleanWrapParameter</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\ClientTest::testAmqpAgentExceptionViaConstructorIsRaisedWhenUnSupportedArgumentIsProvided</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\ClientTest::testGetInstanceRaisesExceptionIfMemberCouldNotBeFetched</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\ConfigTest::testConfigFileNotFoundExceptionIsRaisedViaConstructor</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\ConfigTest::testConfigFileNotFoundExceptionIsRaisedViaSetConfigPath</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Config\AbstractParametersTest::testPatchThrowsAnExceptionForNoneExistingConstants</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenUnsuppotedTypeIsProvidedToSerialize</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenUnsuppotedTypeIsProvidedToUnserialize</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenTheObjectIsCalledAsAFunction</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SingletonTest::testSingletonExceptionIsRaisedWhenTryingToCloneTheSingleton</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SingletonTest::testSingletonExceptionIsRaisedWhenTryingToSerializeTheSingleton</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SingletonTest::testSingletonExceptionIsRaisedWhenTryingToUnerializeTheSingleton</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testMethodDoesNotExistExceptionIsRaisedWhenCallingANonExistenceMethod</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testMethodDoesNotExistExceptionIsRaisedWhenCallingANonExistenceStaticMethod</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testPropertyDoesNotExistExceptionIsRaisedViaPublicAccessNotation</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testPropertyDoesNotExistExceptionIsRaisedViaPublicAssignmentNotation</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testConsumeRaisesAnExceptionIfInvalidCallbackIsPassed</li>
           </ul>
         </div>
       </section>

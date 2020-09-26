@@ -2,7 +2,7 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <title>phpDox - MAKS\AmqpAgent\Helper\Logger::emit</title>
+    <title>phpDox - MAKS\AmqpAgent\Helper\Utility::time</title>
     <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
@@ -45,9 +45,9 @@
             <a href="../../classes.html#MAKS_AmqpAgent_Helper">MAKS\AmqpAgent\Helper</a>
           </li>
           <li class="separator">
-            <a title="MAKS\AmqpAgent\Helper\Logger" href="../../classes/MAKS_AmqpAgent_Helper_Logger.html">Logger</a>
+            <a title="MAKS\AmqpAgent\Helper\Utility" href="../../classes/MAKS_AmqpAgent_Helper_Utility.html">Utility</a>
           </li>
-          <li class="separator">emit</li>
+          <li class="separator">time</li>
         </ul>
       </div>
       <nav class="box">
@@ -68,53 +68,54 @@
             <a href="#tests">Tests</a>
           </li>
           <li>
-            <a href="../../source/Helper/Logger.php.html#line179">Source</a>
+            <a href="../../source/Helper/Utility.php.html#line26">Source</a>
           </li>
         </ul>
       </nav>
       <section>
-        <h1><small>MAKS\AmqpAgent\Helper\Logger::</small>emit</h1>
-        <h4>Generates a user-level notice, warning, or an error with styling.</h4>
+        <h1><small>MAKS\AmqpAgent\Helper\Utility::</small>time</h1>
+        <h4>Returns a DateTime object with the right time zone.</h4>
         <p/>
         <ul/>
         <h2 id="signature">Signature</h2>
         <div class="styled synopsis">
-          <code>protected function emit([
-        $text = NULL,
+          <code>public function time([string
+        $time = 'now',
             [string
-        $color = 'yellow',
-            [
-        $type = E_USER_NOTICE]]] )
+        $timezone = NULL]] )
             </code>
         </div>
         <h2 id="parameterlist">Parameters</h2>
         <dl class="styled">
-          <dt><code>$text</code>
-                —
-                </dt>
-          <dd/>
-          <dt><code>$color</code>
+          <dt><code>$time</code>
                 —
                 string</dt>
-          <dd/>
-          <dt><code>$type</code>
+          <dd>A valid php date/time string.</dd>
+          <dt><code>$timezone</code>
                 —
-                </dt>
-          <dd/>
+                string</dt>
+          <dd>A valid php timezone string.</dd>
         </dl>
         <h2 id="return">Returns</h2>
         <dl class="styled">
-          <dt>bool</dt>
-          <dd>True if error type is accepted.<br/>
+          <dt>DateTime</dt>
+          <dd><br/>
         </dd>
         </dl>
         <h2 id="tests">Test Coverage</h2>
         <div class="styled">
           <h3>Information</h3>
           <ul class="styled">
-            <li>Coverage: 0/0 Lines (100%)</li>
-            <li>Tests: 0</li>
-            <li>Passed: 0 (0%)</li>
+            <li>Coverage: 7/7 Lines (100%)</li>
+            <li>Tests: 4</li>
+            <li>Passed: 4 (100%)</li>
+          </ul>
+          <h3>Tests</h3>
+          <ul class="styled">
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\UtilityTest::testTimeWithAllParameters</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\LoggerTest::testGeneratingALogFileIfItDoesNotExistAndWritingToIt</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\LoggerTest::testStaticCallingAndInsufficientCalling</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\LoggerTest::testGettersAndSetters</li>
           </ul>
         </div>
       </section>

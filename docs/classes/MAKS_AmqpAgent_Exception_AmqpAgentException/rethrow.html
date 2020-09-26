@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MAKS\AmqpAgent\Exception\AmqpAgentException::rethrow</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.html">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.html#MAKS_AmqpAgent_Exception">MAKS\AmqpAgent\Exception</a>
+          </li>
+          <li class="separator">
+            <a title="MAKS\AmqpAgent\Exception\AmqpAgentException" href="../../classes/MAKS_AmqpAgent_Exception_AmqpAgentException.html">AmqpAgentException</a>
+          </li>
+          <li class="separator">rethrow</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="#return">Return</a>
+          </li>
+          <li>
+            <a href="#tests">Tests</a>
+          </li>
+          <li>
+            <a href="../../source/Exception/AmqpAgentException.php.html#line47">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>MAKS\AmqpAgent\Exception\AmqpAgentException::</small>rethrow</h1>
+        <h4>Rethrows an exception with an additional message.</h4>
+        <p/>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function rethrow(<a title="Exception" href="../../classes/Exception.html">Exception</a>
+        $exception,
+            [string
+        $message = NULL,
+            [boolean
+        $wrap = false]] )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$exception</code>
+                —
+                <a title="Exception" href="../../classes/Exception.html">Exception</a></dt>
+          <dd>The exception to rethrow.<br/><br/><br/>      </dd>
+          <dt><code>$message</code>
+                —
+                string</dt>
+          <dd>An additional message to add to the wrapping exception before the message of the passed exception.<br/><br/><br/>      </dd>
+          <dt><code>$wrap</code>
+                —
+                boolean</dt>
+          <dd>Wether to throw the exception using the passed class (FQN), in the same exception type (true), or wrap it with the class this method was called on (false). Any other value will be translated to false.<br/><br/><br/>      </dd>
+        </dl>
+        <h2 id="return">Returns</h2>
+        <dl class="styled">
+          <dt>void</dt>
+          <dd><br/>
+        </dd>
+        </dl>
+        <h2 id="tests">Test Coverage</h2>
+        <div class="styled">
+          <h3>Information</h3>
+          <ul class="styled">
+            <li>Coverage: 14/14 Lines (100%)</li>
+            <li>Tests: 5</li>
+            <li>Passed: 5 (100%)</li>
+          </ul>
+          <h3>Tests</h3>
+          <ul class="styled">
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Exception\AmqpAgentExceptionTest::testAmqpAgentExceptionRethrow</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Exception\AmqpAgentExceptionTest::testAmqpAgentExceptionRethrowViaAliasMethod</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Exception\AmqpAgentExceptionTest::testAmqpAgentExceptionRethrowWithMessageParameter</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Exception\AmqpAgentExceptionTest::testAmqpAgentExceptionRethrowStringWrapParameter</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Exception\AmqpAgentExceptionTest::testAmqpAgentExceptionRethrowBooleanWrapParameter</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>
