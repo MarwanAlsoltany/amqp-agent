@@ -11,6 +11,7 @@ namespace MAKS\AmqpAgent;
 use MAKS\AmqpAgent\Config;
 use MAKS\AmqpAgent\Worker\Publisher;
 use MAKS\AmqpAgent\Worker\Consumer;
+use MAKS\AmqpAgent\Helper\Utility;
 use MAKS\AmqpAgent\Helper\Serializer;
 use MAKS\AmqpAgent\Helper\Logger;
 use MAKS\AmqpAgent\Exception\AmqpAgentException;
@@ -93,23 +94,45 @@ class Client
 
 
     /**
-     * Returns an instance of class by its name.
-     * @param string $member Property name.
-     * @return Config|Publisher|Consumer|Serializer|Logger
+     * Returns an instance of a class by its name (lowercase, UPPERCASE, PascalCase, camelCase, dot.case, kebab-case, or snake_case representation of class name).
+     * @param string $member Member name. Check out `self::gettable()` for available members.
+     * @return Config|Publisher|ClientEndpoint|ServerEndpoint|Consumer|Serializer|Logger
      * @throws AmqpAgentException
      */
     public function get(string $member)
     {
-        $method = __FUNCTION__ . ucfirst(strtolower($member));
+        $method = __FUNCTION__ . preg_replace('/[\.\-_]+/', '', ucwords(strtolower($member), '.-_'));
 
         if (method_exists($this, $method)) {
             return $this->{$method}();
         }
 
+        $available = Utility::collapse($this->gettable());
         throw new AmqpAgentException(
-            "The requested member with the name \"{$member}\" does not exist!"
+            "The requested member with the name \"{$member}\" does not exist! Available members are: {$available}."
         );
     }
+
+
+    /**
+     * Returns an array of available members that can be obtained via `self::get()`.
+     * @return array
+     */
+    public static function gettable(): array
+    {
+        $methods = get_class_methods(static::class);
+        $gettable = [];
+        $separator = '.-_'[rand(0,2)];
+
+        foreach ($methods as $method) {
+            if (preg_match('/get[A-Z][a-z]+/', $method)) {
+                $gettable[] = strtolower(preg_replace(['/get/', '/([a-z])([A-Z])/'], ['', '$1'.$separator.'$2'], $method));
+            }
+        }
+
+        return $gettable;
+    }
+
 
     /**
      * Returns an instance of the Publisher class.
