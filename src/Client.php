@@ -96,7 +96,7 @@ class Client
     /**
      * Returns an instance of a class by its name (lowercase, UPPERCASE, PascalCase, camelCase, dot.case, kebab-case, or snake_case representation of class name).
      * @param string $member Member name. Check out `self::gettable()` for available members.
-     * @return Config|Publisher|ClientEndpoint|ServerEndpoint|Consumer|Serializer|Logger
+     * @return Config|Publisher|Consumer|Serializer|Logger
      * @throws AmqpAgentException
      */
     public function get(string $member)
@@ -122,7 +122,7 @@ class Client
     {
         $methods = get_class_methods(static::class);
         $gettable = [];
-        $separator = '.-_'[rand(0,2)];
+        $separator = ('.-_')[rand(0, 2)];
 
         foreach ($methods as $method) {
             if (preg_match('/get[A-Z][a-z]+/', $method)) {
