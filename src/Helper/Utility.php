@@ -38,9 +38,9 @@ final class Utility
 
     /**
      * Generates a user-level notice, warning, or an error with styling.
-     * @param array|string|null [optional] $text The text wished to be styled (when passing an array, if array key is a valid color it will style this array element value with its key).
-     * @param string [optional] $color Case sensitive ANSI color name in this list [black, red, green, yellow, magenta, cyan, white, default] (when passing array, this parameter will be the fallback).
-     * @param int [optional] $type Error type (E_USER family). 1024 E_USER_NOTICE, 512 E_USER_WARNING, 256 E_USER_ERROR, 16384 E_USER_DEPRECATED.
+     * @param array|string|null $text [optional] The text wished to be styled (when passing an array, if array key is a valid color it will style this array element value with its key).
+     * @param string $color [optional] Case sensitive ANSI color name in this list [black, red, green, yellow, magenta, cyan, white, default] (when passing array, this parameter will be the fallback).
+     * @param int $type [optional] Error type (E_USER family). 1024 E_USER_NOTICE, 512 E_USER_WARNING, 256 E_USER_ERROR, 16384 E_USER_DEPRECATED.
      * @return bool True if error type is accepted.
      * @codeCoverageIgnore
      */
@@ -103,7 +103,7 @@ final class Utility
     /**
      * Returns the passed key(s) from the backtrace. Note that the backtrace is reversed (last is first).
      * @param string|array $pluck The key to to get as a string or an array of strings (keys) from this list [file, line, function, class, type, args].
-     * @param int [optional] $offset The offset of the backtrace (last executed is index at 0).
+     * @param int $offset [optional] The offset of the backtrace (last executed is index at 0).
      * @return string|int|array|null A string or int if a string is passed, an array if an array is passed and null if no match was found.
      */
     public static function backtrace($pluck, int $offset = 0)
