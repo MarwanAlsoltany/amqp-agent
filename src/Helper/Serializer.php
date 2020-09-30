@@ -58,7 +58,7 @@ class Serializer
     /**
      * Executes when calling the class like a function.
      * @param mixed $data The data to (un)serialize.
-     * @param string [optional] $type The type of (un)serialization. Defaults to JSON.
+     * @param string $type [optional] The type of (un)serialization. Defaults to JSON.
      * @return mixed Serialized or unserialized data depending on the passed parameters.
      */
     public function __invoke($data, ?string $type = self::DEFAULT_TYPE)
@@ -81,8 +81,8 @@ class Serializer
 
     /**
      * Serializes the passed or registered data. When no parameters are passed, it uses the registered ones.
-     * @param mixed [optional] $data The data to serialize.
-     * @param string [optional] $type The type of serialization.
+     * @param mixed $data [optional] The data to serialize.
+     * @param string $type [optional] The type of serialization.
      * @return string|false Returns false on failure.
      * @throws SerializerViolationException
      */
@@ -104,8 +104,8 @@ class Serializer
 
     /**
      * Unserializes the passed or registered data. When no parameters are passed, it uses the registered ones.
-     * @param string [optional] $data The data to unserialize.
-     * @param string [optional] $type The type of unserialization.
+     * @param string $data [optional] The data to unserialize.
+     * @param string $type [optional] The type of unserialization.
      * @return mixed A PHP type on success or false or null on failure.
      * @throws SerializerViolationException
      */
