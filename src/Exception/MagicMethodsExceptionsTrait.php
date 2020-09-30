@@ -8,6 +8,7 @@
 
 namespace MAKS\AmqpAgent\Exception;
 
+use MAKS\AmqpAgent\Helper\Utility;
 use MAKS\AmqpAgent\Exception\PropertyDoesNotExistException;
 use MAKS\AmqpAgent\Exception\MethodDoesNotExistException;
 
@@ -63,7 +64,7 @@ trait MagicMethodsExceptionsTrait
             sprintf(
                 'The called method "%s" with the parameter(s) "%s" does not exist!',
                 $method,
-                implode(', ', $parameters)
+                Utility::collapse($parameters)
             )
         );
     }
@@ -81,7 +82,7 @@ trait MagicMethodsExceptionsTrait
             sprintf(
                 'The called static method "%s" with the parameter(s) "%s" does not exist',
                 $method,
-                implode(', ', $parameters)
+                Utility::collapse($parameters)
             )
         );
     }

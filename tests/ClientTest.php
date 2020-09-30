@@ -77,4 +77,11 @@ class ClientTest extends TestCase
         $this->expectException(AmqpAgentException::class);
         $error = $this->agent->get('worker');
     }
+
+    public function testGettableReturnsAnArrayWithExpectedValues()
+    {
+        $array = $this->agent->gettable();
+        $this->assertIsArray($array);
+        $this->assertTrue(in_array('config', $array));
+    }
 }
