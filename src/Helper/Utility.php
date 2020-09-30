@@ -138,22 +138,16 @@ final class Utility
         foreach ($pieces as $piece) {
             if (is_array($piece)) {
                 $flat[] = self::collapse($piece);
-                // [...$oneOfTheTypesBelow]
             } elseif (is_object($piece)) {
                 $flat[] = get_class($piece) ?? 'object';
-                // 'Namespace\Class' or object
             } elseif (is_string($piece)) {
                 $flat[] = "'{$piece}'";
-                // 'string'
             } elseif (is_bool($piece)) {
                 $flat[] = $piece ? 'true' : 'false';
-                // true or false
             } elseif (is_null($piece)) {
                 $flat[] = 'null';
-                // null
             } else {
                 $flat[] = $piece;
-                // number
             }
         }
 
