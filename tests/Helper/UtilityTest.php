@@ -32,4 +32,29 @@ class UtilityTest extends TestCase
         $backtrace = Utility::backtrace('function', 999999);
         $this->assertNull($backtrace);
     }
+
+    public function testCollapseWithAllPossibleDataTypes()
+    {
+        $array = [
+            null,
+            true,
+            false,
+            97,
+            9.7,
+            'string',
+            ['a', 'b', 'c'],
+            new \stdClass
+        ];
+
+        $string = Utility::collapse($array);
+
+        $this->assertStringContainsString('null', $string);
+        $this->assertStringContainsString('true', $string);
+        $this->assertStringContainsString('false', $string);
+        $this->assertStringContainsString(strval(97), $string);
+        $this->assertStringContainsString(strval(9.7), $string);
+        $this->assertStringContainsString("'string'", $string);
+        $this->assertStringContainsString("['a', 'b', 'c']", $string);
+        $this->assertStringContainsString('stdClass', $string);
+    }
 }
