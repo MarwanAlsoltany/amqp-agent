@@ -117,34 +117,30 @@ class Logger
         $passed = false;
 
         if (null === $filename) {
-            $filename = 'maks-amqp-agent-log-' . date("Ymd");
+            $filename = self::getFallbackFilename();
             Utility::emit(
                 [
                     'yellow' => sprintf('%s() was called without specifying a filename.', __METHOD__),
                     'green'  => sprintf('Log file will be named: "%s".', $filename)
                 ],
                 null,
-                1024
+                E_USER_NOTICE
             );
         }
 
         if (null === $directory) {
-            $backtrace = Utility::backtrace(['file']);
-            $fallback1 = strlen($_SERVER["DOCUMENT_ROOT"]) ? $_SERVER["DOCUMENT_ROOT"] : null;
-            $fallback2 = isset($backtrace['file']) ? dirname($backtrace['file']) : __DIR__;
-            $directory = $fallback1 ?? $fallback2;
+            $directory = self::getFallbackDirectory();
             Utility::emit(
                 [
                     'yellow' => sprintf('%s() was called without specifying a directory.', __METHOD__),
                     'red'    => sprintf('Log file will be written in: "%s".', $directory)
                 ],
                 null,
-                512
+                E_USER_WARNING
             );
         }
 
-        $file = $directory . DIRECTORY_SEPARATOR . $filename . '.log';
-        $file = preg_replace("/\/+|\\+/", DIRECTORY_SEPARATOR, $file);
+        $file = self::getNormalizedPath($directory, $filename);
 
         // create log file if it does not exist
         if (!is_file($file) && is_writable($directory)) {
@@ -180,5 +176,46 @@ class Logger
         }
 
         return $passed;
+    }
+
+    /**
+     * Returns a fallback filename based on date.
+     * @since 1.2.1
+     * @return string
+     */
+    protected static function getFallbackFilename(): string
+    {
+        return 'maks-amqp-agent-log-' . date("Ymd");
+    }
+
+    /**
+     * Returns a fallback writing directory based on caller.
+     * @since 1.2.1
+     * @return string
+     */
+    protected static function getFallbackDirectory(): string
+    {
+        $backtrace = Utility::backtrace(['file'], 0);
+        $fallback1 = strlen($_SERVER["DOCUMENT_ROOT"]) ? $_SERVER["DOCUMENT_ROOT"] : null;
+        $fallback2 = isset($backtrace['file']) ? dirname($backtrace['file']) : __DIR__;
+
+        return $fallback1 ?? $fallback2;
+    }
+
+    /**
+     * Returns a normalized path based on OS.
+     * @since 1.2.1
+     * @param string $directory The directory.
+     * @param string $filename The Filename.
+     * @return string The full normalized path.
+     */
+    protected static function getNormalizedPath(string $directory, string $filename): string
+    {
+        $ext = '.log';
+        $filename = substr($filename, -strlen($ext)) === $ext ? $filename : $filename . $ext;
+        $directory = $directory . DIRECTORY_SEPARATOR;
+        $path = $directory . $filename;
+
+        return preg_replace("/\/+|\\+/", DIRECTORY_SEPARATOR,$path);
     }
 }
