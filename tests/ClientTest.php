@@ -83,6 +83,5 @@ class ClientTest extends TestCase
         $array = $this->agent->gettable();
         $this->assertIsArray($array);
         $this->assertTrue(in_array('config', $array));
-
     }
 }
