@@ -84,3 +84,21 @@ All notable changes to **AMQP Agent** will be documented in this file.
   - Remove `*Mock` classes from `*Test` classes and move them to their own namespace.
 - Rebuild documentation.
 - Update formatting of `CHANGELOG.md`.
+
+
+## [1.2.1] - 2020-09-30
+- Update `composer.json`:
+    - Update `branch-alias` version.
+- Update `Utility` class:
+    - Add `collapse()` method.
+- Update `Client` class:
+    - Add `gettable()` method.
+    - Refactor `get()` method.
+- Refactor `Logger` class:
+    - Add `getFallbackFilename()` method.
+    - Add `getFallbackDirectory()` method.
+    - Add `getNormalizedPath()` method.
+    - Refactor `log()` method to make use of the newly created methods.
+- Update `MagicMethodsExceptionsTrait`:
+  - Update exceptions messages to prevent notices when passing an array as an argument to magic methods.
+- Rebuild documentation.
