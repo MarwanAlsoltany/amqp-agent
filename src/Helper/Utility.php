@@ -135,7 +135,7 @@ final class Utility
     {
         $flat = [];
 
-        foreach($pieces as $piece) {
+        foreach ($pieces as $piece) {
             if (is_array($piece)) {
                 $flat[] = self::collapse($piece);
                 // [...$oneOfTheTypesBelow]
@@ -145,7 +145,7 @@ final class Utility
             } elseif (is_string($piece)) {
                 $flat[] = "'{$piece}'";
                 // 'string'
-            }  elseif (is_bool($piece)) {
+            } elseif (is_bool($piece)) {
                 $flat[] = $piece ? 'true' : 'false';
                 // true or false
             } elseif (is_null($piece)) {
