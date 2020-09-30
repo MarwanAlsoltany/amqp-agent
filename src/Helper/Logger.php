@@ -216,6 +216,6 @@ class Logger
         $directory = $directory . DIRECTORY_SEPARATOR;
         $path = $directory . $filename;
 
-        return preg_replace("/\/+|\\+/", DIRECTORY_SEPARATOR,$path);
+        return preg_replace("/\/+|\\+/", DIRECTORY_SEPARATOR, $path);
     }
 }
