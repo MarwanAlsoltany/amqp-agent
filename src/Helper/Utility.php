@@ -124,4 +124,39 @@ final class Utility
 
         return is_string($plucked) || is_array($plucked) && count($plucked, COUNT_RECURSIVE) ? $plucked : null;
     }
+
+    /**
+     * Returns a string representation of an array by imploding it recursively with common formatting of data-types.
+     * @since 1.2.1
+     * @param array $pieces The array to implode.
+     * @return string
+     */
+    public static function collapse(array $pieces): string
+    {
+        $flat = [];
+
+        foreach($pieces as $piece) {
+            if (is_array($piece)) {
+                $flat[] = self::collapse($piece);
+                // [...$oneOfTheTypesBelow]
+            } elseif (is_object($piece)) {
+                $flat[] = get_class($piece) ?? 'object';
+                // 'Namespace\Class' or object
+            } elseif (is_string($piece)) {
+                $flat[] = "'{$piece}'";
+                // 'string'
+            }  elseif (is_bool($piece)) {
+                $flat[] = $piece ? 'true' : 'false';
+                // true or false
+            } elseif (is_null($piece)) {
+                $flat[] = 'null';
+                // null
+            } else {
+                $flat[] = $piece;
+                // number
+            }
+        }
+
+        return '[' . implode(', ', $flat). ']';
+    }
 }
