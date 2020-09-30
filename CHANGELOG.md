@@ -101,4 +101,5 @@ All notable changes to **AMQP Agent** will be documented in this file.
     - Refactor `log()` method to make use of the newly created methods.
 - Update `MagicMethodsExceptionsTrait`:
   - Update exceptions messages to prevent notices when passing an array as an argument to magic methods.
+- Fix coding style issues in different places.
 - Rebuild documentation.
