@@ -103,3 +103,35 @@ All notable changes to **AMQP Agent** will be documented in this file.
   - Update exceptions messages to prevent notices when passing an array as an argument to magic methods.
 - Fix coding style issues in different places.
 - Rebuild documentation.
+
+
+## [1.2.2] - 2020-11-29
+- Update `Config` class:
+    - Remove deprecated method `get()`.
+    - Remove `$configFlat` property and all of its references.
+    - Update `$configPath` property to be a realpath.
+    - Add `has()` method to quickly check if a config value exists.
+    - Add `get()` method to quickly get a config value (new functionality, should be backwards compatible).
+    - Add `set()` method to quickly set a config value.
+- Update `Serializer` class:
+    - Add serializations types as class constants.
+    - Add methods to assert for PHP und JSON (un)serializations errors.
+    - Refactor `serialize()` and `unserialize()` methods to use assertions.
+    - Refactor `setType()` method to check if the type is supported.
+    - Add a new `$strict` property to determine serialization strictness and its corresponding `getStrict()` and `setStrict()` methods.
+    - Add `$strict` parameter to `serialize()` and `unserialize()` methods.
+    - Add `deserialize()` method as an alias for `unserialize()`.
+    - Refactor different methods to make use of available setters.
+    - Update DocBlocks und Exceptions Messages of different methods.
+- Update `Utility` class:
+    - Add `objectToArray()` method.
+    - Add `arrayToObject()` method.
+    - Add `getArrayValueByKey()` method.
+    - Add `setArrayValueByKey()` method.
+- Update `Logger` class:
+    - Fix an issue with `log()` method when checking for file size.
+- Update tests
+  - Add new tests to the newly created methods.
+  - Update old tests to cover the new changes.
+- Fix coding style issues in different places.
+- Rebuild documentation.
