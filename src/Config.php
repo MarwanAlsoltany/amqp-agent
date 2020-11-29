@@ -9,6 +9,7 @@
 namespace MAKS\AmqpAgent;
 
 use Exception;
+use MAKS\AmqpAgent\Helper\Utility;
 use MAKS\AmqpAgent\Exception\ConfigFileNotFoundException;
 
 /**
@@ -125,6 +126,46 @@ final class Config
         }
 
         unset($config);
+    }
+
+    /**
+     * Checks wether a value exists in the configuration array via dot-notation representation.
+     * @since 1.2.2
+     * @param string $key The dotted key representation.
+     * @return bool True if key is set otherwise false.
+     */
+    public function has(string $key): bool
+    {
+        $value = Utility::getArrayValueByKey($this->config, $key, null);
+
+        return isset($value);
+    }
+
+    /**
+     * Gets a value of a key from the configuration array via dot-notation representation.
+     * @since 1.2.2
+     * @param string $key The dotted key representation.
+     * @return mixed The requested value or null.
+     */
+    public function get(string $key)
+    {
+        $value = Utility::getArrayValueByKey($this->config, $key);
+
+        return $value;
+    }
+
+    /**
+     * Sets a value of a key from the configuration array via dot-notation representation.
+     * @since 1.2.2
+     * @param string $key The dotted key representation.
+     * @param string $value The value to set.
+     * @return self
+     */
+    public function set(string $key, $value)
+    {
+        Utility::setArrayValueByKey($this->config, $key, $value);
+
+        return $this;
     }
 
     /**
