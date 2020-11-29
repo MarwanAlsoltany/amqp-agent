@@ -311,7 +311,7 @@ class Serializer
     /**
      * Asserts that `serialize()` and/or `unserialize()` was executed successfully depending on strictness of the Serializer.
      * @since 1.2.2
-     * @param $callback The (un)serialization callback to execute.
+     * @param Closure $callback The (un)serialization callback to execute.
      * @return void
      */
     protected function assertNoPhpSerializationError(Closure $callback): void
@@ -337,7 +337,7 @@ class Serializer
     /**
      * Asserts that `json_encode()` and/or `json_decode()` was executed successfully depending on strictness of the Serializer.
      * @since 1.2.2
-     * @param $callback The (un)serialization callback to execute.
+     * @param Closure $callback The (un)serialization callback to execute.
      * @return void
      */
     protected function assertNoJsonSerializationError(Closure $callback): void
@@ -347,21 +347,11 @@ class Serializer
         try {
             $callback();
         } catch (Exception $error) {
-            if ($this->strict) {
-                throw new SerializerViolationException(
-                    sprintf(
-                        'An error occurred while executing json_encode() or json_decode(): %s',
-                        (string)$error->getMessage()
-                    ),
-                    (int)$error->getCode(),
-                    $error
-                );
-            }
             // JSON functions do not throw exceptions on PHP < v7.3.0
             // The code down below takes care of throwing the exception.
         }
 
-        if ($this->strict && version_compare(PHP_VERSION, '7.3.0', '<')) {
+        if ($this->strict) {
             $errorCode = json_last_error();
             if ($errorCode !== JSON_ERROR_NONE) {
                 $errorMessage = json_last_error_msg();
