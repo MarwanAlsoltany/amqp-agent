@@ -40,16 +40,18 @@ abstract class Example
     public static function callback(AMQPMessage $message): bool
     {
         if (!isset(self::$serializer)) {
-            self::$serializer = new Serializer;
+            self::$serializer = new Serializer();
         }
 
+        $data = null;
+
         try {
-            $data = self::$serializer->unserialize($message->body, 'PHP');
+            $data = self::$serializer->unserialize($message->body, 'PHP', true);
         } catch (Exception $e) {
-            $data = self::$serializer->unserialize($message->body, 'JSON');
-        } catch (Exception $e) { // @codeCoverageIgnore
-            // Ignore error silently.
-        } // @codeCoverageIgnore
+            // the strict value of the serializer is false here
+            // because the data can also be plain-text
+            $data = self::$serializer->unserialize($message->body, 'JSON', false);
+        }
 
         Consumer::ack($message);
 
