@@ -223,14 +223,12 @@ final class Utility
         if (strpos($key, '.') !== false) {
             $parts = explode('.', $key);
 
-            if (!empty($parts)) {
-                foreach ($parts as $part) {
-                    if (!array_key_exists($part, $data)) {
-                        return $default;
-                    }
-
-                    $data = &$data[$part];
+            foreach ($parts as $part) {
+                if (!array_key_exists($part, $data)) {
+                    return $default;
                 }
+
+                $data = &$data[$part];
             }
 
             return $data;
