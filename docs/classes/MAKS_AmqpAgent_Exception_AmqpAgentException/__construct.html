@@ -104,8 +104,8 @@
           <h3>Information</h3>
           <ul class="styled">
             <li>Coverage: 2/2 Lines (100%)</li>
-            <li>Tests: 22</li>
-            <li>Passed: 22 (100%)</li>
+            <li>Tests: 26</li>
+            <li>Passed: 26 (100%)</li>
           </ul>
           <h3>Tests</h3>
           <ul class="styled">
@@ -122,7 +122,10 @@
             <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Config\AbstractParametersTest::testPatchThrowsAnExceptionForNoneExistingConstants</li>
             <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenUnsuppotedTypeIsProvidedToSerialize</li>
             <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenUnsuppotedTypeIsProvidedToUnserialize</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenMalformedPhpDataIsProvidedToUnserialize</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenMalformedJsonDataIsProvidedToUnserialize</li>
             <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenTheObjectIsCalledAsAFunction</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenTheObjectIsCalledAsAFunctionWithMalformData</li>
             <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SingletonTest::testSingletonExceptionIsRaisedWhenTryingToCloneTheSingleton</li>
             <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SingletonTest::testSingletonExceptionIsRaisedWhenTryingToSerializeTheSingleton</li>
             <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SingletonTest::testSingletonExceptionIsRaisedWhenTryingToUnerializeTheSingleton</li>
@@ -131,6 +134,7 @@
             <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testPropertyDoesNotExistExceptionIsRaisedViaPublicAccessNotation</li>
             <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\AbstractWorkerTest::testPropertyDoesNotExistExceptionIsRaisedViaPublicAssignmentNotation</li>
             <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testConsumeRaisesAnExceptionIfInvalidCallbackIsPassed</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testConsumingMessagesFromRabbitMQServerUsingConfigCallback</li>
           </ul>
         </div>
       </section>

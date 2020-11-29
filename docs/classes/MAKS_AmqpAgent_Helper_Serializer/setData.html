@@ -68,13 +68,13 @@
             <a href="#tests">Tests</a>
           </li>
           <li>
-            <a href="../../source/Helper/Serializer.php.html#line133">Source</a>
+            <a href="../../source/Helper/Serializer.php.html#line221">Source</a>
           </li>
         </ul>
       </nav>
       <section>
         <h1><small>MAKS\AmqpAgent\Helper\Serializer::</small>setData</h1>
-        <h4>Registers the passed data in the class.</h4>
+        <h4>Registers the passed data in the object.</h4>
         <p/>
         <ul/>
         <h2 id="signature">Signature</h2>
@@ -101,12 +101,43 @@
           <h3>Information</h3>
           <ul class="styled">
             <li>Coverage: 2/2 Lines (100%)</li>
-            <li>Tests: 1</li>
-            <li>Passed: 1 (100%)</li>
+            <li>Tests: 32</li>
+            <li>Passed: 32 (100%)</li>
           </ul>
           <h3>Tests</h3>
           <ul class="styled">
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\ClientTest::testGetSerializerInstance</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerWhenSerializeMethodIsCalled</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerWhenUnserializeMethodIsCalled</li>
             <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerGettersAndSetters</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenUnsuppotedTypeIsProvidedToSerialize</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenUnsuppotedTypeIsProvidedToUnserialize</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenMalformedPhpDataIsProvidedToUnserialize</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenMalformedJsonDataIsProvidedToUnserialize</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenTheObjectIsCalledAsAFunction</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenTheObjectIsCalledAsAFunctionWithMalformData</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerWhenTheObjectIsCalledAsAFunction</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testQueueReturnsSelfAndOverrideParametersTakeEffect</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testExchangeReturnsSelfAndOverrideParametersTakeEffect</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testBindReturnsSelfAndOverrideParametersTakeEffect</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testMessageReturnsAnAMQPMessageAndThePassedParametersWorkAsExpected</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testPublishRaisesAnExceptionIfUnexpectedParameterIsPassed</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testPublishBatchAndPublishPublishesMessagesToRabbitMQServerAndOverrideParametersTakeEffect</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testPublishBatchRaisesAnExceptionIfUnexpectedParameterIsPassed</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testPublishPublishesMessagesToRabbitMQServerWithDifferentTypesOfMessages</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testPublishingMessagesToRabbitMQServerViaWorkMethod</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testQosReturnsSelfAndOverrideParametersTakeEffect</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testIsConsumingReturnsFalseWhenCalledOnAnIdleChannel</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testConsumeConsumesMessagesFromRabbitMQServerAndAknowledgesThem</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testConsumeRaisesAnExceptionIfInvalidCallbackIsPassed</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testWaitForAllWaitsForMultipleChannelAndReturnsSelf</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testConsumingMessagesFromRabbitMQServerViaWorkMethod</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testGetGetsAMessageFromRabbitMQServer</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testGetGetsMessagesFromRabbitMQServerAndUnaknowledgesThem</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testCancelCancelsAConsumerAndRedeiliversMessagesToRabbitMQServer</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testRecoverRedeliversAllUnaknowledgeMessagesToRabbitMQServer</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testRejectRejectsAMessageAndRedeiliversMessagesToRabbitMQServer</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testConsumingMessagesFromRabbitMQServerUsingConfigCallback</li>
           </ul>
         </div>
       </section>

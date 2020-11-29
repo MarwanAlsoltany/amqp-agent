@@ -71,7 +71,7 @@
             <a href="#tests">Tests</a>
           </li>
           <li>
-            <a href="../../source/Helper/Serializer.php.html#line112">Source</a>
+            <a href="../../source/Helper/Serializer.php.html#line173">Source</a>
           </li>
         </ul>
       </nav>
@@ -85,7 +85,9 @@
           <code>public function unserialize([string
         $data = NULL,
             [string
-        $type = NULL]] )
+        $type = NULL,
+            [bool
+        $strict = NULL]]] )
             </code>
         </div>
         <h2 id="parameterlist">Parameters</h2>
@@ -93,11 +95,15 @@
           <dt><code>$data</code>
                 —
                 string</dt>
-          <dd/>
+          <dd>[optional] The data to unserialize.</dd>
           <dt><code>$type</code>
                 —
                 string</dt>
-          <dd/>
+          <dd>[optional] The type of unserialization.</dd>
+          <dt><code>$strict</code>
+                —
+                bool</dt>
+          <dd>[optional] Wether or not to assert that no errors have occurred while executing unserialization functions.<br/><br/><br/>      </dd>
         </dl>
         <h2 id="return">Returns</h2>
         <dl class="styled">
@@ -117,16 +123,18 @@
         <div class="styled">
           <h3>Information</h3>
           <ul class="styled">
-            <li>Coverage: 9/9 Lines (100%)</li>
-            <li>Tests: 8</li>
-            <li>Passed: 8 (100%)</li>
+            <li>Coverage: 13/13 Lines (100%)</li>
+            <li>Tests: 10</li>
+            <li>Passed: 10 (100%)</li>
           </ul>
           <h3>Tests</h3>
           <ul class="styled">
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerWhenUnserilizeMethodIsCalled</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerWhenUnserializeMethodIsCalled</li>
             <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerGettersAndSetters</li>
             <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenUnsuppotedTypeIsProvidedToUnserialize</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenTheObjectIsCalledAsAFunction</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenMalformedPhpDataIsProvidedToUnserialize</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenMalformedJsonDataIsProvidedToUnserialize</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerViolationExceptionIsRaisedWhenTheObjectIsCalledAsAFunctionWithMalformData</li>
             <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\SerializerTest::testSerializerWhenTheObjectIsCalledAsAFunction</li>
             <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testConsumeConsumesMessagesFromRabbitMQServerAndAknowledgesThem</li>
             <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\ConsumerTest::testWaitForAllWaitsForMultipleChannelAndReturnsSelf</li>
