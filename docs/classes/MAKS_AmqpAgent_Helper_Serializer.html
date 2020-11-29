@@ -68,7 +68,7 @@
             <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="../source/Helper/Serializer.php.html#line19">Source</a>
+            <a href="../source/Helper/Serializer.php.html#line20">Source</a>
           </li>
         </ul>
       </nav>
@@ -79,18 +79,25 @@
         <ul/>
         <h2 id="synopsis">Synopsis</h2>
         <div class="synopsis">class Serializer
-            {<br/><ul class="none"><li>// constants</li><li>const DEFAULT_DATA = NULL;</li><li>const DEFAULT_TYPE = 'JSON';</li></ul><ul class="none"><li>// members</li><li>protected  <a href="#members">$data</a>;
+            {<br/><ul class="none"><li>// constants</li><li>const TYPE_JSON = 'JSON';</li><li>const TYPE_PHP = 'PHP';</li><li>const DEFAULT_DATA = NULL;</li><li>const DEFAULT_TYPE = self::TYPE_JSON;</li><li>const DEFAULT_STRICT = true;</li><li>const SUPPORTED_TYPES = ;</li></ul><ul class="none"><li>// members</li><li>protected  <a href="#members">$data</a>;
                     </li><li>protected  <a href="#members">$type</a>;
+                    </li><li>protected <span title="MAKS\AmqpAgent\Helper\bool">bool</span> <a href="#members">$strict</a>;
+                    </li><li>protected  <a href="#members">$result</a>;
                     </li></ul><ul class="none"><li>// methods</li><li>public void <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/__construct.html">__construct</a>()
                     </li><li>public mixed <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/__invoke.html">__invoke</a>()
                     </li><li>public string <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/serialize.html">serialize</a>()
                     </li><li>public mixed <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/unserialize.html">unserialize</a>()
+                    </li><li>public mixed <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/deserialize.html">deserialize</a>()
                     </li><li>public <span title="Serializer">Serializer</span> <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/setData.html">setData</a>()
                     </li><li>public mixed <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/getData.html">getData</a>()
                     </li><li>public <span title="Serializer">Serializer</span> <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/setType.html">setType</a>()
                     </li><li>public string <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/getType.html">getType</a>()
+                    </li><li>public <span title="Serializer">Serializer</span> <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/setStrict.html">setStrict</a>()
+                    </li><li>public bool <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/isStrict.html">isStrict</a>()
                     </li><li>public string <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/getSerialized.html">getSerialized</a>()
                     </li><li>public mixed <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/getUnserialized.html">getUnserialized</a>()
+                    </li><li>protected void <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/assertNoPhpSerializationError.html">assertNoPhpSerializationError</a>()
+                    </li><li>protected void <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/assertNoJsonSerializationError.html">assertNoJsonSerializationError</a>()
                     </li></ul>
 
             }<br/></div>
@@ -98,13 +105,13 @@
         <table class="styled">
           <tr>
             <td>Methods</td>
-            <td class="percent">100%</td>
-            <td class="nummeric">10 / 10</td>
+            <td class="percent">93.33%</td>
+            <td class="nummeric">14 / 15</td>
           </tr>
           <tr>
             <td>Lines</td>
-            <td class="percent">100%</td>
-            <td class="nummeric">38 / 38</td>
+            <td class="percent">98.82%</td>
+            <td class="nummeric">84 / 85</td>
           </tr>
         </table>
         <h2 id="constants">Constants</h2>
@@ -117,12 +124,28 @@
           </thead>
           <tbody>
             <tr>
+              <td id="TYPE_JSON">TYPE_JSON</td>
+              <td>'JSON'</td>
+            </tr>
+            <tr>
+              <td id="TYPE_PHP">TYPE_PHP</td>
+              <td>'PHP'</td>
+            </tr>
+            <tr>
               <td id="DEFAULT_DATA">DEFAULT_DATA</td>
               <td>NULL</td>
             </tr>
             <tr>
               <td id="DEFAULT_TYPE">DEFAULT_TYPE</td>
-              <td>'JSON'</td>
+              <td>self::TYPE_JSON</td>
+            </tr>
+            <tr>
+              <td id="DEFAULT_STRICT">DEFAULT_STRICT</td>
+              <td>true</td>
+            </tr>
+            <tr>
+              <td id="SUPPORTED_TYPES">SUPPORTED_TYPES</td>
+              <td/>
             </tr>
           </tbody>
         </table>
@@ -133,6 +156,12 @@
             <li id="data"><strong>$data</strong>
                 —
                 mixed<br/><span class="indent">The current data the serializer has.</span></li>
+            <li id="result"><strong>$result</strong>
+                —
+                mixed<br/><span class="indent">The result of the last (un)serialization operation.</span></li>
+            <li id="strict"><strong>$strict</strong>
+                —
+                <a title="MAKS\AmqpAgent\Helper\bool" href="../classes/MAKS_AmqpAgent_Helper_bool.html">MAKS\AmqpAgent\Helper\bool</a><br/><span class="indent">The current strict value the serializer works with.</span></li>
             <li id="type"><strong>$type</strong>
                 —
                 string<br/><span class="indent">The current type the serializer uses.</span></li>
@@ -140,12 +169,21 @@
         </div>
         <h2 id="methods">Methods</h2>
         <div class="styled">
+          <h4>protected</h4>
+          <ul>
+            <li id="assertNoJsonSerializationError"><a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/assertNoJsonSerializationError.html">assertNoJsonSerializationError()</a>
+                — Asserts that `json_encode()` and/or `json_decode()` was executed successfully depending on strictness of the Serializer.</li>
+            <li id="assertNoPhpSerializationError"><a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/assertNoPhpSerializationError.html">assertNoPhpSerializationError()</a>
+                — Asserts that `serialize()` and/or `unserialize()` was executed successfully depending on strictness of the Serializer.</li>
+          </ul>
           <h4>public</h4>
           <ul>
             <li id="__construct"><a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/__construct.html">__construct()</a>
                 — Serializer object constructor.</li>
             <li id="__invoke"><a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/__invoke.html">__invoke()</a>
                 — Executes when calling the class like a function.</li>
+            <li id="deserialize"><a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/deserialize.html">deserialize()</a>
+                — Deserializes the passed or registered data. When no parameters are passed, it uses the registered ones.</li>
             <li id="getData"><a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/getData.html">getData()</a>
                 — Returns the currently registered data.</li>
             <li id="getSerialized"><a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/getSerialized.html">getSerialized()</a>
@@ -154,12 +192,16 @@
                 — Returns the currently registered type.</li>
             <li id="getUnserialized"><a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/getUnserialized.html">getUnserialized()</a>
                 — Alias for `self::unserialize()` that does not accept any parameters (works with currently registered parameters).</li>
+            <li id="isStrict"><a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/isStrict.html">isStrict()</a>
+                — Returns the currently registered strict value.</li>
             <li id="serialize"><a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/serialize.html">serialize()</a>
                 — Serializes the passed or registered data. When no parameters are passed, it uses the registered ones.</li>
             <li id="setData"><a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/setData.html">setData()</a>
-                — Registers the passed data in the class.</li>
+                — Registers the passed data in the object.</li>
+            <li id="setStrict"><a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/setStrict.html">setStrict()</a>
+                — Registers the passed strict value in the object.</li>
             <li id="setType"><a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/setType.html">setType()</a>
-                — Registers the passed data in the class.</li>
+                — Registers the passed type in the object.</li>
             <li id="unserialize"><a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/unserialize.html">unserialize()</a>
                 — Unserializes the passed or registered data. When no parameters are passed, it uses the registered ones.</li>
           </ul>

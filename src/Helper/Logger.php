@@ -153,6 +153,7 @@ class Logger
         if (is_writable($file)) {
             // empty the the file if it exceeds 64MB
             // @codeCoverageIgnoreStart
+            clearstatcache(true, $file);
             if (filesize($file) > 6.4e+7) {
                 $stream = fopen($file, 'r');
                 if (is_resource($stream)) {

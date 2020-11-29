@@ -80,12 +80,39 @@ class ConfigTest extends TestCase
         $this->assertArrayHasKey('prefix', $this->config->getConfig());
     }
 
-    public function testGetMethodReturnsAnExpectedValue()
+    public function testHasMethodReturnsAnExpectedValue()
     {
-        $newConfig = ['prefix' => 'test'];
-        $this->config->setConfig($newConfig);
-        $test = $this->config->get('prefix');
-        $this->assertEquals('test', $test);
+        $dummyConfig = ['val1' => 'test', 'val2' => ['valA' => 1, 'valB' => 2]];
+        $this->config->setConfig($dummyConfig);
+        $true1 = $this->config->has('val1');
+        $this->assertTrue($true1);
+        $true2 = $this->config->has('val2.valA');
+        $this->assertTrue($true2);
+        $false1 = $this->config->has('blabla');
+        $this->assertFalse($false1);
+        $false2 = $this->config->has('bla.bla');
+        $this->assertFalse($false2);
+    }
+
+    public function testGetMethodReturnsAnExpectedValues()
+    {
+        $dummyConfig = ['val1' => 'test', 'val2' => ['valA' => 1, 'valB' => 2]];
+        $this->config->setConfig($dummyConfig);
+        $test1 = $this->config->get('val1');
+        $this->assertEquals('test', $test1);
+        $test2 = $this->config->get('val2.valB');
+        $this->assertEquals(2, $test2);
+    }
+
+    public function testSetMethodSetsValuesAndGetMethodReturnsThem()
+    {
+        $dummyConfig = ['val1' => 'test', 'val2' => ['valA' => 1, 'valB' => 2]];
+        $this->config->setConfig($dummyConfig);
+        $this->config->set('val3.valZ', 'blabla');
+        $test1 = $this->config->get('val3');
+        $this->assertIsArray($test1);
+        $test2 = $this->config->get('val3.valZ');
+        $this->assertEquals('blabla', $test2);
     }
 
     public function testGetDefaultConfigReturnsDefaultConfig()

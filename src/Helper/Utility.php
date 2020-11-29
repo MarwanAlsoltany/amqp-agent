@@ -8,6 +8,8 @@
 
 namespace MAKS\AmqpAgent\Helper;
 
+use stdClass;
+use ReflectionObject;
 use DateTime;
 use DateTimeZone;
 
@@ -38,11 +40,10 @@ final class Utility
 
     /**
      * Generates a user-level notice, warning, or an error with styling.
-     * @param array|string|null [optional] $text The text wished to be styled (when passing an array, if array key is a valid color it will style this array element value with its key).
-     * @param string [optional] $color Case sensitive ANSI color name in this list [black, red, green, yellow, magenta, cyan, white, default] (when passing array, this parameter will be the fallback).
-     * @param int [optional] $type Error type (E_USER family). 1024 E_USER_NOTICE, 512 E_USER_WARNING, 256 E_USER_ERROR, 16384 E_USER_DEPRECATED.
+     * @param array|string|null $text [optional] The text wished to be styled (when passing an array, if array key is a valid color it will style this array element value with its key).
+     * @param string $color [optional] Case sensitive ANSI color name in this list [black, red, green, yellow, magenta, cyan, white, default] (when passing array, this parameter will be the fallback).
+     * @param int $type [optional] Error type (E_USER family). 1024 E_USER_NOTICE, 512 E_USER_WARNING, 256 E_USER_ERROR, 16384 E_USER_DEPRECATED.
      * @return bool True if error type is accepted.
-     * @codeCoverageIgnore
      */
     public static function emit($text = null, ?string $color = 'yellow', int $type = E_USER_NOTICE): bool
     {
@@ -103,7 +104,7 @@ final class Utility
     /**
      * Returns the passed key(s) from the backtrace. Note that the backtrace is reversed (last is first).
      * @param string|array $pluck The key to to get as a string or an array of strings (keys) from this list [file, line, function, class, type, args].
-     * @param int [optional] $offset The offset of the backtrace (last executed is index at 0).
+     * @param int $offset [optional] The offset of the backtrace (last executed is index at 0).
      * @return string|int|array|null A string or int if a string is passed, an array if an array is passed and null if no match was found.
      */
     public static function backtrace($pluck, int $offset = 0)
@@ -152,5 +153,121 @@ final class Utility
         }
 
         return '[' . implode(', ', $flat). ']';
+    }
+
+    /**
+     * Converts (casts) an object to an associative array.
+     * @since 1.2.2
+     * @param object $object The object to convert.
+     * @param bool $useJson [optional] Wether to use json_decode/json_encode to cast the object, default is via reflection.
+     * @return array The result array.
+     */
+    public static function objectToArray($object, bool $useJson = false): array
+    {
+        if ($useJson) {
+            return json_decode(json_encode($object), true);
+        }
+
+        $array = [];
+
+        $reflectionClass = new ReflectionObject($object);
+        foreach ($reflectionClass->getProperties() as $property) {
+            $property->setAccessible(true);
+            $array[$property->getName()] = $property->getValue($object);
+            $property->setAccessible(false);
+        }
+
+        return $array;
+    }
+
+    /**
+     * Converts (casts) an array to an object (stdClass).
+     * @since 1.2.2
+     * @param object $object The array to convert.
+     * @param bool $useJson [optional] Wether to use json_decode/json_encode to cast the array, default is via iteration.
+     * @return stdClass The result object.
+     */
+    public static function arrayToObject(array $array, bool $useJson = false): stdClass
+    {
+        if ($useJson) {
+            return json_decode(json_encode($array));
+        }
+
+        $stdClass = new stdClass();
+
+        foreach ($array as $key => $value) {
+            $stdClass->{$key} = is_array($value)
+                ? self::arrayToObject($value, $useJson)
+                : $value;
+        }
+
+        return $stdClass;
+    }
+
+    /**
+     * Gets a value from an array via dot-notation representation.
+     * @since 1.2.2
+     * @param array $array The array to get the value from.
+     * @param string $key The dotted key representation.
+     * @param mixed $default [optional] The default fallback value.
+     * @return mixed The requested value if found otherwise the default parameter.
+     */
+    public static function getArrayValueByKey(array &$array, string $key, $default = null)
+    {
+        if (!strlen($key) || !count($array)) {
+            return $default;
+        }
+
+        $data = &$array;
+
+        if (strpos($key, '.') !== false) {
+            $parts = explode('.', $key);
+
+            foreach ($parts as $part) {
+                if (!array_key_exists($part, $data)) {
+                    return $default;
+                }
+
+                $data = &$data[$part];
+            }
+
+            return $data;
+        }
+
+        return array_key_exists($key, $data) ? $data[$key] : $default;
+    }
+
+    /**
+     * Sets a value of an array via dot-notation representation.
+     * @since 1.2.2
+     * @param array $array The array to set the value in.
+     * @param string $key The string key representation.
+     * @param mixed $value The value to set.
+     * @return bool True on success.
+     */
+    public static function setArrayValueByKey(array &$array, string $key, $value): bool
+    {
+        if (!strlen($key)) {
+            return false;
+        }
+
+        $parts = explode('.', $key);
+        $lastPart = array_pop($parts);
+
+        $data = &$array;
+
+        if (!empty($parts)) {
+            foreach ($parts as $part) {
+                if (!isset($data[$part])) {
+                    $data[$part] = [];
+                }
+
+                $data = &$data[$part];
+            }
+        }
+
+        $data[$lastPart] = $value;
+
+        return true;
     }
 }

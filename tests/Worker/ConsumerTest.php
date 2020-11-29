@@ -345,7 +345,9 @@ class ConsumerTest extends TestCase
      */
     public static function consumerTestCallback(AMQPMessage $message, array &$messages, Serializer &$serializer, Consumer &$consumer = null)
     {
-        $data = $serializer->unserialize($message->body, 'JSON');
+        // the strict value of the serializer is false here
+        // because the data can also be plain-text
+        $data = $serializer->unserialize($message->body, 'JSON', false);
 
         if (Consumer::isCommand($data)) {
             Consumer::ack($message);

@@ -71,7 +71,7 @@
             <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="../source/Config.php.html#line37">Source</a>
+            <a href="../source/Config.php.html#line36">Source</a>
           </li>
         </ul>
       </nav>
@@ -83,14 +83,15 @@
         <h2 id="synopsis">Synopsis</h2>
         <div class="synopsis">class Config
             {<br/><ul class="none"><li>// constants</li><li>const DEFAULT_CONFIG_FILE_NAME = 'maks-amqp-agent-config';</li><li>const DEFAULT_CONFIG_FILE_PATH = __DIR__ . DIRECTORY_SEPARATOR . 'Config' . DIRECTORY_SEPARATOR . self::DEFAULT_CONFIG_FILE_NAME . '.php;</li></ul><ul class="none"><li>// members</li><li>private  <a href="#members">$config</a>;
-                    </li><li>private  <a href="#members">$configFlat</a>;
                     </li><li>private  <a href="#members">$configPath</a>;
                     </li></ul><ul class="none"><li>// methods</li><li>public void <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/__construct.html">__construct</a>()
                     </li><li>public mixed <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/__get.html">__get</a>()
                     </li><li>public void <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/__set.html">__set</a>()
                     </li><li>public string <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/__toString.html">__toString</a>()
                     </li><li>private void <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/repair.html">repair</a>()
+                    </li><li>public bool <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/has.html">has</a>()
                     </li><li>public mixed <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/get.html">get</a>()
+                    </li><li>public Config <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/set.html">set</a>()
                     </li><li>public array <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/getDefaultConfig.html">getDefaultConfig</a>()
                     </li><li>public array <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/getConfig.html">getConfig</a>()
                     </li><li>public <span title="Config">Config</span> <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/setConfig.html">setConfig</a>()
@@ -104,12 +105,12 @@
           <tr>
             <td>Methods</td>
             <td class="percent">100%</td>
-            <td class="nummeric">11 / 11</td>
+            <td class="nummeric">13 / 13</td>
           </tr>
           <tr>
             <td>Lines</td>
             <td class="percent">100%</td>
-            <td class="nummeric">42 / 42</td>
+            <td class="nummeric">39 / 39</td>
           </tr>
         </table>
         <h2 id="violations">Violations</h2>
@@ -124,7 +125,7 @@
               </tr>
             </thead>
             <tr>
-              <td class="line">129</td>
+              <td class="line">122</td>
               <td>
                 <a href="https://phpmd.org/rules/unusedcode.html#unusedlocalvariable" target="_blank" title="Unused Code Rules">UnusedLocalVariable</a>
               </td>
@@ -158,9 +159,6 @@
             <li id="config"><strong>$config</strong>
                 —
                 array<br/><span class="indent">The multidimensional configuration array.</span></li>
-            <li id="configFlat"><strong>$configFlat</strong>
-                —
-                array<br/><span class="indent">A flat version of the configuration array.</span></li>
             <li id="configPath"><strong>$configPath</strong>
                 —
                 string<br/><span class="indent">Configuration file path.</span></li>
@@ -184,13 +182,17 @@
             <li id="__toString"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/__toString.html">__toString()</a>
                 — Returns config file path if the object was casted to a string.</li>
             <li id="get"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/get.html">get()</a>
-                — Gets a value of a key from the configuration array. Use with caution.</li>
+                — Gets a value of a key from the configuration array via dot-notation representation.</li>
             <li id="getConfig"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/getConfig.html">getConfig()</a>
                 — Returns the current configuration array.</li>
             <li id="getConfigPath"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/getConfigPath.html">getConfigPath()</a>
                 — Returns the path of the configuration file.</li>
             <li id="getDefaultConfig"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/getDefaultConfig.html">getDefaultConfig()</a>
                 — Returns the default configuration array.</li>
+            <li id="has"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/has.html">has()</a>
+                — Checks wether a value exists in the configuration array via dot-notation representation.</li>
+            <li id="set"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/set.html">set()</a>
+                — Sets a value of a key from the configuration array via dot-notation representation.</li>
             <li id="setConfig"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/setConfig.html">setConfig()</a>
                 — Sets a new configuration array to be used instead of the current and generates a new flat version of it.</li>
             <li id="setConfigPath"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/setConfigPath.html">setConfigPath()</a>

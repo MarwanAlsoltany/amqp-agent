@@ -116,6 +116,7 @@ class Client
 
     /**
      * Returns an array of available members that can be obtained via `self::get()`.
+     * @since 1.2.1
      * @return array
      */
     public static function gettable(): array

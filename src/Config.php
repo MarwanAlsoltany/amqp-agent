@@ -9,8 +9,7 @@
 namespace MAKS\AmqpAgent;
 
 use Exception;
-use RecursiveArrayIterator;
-use RecursiveIteratorIterator;
+use MAKS\AmqpAgent\Helper\Utility;
 use MAKS\AmqpAgent\Exception\ConfigFileNotFoundException;
 
 /**
@@ -55,12 +54,6 @@ final class Config
     private $config;
 
     /**
-     * A flat version of the configuration array.
-     * @var array
-     */
-    private $configFlat;
-
-    /**
      * Configuration file path.
      * @var string
      */
@@ -73,7 +66,7 @@ final class Config
      */
     public function __construct(?string $configPath = null)
     {
-        $configFile = $configPath ? $configPath : self::DEFAULT_CONFIG_FILE_PATH;
+        $configFile = realpath($configPath ?? self::DEFAULT_CONFIG_FILE_PATH);
 
         if (!file_exists($configFile)) {
             throw new ConfigFileNotFoundException(
@@ -82,8 +75,8 @@ final class Config
         }
 
         $this->config = include($configFile);
-        $this->configFlat = array();
         $this->configPath = $configFile;
+
         $this->repair();
     }
 
@@ -136,24 +129,43 @@ final class Config
     }
 
     /**
-     * Gets a value of a key from the configuration array. Use with caution.
-     * Please note that this function returns the last occurrence of a key.
-     * That's why it's not recommended to rely on the values provided by it.
-     * @deprecated 1.0.0 Use public property access notation instead.
-     * @param string $key
-     * @return mixed
+     * Checks wether a value exists in the configuration array via dot-notation representation.
+     * @since 1.2.2
+     * @param string $key The dotted key representation.
+     * @return bool True if key is set otherwise false.
+     */
+    public function has(string $key): bool
+    {
+        $value = Utility::getArrayValueByKey($this->config, $key, null);
+
+        return isset($value);
+    }
+
+    /**
+     * Gets a value of a key from the configuration array via dot-notation representation.
+     * @since 1.2.2
+     * @param string $key The dotted key representation.
+     * @return mixed The requested value or null.
      */
     public function get(string $key)
     {
-        if (sizeof($this->configFlat) === 0) {
-            $config = new RecursiveArrayIterator($this->config);
-            $configFlat = new RecursiveIteratorIterator($config);
-            foreach ($configFlat as $key => $value) {
-                $this->configFlat[$key] = $value;
-            }
-        }
+        $value = Utility::getArrayValueByKey($this->config, $key);
 
-        return $this->configFlat[$key];
+        return $value;
+    }
+
+    /**
+     * Sets a value of a key from the configuration array via dot-notation representation.
+     * @since 1.2.2
+     * @param string $key The dotted key representation.
+     * @param string $value The value to set.
+     * @return self
+     */
+    public function set(string $key, $value)
+    {
+        Utility::setArrayValueByKey($this->config, $key, $value);
+
+        return $this;
     }
 
     /**
@@ -182,8 +194,9 @@ final class Config
     public function setConfig(array $config): self
     {
         $this->config = $config;
-        $this->configFlat = [];
+
         $this->repair();
+
         return $this;
     }
 
@@ -205,8 +218,8 @@ final class Config
     {
         try {
             $this->config = include($configPath);
-            $this->configFlat = [];
             $this->configPath = $configPath;
+
             $this->repair();
         } catch (Exception $error) {
             throw new ConfigFileNotFoundException(
