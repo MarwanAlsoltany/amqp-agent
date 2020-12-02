@@ -187,4 +187,67 @@ class UtilityTest extends TestCase
         $str = '';
         $this->assertFalse(Utility::setArrayValueByKey($arr, $str, $str));
     }
+
+    public function testGenerateHashGeneratesUniqueHashes()
+    {
+        // Anything bigger than 1000000 will result in long execution times.
+        // The methods is tested with up to 1000000, using 100 here to allow for faster testing.
+        $array = [];
+        for ($i = 0; $i < 100; $i) {
+            $array[] = Utility::generateHash();
+            $i++;
+        }
+
+        $unique = count($array) === count(array_unique($array));
+
+        $this->assertTrue($unique);
+    }
+
+    public function testGenerateHashWithAditionalParametersGeneratesUniqueHashes()
+    {
+        // Anything bigger than 1000000 will result in long execution times.
+        // The methods is tested with up to 1000000, using 100 here to allow for faster testing.
+        $array = [];
+        for ($i = 0; $i < 100; $i) {
+            $an = str_shuffle('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+            $array[] = Utility::generateHash($an);
+            $i++;
+        }
+
+        $unique = count($array) === count(array_unique($array));
+
+        $this->assertTrue($unique);
+    }
+
+    public function testGenerateTokenGeneratesUniqueTokens()
+    {
+        // Anything bigger than 500000 will result in a very long execution times.
+        // The methods is tested with up to 500000, using 100 here to allow for faster testing.
+        $array = [];
+        for ($i = 0; $i < 100; $i) {
+            $array[] = Utility::generateToken();
+            $i++;
+        }
+
+        $unique = count($array) === count(array_unique($array));
+
+        $this->assertTrue($unique);
+    }
+
+    public function testGenerateTokenWithAditionalParametersGeneratesUniqueTokens()
+    {
+        // Anything bigger than 500000 will result in a very long execution times.
+        // The methods is tested with up to 500000, using 100 here to allow for faster testing.
+        $array = [];
+        for ($i = 0; $i < 100; $i) {
+            $array[] = Utility::generateToken(16, null, 'md5');
+            $i++;
+        }
+
+        $unique = count($array) === count(array_unique($array));
+
+        $this->assertTrue($unique);
+
+        $this->assertEquals('a', Utility::generateToken(1, 'a', null));
+    }
 }
