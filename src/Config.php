@@ -32,6 +32,8 @@ use MAKS\AmqpAgent\Exception\ConfigFileNotFoundException;
  * @property array $messageOptions
  * @property array $publishOptions
  * @property array $consumeOptions
+ * @property array $rpcConnectionOptions
+ * @property string $rpcQueueName
  */
 final class Config
 {
