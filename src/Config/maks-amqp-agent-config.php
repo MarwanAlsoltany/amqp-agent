@@ -39,4 +39,8 @@ return [
     'recoverOptions' => AmqpAgentParameters::RECOVER_OPTIONS,
     'rejectOptions'  => AmqpAgentParameters::REJECT_OPTIONS,
     // End of constant class properties.
+
+    // RPC Endpoints
+    'rpcConnectionOptions' => AmqpAgentParameters::RPC_CONNECTION_OPTIONS,
+    'rpcQueueName'         => AmqpAgentParameters::RPC_QUEUE_NAME,
 ];
