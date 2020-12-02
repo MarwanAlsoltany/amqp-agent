@@ -1,0 +1,239 @@
+#!/usr/bin/env php
+<?php
+/**
+ * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
+ * @copyright Marwan Al-Soltany 2020
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
+
+require_once dirname(__DIR__, 3).DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
+
+
+/**************************************************************************************************************************************/
+
+
+use MAKS\AmqpAgent\RPC\ClientEndpoint;
+use MAKS\AmqpAgent\RPC\ServerEndpoint;
+
+
+/**************************************************************************************************************************************/
+
+
+function write(...$args) {
+    global $argc;
+    global $argv;
+
+    if ($argc - 1 >= 3 && strtoupper($argv[3]) == '--QUIET') {
+        return;
+    }
+
+    $message = sprintf(...func_get_args()) . "\n";
+
+    fwrite(STDOUT, $message);
+};
+
+function fibonacci($number, $function = null) {
+    switch ($function) {
+        case 'recursive':
+        case 'r':
+            if ($number == 0 || $number == 1) {
+                return $number;
+            }
+            return (
+                fibonacci($number - 1, $function) +
+                fibonacci($number - 2, $function)
+            );
+            break;
+
+        case 'iterative':
+        case 'i':
+            [$a, $b] = [0, 1];
+            for ($i = 0; $i < $number; $i++) {
+                $c = $a;
+                $a = $b;
+                $b += $c;
+            }
+            return $a;
+            break;
+
+        case 'memoized':
+        case 'm':
+            if ($number == 0 || $number == 1) {
+                return $number;
+            }
+            $var = 'FIBONACCI_MEMOIZED_CACHE';
+            if (!isset($GLOBALS[$var])) {
+                $GLOBALS[$var] = [];
+            }
+            if (!isset($GLOBALS[$var][$number])) {
+                $GLOBALS[$var][$number] = (
+                    fibonacci($number - 1, $function) +
+                    fibonacci($number - 2,$function)
+                );
+            }
+            return $GLOBALS[$var][$number];
+            break;
+
+        case 'binet':
+        case 'b':
+        default:
+            return round(pow((sqrt(5) + 1) / 2, $number) / sqrt(5));
+    }
+}
+
+
+/**************************************************************************************************************************************/
+
+
+if ($argc > 1) {
+    $worker = 'none';
+    if ($argc - 1 >= 1) {
+        $worker = $argv[1];
+    }
+
+    $queue = 'maks.amqp.agent.rpc.test.queue';
+    if ($argc - 1 >= 2) {
+        $queue = $argv[2];
+    }
+
+    write("\n[TASK: Calculate Fibonacci] \n- Testing RPC endpoints using a \"%s\" with the \"%s\" queue ...\n\n", $worker, $queue);
+}
+
+if ($argc == 1) {
+    write("\n[TASK: Calculate Fibonacci] \n- No arguments where specified!\n");
+}
+
+
+/**************************************************************************************************************************************/
+
+
+if ($argc - 1 && strtoupper($argv[1]) == 'CLIENT') {
+
+    $client = new ClientEndpoint();
+
+    $client->on('connection.after.open', function ($connection, $client, $event) {
+        write("[CLIENT] %'--24s---> PING: %.2fms", strtoupper($event), $client->ping());
+    });
+
+    $client->on('channel.after.open', function ($channel, $client, $event) {
+        write("[CLIENT] %'--24s---> PING: %.2fms", strtoupper($event), $client->ping());
+    });
+
+    $client->on('connection.before.close', function ($connection, $client, $event) {
+        write("[CLIENT] %'--24s---> PING: %.2fms", strtoupper($event), $client->ping());
+    });
+
+    $client->on('channel.before.close', function ($channel, $client, $event) {
+        write("[CLIENT] %'--24s---> PING: %.2fms", strtoupper($event), $client->ping());
+    });
+
+    $client->on('request.before.send', function ($request, $client, $event) {
+        write("[CLIENT] %'--24s---> [%s]: %s", strtoupper($event), $request->get('correlation_id'), $request->body);
+    });
+
+    $client->on('request.after.send', function ($request, $client, $event) {
+        write("[CLIENT] %'--24s---> [%s]: %s", strtoupper($event), $request->get('correlation_id'), $request->body);
+    });
+
+    $client->on('response.on.get', function ($response, $client, $event) {
+        write("[CLIENT] %'--24s---> [%s]: %s", strtoupper($event), $response->get('correlation_id'), $response->body);
+    });
+
+    $client->connect();
+
+    foreach (range(1, 100) as $i) {
+        $client->request($i, $queue);
+        if ($i == 100) {
+            $client->request('close', $queue);
+        }
+    }
+
+    $client->disconnect();
+
+    return;
+}
+
+
+if ($argc - 1 && strtoupper($argv[1]) == 'SERVER') {
+
+    $server = new ServerEndpoint();
+
+    $server->on('connection.after.open', function ($connection, $server, $event) {
+        write("[SERVER] %'--24s---> PING: %.2fms", strtoupper($event), $server->ping());
+    });
+
+    $server->on('channel.after.open', function ($channel, $server, $event) {
+        write("[SERVER] %'--24s---> PING: %.2fms", strtoupper($event), $server->ping());
+    });
+
+    $server->on('connection.before.close', function ($connection, $server, $event) {
+        write("[SERVER] %'--24s---> PING: %.2fms", strtoupper($event), $server->ping());
+    });
+
+    $server->on('channel.before.close', function ($channel, $server, $event) {
+        write("[SERVER] %'--24s---> PING: %.2fms", strtoupper($event), $server->ping());
+    });
+
+    $server->on('response.before.send', function ($response, $server, $event) {
+        if (is_numeric($response->body)) {
+            $response->body = fibonacci($response->body);
+        }
+
+        write("[SERVER] %'--24s---> [%s]: %s", strtoupper($event), $response->get('correlation_id'), $response->body);
+    });
+
+    $server->on('response.after.send', function ($response, $server, $event) {
+        write("[SERVER] %'--24s---> [%s]: %s", strtoupper($event), $response->get('correlation_id'), $response->body);
+
+        if ($response->body == 'close') {
+            return $server->disconnect();
+        }
+    });
+
+    $server->on('request.on.get', function ($request, $server, $event) {
+        write("[SERVER] %'--24s---> [%s]: %s", strtoupper($event), $request->get('correlation_id'), $request->body);
+    });
+
+    $server->connect();
+
+    $server->respond(null, $queue);
+
+    $server->disconnect();
+
+    return;
+}
+
+
+/**************************************************************************************************************************************/
+
+
+$path = __FILE__;
+$help = <<<HELP
+
+[PATH: $path]
+- RPC endpoints testing helper command (bin/endpoint)
+
+
+Usage: endpoint <endpoint-type> [<queue-name>] [--quiet]
+
+Note: The order of arguments is important!
+
+Legend:
+    endpoint-type = [REQUIRED] the name of the endpoint, either "server" or "client"
+    queue-name    = [OPTIONAL] the name of the queue e.g. "rpc.test.queue"
+    --quiet       = [OPTIONAL] a switch to turn logging off
+
+Examples:
+    endpoint server
+    endpoint server rpc.test.queue
+    endpoint client rpc.test.queue --quiet
+
+Info:
+    - The Client and the Server will shut their selfs down automatically when executing this command.
+    - To shut down the Server, send simply a request via the Client with the body "close".
+
+HELP;
+
+write($help);
