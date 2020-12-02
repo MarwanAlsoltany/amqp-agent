@@ -9,6 +9,7 @@
 namespace MAKS\AmqpAgent\Helper;
 
 use stdClass;
+use Exception;
 use ReflectionObject;
 use DateTime;
 use DateTimeZone;
@@ -340,5 +341,38 @@ final class Utility
         } while ($random > $range);
 
         return $min + $random;
+    }
+
+    /**
+     * Executes a CLI command in the specified path synchronously or asynchronous (cross platform).
+     * @since 2.0.0
+     * @param string $command The command to execute.
+     * @param string $path [optional] The path where the command should be executed.
+     * @param bool $asynchronous [optional] Wether the command should be a background process (asynchronous) or not (synchronous).
+     * @return string|null The command result (as a string if possible) if synchronous otherwise null.
+     */
+    public static function execute(string $command, string $path = null, bool $asynchronous = false): ?string
+    {
+        if (!strlen($command)) {
+            throw new Exception('No valid command is specified!');
+        }
+
+        $isWindows = PHP_OS == 'WINNT' || substr(php_uname(), 0, 7) == 'Windows';
+        $apWrapper = $isWindows ? 'start /B %s > NUL' : '/usr/bin/nohup %s >/dev/null 2>&1 &';
+
+        if (strlen($path) && getcwd() !== $path) {
+            chdir(realpath($path));
+        }
+
+        if ($asynchronous) {
+            $command = sprintf($apWrapper, $command);
+        }
+
+        if ($isWindows && $asynchronous) {
+            pclose(popen($command, 'r'));
+            return null;
+        }
+
+        return shell_exec($command);
     }
 }
