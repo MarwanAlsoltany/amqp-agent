@@ -250,4 +250,16 @@ class UtilityTest extends TestCase
 
         $this->assertEquals('a', Utility::generateToken(1, 'a', null));
     }
+
+    public function testExecuteWithDiffrentParametersCombinations()
+    {
+        $this->assertNull(Utility::execute('php -v', null, true));
+        $this->assertEquals(phpversion(), Utility::execute('php -r "echo phpversion();"', __DIR__, false));
+    }
+
+    public function testExecuteRaisesExceptionWhenProvidedWithEmptyCommand()
+    {
+        $this->expectException(\Exception::class);
+        $this->assertNull(Utility::execute(''));
+    }
 }
