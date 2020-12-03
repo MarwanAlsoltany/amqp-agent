@@ -33,7 +33,7 @@ class ServerEndpoint extends AbstractEndpoint implements ServerEndpointInterface
 {
     /**
      * The callback to use when processing the requests.
-     * @var array
+     * @var callable
      */
     protected $callback;
 
@@ -83,7 +83,7 @@ class ServerEndpoint extends AbstractEndpoint implements ServerEndpointInterface
                 $this->channel->wait();
             }
 
-            return $this->request;
+            return $this->requestBody;
         }
 
         throw new RPCEndpointException('Server is not connected yet!');
@@ -111,21 +111,21 @@ class ServerEndpoint extends AbstractEndpoint implements ServerEndpointInterface
     {
         $this->trigger('request.on.get', [$request]);
 
-        $this->request = $request->body;
-        $this->response = call_user_func($this->callback, $request);
-        $this->responseQueue = $request->get('reply_to');
-        $this->correlationId = $request->get('correlation_id');
+        $this->requestBody = $request->body;
+        $this->responseBody = call_user_func($this->callback, $request);
+        $this->responseQueue = (string)$request->get('reply_to');
+        $this->correlationId = (string)$request->get('correlation_id');
 
-        if (!is_string($this->response)) {
+        if (!is_string($this->responseBody)) {
             throw new RPCEndpointException(
                 sprintf(
                     'The passed processing callback must return a string, instead it returned (data-type: %s)!',
-                    gettype($this->response)
+                    gettype($this->responseBody)
                 )
             );
         }
 
-        $message = new AMQPMessage($this->response);
+        $message = new AMQPMessage($this->responseBody);
         $message->set('correlation_id', $this->correlationId);
         $message->set('timestamp', time());
 
