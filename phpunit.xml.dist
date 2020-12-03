@@ -24,8 +24,10 @@
             <file>tests/Helper/LoggerTest.php</file>
             <file>tests/Helper/SerializerTest.php</file>
             <file>tests/Helper/SingletonTest.php</file>
+            <file>tests/Helper/IDGeneratorTest.php</file>
             <file>tests/Helper/EventTest.php</file>
             <file>tests/Helper/ClassProxyTest.php</file>
+            <file>tests/Helper/ArrayProxyTest.php</file>
             <file>tests/Worker/AbstractWorkerTest.php</file>
             <file>tests/Worker/PublisherTest.php</file>
             <file>tests/Worker/ConsumerTest.php</file>
