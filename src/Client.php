@@ -11,6 +11,8 @@ namespace MAKS\AmqpAgent;
 use MAKS\AmqpAgent\Config;
 use MAKS\AmqpAgent\Worker\Publisher;
 use MAKS\AmqpAgent\Worker\Consumer;
+use MAKS\AmqpAgent\RPC\ClientEndpoint;
+use MAKS\AmqpAgent\RPC\ServerEndpoint;
 use MAKS\AmqpAgent\Helper\Utility;
 use MAKS\AmqpAgent\Helper\Serializer;
 use MAKS\AmqpAgent\Helper\Logger;
@@ -49,6 +51,18 @@ class Client
      * @var Consumer
      */
     protected $consumer;
+
+    /**
+     * An instance of the RPC Client class.
+     * @var ClientEndpoint
+     */
+    protected $clientEndpoint;
+
+    /**
+     * An instance of the RPC Server class.
+     * @var ServerEndpoint
+     */
+    protected $serverEndpoint;
 
     /**
      * An instance of the Serializer class.
@@ -175,6 +189,38 @@ class Client
         }
 
         return $this->consumer;
+    }
+
+    /**
+     * Returns an instance of the Consumer class.
+     * @return ClientEndpoint
+     */
+    public function getClientEndpoint(): ClientEndpoint
+    {
+        if (!isset($this->clientEndpoint)) {
+            $this->clientEndpoint = new ClientEndpoint(
+                $this->config->rpcConnectionOptions,
+                $this->config->rpcQueueName
+            );
+        }
+
+        return $this->clientEndpoint;
+    }
+
+    /**
+     * Returns an instance of the Consumer class.
+     * @return ServerEndpoint
+     */
+    public function getServerEndpoint(): ServerEndpoint
+    {
+        if (!isset($this->serverEndpoint)) {
+            $this->serverEndpoint = new ServerEndpoint(
+                $this->config->rpcConnectionOptions,
+                $this->config->rpcQueueName
+            );
+        }
+
+        return $this->serverEndpoint;
     }
 
     /**
