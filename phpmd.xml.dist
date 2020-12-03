@@ -34,4 +34,9 @@
             <property name="allow-underscore" value="true" />
         </properties>
     </rule>
+    <rule ref="rulesets/naming.xml/ShortMethodName">
+        <properties>
+            <property name="minimum" value="2"/>
+        </properties>
+    </rule>
 </ruleset>
