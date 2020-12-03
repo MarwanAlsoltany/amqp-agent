@@ -9,8 +9,8 @@
 namespace MAKS\AmqpAgent\RPC;
 
 use PhpAmqpLib\Message\AMQPMessage;
-use MAKS\AmqpAgent\Helper\Utility;
 use MAKS\AmqpAgent\Helper\ClassProxy;
+use MAKS\AmqpAgent\Helper\IDGenerator;
 use MAKS\AmqpAgent\RPC\AbstractEndpoint;
 use MAKS\AmqpAgent\RPC\ClientEndpointInterface;
 use MAKS\AmqpAgent\Exception\RPCEndpointException;
@@ -83,7 +83,7 @@ class ClientEndpoint extends AbstractEndpoint implements ClientEndpointInterface
         $this->requestBody = $request instanceof AMQPMessage ? $request->body : (string)$request;
         $this->responseBody = null;
         $this->requestQueue = $this->queueName;
-        $this->correlationId = Utility::generateHash();
+        $this->correlationId = IDGenerator::generateHash();
 
         $message = $request instanceof AMQPMessage ? $request : new AMQPMessage((string)$request);
         $message->set('reply_to', $this->responseQueue);
