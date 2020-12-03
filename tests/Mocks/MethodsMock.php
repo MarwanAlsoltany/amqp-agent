@@ -6,16 +6,20 @@ final class MethodsMock
 {
     // MethodsMock
 
-    private function privateMethod($string = '') {
+    private function privateMethod($string = '')
+    {
         return 'PRIVATE: ' . $string;
     }
-    protected function protectedMethod($string = '') {
+    protected function protectedMethod($string = '')
+    {
         return 'PROTECTED: ' . $string;
     }
-    public function publicMethod($string = '') {
+    public function publicMethod($string = '')
+    {
         return 'PUBLIC: ' . $string;
     }
-    public function exception() {
+    public function exception()
+    {
         throw new \Exception('Test!');
     }
 }
