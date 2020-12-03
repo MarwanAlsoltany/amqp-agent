@@ -57,7 +57,7 @@ class ServerEndpointTest extends TestCase
 
     public function testAnExceptionIsRaisedIfPassedCallbackDoesNotReturnString()
     {
-        $queue = 'rpc.queue.server.callback.exception.test';
+        $queue = 'maks.amqp.agent.rpc.queue.server.callback.exception.test';
 
         // Starting a client to send requests
         $command = sprintf('php bin/endpoint client %s --quiet', $queue);
