@@ -8,6 +8,7 @@
 
 namespace MAKS\AmqpAgent\RPC;
 
+use PhpAmqpLib\Message\AMQPMessage;
 use MAKS\AmqpAgent\RPC\AbstractEndpointInterface;
 
 /**
