@@ -9,7 +9,7 @@
 namespace MAKS\AmqpAgent;
 
 use Exception;
-use MAKS\AmqpAgent\Helper\Utility;
+use MAKS\AmqpAgent\Helper\ArrayProxy;
 use MAKS\AmqpAgent\Exception\ConfigFileNotFoundException;
 
 /**
@@ -138,7 +138,7 @@ final class Config
      */
     public function has(string $key): bool
     {
-        $value = Utility::getArrayValueByKey($this->config, $key, null);
+        $value = ArrayProxy::getArrayValueByKey($this->config, $key, null);
 
         return isset($value);
     }
@@ -151,7 +151,7 @@ final class Config
      */
     public function get(string $key)
     {
-        $value = Utility::getArrayValueByKey($this->config, $key);
+        $value = ArrayProxy::getArrayValueByKey($this->config, $key);
 
         return $value;
     }
@@ -165,7 +165,7 @@ final class Config
      */
     public function set(string $key, $value)
     {
-        Utility::setArrayValueByKey($this->config, $key, $value);
+        ArrayProxy::setArrayValueByKey($this->config, $key, $value);
 
         return $this;
     }
