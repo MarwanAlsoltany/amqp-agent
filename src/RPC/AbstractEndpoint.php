@@ -36,7 +36,7 @@ abstract class AbstractEndpoint implements AbstractEndpointInterface
 
     /**
      * The queue name of the RPC endpoint.
-     * @var array
+     * @var string
      */
     protected $queueName;
 
@@ -62,7 +62,7 @@ abstract class AbstractEndpoint implements AbstractEndpointInterface
      * The request body.
      * @var string
      */
-    protected $request;
+    protected $requestBody;
 
     /**
      * Requests conveyor.
@@ -74,7 +74,7 @@ abstract class AbstractEndpoint implements AbstractEndpointInterface
      * The response body.
      * @var string
      */
-    protected $response;
+    protected $responseBody;
 
     /**
      * Responses conveyor.
@@ -115,7 +115,7 @@ abstract class AbstractEndpoint implements AbstractEndpointInterface
      * @return self
      * @throws RPCEndpointException If the endpoint is already connected.
      */
-    public function connect(?array $connectionOptions = []): self
+    public function connect(?array $connectionOptions = [])
     {
         $this->connectionOptions = Parameters::patchWith(
             $connectionOptions ?? [],
@@ -269,7 +269,7 @@ abstract class AbstractEndpoint implements AbstractEndpointInterface
      * @param callable $callback The callback to execute.
      * @return self
      */
-    final public function on(string $event, callable $callback): self
+    final public function on(string $event, callable $callback)
     {
         $this->bind($event, function (...$arguments) use ($event, $callback) {
             call_user_func_array(
