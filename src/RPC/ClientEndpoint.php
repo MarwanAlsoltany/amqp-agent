@@ -37,12 +37,12 @@ class ClientEndpoint extends AbstractEndpoint implements ClientEndpointInterface
      * @param array|null $connectionOptions
      * @return self
      */
-    public function connect(?array $connectionOptions = []): self
+    public function connect(?array $connectionOptions = [])
     {
         parent::connect($connectionOptions);
 
         if ($this->isConnected()) {
-            list($this->responseQueue, ,) = $this->channel->queue_declare(
+            list($this->responseQueue, , ) = $this->channel->queue_declare(
                 null,
                 false,
                 false,
@@ -80,9 +80,8 @@ class ClientEndpoint extends AbstractEndpoint implements ClientEndpointInterface
         }
 
         $this->queueName = $queueName ?? $this->queueName;
-
-        $this->response = null;
-        $this->request = $request;
+        $this->requestBody = $request instanceof AMQPMessage ? $request->body : (string)$request;
+        $this->responseBody = null;
         $this->requestQueue = $this->queueName;
         $this->correlationId = Utility::generateHash();
 
@@ -109,11 +108,11 @@ class ClientEndpoint extends AbstractEndpoint implements ClientEndpointInterface
 
         $this->trigger('request.after.send', [$message]);
 
-        while ($this->response === null) {
+        while ($this->responseBody === null) {
             $this->channel->wait();
         }
 
-        return $this->response;
+        return $this->responseBody;
     }
 
     /**
@@ -139,7 +138,7 @@ class ClientEndpoint extends AbstractEndpoint implements ClientEndpointInterface
         $this->trigger('response.on.get', [$response]);
 
         if ($this->correlationId === $response->get('correlation_id')) {
-            $this->response = $this->callback($response);
+            $this->responseBody = $this->callback($response);
             $response->ack();
             return;
         }
@@ -148,7 +147,7 @@ class ClientEndpoint extends AbstractEndpoint implements ClientEndpointInterface
             sprintf(
                 'Correlation ID of the response "%s" does not match the one of the request "%s"!',
                 $this->correlationId,
-                $response->get('correlation_id')
+                (string)$response->get('correlation_id')
             )
         );
     }
