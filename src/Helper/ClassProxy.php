@@ -8,6 +8,8 @@
 
 namespace MAKS\AmqpAgent\Helper;
 
+use MAKS\AmqpAgent\Helper\ClassProxyTrait;
+
 /**
  * A class containing methods for proxy methods calling, properties manipulation, and class utilities.
  *
@@ -22,6 +24,10 @@ namespace MAKS\AmqpAgent\Helper;
  * Set example:
  * ```
  * ClassProxy::set($object, 'someProperty', $newValue);
+ * ```
+ * Cast example:
+ * ```
+ * ClassProxy::cast($object, 'Namespace\SomeClass');
  * ```
  *
  * @since 2.0.0
