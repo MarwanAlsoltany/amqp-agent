@@ -132,7 +132,7 @@ trait ArrayProxyTrait
 
         foreach ($array as $key => $value) {
             $stdClass->{$key} = is_array($value)
-                ? self::arrayToObject($value, $useJson)
+                ? self::castArrayToObject($value, $useJson)
                 : $value;
         }
 
