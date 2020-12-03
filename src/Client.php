@@ -13,7 +13,7 @@ use MAKS\AmqpAgent\Worker\Publisher;
 use MAKS\AmqpAgent\Worker\Consumer;
 use MAKS\AmqpAgent\RPC\ClientEndpoint;
 use MAKS\AmqpAgent\RPC\ServerEndpoint;
-use MAKS\AmqpAgent\Helper\Utility;
+use MAKS\AmqpAgent\Helper\ArrayProxy;
 use MAKS\AmqpAgent\Helper\Serializer;
 use MAKS\AmqpAgent\Helper\Logger;
 use MAKS\AmqpAgent\Exception\AmqpAgentException;
@@ -121,7 +121,7 @@ class Client
             return $this->{$method}();
         }
 
-        $available = Utility::collapse($this->gettable());
+        $available = ArrayProxy::castArrayToString($this->gettable());
         throw new AmqpAgentException(
             "The requested member with the name \"{$member}\" does not exist! Available members are: {$available}."
         );
