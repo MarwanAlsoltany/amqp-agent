@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MAKS\AmqpAgent\RPC\AbstractEndpoint</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html#MAKS_AmqpAgent_RPC">MAKS\AmqpAgent\RPC</a>
+          </li>
+          <li class="separator">AbstractEndpoint</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#coverage">Coverage</a>
+          </li>
+          <li>
+            <a href="#violations">Violations</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/RPC/AbstractEndpoint.php.html#line26">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>MAKS\AmqpAgent\RPC\</small>AbstractEndpoint</h1>
+        <h4>An abstract class implementing the basic functionality of an endpoint.</h4>
+        <p/>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class AbstractEndpoint
+                implements
+                <a title="MAKS\AmqpAgent\RPC\AbstractEndpointInterface" href="../interfaces/MAKS_AmqpAgent_RPC_AbstractEndpointInterface.html">AbstractEndpointInterface</a>
+            {<br/><ul class="none"><li>// members</li><li>protected  <a href="#members">$connectionOptions</a>;
+                    </li><li>protected  <a href="#members">$queueName</a>;
+                    </li><li>protected <span title="MAKS\AmqpAgent\RPC\bool">bool</span> <a href="#members">$connected</a>;
+                    </li><li>protected <span title="PhpAmqpLib\Connection\AMQPStreamConnection">AMQPStreamConnection</span> <a href="#members">$connection</a>;
+                    </li><li>protected <span title="PhpAmqpLib\Channel\AMQPChannel">AMQPChannel</span> <a href="#members">$channel</a>;
+                    </li><li>protected  <a href="#members">$requestBody</a>;
+                    </li><li>protected  <a href="#members">$requestQueue</a>;
+                    </li><li>protected  <a href="#members">$responseBody</a>;
+                    </li><li>protected  <a href="#members">$responseQueue</a>;
+                    </li><li>protected  <a href="#members">$correlationId</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/__construct.html">__construct</a>()
+                    </li><li>public void <a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/__destruct.html">__destruct</a>()
+                    </li><li>public AbstractEndpoint <a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/connect.html">connect</a>()
+                    </li><li>public void <a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/disconnect.html">disconnect</a>()
+                    </li><li>public bool <a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/isConnected.html">isConnected</a>()
+                    </li><li>public <span title="AMQPStreamConnection">AMQPStreamConnection</span> <a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/getConnection.html">getConnection</a>()
+                    </li><li>public final float <a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/ping.html">ping</a>()
+                    </li><li>public final AbstractEndpoint <a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/on.html">on</a>()
+                    </li><li>protected abstract string <a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/callback.html">callback</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait">MagicMethodsExceptionsTrait</span></li><li>public void <a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait/__get.html">__get</a>()
+                        </li><li>public void <a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait/__set.html">__set</a>()
+                        </li><li>public mixed <a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait/__call.html">__call</a>()
+                        </li><li>public static mixed <a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait/__callStatic.html">__callStatic</a>()
+                        </li></ul><ul class="none"><li>// Inherited methods from <span title="MAKS\AmqpAgent\Helper\EventTrait">EventTrait</span></li><li>protected static void <a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait/trigger.html">trigger</a>()
+                        </li><li>protected static void <a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait/bind.html">bind</a>()
+                        </li><li>public static array <a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait/getEvents.html">getEvents</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Uses</h4>
+          <ul>
+            <li>
+              <a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait.html">MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait</a>
+            </li>
+            <li>
+              <a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait.html">MAKS\AmqpAgent\Helper\EventTrait</a>
+            </li>
+          </ul>
+          <h4>Implements</h4>
+          <ul>
+            <li>
+              <a title="MAKS\AmqpAgent\RPC\AbstractEndpointInterface" href="../interfaces/MAKS_AmqpAgent_RPC_AbstractEndpointInterface.html">MAKS\AmqpAgent\RPC\AbstractEndpointInterface</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="coverage">Coverage</h2>
+        <table class="styled">
+          <tr>
+            <td>Methods</td>
+            <td class="percent">88.89%</td>
+            <td class="nummeric">8 / 9</td>
+          </tr>
+          <tr>
+            <td>Lines</td>
+            <td class="percent">98.75%</td>
+            <td class="nummeric">79 / 80</td>
+          </tr>
+        </table>
+        <h2 id="violations">Violations</h2>
+        <div class="styled">
+          <h3>PHPMessDetector</h3>
+          <table class="styled">
+            <thead>
+              <tr>
+                <th>Line</th>
+                <th>Rule</th>
+                <th>Message</th>
+              </tr>
+            </thead>
+            <tr>
+              <td class="line">177 - 180</td>
+              <td>
+                <a href="https://phpmd.org/rules/naming.html#booleangetmethodname" target="_blank" title="Naming Rules">BooleanGetMethodName</a>
+              </td>
+              <td>The 'getConnection()' method which returns a boolean should be named 'is...()' or 'has...()'</td>
+            </tr>
+            <tr>
+              <td class="line">272 - 285</td>
+              <td>
+                <a href="https://phpmd.org/rules/naming.html#shortmethodname" target="_blank" title="Naming Rules">ShortMethodName</a>
+              </td>
+              <td>Avoid using short method names like AbstractEndpoint::on(). The configured minimum method name length is 3.</td>
+            </tr>
+          </table>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="channel"><strong>$channel</strong>
+                —
+                <a title="PhpAmqpLib\Channel\AMQPChannel" href="../classes/PhpAmqpLib_Channel_AMQPChannel.html">PhpAmqpLib\Channel\AMQPChannel</a><br/><span class="indent">The endpoint channel.</span></li>
+            <li id="connected"><strong>$connected</strong>
+                —
+                <a title="MAKS\AmqpAgent\RPC\bool" href="../classes/MAKS_AmqpAgent_RPC_bool.html">MAKS\AmqpAgent\RPC\bool</a><br/><span class="indent">Wether the endpoint is connected to RabbitMQ server or not.</span></li>
+            <li id="connection"><strong>$connection</strong>
+                —
+                <a title="PhpAmqpLib\Connection\AMQPStreamConnection" href="../classes/PhpAmqpLib_Connection_AMQPStreamConnection.html">PhpAmqpLib\Connection\AMQPStreamConnection</a><br/><span class="indent">The endpoint connection.</span></li>
+            <li id="connectionOptions"><strong>$connectionOptions</strong>
+                —
+                array<br/><span class="indent">The connection options of the RPC endpoint.</span></li>
+            <li id="correlationId"><strong>$correlationId</strong>
+                —
+                string<br/><span class="indent">Correlation ID of the last request/response.</span></li>
+            <li id="events"><strong>$events</strong>
+                —
+                array<br/><span class="indent">Here lives all bindings.</span></li>
+            <li id="queueName"><strong>$queueName</strong>
+                —
+                string<br/><span class="indent">The queue name of the RPC endpoint.</span></li>
+            <li id="requestBody"><strong>$requestBody</strong>
+                —
+                string<br/><span class="indent">The request body.</span></li>
+            <li id="requestQueue"><strong>$requestQueue</strong>
+                —
+                string<br/><span class="indent">Requests conveyor.</span></li>
+            <li id="responseBody"><strong>$responseBody</strong>
+                —
+                string<br/><span class="indent">The response body.</span></li>
+            <li id="responseQueue"><strong>$responseQueue</strong>
+                —
+                string<br/><span class="indent">Responses conveyor.</span></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>protected</h4>
+          <ul>
+            <li id="callback"><a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/callback.html">callback()</a>
+                — Hook method to manipulate the message (request/response) when extending the class.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/__construct.html">__construct()</a>
+                — Class constructor.</li>
+            <li id="__destruct"><a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/__destruct.html">__destruct()</a>
+                — Closes the connection with RabbitMQ server before destroying the object.</li>
+            <li id="connect"><a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/connect.html">connect()</a>
+                — Opens a connection with RabbitMQ server.</li>
+            <li id="disconnect"><a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/disconnect.html">disconnect()</a>
+                — Closes the connection with RabbitMQ server.</li>
+            <li id="getConnection"><a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/getConnection.html">getConnection()</a>
+                — Returns the connection used by the endpoint.</li>
+            <li id="isConnected"><a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/isConnected.html">isConnected()</a>
+                — Returns wether the endpoint is connected or not.</li>
+            <li id="on"><a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/on.html">on()</a>
+                — Hooking method based on events to manipulate the request/response during the endpoint/message life cycle.</li>
+            <li id="ping"><a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/ping.html">ping()</a>
+                — The time needed for the round-trip to RabbitMQ server in milliseconds.</li>
+          </ul>
+          <h3>Inherited from <a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait.html">MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="__call"><a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait/__call.html">__call()</a>
+                — Throws an exception for calls to undefined methods.</li>
+            <li id="__callStatic"><a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait/__callStatic.html">__callStatic()</a>
+                — Throws an exception for calls to undefined static methods.</li>
+            <li id="__get"><a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait/__get.html">__get()</a>
+                — Throws an exception when trying to get a class member via public property assignment notation.</li>
+            <li id="__set"><a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait/__set.html">__set()</a>
+                — Throws an exception when trying to set a class member via public property assignment notation.</li>
+          </ul>
+          <h3>Inherited from <a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait.html">MAKS\AmqpAgent\Helper\EventTrait</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="bind"><a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait/bind.html">bind()</a>
+                — Binds the passed function to the passed event.</li>
+            <li id="trigger"><a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait/trigger.html">trigger()</a>
+                — Executes callbacks attached to the passed event with the passed arguments.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="getEvents"><a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait/getEvents.html">getEvents()</a>
+                — Returns array of all registered events as an array `['event.name' =&gt; [$cb1, $cb2, ...]]`.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

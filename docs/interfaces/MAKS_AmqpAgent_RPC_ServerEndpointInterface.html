@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MAKS\AmqpAgent\RPC\ServerEndpointInterface</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../interfaces.html">Interfaces</a>
+          </li>
+          <li class="separator">
+            <a href="../interfaces.html#MAKS_AmqpAgent_RPC">MAKS\AmqpAgent\RPC</a>
+          </li>
+          <li class="separator">ServerEndpointInterface</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#violations">Violations</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/RPC/ServerEndpointInterface.php.html#line17">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>MAKS\AmqpAgent\RPC\</small>ServerEndpointInterface</h1>
+        <h4>An interface defining the basic methods of a server.</h4>
+        <p/>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">interface ServerEndpointInterface
+                extends <a title="MAKS\AmqpAgent\RPC\AbstractEndpointInterface" href="../interfaces/MAKS_AmqpAgent_RPC_AbstractEndpointInterface.html">AbstractEndpointInterface</a>
+            {<br/><ul class="none"><li>// methods</li><li>public string <a title="MAKS\AmqpAgent\RPC\ServerEndpointInterface" href="../interfaces/MAKS_AmqpAgent_RPC_ServerEndpointInterface/respond.html">respond</a>()
+                    </li><li>public string <a title="MAKS\AmqpAgent\RPC\ServerEndpointInterface" href="../interfaces/MAKS_AmqpAgent_RPC_ServerEndpointInterface/serve.html">serve</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="MAKS\AmqpAgent\RPC\AbstractEndpointInterface">AbstractEndpointInterface</span></li><li>public AbstractEndpointInterface <a title="MAKS\AmqpAgent\RPC\AbstractEndpointInterface" href="../interfaces/MAKS_AmqpAgent_RPC_AbstractEndpointInterface/connect.html">connect</a>()
+                        </li><li>public void <a title="MAKS\AmqpAgent\RPC\AbstractEndpointInterface" href="../interfaces/MAKS_AmqpAgent_RPC_AbstractEndpointInterface/disconnect.html">disconnect</a>()
+                        </li><li>public bool <a title="MAKS\AmqpAgent\RPC\AbstractEndpointInterface" href="../interfaces/MAKS_AmqpAgent_RPC_AbstractEndpointInterface/isConnected.html">isConnected</a>()
+                        </li><li>public bool <a title="MAKS\AmqpAgent\RPC\AbstractEndpointInterface" href="../interfaces/MAKS_AmqpAgent_RPC_AbstractEndpointInterface/getConnection.html">getConnection</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a title="MAKS\AmqpAgent\RPC\AbstractEndpointInterface" href="../interfaces/MAKS_AmqpAgent_RPC_AbstractEndpointInterface.html">MAKS\AmqpAgent\RPC\AbstractEndpointInterface</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="respond"><a title="MAKS\AmqpAgent\RPC\ServerEndpointInterface" href="../interfaces/MAKS_AmqpAgent_RPC_ServerEndpointInterface/respond.html">respond()</a>
+                — Listens on requests coming via the passed queue and processes them with the passed callback.</li>
+            <li id="serve"><a title="MAKS\AmqpAgent\RPC\ServerEndpointInterface" href="../interfaces/MAKS_AmqpAgent_RPC_ServerEndpointInterface/serve.html">serve()</a>
+                — Listens on requests coming via the passed queue and processes them with the passed callback.</li>
+          </ul>
+          <h3>Inherited from <a title="MAKS\AmqpAgent\RPC\AbstractEndpointInterface" href="../interfaces/MAKS_AmqpAgent_RPC_AbstractEndpointInterface.html">MAKS\AmqpAgent\RPC\AbstractEndpointInterface</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="connect"><a title="MAKS\AmqpAgent\RPC\AbstractEndpointInterface" href="../interfaces/MAKS_AmqpAgent_RPC_AbstractEndpointInterface/connect.html">connect()</a>
+                — Opens a connection with RabbitMQ server.</li>
+            <li id="disconnect"><a title="MAKS\AmqpAgent\RPC\AbstractEndpointInterface" href="../interfaces/MAKS_AmqpAgent_RPC_AbstractEndpointInterface/disconnect.html">disconnect()</a>
+                — Closes the connection with RabbitMQ server.</li>
+            <li id="getConnection"><a title="MAKS\AmqpAgent\RPC\AbstractEndpointInterface" href="../interfaces/MAKS_AmqpAgent_RPC_AbstractEndpointInterface/getConnection.html">getConnection()</a>
+                — Returns the connection used by the endpoint.</li>
+            <li id="isConnected"><a title="MAKS\AmqpAgent\RPC\AbstractEndpointInterface" href="../interfaces/MAKS_AmqpAgent_RPC_AbstractEndpointInterface/isConnected.html">isConnected()</a>
+                — Returns wether the endpoint is connected or not.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

@@ -65,7 +65,7 @@
             <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="../source/Client.php.html#line33">Source</a>
+            <a href="../source/Client.php.html#line35">Source</a>
           </li>
         </ul>
       </nav>
@@ -79,6 +79,8 @@
             {<br/><ul class="none"><li>// members</li><li>protected <span title="MAKS\AmqpAgent\Config">Config</span> <a href="#members">$config</a>;
                     </li><li>protected <span title="MAKS\AmqpAgent\Worker\Publisher">Publisher</span> <a href="#members">$publisher</a>;
                     </li><li>protected <span title="MAKS\AmqpAgent\Worker\Consumer">Consumer</span> <a href="#members">$consumer</a>;
+                    </li><li>protected <span title="MAKS\AmqpAgent\RPC\ClientEndpoint">ClientEndpoint</span> <a href="#members">$clientEndpoint</a>;
+                    </li><li>protected <span title="MAKS\AmqpAgent\RPC\ServerEndpoint">ServerEndpoint</span> <a href="#members">$serverEndpoint</a>;
                     </li><li>protected <span title="MAKS\AmqpAgent\Helper\Serializer">Serializer</span> <a href="#members">$serializer</a>;
                     </li><li>protected <span title="MAKS\AmqpAgent\Helper\Logger">Logger</span> <a href="#members">$logger</a>;
                     </li></ul><ul class="none"><li>// methods</li><li>public void <a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/__construct.html">__construct</a>()
@@ -87,6 +89,8 @@
                     </li><li>public static array <a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/gettable.html">gettable</a>()
                     </li><li>public <span title="Publisher">Publisher</span> <a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/getPublisher.html">getPublisher</a>()
                     </li><li>public <span title="Consumer">Consumer</span> <a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/getConsumer.html">getConsumer</a>()
+                    </li><li>public <span title="ClientEndpoint">ClientEndpoint</span> <a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/getClientEndpoint.html">getClientEndpoint</a>()
+                    </li><li>public <span title="ServerEndpoint">ServerEndpoint</span> <a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/getServerEndpoint.html">getServerEndpoint</a>()
                     </li><li>public <span title="Serializer">Serializer</span> <a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/getSerializer.html">getSerializer</a>()
                     </li><li>public <span title="Logger">Logger</span> <a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/getLogger.html">getLogger</a>()
                     </li><li>public <span title="Config">Config</span> <a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/getConfig.html">getConfig</a>()
@@ -98,18 +102,21 @@
           <tr>
             <td>Methods</td>
             <td class="percent">100%</td>
-            <td class="nummeric">9 / 9</td>
+            <td class="nummeric">11 / 11</td>
           </tr>
           <tr>
             <td>Lines</td>
             <td class="percent">100%</td>
-            <td class="nummeric">47 / 47</td>
+            <td class="nummeric">57 / 57</td>
           </tr>
         </table>
         <h2 id="members">Members</h2>
         <div class="styled members">
           <h4>protected</h4>
           <ul class="members">
+            <li id="clientEndpoint"><strong>$clientEndpoint</strong>
+                —
+                <a title="MAKS\AmqpAgent\RPC\ClientEndpoint" href="../classes/MAKS_AmqpAgent_RPC_ClientEndpoint.html">MAKS\AmqpAgent\RPC\ClientEndpoint</a><br/><span class="indent">An instance of the RPC Client class.</span></li>
             <li id="config"><strong>$config</strong>
                 —
                 <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config.html">MAKS\AmqpAgent\Config</a><br/><span class="indent">An instance of the configuration object.</span></li>
@@ -125,6 +132,9 @@
             <li id="serializer"><strong>$serializer</strong>
                 —
                 <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer.html">MAKS\AmqpAgent\Helper\Serializer</a><br/><span class="indent">An instance of the Serializer class.</span></li>
+            <li id="serverEndpoint"><strong>$serverEndpoint</strong>
+                —
+                <a title="MAKS\AmqpAgent\RPC\ServerEndpoint" href="../classes/MAKS_AmqpAgent_RPC_ServerEndpoint.html">MAKS\AmqpAgent\RPC\ServerEndpoint</a><br/><span class="indent">An instance of the RPC Server class.</span></li>
           </ul>
         </div>
         <h2 id="methods">Methods</h2>
@@ -137,6 +147,8 @@
                 — Gets a class member via public property access notation.</li>
             <li id="get"><a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/get.html">get()</a>
                 — Returns an instance of a class by its name (lowercase, UPPERCASE, PascalCase, camelCase, dot.case, kebab-case, or snake_case representation of class name).</li>
+            <li id="getClientEndpoint"><a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/getClientEndpoint.html">getClientEndpoint()</a>
+                — Returns an instance of the Consumer class.</li>
             <li id="getConfig"><a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/getConfig.html">getConfig()</a>
                 — Returns the currently used config object.</li>
             <li id="getConsumer"><a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/getConsumer.html">getConsumer()</a>
@@ -147,6 +159,8 @@
                 — Returns an instance of the Publisher class.</li>
             <li id="getSerializer"><a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/getSerializer.html">getSerializer()</a>
                 — Returns an instance of the Serializer class.</li>
+            <li id="getServerEndpoint"><a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/getServerEndpoint.html">getServerEndpoint()</a>
+                — Returns an instance of the Consumer class.</li>
             <li id="gettable"><a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/gettable.html">gettable()</a>
                 — Returns an array of available members that can be obtained via `self::get()`.</li>
           </ul>
