@@ -62,7 +62,7 @@ All notable changes to **AMQP Agent** will be documented in this file.
     - Fix issue of wrong fully-qualified name when casting the class to a string.
     - Change default message of `rethrowException` method to a more useful one.
     - Add a new parameter to change the wrapping thrown exception class.
-    - Rename the method `rethrowException` to `rethrow` and add the old name as an alias.
+    - Rename the method `rethrowException()` to `rethrow()` and add the old name as an alias.
 - Add `MagicMethodsExceptionsTrait` to unify error messages of calls to magic methods.
 - Add `AbstractParameters` class to simplify working with parameters:
     - Add `AmqpAgentParameters` as global class for all parameters.
@@ -71,11 +71,11 @@ All notable changes to **AMQP Agent** will be documented in this file.
 - Refactor workers classes (`AbstractWorker`, `Publisher`, `Consumer`):
     - Make use of the newly created `*Parameters` class.
     - Make use of the newly created `MagicMethodsExceptionsTrait`.
-    - Remove `@codeCoverageIgnore` annotations from the workers classes.
-    - Remove constants from the corresponding (`*Interface`) as they are available now via (`*Parameters`).
-    - Update the class in different places to make use of the new additions.
+    - Remove `@codeCoverageIgnore` annotations from workers classes.
+    - Remove constants from the corresponding `*Interface` as they are available now via `*Parameters`.
+    - Update the classes in different places to make use of the new additions.
 - Update `WorkerCommandTrait` to make use of the newly created `AmqpAgentParameters` class.
-- Remove protected method `mutateClassConst` from `WorkerMutationTrait` as it is not used anymore (usage replaced with `*Parameters::patchWith()`).
+- Remove protected method `mutateClassConst()` from `WorkerMutationTrait` as it is not used anymore (usage replaced with `*Parameters::patchWith()`).
 - Update old tests to cover the new changes.
 - Update tests
   - Add new tests for the newly created classes and functions.
