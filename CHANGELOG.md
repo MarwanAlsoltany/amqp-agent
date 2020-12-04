@@ -135,3 +135,47 @@ All notable changes to **AMQP Agent** will be documented in this file.
   - Update old tests to cover the new changes.
 - Fix coding style issues in different places.
 - Rebuild documentation.
+
+
+## [2.0.0] - 2020-12-03
+- Update `composer.json`:
+    - Update `branch-alias` version.
+- Add RPC endpoints interfaces:
+    - Add `AbstractEndpointInterface`.
+    - Add `ClientEndpointInterface`.
+    - Add `ServerEndpointInterface`.
+- Add RPC endpoints classes:
+    - Add `AbstractEndpoint` class.
+    - Add `ClientEndpoint` class.
+    - Add `ServerEndpoint` class.
+    - Add `RPCEndpointParameters` class.
+    - Add `RPCEndpointException` class.
+- Add `IDGenerator` class for generating unique IDs and Tokens.
+- Add `EventTrait` and its corresponding `Event` class to expose a simplified API for handling events.
+- Add `ClassProxyTrait` and its corresponding `ClassProxy` class to expose a simplified API for manipulating objects.
+- Add `ArrayProxyTrait` and its corresponding `ArrayProxy` class to expose a simplified API for manipulating arrays.
+- Update `Utility` class:
+    - Add `execute()` method.
+    - Remove `collapse()` method (extracted to `ArrayProxy`).
+    - Remove `objectToArray()` method (extracted to `ArrayProxy`).
+    - Remove `arrayToObject()` method (extracted to `ArrayProxy`).
+    - Remove `getArrayValueByKey()` method (extracted to `ArrayProxy`).
+    - Remove `setArrayValueByKey()` method (extracted to `ArrayProxy`).
+- Update `Client` class:
+    - Add `$clientEndpoint` property.
+    - Add `$serverEndpoint` property.
+    - Add `getClientEndpoint()` method.
+    - Add `getServerEndpoint()` method.
+- Update `AmqpAgentParameters` class:
+    - Add parameters for RPC endpoints.
+- Update `Config` class:
+    - Add references to RPC endpoints properties (`$rpcConnectionOptions` and `$rpcQueueName`).
+- Update configuration file (`maks-amqp-agent-config.php`):
+    - Add references to RPC endpoints options.
+- Update tests
+  - Add new tests to the newly created methods and classes.
+  - Add new mocks to help with classes testing.
+  - Add `bin/endpoint` executable to help with endpoints testing.
+  - Update old tests to cover the new changes.
+  - Update `phpunit.xml.dist` to run the new tests.
+- Rebuild documentation.
