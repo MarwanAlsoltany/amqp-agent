@@ -17,30 +17,6 @@ An elegant wrapper around the famous php-amqplib for 90% use case.
 [![Travis Build Status][travis-icon]][travis-href]
 [![StyleCI Code Style][styleci-icon]][styleci-href]
 
-[php-icon]: https://img.shields.io/badge/php-%5E7.1-yellow?style=flat-square
-[version-icon]: https://img.shields.io/packagist/v/marwanalsoltany/amqp-agent.svg?style=flat-square
-[license-icon]: https://img.shields.io/badge/license-LGPL_2.1_or_later-red.svg?style=flat-square
-[maintenance-icon]: https://img.shields.io/badge/maintained-yes-orange.svg?style=flat-square
-[documentation-icon]: https://img.shields.io/website-up-down-blue-red/http/marwanalsoltany.github.io/amqp-agent.svg?style=flat-square
-[downloads-icon]: https://img.shields.io/packagist/dt/marwanalsoltany/amqp-agent.svg?style=flat-square
-[travis-icon]: https://img.shields.io/travis/MarwanAlsoltany/amqp-agent/master.svg?style=flat-square
-[scrutinizer-icon]: https://img.shields.io/scrutinizer/build/g/MarwanAlsoltany/amqp-agent/master?style=flat-square
-[scrutinizer-coverage-icon]: https://img.shields.io/scrutinizer/coverage/g/MarwanAlsoltany/amqp-agent.svg?style=flat-square
-[scrutinizer-quality-icon]: https://img.shields.io/scrutinizer/g/MarwanAlsoltany/amqp-agent.svg?style=flat-square
-[styleci-icon]: https://github.styleci.io/repos/271944962/shield?branch=master
-
-[php-href]: https://github.com/MarwanAlsoltany/amqp-agent/search?l=php
-[version-href]: https://github.com/MarwanAlsoltany/amqp-agent/tree/master
-[license-href]: ./LICENSE
-[maintenance-href]: https://github.com/MarwanAlsoltany/amqp-agent/graphs/commit-activity
-[documentation-href]: http://marwanalsoltany.github.io/amqp-agent
-[downloads-href]: https://packagist.org/packages/marwanalsoltany/amqp-agent
-[travis-href]: https://travis-ci.org/MarwanAlsoltany/amqp-agent
-[scrutinizer-href]: https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/build-status/master
-[scrutinizer-coverage-href]: https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/?branch=master
-[scrutinizer-quality-href]: https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/?branch=maste
-[styleci-href]: https://github.styleci.io/repos/271944962
-
 <details>
 <summary>Table of Contents</summary>
 <p>
@@ -58,10 +34,23 @@ An elegant wrapper around the famous php-amqplib for 90% use case.
 </p>
 </details>
 
+<br />
+<a href="https://https://twitter.com/intent/tweet?url=&text=Working%20with%20%23RabbitMQ%20in%20%23PHP%20has%20never%20been%20so%20easy%20and%20fun%2C%20check%20out%20AMQP%20Agent%20and%20stop%20wasting%20your%20time!%20https%3A%2F%2Fgithub.com%2FMarwanAlsoltany%2Famqp-agent%20" title="Tweet" target="_blank"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" alt="Tweet"></a>
 </div>
 
 
 
+
+---
+
+
+## Key Features
+
+1. Framework agnostic, integrates easily in any codebase
+2. An intuitive and tested API with out-of-the-box support for **Publishers**, **Consumers**, and **RPC Endpoints**
+3. Contains tons of helpers to get you up and running in no time without deep knowledge of the topic
+4. Unlimited flexibility when it comes to customizing it to your exact needs
+5. Actively maintained, well documented and all about syntactic sugar.
 
 ---
 
@@ -105,13 +94,39 @@ composer update
 
 ## About AMQP Agent
 
-AMQP Agent tries to simplify the implementation of a message-broker in a PHP project. It takes away the entire overhead of building and configuring objects that you would need in order to talk with RabbitMQ server (through php-amqplib) and exposes a tested, fully configurable, and flexible API that fits almost any project.
+AMQP Agent tries to simplify the implementation of a message-broker in a PHP project. It takes away the entire overhead of building and configuring objects or creating classes that you would need in order to talk with RabbitMQ server (through *php-amqplib*) and exposes a tested, fully configurable, and flexible API that fits almost any project.
 
-The php-amqplib library is awesome and works very well. The one and only problem is, it's pretty bare-bone to be used in a project. Without remaking your own wrapper classes, it's almost impossible to not write spaghetti code. Plus the enormous amount of functions, methods, and configurations (parameters) that come with it make it really hard to implement a reasonable API to be used. AMQP Agent solves this problem by making as much abstraction as possible without losing control over the workers and by bringing back the terminology associated with message-brokers, a Publisher and a Consumer is all that you need to deal with if you are a newcomer.
+The *php-amqplib* library is awesome and works very well. The one and only problem is, it's pretty bare-bone to be used in a project, without remaking your own wrapper classes, it's almost impossible to not write spaghetti code. Plus the enormous amount of functions, methods, and configurations (parameters) that come with it make it really hard to implement a reasonable API to be used. AMQP Agent solves this problem by making as much abstraction as possible without losing control over the workers and by bringing back the terminology associated with message-brokers, a Publisher and a Consumer is all that you need to deal with if you are a newcomer.
 
 According to this motto, AMQP Agent makes working with RabbitMQ as fun and elegant as possible by exposing some fluent interfaces that are cleverly implemented, fit modern PHP development, nice to work with and very simple to use; yet very powerful and can overwrite the smallest quirks at any point of working with the worker. With AMQP Agent you can start publishing and consuming messages with just a few lines of code!
 
-AMQP Agent does not overwrite anything of php-amqplib nor it does change the terminology associated with its functions. It only simplifies it; takes out the noise of functions' names and extends it in some places. It also adds some nice features like workers-commands, dynamic channel-waiting, and facilitation methods.
+AMQP Agent does not overwrite anything of *php-amqplib* nor it does change the terminology associated with its functions. It only simplifies it; takes out the noise of functions' names and extends it in some places. It also adds some nice features like workers-commands, dynamic channel-waiting, and facilitation methods.
+
+AMQP Agent does also offer a powerful event-based RPC Client and RPC Server for your IoT projects.
+
+Working with AMQP Agent can be as easy as:
+
+```php
+// Publisher
+$publisher = new Publisher();
+$publisher->work($messages);
+
+// Consumer
+$consumer = new Consumer();
+$consumer->work($callback);
+
+// RPC Client
+$rpcClient = new ClientEndpoint();
+$rpcClient->connect();
+$response = $rpcClient->request($request);
+$rpcClient->disconnect();
+
+// RPC Server
+$rpcServer = new ServerEndpoint();
+$rpcServer->connect();
+$request = $rpcServer->respond($callback);
+$rpcServer->disconnect();
+```
 
 
 ---
@@ -126,17 +141,26 @@ AMQP Agent exposes a number of concrete classes that can be directly used and ot
 
 | Class | Description | API |
 | --- | --- | --- |
+| [AbstractWorker](./src/Worker/AbstractWorker.php) <sup><code>*A</code></sup> | An abstract class implementing the basic functionality of a worker. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Worker_AbstractWorker.html) |
 | [Publisher](./src/Worker/Publisher.php) <sup><code>*C\*S</code></sup> | A class specialized in publishing. Implementing only the methods needed for a publisher. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Worker_Publisher.html) |
 | [Consumer](./src/Worker/Consumer.php) <sup><code>*C\*S</code></sup> | A class specialized in consuming. Implementing only the methods needed for a consumer. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Worker_Consumer.html) |
+| [AbstractEndpoint](./src/RPC/AbstractEndpoint.php) <sup><code>*A</code></sup> | An abstract class implementing the basic functionality of an endpoint. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_RPC_AbstractEndpoint.html) |
+| [ClientEndpoint](./src/RPC/ClientEndpoint.php) <sup><code>*C</code></sup> | A class specialized in requesting. Implementing only the methods needed for a client. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_RPC_ClientEndpoint.html) |
+| [ServerEndpoint](./src/RPC/ServerEndpoint.php) <sup><code>*C</code></sup> | A class specialized in responding. Implementing only the methods needed for a server. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_RPC_ServerEndpoint.html) |
+| [AmqpAgentParameters](./src/Config/Utility.php) <sup><code>*C\*H</code></sup> | A class that encapsulates all AMQP Agent parameters as constants. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Config_AmqpAgentParameters.html) |
+| [Utility](./src/Helper/Utility.php) <sup><code>*C\*H</code></sup> | A class containing miscellaneous helper functions. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Helper_Utility.html) |
+| [Event](./src/Helper/Event.php) <sup><code>*C\*H</code></sup> | A simple class for handling events (dispatching and listening). | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Helper_Event.html) |
+| [ArrayProxy](./src/Helper/ArrayProxy.php) <sup><code>*C\*H</code></sup> | A class containing methods for for manipulating and working arrays. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Helper_ArrayProxy.html) |
+| [ClassProxy](./src/Helper/ClassProxy.php) <sup><code>*C\*H</code></sup> | A class containing methods for proxy methods calling, properties manipulation, and class utilities. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Helper_ClassProxy.html) |
+| [IDGenerator](./src/Helper/IDGenerator.php) <sup><code>*C\*H</code></sup> | A class containing functions for generating unique IDs and Tokens | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Helper_IDGenerator.html) |
 | [Serializer](./src/Helper/Serializer.php) <sup><code>*C\*H</code></sup> | A flexible serializer to be used in conjunction with the workers. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Helper_Serializer.html) |
 | [Logger](./src/Helper/Logger.php) <sup><code>*C\*H</code></sup> | A class to write logs, exposing methods that work statically and on instantiation. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Helper_Logger.html) |
+| [Singleton](./src/Helper/Singleton.php) <sup><code>*A\*H</code></sup> | An abstract class implementing the fundamental functionality of a singleton. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Helper_Singleton.html) |
 | [Config](./src/Config.php) <sup><code>*C\*R</code></sup> | A class that turns the configuration file into an object. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Config.html) |
 | [Client](./src/Client.php) <sup><code>*C\*R</code></sup> | A class returns everything AMQP Agent has to offer. A simple service container so to say. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Client.html) |
-| [AbstractWorker](./src/Worker/AbstractWorker.php) <sup><code>*A</code></sup> | An abstract class implementing the basic functionality of a worker. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Worker_AbstractWorker.html) |
-| [Singleton](./src/Helper/Singleton.php) <sup><code>*A\*H</code></sup> | An abstract class implementing the fundamental functionality of a singleton. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Helper_Singleton.html) |
 | [Example](./src/Helper/Example.php) <sup><code>*A\*H</code></sup> | An abstract class used as a default callback for the consumer. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Helper_Example.html) |
 
-> See also: [AbstractWorkerSingleton](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Worker_AbstractWorkerSingleton.html), [PublisherSingleton](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Worker_PublisherSingleton.html), [ConsumerSingleton](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Worker_ConsumerSingleton.html), [AbstractWorkerInterface](https://marwanalsoltany.github.io/amqp-agent/interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface.html), [PublisherInterface](https://marwanalsoltany.github.io/amqp-agent/interfaces/MAKS_AmqpAgent_Worker_PublisherInterface.html), [ConsumerInterface](https://marwanalsoltany.github.io/amqp-agent/interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface.html), [WorkerFacilitationInterface](https://marwanalsoltany.github.io/amqp-agent/interfaces/MAKS_AmqpAgent_Worker_WorkerFacilitationInterface.html), [WorkerMutationTrait](https://marwanalsoltany.github.io/amqp-agent/traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait.html), [WorkerCommandTrait](https://marwanalsoltany.github.io/amqp-agent/traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait.html).
+> See also: [AbstractWorkerSingleton](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Worker_AbstractWorkerSingleton.html), [PublisherSingleton](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Worker_PublisherSingleton.html), [ConsumerSingleton](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Worker_ConsumerSingleton.html), [AbstractWorkerInterface](https://marwanalsoltany.github.io/amqp-agent/interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface.html), [PublisherInterface](https://marwanalsoltany.github.io/amqp-agent/interfaces/MAKS_AmqpAgent_Worker_PublisherInterface.html), [ConsumerInterface](https://marwanalsoltany.github.io/amqp-agent/interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface.html), [WorkerFacilitationInterface](https://marwanalsoltany.github.io/amqp-agent/interfaces/MAKS_AmqpAgent_Worker_WorkerFacilitationInterface.html), [WorkerMutationTrait](https://marwanalsoltany.github.io/amqp-agent/traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait.html), [WorkerCommandTrait](https://marwanalsoltany.github.io/amqp-agent/traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait.html), [AbstractEndpointInterface](https://marwanalsoltany.github.io/amqp-agent/interfaces/MAKS_AmqpAgent_RPC_AbstractEndpointInterface.html), [ClientEndpointInterface](https://marwanalsoltany.github.io/amqp-agent/interfaces/MAKS_AmqpAgent_RPC_ClientEndpointInterface.html), [ServerEndpointInterface](https://marwanalsoltany.github.io/amqp-agent/interfaces/MAKS_AmqpAgent_RPC_ServerEndpointInterface.html), [EventTrait](https://marwanalsoltany.github.io/amqp-agent/traits/MAKS_AmqpAgent_Helper_EventTrait.html), [ArrayProxyTrait](https://marwanalsoltany.github.io/amqp-agent/traits/MAKS_AmqpAgent_Helper_ArrayProxyTrait.html), [ClassProxyTrait](https://marwanalsoltany.github.io/amqp-agent/traits/MAKS_AmqpAgent_Helper_ClassProxyTrait.html), [AbstractParameters](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Config_AbstractParameters.html).
 
 #### Bibliography
 * <code>*C</code> **Concrete:** This class is a concrete class and can be instantiated directly.
@@ -209,11 +233,13 @@ If you want to fine-tune and tweak AMQP Agent configuration to your exact needs,
         'consumer_tag' => 'your.consumer.name',
         'callback'     => 'YourNamespace\YourClass::yourCallback'
     ]
+    // RPC Endpoints
+    'rpcQueueName' => 'your.rpc.queue.name'
 ];
 
 ```
 
-![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *Array key names suffixed with `Options` are specific to AMQP Agent.*
+![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *Array first-level key names (suffixed with `Options`) are specific to AMQP Agent.*
 
 
 ---
@@ -221,7 +247,7 @@ If you want to fine-tune and tweak AMQP Agent configuration to your exact needs,
 
 ## Examples
 
-Before we start with examples, we have to clarify a few things. It's worth mentioning from the beginning that with AMQP Agent there are multiple ways to how you can retrieve a worker, there is the simple way, the recommended way, and the more advanced ways. After you retrieve a worker, it's like clay, you can form it the way you want. This modular design gracefully accommodates your needs, drives to a scalable code-base, and simply makes everyone happy.
+Before we start with examples, we have to clarify a few things. It's worth mentioning from the beginning that with AMQP Agent there are multiple ways to how you can retrieve a worker, there is the simple way, the recommended way, and the more advanced ways. After you retrieve a worker, it's like clay, you can form it the way you want. This modular design gracefully accommodates your needs, drives to a scalable codebase, and simply makes everyone happy.
 
 #### The ways a worker can be retrieved
 
@@ -239,6 +265,8 @@ use MAKS\AmqpAgent\Worker\Publisher;
 use MAKS\AmqpAgent\Worker\PublisherSingleton;
 use MAKS\AmqpAgent\Worker\Consumer;
 use MAKS\AmqpAgent\Worker\ConsumerSingleton;
+use MAKS\AmqpAgent\RPC\ClientEndpoint;
+use MAKS\AmqpAgent\RPC\ServerEndpoint;
 
 $publisher1 = new Publisher(/* parameters can be passed here */);
 $publisher2 = PublisherSingleton::getInstance(/* parameters can be passed here */);
@@ -246,12 +274,20 @@ $publisher2 = PublisherSingleton::getInstance(/* parameters can be passed here *
 $consumer1 = new Consumer(/* parameters can be passed here */);
 $consumer2 = ConsumerSingleton::getInstance(/* parameters can be passed here */);
 
+$rpcClientA = new ClientEndpoint(/* parameters can be passed here */);
+$rpcServerA = new ServerEndpoint(/* parameters can be passed here */);
+
 // the parameters from this Config object will be passed to the workers.
 $config = new Config('path/to/your/config-file.php');
 $client = new Client($config); // path can also be passed directly to Client
 
 $publisher3 = $client->getPublisher(); // or $client->get('publisher');
 $consumer3 = $client->getConsumer(); // or $client->get('consumer');
+
+$rpcClientB = $client->getClientEndpoint(); // or $client->get('client.endpoint');
+$rpcServerB = $client->getServerEndpoint(); // or $client->get('server.endpoint');
+
+// Use $client->gettable() to get an array of all available services.
 
 ```
 
@@ -472,11 +508,101 @@ $consumer->disconnect();
 
 ```
 
+#### Here are some examples of an RPC client
+
+1. **Variant I:** Passing parameters in workers constructor.
+```php
+// RPC Client Demo 1
+
+$rpcClient = new ClientEndpoint(
+    // connectionOptions
+    [
+        'host' => 'localhost',
+        'user' => 'guest',
+        'password' => 'guest'
+    ],
+    // queueName
+    'your.rpc.queue.name'
+);
+$rpcClient->connect();
+$response = $rpcClient->request('{"command":"some-command","parameter":"some-parameter"}');
+$rpcClient->disconnect();
+
+```
+
+2. **Variant II:** Overwriting parameters per method call.
+```php
+// RPC Client Demo 2
+
+$rpcClient = new ClientEndpoint();
+$rpcClient->connect(
+    // connectionOptions
+    [
+        'host' => 'localhost',
+        'user' => 'guest',
+        'password' => 'guest'
+    ],
+    // queueName
+    'your.rpc.queue.name'
+);
+$response = $rpcClient->request(
+    '{"command":"some-command","parameter":"some-parameter"}',
+    'your.rpc.queue.name'
+);
+$rpcClient->disconnect();
+
+```
+
+#### Here are some examples of an RPC server
+
+1. **Variant I:** Passing parameters in workers constructor.
+```php
+// RPC Server Demo 1
+
+$rpcServer = new ServerEndpoint(
+    // connectionOptions
+    [
+        'host' => 'localhost',
+        'user' => 'guest',
+        'password' => 'guest'
+    ],
+    // queueName
+    'your.rpc.queue.name'
+);
+$rpcServer->connect();
+$request = $rpcServer->respond('YourNamespace\YourClass::yourCallback');
+$rpcServer->disconnect();
+
+```
+
+2. **Variant II:** Overwriting parameters per method call.
+```php
+// RPC Server Demo 2
+
+$rpcServer = new ServerEndpoint();
+$rpcServer->connect(
+    // connectionOptions
+    [
+        'host' => 'localhost',
+        'user' => 'guest',
+        'password' => 'guest'
+    ],
+    // queueName
+    'your.rpc.queue.name'
+);
+$request = $rpcServer->respond(
+    'YourNamespace\YourClass::yourCallback',
+    'your.rpc.queue.name'
+);
+$rpcServer->disconnect();
+
+```
+
 ![#1e90ff](https://via.placeholder.com/11/1e90ff/000000?text=+) **Fact:** *When supplying parameters provide only the parameters you need. AMQP Agent is smart enough to append the deficiency.*
 
 ![#32cd32](https://via.placeholder.com/11/32cd32/000000?text=+) **Advice:** *You can simplify the heavy constructors written in the examples above if you use `get($className)` on an instance of the `Client` class after providing a config file with the parameters you want.*
 
-![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *Refere to [AMQP Agent Docs](https://marwanalsoltany.github.io/amqp-agent/) for the full explanation of the methods. Refere to [RabbitMQ Documentation](https://www.rabbitmq.com/documentation.html) and [php-amqplib](https://github.com/php-amqplib/php-amqplib) for the full explanation of the parameters.*
+![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *Refer to [AMQP Agent Docs](https://marwanalsoltany.github.io/amqp-agent/) for the full explanation of the methods. Refer to [RabbitMQ Documentation](https://www.rabbitmq.com/documentation.html) and [php-amqplib](https://github.com/php-amqplib/php-amqplib) for the full explanation of the parameters.*
 
 ### Advanced Examples
 
@@ -504,8 +630,8 @@ for ($i = 0; $i < 10000; $i++) {
 }
 
 // Instantiating a config object.
-// Note that not passing a config file
-// path falls back to the default config.
+// Note that not passing a config file path falls back to the default config.
+// Starting from v1.2.2, you can use has(), get(), set() methods to modify config values.
 $config = new Config();
 
 // Instantiating a client.
@@ -545,7 +671,7 @@ $publisher->bind([
     'exchange' => 'high.and.low.importance.exchange'
 ]);
 
-// Publishing messages according to their priorty.
+// Publishing messages according to their priority.
 foreach ($data as $item) {
     $payload = $serializer->serialize($item, 'JSON');
     if ($item['importance'] == 'high') {
@@ -563,7 +689,7 @@ foreach ($data as $item) {
         continue;
     }
     $publisher->publish(
-        $payload, // Not providing priorty will fall back to 0
+        $payload, // Not providing priority will fall back to 0
         [
             'exchange' => 'high.and.low.importance.exchange'
         ]
@@ -717,7 +843,7 @@ $callback = function($message, &$client, $callback) {
     // Sleep for 50ms to mimic some processing.
     usleep(50000);
 
-    // The final step is aknowledgment so that no data is lost.
+    // The final step is acknowledgment so that no data is lost.
     Consumer::ack($message);
 };
 
@@ -741,9 +867,83 @@ $consumer->disconnect();
 
 ```
 
+* **RPC Client Example:**
+    You will see here how you would send request to the RPC Server and add additional functionality to the endpoint by used the events it offers.
+
+```php
+// Advanced RPC Client Demo
+
+use MAKS\AmqpAgent\Client;
+use MAKS\AmqpAgent\Config;
+use MAKS\AmqpAgent\RPC\ClientEndpoint;
+
+$config = new Config();
+$client = new Client($config);
+
+// Retrieving a client endpoint from the client.
+/** @var \MAKS\AmqpAgent\RPC\ClientEndpoint */
+$rpcClient = $client->getClientEndpoint();
+
+// Attaching some additional functionality based on events emitted by the endpoint.
+// See $rpcClient->on() and $rpcClient->getEvents() methods for more info.
+$rpcClient
+    ->on('connection.after.open', function ($connection, $rpcClient, $eventName) {
+        printf('%s has emitted [%s] event and is now connected!', get_class($rpcClient), $eventName);
+        if ($connection instanceof AMQPStreamConnection) {
+            printf('  The connection has currently %d channel(s).', count($connection->channels) - 1);
+        }
+    })->on('request.before.send', function ($request, $rpcClient, $eventName) {
+        printf('%s has emitted [%s] event and is about to send a request!', get_class($rpcClient), $eventName);
+        if ($request instanceof AMQPMessage) {
+            $request->set('content_type', 'application/json')
+            printf('  The request content_type header has been set to: %s', $request->get('content_type'));
+        }
+    });
+
+// Optionally, you can ping the RabbitMQ server to see if a connection can be established.
+$roundtrip = $rpcClient->ping();
+
+$rpcClient->connect();
+$response = $rpcClient->request('{"command":"some-command","parameter":"some-parameter"}');
+$rpcClient->disconnect();
+
+```
+
+* **RPC Server Example:**
+    You will see here how you would respond to request from the RPC Client and add additional functionality to the endpoint by used the events it offers.
+
+```php
+// Advanced RPC Server Demo
+
+use MAKS\AmqpAgent\Client;
+use MAKS\AmqpAgent\Config;
+use MAKS\AmqpAgent\RPC\ServerEndpoint;
+
+$config = new Config();
+$client = new Client($config);
+
+// Retrieving a consumer from the client.
+/** @var \MAKS\AmqpAgent\RPC\ServerEndpoint */
+$rpcServer = $client->getServerEndpoint();
+
+// Attaching some additional functionality based on events emitted by the endpoint.
+// See $rpcServer->on() and $rpcServer->getEvents() methods for more info.
+$rpcServer->on('request.on.get', function ($response, $rpcServer, $eventName) {
+    printf('%s has emitted [%s] event and has just got a request!', get_class($rpcServer), $eventName);
+    if ($response instanceof AMQPMessage) {
+        printf('  The request has the following body: %s', $response->body;
+    }
+});
+
+$rpcServer->connect();
+$request = $rpcServer->respond('YourNamespace\YourClass::yourCallback');
+$rpcServer->disconnect();
+
+```
+
 ![#1e90ff](https://via.placeholder.com/11/1e90ff/000000?text=+) **Fact:** *You can make the code in Publisher/Consumer Advanced Examples way more easer if you make all parameters' changes in a config file and pass it to the client instead of the default.*
 
-![#32cd32](https://via.placeholder.com/11/32cd32/000000?text=+) **Advice:** *AMQP Agent code-base is well documented, please refere to [this link](https://marwanalsoltany.github.io/amqp-agent/classes.html) to have a look over all classes and methods.*
+![#32cd32](https://via.placeholder.com/11/32cd32/000000?text=+) **Advice:** *AMQP Agent code-base is well documented, please refer to [this link](https://marwanalsoltany.github.io/amqp-agent/classes.html) to have a look over all classes and methods.*
 
 
 ---
@@ -763,3 +963,30 @@ AMQP Agent is an open-sourced package licensed under the [**GNU LGPL v2.1**](./L
 <br/>
 Copyright (c) 2020 Marwan Al-Soltany. All rights reserved.
 <br/>
+
+
+
+
+[php-icon]: https://img.shields.io/badge/php-%5E7.1-yellow?style=flat-square
+[version-icon]: https://img.shields.io/packagist/v/marwanalsoltany/amqp-agent.svg?style=flat-square
+[license-icon]: https://img.shields.io/badge/license-LGPL_2.1_or_later-red.svg?style=flat-square
+[maintenance-icon]: https://img.shields.io/badge/maintained-yes-orange.svg?style=flat-square
+[documentation-icon]: https://img.shields.io/website-up-down-blue-red/http/marwanalsoltany.github.io/amqp-agent.svg?style=flat-square
+[downloads-icon]: https://img.shields.io/packagist/dt/marwanalsoltany/amqp-agent.svg?style=flat-square
+[travis-icon]: https://img.shields.io/travis/MarwanAlsoltany/amqp-agent/master.svg?style=flat-square
+[scrutinizer-icon]: https://img.shields.io/scrutinizer/build/g/MarwanAlsoltany/amqp-agent/master?style=flat-square
+[scrutinizer-coverage-icon]: https://img.shields.io/scrutinizer/coverage/g/MarwanAlsoltany/amqp-agent.svg?style=flat-square
+[scrutinizer-quality-icon]: https://img.shields.io/scrutinizer/g/MarwanAlsoltany/amqp-agent.svg?style=flat-square
+[styleci-icon]: https://github.styleci.io/repos/271944962/shield?branch=master
+
+[php-href]: https://github.com/MarwanAlsoltany/amqp-agent/search?l=php
+[version-href]: https://github.com/MarwanAlsoltany/amqp-agent/tree/master
+[license-href]: ./LICENSE
+[maintenance-href]: https://github.com/MarwanAlsoltany/amqp-agent/graphs/commit-activity
+[documentation-href]: http://marwanalsoltany.github.io/amqp-agent
+[downloads-href]: https://packagist.org/packages/marwanalsoltany/amqp-agent
+[travis-href]: https://travis-ci.org/MarwanAlsoltany/amqp-agent
+[scrutinizer-href]: https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/build-status/master
+[scrutinizer-coverage-href]: https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/?branch=master
+[scrutinizer-quality-href]: https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/?branch=maste
+[styleci-href]: https://github.styleci.io/repos/271944962
