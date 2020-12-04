@@ -9,7 +9,7 @@
 namespace MAKS\AmqpAgent\Helper;
 
 /**
- * A class containing miscellaneous helper functions.
+ * A class containing functions for generating unique IDs and Tokens.
  * @since 2.0.0
  */
 final class IDGenerator
