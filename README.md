@@ -35,7 +35,7 @@ An elegant wrapper around the famous php-amqplib for 90% use case.
 </details>
 
 <br />
-<a href="https://https://twitter.com/intent/tweet?url=&text=Working%20with%20%23RabbitMQ%20in%20%23PHP%20has%20never%20been%20so%20easy%20and%20fun%2C%20check%20out%20AMQP%20Agent%20and%20stop%20wasting%20your%20time!%20https%3A%2F%2Fgithub.com%2FMarwanAlsoltany%2Famqp-agent%20" title="Tweet" target="_blank"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" alt="Tweet"></a>
+<a href="https://twitter.com/intent/tweet?url=&text=Working%20with%20%23RabbitMQ%20in%20%23PHP%20has%20never%20been%20so%20easy%20and%20fun%2C%20check%20out%20AMQP%20Agent%20and%20stop%20wasting%20your%20time!%20https%3A%2F%2Fgithub.com%2FMarwanAlsoltany%2Famqp-agent%20" title="Tweet" target="_blank"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" alt="Tweet"></a>
 </div>
 
 
