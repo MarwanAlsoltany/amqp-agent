@@ -156,4 +156,8 @@ final class AmqpAgentParameters extends AbstractParameters
     public const REJECT_OPTIONS = [
         'requeue' => true,
     ];
+
+    public const RPC_CONNECTION_OPTIONS = self::CONNECTION_OPTIONS;
+
+    public const RPC_QUEUE_NAME = self::PREFIX . 'maks.amqp.agent.rpc.queue';
 }

@@ -11,7 +11,9 @@ namespace MAKS\AmqpAgent;
 use MAKS\AmqpAgent\Config;
 use MAKS\AmqpAgent\Worker\Publisher;
 use MAKS\AmqpAgent\Worker\Consumer;
-use MAKS\AmqpAgent\Helper\Utility;
+use MAKS\AmqpAgent\RPC\ClientEndpoint;
+use MAKS\AmqpAgent\RPC\ServerEndpoint;
+use MAKS\AmqpAgent\Helper\ArrayProxy;
 use MAKS\AmqpAgent\Helper\Serializer;
 use MAKS\AmqpAgent\Helper\Logger;
 use MAKS\AmqpAgent\Exception\AmqpAgentException;
@@ -49,6 +51,18 @@ class Client
      * @var Consumer
      */
     protected $consumer;
+
+    /**
+     * An instance of the RPC Client class.
+     * @var ClientEndpoint
+     */
+    protected $clientEndpoint;
+
+    /**
+     * An instance of the RPC Server class.
+     * @var ServerEndpoint
+     */
+    protected $serverEndpoint;
 
     /**
      * An instance of the Serializer class.
@@ -107,7 +121,7 @@ class Client
             return $this->{$method}();
         }
 
-        $available = Utility::collapse($this->gettable());
+        $available = ArrayProxy::castArrayToString($this->gettable());
         throw new AmqpAgentException(
             "The requested member with the name \"{$member}\" does not exist! Available members are: {$available}."
         );
@@ -175,6 +189,38 @@ class Client
         }
 
         return $this->consumer;
+    }
+
+    /**
+     * Returns an instance of the Consumer class.
+     * @return ClientEndpoint
+     */
+    public function getClientEndpoint(): ClientEndpoint
+    {
+        if (!isset($this->clientEndpoint)) {
+            $this->clientEndpoint = new ClientEndpoint(
+                $this->config->rpcConnectionOptions,
+                $this->config->rpcQueueName
+            );
+        }
+
+        return $this->clientEndpoint;
+    }
+
+    /**
+     * Returns an instance of the Consumer class.
+     * @return ServerEndpoint
+     */
+    public function getServerEndpoint(): ServerEndpoint
+    {
+        if (!isset($this->serverEndpoint)) {
+            $this->serverEndpoint = new ServerEndpoint(
+                $this->config->rpcConnectionOptions,
+                $this->config->rpcQueueName
+            );
+        }
+
+        return $this->serverEndpoint;
     }
 
     /**

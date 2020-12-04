@@ -2,7 +2,7 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <title>phpDox - MAKS\AmqpAgent\Helper\Utility::setArrayValueByKey</title>
+    <title>phpDox - MAKS\AmqpAgent\Helper\ClassProxyTrait::reflectOnClass</title>
     <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
@@ -45,9 +45,9 @@
             <a href="../../classes.html#MAKS_AmqpAgent_Helper">MAKS\AmqpAgent\Helper</a>
           </li>
           <li class="separator">
-            <a title="MAKS\AmqpAgent\Helper\Utility" href="../../classes/MAKS_AmqpAgent_Helper_Utility.html">Utility</a>
+            <a title="MAKS\AmqpAgent\Helper\ClassProxyTrait" href="../../traits/MAKS_AmqpAgent_Helper_ClassProxyTrait.html">ClassProxyTrait</a>
           </li>
-          <li class="separator">setArrayValueByKey</li>
+          <li class="separator">reflectOnClass</li>
         </ul>
       </div>
       <nav class="box">
@@ -65,63 +65,34 @@
             <a href="#return">Return</a>
           </li>
           <li>
-            <a href="#tests">Tests</a>
-          </li>
-          <li>
-            <a href="../../source/Helper/Utility.php.html#line248">Source</a>
+            <a href="../../source/Helper/ClassProxyTrait.php.html#line137">Source</a>
           </li>
         </ul>
       </nav>
       <section>
-        <h1><small>MAKS\AmqpAgent\Helper\Utility::</small>setArrayValueByKey</h1>
-        <h4>Sets a value of an array via dot-notation representation.</h4>
+        <h1><small>MAKS\AmqpAgent\Helper\ClassProxyTrait::</small>reflectOnClass</h1>
+        <h4>Returns a reflection class instance on a class.</h4>
         <p/>
         <ul/>
         <h2 id="signature">Signature</h2>
         <div class="styled synopsis">
-          <code>public function setArrayValueByKey(array&amp;
-        $array,
-            string
-        $key,
-            mixed
-        $value )
+          <code>public function reflectOnClass(<a title="MAKS\AmqpAgent\Helper\object|string" href="../../traits/MAKS_AmqpAgent_Helper_object|string.html">object|string</a>
+        $class )
             </code>
         </div>
         <h2 id="parameterlist">Parameters</h2>
         <dl class="styled">
-          <dt><code>$array</code>
+          <dt><code>$class</code>
                 —
-                array</dt>
-          <dd>The array to set the value in.</dd>
-          <dt><code>$key</code>
-                —
-                string</dt>
-          <dd>The string key representation.</dd>
-          <dt><code>$value</code>
-                —
-                mixed</dt>
-          <dd>The value to set.</dd>
+                object</dt>
+          <dd>Class FQN, or a class instance.<br/><br/><br/>      </dd>
         </dl>
         <h2 id="return">Returns</h2>
         <dl class="styled">
-          <dt>bool</dt>
-          <dd>True on success.<br/>
+          <dt>ReflectionClass</dt>
+          <dd><br/>
         </dd>
         </dl>
-        <h2 id="tests">Test Coverage</h2>
-        <div class="styled">
-          <h3>Information</h3>
-          <ul class="styled">
-            <li>Coverage: 12/12 Lines (100%)</li>
-            <li>Tests: 2</li>
-            <li>Passed: 2 (100%)</li>
-          </ul>
-          <h3>Tests</h3>
-          <ul class="styled">
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\ConfigTest::testSetMethodSetsValuesAndGetMethodReturnsThem</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\UtilityTest::testSetArrayValueByKeyReturnsExpectedValues</li>
-          </ul>
-        </div>
       </section>
     </div>
     <footer>

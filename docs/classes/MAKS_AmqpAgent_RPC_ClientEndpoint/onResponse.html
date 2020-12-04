@@ -2,7 +2,7 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <title>phpDox - MAKS\AmqpAgent\Helper\Utility::arrayToObject</title>
+    <title>phpDox - MAKS\AmqpAgent\RPC\ClientEndpoint::onResponse</title>
     <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
@@ -42,12 +42,12 @@
             <a href="../../classes.html">Classes</a>
           </li>
           <li class="separator">
-            <a href="../../classes.html#MAKS_AmqpAgent_Helper">MAKS\AmqpAgent\Helper</a>
+            <a href="../../classes.html#MAKS_AmqpAgent_RPC">MAKS\AmqpAgent\RPC</a>
           </li>
           <li class="separator">
-            <a title="MAKS\AmqpAgent\Helper\Utility" href="../../classes/MAKS_AmqpAgent_Helper_Utility.html">Utility</a>
+            <a title="MAKS\AmqpAgent\RPC\ClientEndpoint" href="../../classes/MAKS_AmqpAgent_RPC_ClientEndpoint.html">ClientEndpoint</a>
           </li>
-          <li class="separator">arrayToObject</li>
+          <li class="separator">onResponse</li>
         </ul>
       </div>
       <nav class="box">
@@ -68,52 +68,46 @@
             <a href="#tests">Tests</a>
           </li>
           <li>
-            <a href="../../source/Helper/Utility.php.html#line190">Source</a>
+            <a href="../../source/RPC/ClientEndpoint.php.html#line136">Source</a>
           </li>
         </ul>
       </nav>
       <section>
-        <h1><small>MAKS\AmqpAgent\Helper\Utility::</small>arrayToObject</h1>
-        <h4>Converts (casts) an array to an object (stdClass).</h4>
+        <h1><small>MAKS\AmqpAgent\RPC\ClientEndpoint::</small>onResponse</h1>
+        <h4>Validates the response.</h4>
         <p/>
         <ul/>
         <h2 id="signature">Signature</h2>
         <div class="styled synopsis">
-          <code>public function arrayToObject(array
-        $array,
-            [boolean
-        $useJson = false] )
+          <code>protected function onResponse(<a title="PhpAmqpLib\Message\AMQPMessage" href="../../classes/PhpAmqpLib_Message_AMQPMessage.html">AMQPMessage</a>
+        $response )
             </code>
         </div>
         <h2 id="parameterlist">Parameters</h2>
         <dl class="styled">
-          <dt><code>$array</code>
+          <dt><code>$response</code>
                 —
-                array</dt>
-          <dd/>
-          <dt><code>$useJson</code>
-                —
-                boolean</dt>
-          <dd>[optional] Wether to use json_decode/json_encode to cast the array, default is via iteration.<br/><br/><br/>      </dd>
+                <a title="PhpAmqpLib\Message\AMQPMessage" href="../../classes/PhpAmqpLib_Message_AMQPMessage.html">PhpAmqpLib\Message\AMQPMessage</a></dt>
+          <dd><br/><br/><br/>      </dd>
         </dl>
         <h2 id="return">Returns</h2>
         <dl class="styled">
-          <dt>stdClass</dt>
-          <dd>The result object.<br/>
+          <dt>void</dt>
+          <dd><br/>
         </dd>
         </dl>
         <h2 id="tests">Test Coverage</h2>
         <div class="styled">
           <h3>Information</h3>
           <ul class="styled">
-            <li>Coverage: 8/8 Lines (100%)</li>
+            <li>Coverage: 10/10 Lines (100%)</li>
             <li>Tests: 2</li>
             <li>Passed: 2 (100%)</li>
           </ul>
           <h3>Tests</h3>
           <ul class="styled">
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\UtilityTest::testArrayToObjectMethodReturnsExpectedValue</li>
-            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Helper\UtilityTest::testArrayToObjectMethodUsingJsonReturnsExpectedValue</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\RPC\ClientEndpointTest::testRequestMethodViaAliasMethodCall</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\RPC\ClientEndpointTest::testAnExceptionIsRaisedIfCorrelationIdOfTheResponseIsNotTheSameAsTheRequest</li>
           </ul>
         </div>
       </section>

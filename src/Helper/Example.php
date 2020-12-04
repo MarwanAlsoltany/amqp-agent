@@ -43,8 +43,6 @@ abstract class Example
             self::$serializer = new Serializer();
         }
 
-        $data = null;
-
         try {
             $data = self::$serializer->unserialize($message->body, 'PHP', true);
         } catch (Exception $e) {

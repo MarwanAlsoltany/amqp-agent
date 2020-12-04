@@ -7,13 +7,22 @@ use MAKS\AmqpAgent\Client;
 use MAKS\AmqpAgent\Config;
 use MAKS\AmqpAgent\Worker\Publisher;
 use MAKS\AmqpAgent\Worker\Consumer;
+use MAKS\AmqpAgent\RPC\ServerEndpoint;
+use MAKS\AmqpAgent\RPC\ClientEndpoint;
 use MAKS\AmqpAgent\Helper\Serializer;
 use MAKS\AmqpAgent\Helper\Logger;
 use MAKS\AmqpAgent\Exception\AmqpAgentException;
 
 class ClientTest extends TestCase
 {
+    /**
+     * @var Config
+     */
     private $config;
+
+    /**
+     * @var Client
+     */
     private $agent;
 
     public function setUp(): void
@@ -52,6 +61,18 @@ class ClientTest extends TestCase
     {
         $this->assertInstanceOf(Consumer::class, $this->agent->getConsumer());
         $this->assertInstanceOf(Consumer::class, $this->agent->consumer);
+    }
+
+    public function testGetServerEndpointInstance()
+    {
+        $this->assertInstanceOf(ServerEndpoint::class, $this->agent->getServerEndpoint());
+        $this->assertInstanceOf(ServerEndpoint::class, $this->agent->serverEndpoint);
+    }
+
+    public function testGetClientEndpointInstance()
+    {
+        $this->assertInstanceOf(ClientEndpoint::class, $this->agent->getClientEndpoint());
+        $this->assertInstanceOf(ClientEndpoint::class, $this->agent->clientEndpoint);
     }
 
     public function testGetSerializerInstance()

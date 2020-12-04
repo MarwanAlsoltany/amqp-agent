@@ -9,6 +9,7 @@
 namespace MAKS\AmqpAgent\Helper;
 
 use stdClass;
+use Exception;
 use ReflectionObject;
 use DateTime;
 use DateTimeZone;
@@ -127,147 +128,35 @@ final class Utility
     }
 
     /**
-     * Returns a string representation of an array by imploding it recursively with common formatting of data-types.
-     * @since 1.2.1
-     * @param array $pieces The array to implode.
-     * @return string
+     * Executes a CLI command in the specified path synchronously or asynchronous (cross platform).
+     * @since 2.0.0
+     * @param string $command The command to execute.
+     * @param string $path [optional] The path where the command should be executed.
+     * @param bool $asynchronous [optional] Wether the command should be a background process (asynchronous) or not (synchronous).
+     * @return string|null The command result (as a string if possible) if synchronous otherwise null.
      */
-    public static function collapse(array $pieces): string
+    public static function execute(string $command, string $path = null, bool $asynchronous = false): ?string
     {
-        $flat = [];
-
-        foreach ($pieces as $piece) {
-            if (is_array($piece)) {
-                $flat[] = self::collapse($piece);
-            } elseif (is_object($piece)) {
-                $flat[] = get_class($piece) ?? 'object';
-            } elseif (is_string($piece)) {
-                $flat[] = "'{$piece}'";
-            } elseif (is_bool($piece)) {
-                $flat[] = $piece ? 'true' : 'false';
-            } elseif (is_null($piece)) {
-                $flat[] = 'null';
-            } else {
-                $flat[] = $piece;
-            }
+        if (!strlen($command)) {
+            throw new Exception('No valid command is specified!');
         }
 
-        return '[' . implode(', ', $flat). ']';
-    }
+        $isWindows = PHP_OS == 'WINNT' || substr(php_uname(), 0, 7) == 'Windows';
+        $apWrapper = $isWindows ? 'start /B %s > NUL' : '/usr/bin/nohup %s >/dev/null 2>&1 &';
 
-    /**
-     * Converts (casts) an object to an associative array.
-     * @since 1.2.2
-     * @param object $object The object to convert.
-     * @param bool $useJson [optional] Wether to use json_decode/json_encode to cast the object, default is via reflection.
-     * @return array The result array.
-     */
-    public static function objectToArray($object, bool $useJson = false): array
-    {
-        if ($useJson) {
-            return json_decode(json_encode($object), true);
+        if (strlen($path) && getcwd() !== $path) {
+            chdir(realpath($path));
         }
 
-        $array = [];
-
-        $reflectionClass = new ReflectionObject($object);
-        foreach ($reflectionClass->getProperties() as $property) {
-            $property->setAccessible(true);
-            $array[$property->getName()] = $property->getValue($object);
-            $property->setAccessible(false);
+        if ($asynchronous) {
+            $command = sprintf($apWrapper, $command);
         }
 
-        return $array;
-    }
-
-    /**
-     * Converts (casts) an array to an object (stdClass).
-     * @since 1.2.2
-     * @param object $object The array to convert.
-     * @param bool $useJson [optional] Wether to use json_decode/json_encode to cast the array, default is via iteration.
-     * @return stdClass The result object.
-     */
-    public static function arrayToObject(array $array, bool $useJson = false): stdClass
-    {
-        if ($useJson) {
-            return json_decode(json_encode($array));
+        if ($isWindows && $asynchronous) {
+            pclose(popen($command, 'r'));
+            return null;
         }
 
-        $stdClass = new stdClass();
-
-        foreach ($array as $key => $value) {
-            $stdClass->{$key} = is_array($value)
-                ? self::arrayToObject($value, $useJson)
-                : $value;
-        }
-
-        return $stdClass;
-    }
-
-    /**
-     * Gets a value from an array via dot-notation representation.
-     * @since 1.2.2
-     * @param array $array The array to get the value from.
-     * @param string $key The dotted key representation.
-     * @param mixed $default [optional] The default fallback value.
-     * @return mixed The requested value if found otherwise the default parameter.
-     */
-    public static function getArrayValueByKey(array &$array, string $key, $default = null)
-    {
-        if (!strlen($key) || !count($array)) {
-            return $default;
-        }
-
-        $data = &$array;
-
-        if (strpos($key, '.') !== false) {
-            $parts = explode('.', $key);
-
-            foreach ($parts as $part) {
-                if (!array_key_exists($part, $data)) {
-                    return $default;
-                }
-
-                $data = &$data[$part];
-            }
-
-            return $data;
-        }
-
-        return array_key_exists($key, $data) ? $data[$key] : $default;
-    }
-
-    /**
-     * Sets a value of an array via dot-notation representation.
-     * @since 1.2.2
-     * @param array $array The array to set the value in.
-     * @param string $key The string key representation.
-     * @param mixed $value The value to set.
-     * @return bool True on success.
-     */
-    public static function setArrayValueByKey(array &$array, string $key, $value): bool
-    {
-        if (!strlen($key)) {
-            return false;
-        }
-
-        $parts = explode('.', $key);
-        $lastPart = array_pop($parts);
-
-        $data = &$array;
-
-        if (!empty($parts)) {
-            foreach ($parts as $part) {
-                if (!isset($data[$part])) {
-                    $data[$part] = [];
-                }
-
-                $data = &$data[$part];
-            }
-        }
-
-        $data[$lastPart] = $value;
-
-        return true;
+        return shell_exec($command);
     }
 }

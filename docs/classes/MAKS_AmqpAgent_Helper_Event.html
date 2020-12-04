@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MAKS\AmqpAgent\Helper\Event</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html#MAKS_AmqpAgent_Helper">MAKS\AmqpAgent\Helper</a>
+          </li>
+          <li class="separator">Event</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#coverage">Coverage</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/Helper/Event.php.html#line29">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>MAKS\AmqpAgent\Helper\</small>Event</h1>
+        <h4>A simple class for handling events (dispatching and listening).</h4>
+        <p>Dispatch example:<br/>```<br/>Event::dispatch('some.event.fired', [$arg1, $arg2]);<br/>```<br/>Listen example:<br/>```<br/>Event::listen('some.event.fired', function ($arg1, $arg2) {<br/>mail('name@domain.tld', "The {$arg1} is ...!", "{$arg2} has been ....");<br/>});<br/>```</p>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class Event
+            {<br/><ul class="none"><li>// Inherited methods from <span title="MAKS\AmqpAgent\Helper\EventTrait">EventTrait</span></li><li>protected static void <a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait/trigger.html">trigger</a>()
+                        </li><li>public static void <a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait/trigger.html">dispatch</a>()
+                        </li><li>protected static void <a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait/bind.html">bind</a>()
+                        </li><li>public static void <a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait/bind.html">listen</a>()
+                        </li><li>public static array <a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait/getEvents.html">getEvents</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Uses</h4>
+          <ul>
+            <li>
+              <a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait.html">MAKS\AmqpAgent\Helper\EventTrait</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="coverage">Coverage</h2>
+        <table class="styled">
+          <tr>
+            <td>Methods</td>
+            <td class="percent">0%</td>
+            <td class="nummeric">0 / 0</td>
+          </tr>
+          <tr>
+            <td>Lines</td>
+            <td class="percent">0%</td>
+            <td class="nummeric">0 / 0</td>
+          </tr>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="events"><strong>$events</strong>
+                —
+                array<br/><span class="indent">Here lives all bindings.</span></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h3>Inherited from <a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait.html">MAKS\AmqpAgent\Helper\EventTrait</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="bind"><a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait/bind.html">bind()</a>
+                — Binds the passed function to the passed event.</li>
+            <li id="trigger"><a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait/trigger.html">trigger()</a>
+                — Executes callbacks attached to the passed event with the passed arguments.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="dispatch"><a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait/trigger.html">dispatch()</a>
+                — Executes callbacks attached to the passed event with the passed arguments.</li>
+            <li id="getEvents"><a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait/getEvents.html">getEvents()</a>
+                — Returns array of all registered events as an array `['event.name' =&gt; [$cb1, $cb2, ...]]`.</li>
+            <li id="listen"><a title="MAKS\AmqpAgent\Helper\EventTrait" href="../traits/MAKS_AmqpAgent_Helper_EventTrait/bind.html">listen()</a>
+                — Binds the passed function to the passed event.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

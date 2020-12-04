@@ -80,7 +80,7 @@
         <h2 id="synopsis">Synopsis</h2>
         <div class="synopsis">class AmqpAgentParameters
                 extends <a title="MAKS\AmqpAgent\Config\AbstractParameters" href="../classes/MAKS_AmqpAgent_Config_AbstractParameters.html">AbstractParameters</a>
-            {<br/><ul class="none"><li>// constants</li><li>const PREFIX = 'maks.amqp.agent.';</li><li>const COMMAND_PREFIX = '__COMMAND__';</li><li>const COMMAND_SYNTAX = ;</li><li>const CONNECTION_OPTIONS = ;</li><li>const CHANNEL_OPTIONS = ;</li><li>const QUEUE_OPTIONS = ;</li><li>const EXCHANGE_OPTIONS = ;</li><li>const BIND_OPTIONS = ;</li><li>const MESSAGE_OPTIONS = ;</li><li>const PUBLISH_OPTIONS = ;</li><li>const QOS_OPTIONS = ;</li><li>const WAIT_OPTIONS = ;</li><li>const CONSUME_OPTIONS = ;</li><li>const ACK_OPTIONS = ;</li><li>const NACK_OPTIONS = ;</li><li>const GET_OPTIONS = ;</li><li>const CANCEL_OPTIONS = ;</li><li>const RECOVER_OPTIONS = ;</li><li>const REJECT_OPTIONS = ;</li></ul><ul class="none"><li>// Inherited methods from <span title="MAKS\AmqpAgent\Config\AbstractParameters">AbstractParameters</span></li><li>public final static array <a title="MAKS\AmqpAgent\Config\AbstractParameters" href="../classes/MAKS_AmqpAgent_Config_AbstractParameters/patch.html">patch</a>()
+            {<br/><ul class="none"><li>// constants</li><li>const PREFIX = 'maks.amqp.agent.';</li><li>const COMMAND_PREFIX = '__COMMAND__';</li><li>const COMMAND_SYNTAX = ;</li><li>const CONNECTION_OPTIONS = ;</li><li>const CHANNEL_OPTIONS = ;</li><li>const QUEUE_OPTIONS = ;</li><li>const EXCHANGE_OPTIONS = ;</li><li>const BIND_OPTIONS = ;</li><li>const MESSAGE_OPTIONS = ;</li><li>const PUBLISH_OPTIONS = ;</li><li>const QOS_OPTIONS = ;</li><li>const WAIT_OPTIONS = ;</li><li>const CONSUME_OPTIONS = ;</li><li>const ACK_OPTIONS = ;</li><li>const NACK_OPTIONS = ;</li><li>const GET_OPTIONS = ;</li><li>const CANCEL_OPTIONS = ;</li><li>const RECOVER_OPTIONS = ;</li><li>const REJECT_OPTIONS = ;</li><li>const RPC_CONNECTION_OPTIONS = self::CONNECTION_OPTIONS;</li><li>const RPC_QUEUE_NAME = self::PREFIX . 'maks.amqp.agent.rpc.queue;</li></ul><ul class="none"><li>// Inherited methods from <span title="MAKS\AmqpAgent\Config\AbstractParameters">AbstractParameters</span></li><li>public final static array <a title="MAKS\AmqpAgent\Config\AbstractParameters" href="../classes/MAKS_AmqpAgent_Config_AbstractParameters/patch.html">patch</a>()
                         </li><li>public final static array <a title="MAKS\AmqpAgent\Config\AbstractParameters" href="../classes/MAKS_AmqpAgent_Config_AbstractParameters/patchWith.html">patchWith</a>()
                         </li></ul>
 
@@ -191,6 +191,14 @@
             <tr>
               <td id="REJECT_OPTIONS">REJECT_OPTIONS</td>
               <td/>
+            </tr>
+            <tr>
+              <td id="RPC_CONNECTION_OPTIONS">RPC_CONNECTION_OPTIONS</td>
+              <td>self::CONNECTION_OPTIONS</td>
+            </tr>
+            <tr>
+              <td id="RPC_QUEUE_NAME">RPC_QUEUE_NAME</td>
+              <td>self::PREFIX . 'maks.amqp.agent.rpc.queue</td>
             </tr>
           </tbody>
         </table>

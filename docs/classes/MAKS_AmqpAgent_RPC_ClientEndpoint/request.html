@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - MAKS\AmqpAgent\RPC\ClientEndpoint::request</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.html">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../../classes.html#MAKS_AmqpAgent_RPC">MAKS\AmqpAgent\RPC</a>
+          </li>
+          <li class="separator">
+            <a title="MAKS\AmqpAgent\RPC\ClientEndpoint" href="../../classes/MAKS_AmqpAgent_RPC_ClientEndpoint.html">ClientEndpoint</a>
+          </li>
+          <li class="separator">request</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#parameter">Parameter</a>
+          </li>
+          <li>
+            <a href="#return">Return</a>
+          </li>
+          <li>
+            <a href="#throws">Throws</a>
+          </li>
+          <li>
+            <a href="#interface">Interface</a>
+          </li>
+          <li>
+            <a href="#tests">Tests</a>
+          </li>
+          <li>
+            <a href="../../source/RPC/ClientEndpoint.php.html#line76">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1><small>MAKS\AmqpAgent\RPC\ClientEndpoint::</small>request</h1>
+        <h4>Sends the passed request to the server using the passed queue.</h4>
+        <p/>
+        <ul/>
+        <h2 id="signature">Signature</h2>
+        <div class="styled synopsis">
+          <code>public function request(<a title="MAKS\AmqpAgent\RPC\string|AMQPMessage" href="../../classes/MAKS_AmqpAgent_RPC_string|AMQPMessage.html">string|AMQPMessage</a>
+        $request,
+            [string
+        $queueName = NULL] )
+            </code>
+        </div>
+        <h2 id="parameterlist">Parameters</h2>
+        <dl class="styled">
+          <dt><code>$request</code>
+                —
+                object</dt>
+          <dd>The request body or an `AMQPMessage` instance.<br/><br/><br/>      </dd>
+          <dt><code>$queueName</code>
+                —
+                string</dt>
+          <dd>[optional] The name of queue to send through.<br/><br/><br/>      </dd>
+        </dl>
+        <h2 id="return">Returns</h2>
+        <dl class="styled">
+          <dt>string</dt>
+          <dd>The response body.</dd>
+        </dl>
+        <h2 id="throws">Errors/Exceptions</h2>
+        <dl class="styled">
+          <dt>
+            <code>
+              <a title="MAKS\AmqpAgent\Exception\RPCEndpointException" href="../../classes/MAKS_AmqpAgent_Exception_RPCEndpointException.html">RPCEndpointException</a>
+            </code>
+          </dt>
+          <dd>If the client is not connected yet or if request Correlation ID does not match the one of the response.</dd>
+        </dl>
+        <h2 id="interface">Defined by Interface</h2>
+        <p class="styled">
+          <code>
+            <a title="MAKS\AmqpAgent\RPC\ClientEndpointInterface" href="../../interfaces/MAKS_AmqpAgent_RPC_ClientEndpointInterface.html">ClientEndpointInterface</a>
+          </code>
+        </p>
+        <h2 id="tests">Test Coverage</h2>
+        <div class="styled">
+          <h3>Information</h3>
+          <ul class="styled">
+            <li>Coverage: 26/26 Lines (100%)</li>
+            <li>Tests: 3</li>
+            <li>Passed: 3 (100%)</li>
+          </ul>
+          <h3>Tests</h3>
+          <ul class="styled">
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\RPC\ClientEndpointTest::testRequestMethodViaAliasMethodCall</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\RPC\ClientEndpointTest::testRequestMethodRaisesAnExceptionIfTheClientIsNotConnectedYet</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\RPC\ClientEndpointTest::testAnExceptionIsRaisedIfCorrelationIdOfTheResponseIsNotTheSameAsTheRequest</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

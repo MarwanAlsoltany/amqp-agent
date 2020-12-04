@@ -21,6 +21,12 @@
             "role": "Developer"
         }
     ],
+    "funding": [
+        {
+            "type": "ko-fi",
+            "url": "https://ko-fi.com/marwanalsoltany"
+        }
+    ],
     "homepage": "https://github.com/MarwanAlsoltany/amqp-agent#readme",
     "support": {
         "docs": "https://marwanalsoltany.github.io/amqp-agent",
@@ -56,7 +62,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.2-dev"
+            "dev-master": "2.0-dev"
         }
     },
     "scripts": {
