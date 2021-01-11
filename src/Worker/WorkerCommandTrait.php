@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @since 1.0.0
  * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
@@ -7,6 +8,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types=1);
 
 namespace MAKS\AmqpAgent\Worker;
 
