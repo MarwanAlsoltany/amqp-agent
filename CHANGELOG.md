@@ -195,3 +195,51 @@ All notable changes to **AMQP Agent** will be documented in this file.
   - Update old tests to cover the new changes.
   - Update `phpunit.xml.dist` to run the new tests.
 - Rebuild documentation.
+
+
+<br />
+
+## [[2.1.0] - 2021-01-12](https://github.com/MarwanAlsoltany/amqp-agent/compare/v2.0.0...v2.1.0)
+- Update `composer.json`:
+    - Update `branch-alias` version.
+    - Update `scripts` field.
+- Update `AbstractWorker` class
+  - Remove some useless code.
+  - Change exception type of `shutdown()` method to `AmqpAgentException`.
+  - Remove return value type hint `self` from methods signature due to unexpected behavior with different PHP versions.
+- Update `Publisher` class
+  - Remove some useless code.
+  - Change exception type of `publish()` and `publishBatch()` methods to `AmqpAgentException`.
+  - Remove return value type hint `self` from methods signature due to unexpected behavior with different PHP versions.
+- Update `Consumer` class
+  - Change `nack()` method wrong signature (remove default value from first parameter as it's useless).
+  - Update method signature on the corresponding interface (`ConsumerInterface`).
+  - Remove return value type hint `self` from methods signature due to unexpected behavior with different PHP versions.
+- Update `WorkerCommandTrait`
+  - Remove some useless code.
+- Update `WorkerMutationTrait`
+  - Change signature of `mutateClass()` method (remove default value from second parameter as it's useless).
+  - Change visibility of `mutateClass()` from protected to private (this method should never be used directly).
+- Update `Config` class
+  - Add additional check for return value of `realpath()` function in class constructor.
+  - Remove return value type hint `self` from methods signature due to unexpected behavior with different PHP versions.
+- Update `Utility` class
+  - Add additional check for script execution path in `execute()` method.
+- Update `Logger` class
+  - Fix a wrong parameter type passed to third argument of `file_put_contents()` function.
+- Update `Serializer` class
+  - Remove return value type hint `self` from methods signature due to unexpected behavior with different PHP versions.
+- Update `ClassProxyTrait`
+  - Add additional check for `$fromObject` parameter of the `castObjectToClass()` method.
+  - Add a third parameter to the call of `AmqpAgentException::rethrow()` method.
+- Update `AmqpAgentException`
+  - Change default value of `$wrap` parameter from `false` to `true` (this is the expected behavior according to parameter's description).
+- Update tests to cover the new minor changes.
+- Add `declare(strict_types=1)` to all files of the package.
+- Update coding style to PSR12.
+- Fix coding style issues in all files of the package.
+- Fix DocBlocks in all files of the package.
+- Fix typos in all files of the package.
+- Update Continuous Integration config files.
+- Update Development Dependencies config files.
+- Rebuild documentation.
