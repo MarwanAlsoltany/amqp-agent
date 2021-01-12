@@ -12,7 +12,7 @@
     <testsuites>
         <testsuite name="AMQP Agent Test Suite - Unit Tests">
             <!--
-                Using file tag instead of directory and execlude because you have to choose between
+                Using file tag instead of directory and exclude because you have to choose between
                 directory tag and exclude tag or file tag. The problem with this testsuite is the
                 ConsumerTest depends on PublisherTest and due to alphabetical order they ran in reverse.
             -->
