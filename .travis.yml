@@ -1,4 +1,7 @@
-sudo: required
+dist: xenial
+
+os:
+    - linux
 
 language: php
 
@@ -17,7 +20,7 @@ addons:
       - rabbitmq-server
 
 env:
-  matrix:
+  global:
     - COMPOSER_FLAGS="--prefer-stable --prefer-dist"
 
 cache:
