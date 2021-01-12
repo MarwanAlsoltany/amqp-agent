@@ -75,7 +75,7 @@ abstract class Singleton
 
     /**
      * Destroys the singleton's instance it was called on.
-     * @param self $object The instance it was called on.
+     * @param self &$object The instance it was called on.
      * @return void
      */
     public function destroyInstance(&$object)
