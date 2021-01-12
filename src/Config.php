@@ -197,7 +197,7 @@ final class Config
      * @param array $config
      * @return self
      */
-    public function setConfig(array $config): self
+    public function setConfig(array $config)
     {
         $this->config = $config;
 
@@ -221,7 +221,7 @@ final class Config
      * @return self
      * @throws ConfigFileNotFoundException
      */
-    public function setConfigPath(string $configPath): self
+    public function setConfigPath(string $configPath)
     {
         try {
             $this->config = include($configPath);
