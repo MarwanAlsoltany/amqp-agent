@@ -16,7 +16,7 @@ use PhpAmqpLib\Exchange\AMQPExchangeType;
 use MAKS\AmqpAgent\Config\AbstractParameters;
 
 /**
- * A class that encapsulates all AMQP Agent parameters as constants.
+ * A class that contains all AMQP Agent parameters as constants.
  * @since 1.2.0
  */
 final class AmqpAgentParameters extends AbstractParameters
