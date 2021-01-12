@@ -26,8 +26,9 @@ final class Utility
     /**
      * Returns a DateTime object with the right time zone.
      * @param string $time A valid php date/time string.
-     * @param string $timezone A valid php timezone string.
+     * @param string|null $timezone A valid php timezone string.
      * @return DateTime
+     * @throws Exception
      */
     public static function time(string $time = 'now', ?string $timezone = null): DateTime
     {
@@ -134,9 +135,10 @@ final class Utility
      * Executes a CLI command in the specified path synchronously or asynchronous (cross platform).
      * @since 2.0.0
      * @param string $command The command to execute.
-     * @param string $path [optional] The path where the command should be executed.
-     * @param bool $asynchronous [optional] Wether the command should be a background process (asynchronous) or not (synchronous).
+     * @param string|null $path [optional] The path where the command should be executed.
+     * @param bool $asynchronous [optional] Whether the command should be a background process (asynchronous) or not (synchronous).
      * @return string|null The command result (as a string if possible) if synchronous otherwise null.
+     * @throws Exception
      */
     public static function execute(string $command, string $path = null, bool $asynchronous = false): ?string
     {
