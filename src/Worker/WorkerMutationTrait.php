@@ -49,11 +49,11 @@ trait WorkerMutationTrait
     /**
      * Mutates a class property nested or not and returns the replaced subset.
      * @param string $member The name of the property.
-     * @param string $sub [optional] The key which under the array stored.
+     * @param string|null $sub [optional] The key which under the array stored.
      * @param array $overrides An associative array of the overrides.
      * @return array
      */
-    protected function mutateClass(string $member, ?string $sub = null, array $overrides): array
+    private function mutateClass(string $member, ?string $sub, array $overrides): array
     {
         $changes = [];
         $signature = '@UNKNOWN[%s]';
