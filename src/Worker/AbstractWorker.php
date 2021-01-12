@@ -212,7 +212,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
      * Establishes a connection with RabbitMQ server and opens a channel for the worker in the opened connection, it also sets both of them as defaults.
      * @return self
      */
-    public function connect(): self
+    public function connect()
     {
         if (empty($this->connection)) {
             $this->connection = $this->getNewConnection();
@@ -229,7 +229,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
      * Closes all open channels and connections with RabbitMQ server.
      * @return self
      */
-    public function disconnect(): self
+    public function disconnect()
     {
         if (count($this->channels)) {
             foreach ($this->channels as $channel) {
@@ -254,7 +254,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
      * Executes `self::disconnect()` and `self::connect()` respectively. Note that this method will not restore old channels.
      * @return self
      */
-    public function reconnect(): self
+    public function reconnect()
     {
         $this->disconnect();
         $this->connect();
@@ -269,7 +269,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
      * @return self
      * @throws AMQPTimeoutException
      */
-    public function queue(?array $parameters = null, ?AMQPChannel $_channel = null): self
+    public function queue(?array $parameters = null, ?AMQPChannel $_channel = null)
     {
         $changes = null;
         if ($parameters) {
@@ -316,7 +316,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
      * @param AMQPStreamConnection $connection The connection that should be as the default connection of the worker.
      * @return self
      */
-    public function setConnection(AMQPStreamConnection $connection): self
+    public function setConnection(AMQPStreamConnection $connection)
     {
         $this->connection = $connection;
         return $this;
@@ -376,7 +376,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
      * @param AMQPChannel $channel The channel that should be as the default channel of the worker.
      * @return self
      */
-    public function setChannel(AMQPChannel $channel): self
+    public function setChannel(AMQPChannel $channel)
     {
         $this->channel = $channel;
         return $this;
