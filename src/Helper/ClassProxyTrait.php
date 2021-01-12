@@ -46,7 +46,7 @@ trait ClassProxyTrait
                             $arguments
                         );
                     } catch (Exception $error) {
-                        AmqpAgentException::rethrow($error, sprintf('%s::%s() failed!', static::class, __FUNCTION__));
+                        AmqpAgentException::rethrow($error, sprintf('%s::%s() failed!', static::class, __FUNCTION__), false);
                     }
                 },
                 null,
@@ -85,7 +85,7 @@ trait ClassProxyTrait
                             );
                         }
                     } catch (Exception $error) {
-                        AmqpAgentException::rethrow($error, sprintf('%s::%s() failed!', static::class, __FUNCTION__));
+                        AmqpAgentException::rethrow($error, sprintf('%s::%s() failed!', static::class, __FUNCTION__), false);
                     }
                     return $return;
                 },
@@ -123,7 +123,7 @@ trait ClassProxyTrait
                             );
                         }
                     } catch (Exception $error) {
-                        AmqpAgentException::rethrow($error, sprintf('%s::%s() failed!', static::class, __FUNCTION__));
+                        AmqpAgentException::rethrow($error, sprintf('%s::%s() failed!', static::class, __FUNCTION__), false);
                     }
                     return $return;
                 },
@@ -210,7 +210,7 @@ trait ClassProxyTrait
 
             return $toClass;
         } catch (Exception $error) {
-            AmqpAgentException::rethrow($error, sprintf('%s::%s() failed!', static::class, __FUNCTION__));
+            AmqpAgentException::rethrow($error, sprintf('%s::%s() failed!', static::class, __FUNCTION__), false);
         }
     }
 }
