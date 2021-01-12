@@ -48,7 +48,7 @@ class AmqpAgentException extends CoreException
      * @return void
      * @throws CoreException
      */
-    public static function rethrow(CoreException $exception, ?string $message = null, $wrap = false): void
+    public static function rethrow(CoreException $exception, ?string $message = null, $wrap = true): void
     {
         if (null === $message) {
             $trace = Utility::backtrace(['file', 'line', 'class', 'function']);
@@ -83,7 +83,7 @@ class AmqpAgentException extends CoreException
      * @return void
      * @throws CoreException
      */
-    public static function rethrowException(CoreException $exception, ?string $message = null, $wrap = false): void
+    public static function rethrowException(CoreException $exception, ?string $message = null, $wrap = true): void
     {
         static::rethrow($exception, $message, $wrap);
     }
