@@ -73,7 +73,7 @@ final class Config
     {
         $configFile = realpath($configPath ?? self::DEFAULT_CONFIG_FILE_PATH);
 
-        if (!file_exists($configFile)) {
+        if (!$configFile || !file_exists($configFile)) {
             throw new ConfigFileNotFoundException(
                 "AMQP Agent configuration file cloud not be found, check if the given path \"{$configPath}\" exists."
             );
