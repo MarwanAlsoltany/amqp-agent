@@ -89,8 +89,11 @@ abstract class AbstractWorker implements AbstractWorkerInterface
      * @param array $channelOptions [optional] The overrides for the default channel options of the worker.
      * @param array $queueOptions [optional] The overrides for the default queue options of the worker.
      */
-    public function __construct(array $connectionOptions = [], array $channelOptions = [], array $queueOptions = [])
-    {
+    public function __construct(
+        array $connectionOptions = [],
+        array $channelOptions = [],
+        array $queueOptions = []
+    ) {
         $this->connectionOptions = Parameters::patch($connectionOptions, 'CONNECTION_OPTIONS');
         $this->channelOptions    = Parameters::patch($channelOptions, 'CHANNEL_OPTIONS');
         $this->queueOptions      = Parameters::patch($queueOptions, 'QUEUE_OPTIONS');
