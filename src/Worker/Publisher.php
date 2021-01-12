@@ -78,8 +78,15 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
      * @param array $messageOptions [optional] The overrides for the default message options of the worker.
      * @param array $publishOptions [optional] The overrides for the default publish options of the worker.
      */
-    public function __construct(array $connectionOptions = [], array $channelOptions = [], array $queueOptions = [], array $exchangeOptions = [], array $bindOptions = [], array $messageOptions = [], array $publishOptions = [])
-    {
+    public function __construct(
+        array $connectionOptions = [],
+        array $channelOptions = [],
+        array $queueOptions = [],
+        array $exchangeOptions = [],
+        array $bindOptions = [],
+        array $messageOptions = [],
+        array $publishOptions = []
+    ) {
         $this->exchangeOptions = Parameters::patch($exchangeOptions, 'EXCHANGE_OPTIONS');
         $this->bindOptions     = Parameters::patch($bindOptions, 'BIND_OPTIONS');
         $this->messageOptions  = Parameters::patch($messageOptions, 'MESSAGE_OPTIONS');
@@ -240,7 +247,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
                 $this->publishOptions['immediate'],
                 $this->publishOptions['ticket']
             );
-        } catch (AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException $error) { // @codeCoverageIgnore
+        } catch (AMQPChannelClosedException | AMQPConnectionClosedException | AMQPConnectionBlockedException $error) { // @codeCoverageIgnore
             Exception::rethrow($error); // @codeCoverageIgnore
         } finally {
             // reverting messageOptions back to its state.
@@ -294,7 +301,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
                     } while ($this->connection->isBlocked() && $tries >= 60);
 
                     $channel->publish_batch();
-                } catch (AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException $error) {
+                } catch (AMQPChannelClosedException | AMQPConnectionClosedException | AMQPConnectionBlockedException $error) {
                     Exception::rethrow($error);
                     // @codeCoverageIgnoreEnd
                 }
@@ -303,7 +310,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
 
         try {
             $channel->publish_batch();
-        } catch (AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException $error) { // @codeCoverageIgnore
+        } catch (AMQPChannelClosedException | AMQPConnectionClosedException | AMQPConnectionBlockedException $error) { // @codeCoverageIgnore
             Exception::rethrow($error); // @codeCoverageIgnore
         }
 
