@@ -25,6 +25,7 @@ interface WorkerFacilitationInterface
 
     /**
      * A function that takes the entire overhead of running a worker and wraps it in one single method with a possibility to change only the prime parameter of the worker (messages/callback).
+     * @param mixed $parameter
      * @return bool True on finish.
      */
     public function work($parameter): bool;
