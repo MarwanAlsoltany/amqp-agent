@@ -148,7 +148,7 @@ class Logger
         // create log file if it does not exist
         if (!is_file($file) && is_writable($directory)) {
             $signature = 'Created by ' . __METHOD__ . date('() \o\\n l jS \of F Y h:i:s A (Ymdhis)') . PHP_EOL;
-            file_put_contents($file, $signature, null, stream_context_create());
+            file_put_contents($file, $signature, 0, stream_context_create());
             chmod($file, 0775);
         }
 
@@ -162,7 +162,7 @@ class Logger
                 if (is_resource($stream)) {
                     $signature = fgets($stream) . 'For exceeding 64MB, it was overwritten on ' . date('l jS \of F Y h:i:s A (Ymdhis)') . PHP_EOL;
                     fclose($stream);
-                    file_put_contents($file, $signature, null, stream_context_create());
+                    file_put_contents($file, $signature, 0, stream_context_create());
                     chmod($file, 0775);
                 }
             }
