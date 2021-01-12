@@ -133,7 +133,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
     public function __set(string $member, array $array)
     {
         $isMember = property_exists($this, $member);
-        $notProtected = $member !== 'mutation' ? true : false;
+        $notProtected = $member !== 'mutation';
 
         if ($isMember && $notProtected) {
             $acceptedKeys = array_keys($this->{$member});
@@ -153,7 +153,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
      * Closes the connection or the channel or both with RabbitMQ server.
      * @param AMQPStreamConnection|AMQPChannel|AMQPMessage ...$object The object that should be used to close the channel or the connection.
      * @return bool True on success.
-     * @throws AMQPInvalidArgumentException
+     * @throws Exception
      */
     public static function shutdown(...$object): bool
     {
@@ -186,7 +186,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
             return $successful;
         }
 
-        throw new AMQPInvalidArgumentException(
+        throw new Exception(
             sprintf(
                 'The passed parameter must be of type %s, %s or %s or a combination of them. Given parameter(s) has/have the type(s): %s!',
                 AMQPStreamConnection::class,
@@ -325,6 +325,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
     /**
      * Opens a new connection to RabbitMQ server and returns it. Connections returned by this method pushed to connections array and are not set as default automatically.
      * @since 1.1.0
+     * @param array|null $parameters
      * @return AMQPStreamConnection
      */
     public function getNewConnection(array $parameters = null): AMQPStreamConnection
@@ -383,8 +384,8 @@ abstract class AbstractWorker implements AbstractWorkerInterface
 
     /**
      * Returns a new channel on the the passed connection of the worker. If no connection is passed, it uses the default connection. If the worker is not connected, it returns null.
-     * @param array $parameters [optional] The overrides for the default channel options of the worker.
-     * @param AMQPStreamConnection $_connection [optional] The connection that should be used instead of the default worker's connection.
+     * @param array|null $parameters [optional] The overrides for the default channel options of the worker.
+     * @param AMQPStreamConnection|null $_connection [optional] The connection that should be used instead of the default worker's connection.
      * @return AMQPChannel|null
      */
     public function getNewChannel(array $parameters = null, ?AMQPStreamConnection $_connection = null): ?AMQPChannel
@@ -413,7 +414,7 @@ abstract class AbstractWorker implements AbstractWorkerInterface
     /**
      * Fetches a channel object identified by the passed id (channel_id). If not found, it returns null.
      * @param int $channelId The id of the channel wished to be fetched.
-     * @param AMQPStreamConnection $_connection [optional] The connection that should be used instead of the default worker's connection.
+     * @param AMQPStreamConnection|null $_connection [optional] The connection that should be used instead of the default worker's connection.
      * @return AMQPChannel|null
      */
     public function getChannelById(int $channelId, ?AMQPStreamConnection $_connection = null): ?AMQPChannel
