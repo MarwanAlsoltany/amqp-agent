@@ -6,12 +6,12 @@ use MAKS\AmqpAgent\Tests\TestCase;
 use MAKS\AmqpAgent\Tests\Mocks\AbstractWorkerMock;
 use MAKS\AmqpAgent\Config\AmqpAgentParameters;
 use MAKS\AmqpAgent\Worker\AbstractWorker;
+use MAKS\AmqpAgent\Exception\AmqpAgentException;
 use MAKS\AmqpAgent\Exception\MethodDoesNotExistException;
 use MAKS\AmqpAgent\Exception\PropertyDoesNotExistException;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Wire\AMQPTable;
-use PhpAmqpLib\Exception\AMQPInvalidArgumentException;
 
 class AbstractWorkerTest extends TestCase
 {
@@ -58,7 +58,7 @@ class AbstractWorkerTest extends TestCase
 
     public function testShutdownMethodRaisesAnExceptionIfUnexpectedParameterIsPassed()
     {
-        $this->expectException(AMQPInvalidArgumentException::class);
+        $this->expectException(AmqpAgentException::class);
         AbstractWorkerMock::shutdown(true, false, null);
     }
 
