@@ -58,14 +58,14 @@ class ClassProxyTest extends TestCase
 
     public function testReflectOnObjectMethod()
     {
-        $reflection = ClassProxy::reflectOnObject(new \stdClass);
+        $reflection = ClassProxy::reflectOnObject(new \stdClass());
         $this->assertInstanceOf(\ReflectionObject::class, $reflection);
     }
 
     public function testCastObjectToClassMethodRaisesAnExceptionWhenProvidedWithAClassThatDoesNotExist()
     {
         $this->expectException(AmqpAgentException::class);
-        ClassProxy::castObjectToClass(new \stdClass, 'BlaBla');
+        ClassProxy::castObjectToClass(new \stdClass(), 'BlaBla');
     }
 
     public function testCastObjectToClassMethodWithAWrongArgument()
@@ -76,7 +76,7 @@ class ClassProxyTest extends TestCase
 
     public function testCastObjectToClassMethodWithAClassWithPrivateProperties()
     {
-        $class = new class {
+        $class = new class() {
             public static $staticProp = 'P0';
             public static $staticPropX = 'P0A';
             private $privateProp = 'P1';
