@@ -29,7 +29,7 @@ abstract class Example
     private static $serializer;
 
     /**
-     * Wether to log messages to a file or not.
+     * Whether to log messages to a file or not.
      * @var bool
      */
     public static $logToFile = true;
