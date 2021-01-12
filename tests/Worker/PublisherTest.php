@@ -5,7 +5,7 @@ namespace MAKS\AmqpAgent\Tests\Worker;
 use MAKS\AmqpAgent\Tests\TestCase;
 use MAKS\AmqpAgent\Worker\Publisher;
 use MAKS\AmqpAgent\Helper\Serializer;
-use PhpAmqpLib\Exception\AMQPInvalidArgumentException;
+use MAKS\AmqpAgent\Exception\AmqpAgentException;
 use PhpAmqpLib\Message\AMQPMessage;
 
 class PublisherTest extends TestCase
@@ -72,7 +72,7 @@ class PublisherTest extends TestCase
 
     public function testPublishRaisesAnExceptionIfUnexpectedParameterIsPassed()
     {
-        $this->expectException(AMQPInvalidArgumentException::class);
+        $this->expectException(AmqpAgentException::class);
 
         $this->publisher->connect();
         $this->publisher->queue([
@@ -157,7 +157,7 @@ class PublisherTest extends TestCase
             $this->publisher->message("This's test message number 2!")
         ];
 
-        $this->expectException(AMQPInvalidArgumentException::class);
+        $this->expectException(AmqpAgentException::class);
         $error = $this->publisher->publishBatch($messages, 1);
     }
 
