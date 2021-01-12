@@ -11,7 +11,12 @@ declare(strict_types=1);
 
 namespace MAKS\AmqpAgent\Worker;
 
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Channel\AMQPChannel;
+use PhpAmqpLib\Message\AMQPMessage;
+use PhpAmqpLib\Wire\AMQPTable;
 use MAKS\AmqpAgent\Worker\Publisher;
+use MAKS\AmqpAgent\Worker\AbstractWorkerSingleton;
 
 /**
  * A singleton version of the Publisher class.
