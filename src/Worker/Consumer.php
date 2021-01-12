@@ -83,8 +83,14 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
      * @param array $waitOptions [optional] The overrides for the default wait options of the worker.
      * @param array $consumeOptions [optional] The overrides for the default consume options of the worker.
      */
-    public function __construct(array $connectionOptions = [], array $channelOptions = [], array $queueOptions = [], array $qosOptions = [], array $waitOptions = [], array $consumeOptions = [])
-    {
+    public function __construct(
+        array $connectionOptions = [],
+        array $channelOptions = [],
+        array $queueOptions = [],
+        array $qosOptions = [],
+        array $waitOptions = [],
+        array $consumeOptions = []
+    ) {
         $this->qosOptions     = Parameters::patch($qosOptions, 'QOS_OPTIONS');
         $this->waitOptions    = Parameters::patch($waitOptions, 'WAIT_OPTIONS');
         $this->consumeOptions = Parameters::patch($consumeOptions, 'CONSUME_OPTIONS');
@@ -394,7 +400,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
                     $this->waitOptions['non_blocking'],
                     $this->waitOptions['timeout']
                 );
-            } catch (AMQPOutOfBoundsException|AMQPRuntimeException|AMQPTimeoutException $error) { // @codeCoverageIgnore
+            } catch (AMQPOutOfBoundsException | AMQPRuntimeException | AMQPTimeoutException $error) { // @codeCoverageIgnore
                 Exception::rethrow($error); // @codeCoverageIgnore
             }
         }
@@ -460,7 +466,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
                     // $active = false;
                     break;
                 }
-            } catch (AMQPOutOfBoundsException|AMQPRuntimeException|AMQPTimeoutException $error) { // @codeCoverageIgnore
+            } catch (AMQPOutOfBoundsException | AMQPRuntimeException | AMQPTimeoutException $error) { // @codeCoverageIgnore
                 Exception::rethrow($error); // @codeCoverageIgnore
             }
         }
