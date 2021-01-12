@@ -147,7 +147,7 @@ final class Utility
         $isWindows = PHP_OS == 'WINNT' || substr(php_uname(), 0, 7) == 'Windows';
         $apWrapper = $isWindows ? 'start /B %s > NUL' : '/usr/bin/nohup %s >/dev/null 2>&1 &';
 
-        if (strlen($path) && getcwd() !== $path) {
+        if ($path && strlen($path) && getcwd() !== $path) {
             chdir(realpath($path));
         }
 
