@@ -34,7 +34,6 @@ An elegant wrapper around the famous php-amqplib for 90% use case.
 </p>
 </details>
 
-<br />
 <a href="https://twitter.com/intent/tweet?url=&text=Working%20with%20%23RabbitMQ%20in%20%23PHP%20has%20never%20been%20so%20easy%20and%20fun%2C%20check%20out%20AMQP%20Agent%20and%20stop%20wasting%20your%20time!%20https%3A%2F%2Fgithub.com%2FMarwanAlsoltany%2Famqp-agent%20" title="Tweet" target="_blank"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" alt="Tweet"></a>
 </div>
 
@@ -147,7 +146,7 @@ AMQP Agent exposes a number of concrete classes that can be directly used and ot
 | [AbstractEndpoint](./src/RPC/AbstractEndpoint.php) <sup><code>*A</code></sup> | An abstract class implementing the basic functionality of an endpoint. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_RPC_AbstractEndpoint.html) |
 | [ClientEndpoint](./src/RPC/ClientEndpoint.php) <sup><code>*C</code></sup> | A class specialized in requesting. Implementing only the methods needed for a client. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_RPC_ClientEndpoint.html) |
 | [ServerEndpoint](./src/RPC/ServerEndpoint.php) <sup><code>*C</code></sup> | A class specialized in responding. Implementing only the methods needed for a server. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_RPC_ServerEndpoint.html) |
-| [AmqpAgentParameters](./src/Config/Utility.php) <sup><code>*C\*H</code></sup> | A class that encapsulates all AMQP Agent parameters as constants. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Config_AmqpAgentParameters.html) |
+| [AmqpAgentParameters](./src/Config/Utility.php) <sup><code>*C\*H</code></sup> | A class that contains all AMQP Agent parameters as constants. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Config_AmqpAgentParameters.html) |
 | [Utility](./src/Helper/Utility.php) <sup><code>*C\*H</code></sup> | A class containing miscellaneous helper functions. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Helper_Utility.html) |
 | [Event](./src/Helper/Event.php) <sup><code>*C\*H</code></sup> | A simple class for handling events (dispatching and listening). | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Helper_Event.html) |
 | [ArrayProxy](./src/Helper/ArrayProxy.php) <sup><code>*C\*H</code></sup> | A class containing methods for for manipulating and working arrays. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Helper_ArrayProxy.html) |
@@ -167,7 +166,7 @@ AMQP Agent exposes a number of concrete classes that can be directly used and ot
 * <code>*A</code> **Abstract:** This class is an abstract class and cannot be instantiated directly.
 * <code>*H</code> **Helper:** This class is a helper class. Third-party alternatives can be freely used instead.
 * <code>*R</code> **Recommended:** This class is recommended to be used when working with AMQP Agent (best practice).
-* <code>*S</code> **Singleton:** This class has a singleton version available via suffixing the class name with `Singleton` i.e. `PublisherSingleton` and can be retrieved via `*Singleton::getInstance()`.
+* <code>*S</code> **Singleton:** This class has a singleton version available via suffixing the class name with `Singleton` and can be retrieved via `*Singleton::getInstance()`, i.e. `Publisher` -> `PublisherSingleton`.
 
 ![#ff6347](https://via.placeholder.com/11/f03c15/000000?text=+) **Note:** *Singleton is considered an anti-pattern, try avoiding it as much as possible, though there are use-cases for it. Use singletons only if you know what you are doing.*
 
@@ -293,7 +292,7 @@ $rpcServerB = $client->getServerEndpoint(); // or $client->get('server.endpoint'
 
 #### Here are some examples of a publisher
 
-1. **Variant I:** Passing parameters in workers constructor.
+1. **Variant I:** Passing parameters in worker's constructor.
 
 ```php
 // Publisher Demo 1
@@ -412,7 +411,7 @@ $publisher->disconnect();
 
 #### Here are some examples of a consumer
 
-1. **Variant I:** Passing parameters in workers constructor.
+1. **Variant I:** Passing parameters in worker's constructor.
 
 ```php
 // Consumer Demo 1
@@ -489,7 +488,7 @@ $consumer->queue([
     'queue' => 'test.messages.queue'
 ]);
 $consumer->qos([
-        'prefetch_count' => 10
+    'prefetch_count' => 10
 ]);
 $consumer->consume(
     [
@@ -510,7 +509,7 @@ $consumer->disconnect();
 
 #### Here are some examples of an RPC client
 
-1. **Variant I:** Passing parameters in workers constructor.
+1. **Variant I:** Passing parameters in client's constructor.
 ```php
 // RPC Client Demo 1
 
@@ -555,7 +554,7 @@ $rpcClient->disconnect();
 
 #### Here are some examples of an RPC server
 
-1. **Variant I:** Passing parameters in workers constructor.
+1. **Variant I:** Passing parameters in server's constructor.
 ```php
 // RPC Server Demo 1
 
@@ -868,7 +867,7 @@ $consumer->disconnect();
 ```
 
 * **RPC Client Example:**
-    You will see here how you would send request to the RPC Server and add additional functionality to the endpoint by used the events it offers.
+    You will see here how you would send request to the RPC Server and add additional functionality to the endpoint by using the events it offers.
 
 ```php
 // Advanced RPC Client Demo
@@ -880,7 +879,7 @@ use MAKS\AmqpAgent\RPC\ClientEndpoint;
 $config = new Config();
 $client = new Client($config);
 
-// Retrieving a client endpoint from the client.
+// Retrieving an RPC client endpoint from the client.
 /** @var \MAKS\AmqpAgent\RPC\ClientEndpoint */
 $rpcClient = $client->getClientEndpoint();
 
@@ -910,7 +909,7 @@ $rpcClient->disconnect();
 ```
 
 * **RPC Server Example:**
-    You will see here how you would respond to request from the RPC Client and add additional functionality to the endpoint by used the events it offers.
+    You will see here how you would respond to request from the RPC Client and add additional functionality to the endpoint by using the events it offers.
 
 ```php
 // Advanced RPC Server Demo
@@ -922,18 +921,19 @@ use MAKS\AmqpAgent\RPC\ServerEndpoint;
 $config = new Config();
 $client = new Client($config);
 
-// Retrieving a consumer from the client.
+// Retrieving an RPC server from the client.
 /** @var \MAKS\AmqpAgent\RPC\ServerEndpoint */
 $rpcServer = $client->getServerEndpoint();
 
 // Attaching some additional functionality based on events emitted by the endpoint.
 // See $rpcServer->on() and $rpcServer->getEvents() methods for more info.
-$rpcServer->on('request.on.get', function ($response, $rpcServer, $eventName) {
-    printf('%s has emitted [%s] event and has just got a request!', get_class($rpcServer), $eventName);
-    if ($response instanceof AMQPMessage) {
-        printf('  The request has the following body: %s', $response->body;
-    }
-});
+$rpcServer
+    ->on('request.on.get', function ($request, $rpcServer, $eventName) {
+        printf('%s has emitted [%s] event and has just got a request!', get_class($rpcServer), $eventName);
+        if ($request instanceof AMQPMessage) {
+            printf('  The request has the following body: %s', $request->body;
+        }
+    });
 
 $rpcServer->connect();
 $request = $rpcServer->respond('YourNamespace\YourClass::yourCallback');
@@ -980,12 +980,12 @@ Copyright (c) 2020 Marwan Al-Soltany. All rights reserved.
 [styleci-icon]: https://github.styleci.io/repos/271944962/shield?branch=master
 
 [php-href]: https://github.com/MarwanAlsoltany/amqp-agent/search?l=php
-[version-href]: https://github.com/MarwanAlsoltany/amqp-agent/tree/master
+[version-href]: https://packagist.org/packages/marwanalsoltany/amqp-agent
 [license-href]: ./LICENSE
 [maintenance-href]: https://github.com/MarwanAlsoltany/amqp-agent/graphs/commit-activity
 [documentation-href]: http://marwanalsoltany.github.io/amqp-agent
-[downloads-href]: https://packagist.org/packages/marwanalsoltany/amqp-agent
-[travis-href]: https://travis-ci.org/MarwanAlsoltany/amqp-agent
+[downloads-href]: https://packagist.org/packages/marwanalsoltany/amqp-agent/stats
+[travis-href]: https://travis-ci.com/MarwanAlsoltany/amqp-agent
 [scrutinizer-href]: https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/build-status/master
 [scrutinizer-coverage-href]: https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/?branch=master
 [scrutinizer-quality-href]: https://scrutinizer-ci.com/g/MarwanAlsoltany/amqp-agent/?branch=maste

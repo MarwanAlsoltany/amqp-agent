@@ -1,10 +1,13 @@
 <?php
+
 /**
  * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
  * @copyright Marwan Al-Soltany 2020
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
+
+declare(strict_types=1);
 
 namespace MAKS\AmqpAgent\Worker;
 
@@ -75,8 +78,15 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
      * @param array $messageOptions [optional] The overrides for the default message options of the worker.
      * @param array $publishOptions [optional] The overrides for the default publish options of the worker.
      */
-    public function __construct(array $connectionOptions = [], array $channelOptions = [], array $queueOptions = [], array $exchangeOptions = [], array $bindOptions = [], array $messageOptions = [], array $publishOptions = [])
-    {
+    public function __construct(
+        array $connectionOptions = [],
+        array $channelOptions = [],
+        array $queueOptions = [],
+        array $exchangeOptions = [],
+        array $bindOptions = [],
+        array $messageOptions = [],
+        array $publishOptions = []
+    ) {
         $this->exchangeOptions = Parameters::patch($exchangeOptions, 'EXCHANGE_OPTIONS');
         $this->bindOptions     = Parameters::patch($bindOptions, 'BIND_OPTIONS');
         $this->messageOptions  = Parameters::patch($messageOptions, 'MESSAGE_OPTIONS');
@@ -88,12 +98,12 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
 
     /**
      * Declares an exchange on the default channel of the worker's connection to RabbitMQ server.
-     * @param array $parameters [optional] The overrides for the default exchange options of the worker.
-     * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
+     * @param array|null $parameters [optional] The overrides for the default exchange options of the worker.
+     * @param AMQPChannel|null $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
      * @throws AMQPTimeoutException
      */
-    public function exchange(?array $parameters = null, ?AMQPChannel $_channel = null): self
+    public function exchange(?array $parameters = null, ?AMQPChannel $_channel = null)
     {
         $changes = null;
         if ($parameters) {
@@ -127,12 +137,12 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
 
     /**
      * Binds the default queue to the default exchange on the default channel of the worker's connection to RabbitMQ server.
-     * @param array $parameters [optional] The overrides for the default bind options of the worker.
-     * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
+     * @param array|null $parameters [optional] The overrides for the default bind options of the worker.
+     * @param AMQPChannel|null $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
      * @throws AMQPTimeoutException
      */
-    public function bind(?array $parameters = null, ?AMQPChannel $_channel = null): self
+    public function bind(?array $parameters = null, ?AMQPChannel $_channel = null)
     {
         $changes = null;
         if ($parameters) {
@@ -164,7 +174,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
     /**
      * Returns an AMQPMessage object.
      * @param string $body The body of the message.
-     * @param array $properties [optional] The overrides for the default properties of the default message options of the worker.
+     * @param array|null $properties [optional] The overrides for the default properties of the default message options of the worker.
      * @return AMQPMessage
      */
     public function message(string $body, ?array $properties = null): AMQPMessage
@@ -193,12 +203,12 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
     /**
      * Publishes a message to the default exchange on the default channel of the worker's connection to RabbitMQ server.
      * @param string|array|AMQPMessage $payload The body of the message or an array of body and properties for the message or a message object.
-     * @param array $parameters [optional] The overrides for the default exchange options of the worker.
-     * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
+     * @param array|null $parameters [optional] The overrides for the default exchange options of the worker.
+     * @param AMQPChannel|null $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
-     * @throws AMQPInvalidArgumentException|AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException
+     * @throws Exception|AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException
      */
-    public function publish($payload, ?array $parameters = null, ?AMQPChannel $_channel = null): self
+    public function publish($payload, ?array $parameters = null, ?AMQPChannel $_channel = null)
     {
         $changes = null;
         if ($parameters) {
@@ -218,7 +228,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
         } elseif (is_string($message)) {
             $this->publishOptions['msg'] = $this->message($message);
         } else {
-            throw new AMQPInvalidArgumentException(
+            throw new Exception(
                 sprintf(
                     'Payload must be a string, an array like %s, or an instance of "%s". The given parameter (data-type: %s) was none of them.',
                     '["body" => "Message body!", "properties" ["key" => "value"]]',
@@ -237,7 +247,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
                 $this->publishOptions['immediate'],
                 $this->publishOptions['ticket']
             );
-        } catch (AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException $error) { // @codeCoverageIgnore
+        } catch (AMQPChannelClosedException | AMQPConnectionClosedException | AMQPConnectionBlockedException $error) { // @codeCoverageIgnore
             Exception::rethrow($error); // @codeCoverageIgnore
         } finally {
             // reverting messageOptions back to its state.
@@ -255,12 +265,12 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
      * Publishes a batch of messages to the default exchange on the default channel of the worker's connection to RabbitMQ server.
      * @param AMQPMessage[] $messages An array of AMQPMessage objects.
      * @param int $batchSize [optional] The number of messages that should be published per batch.
-     * @param string $_exchange [optional] The name of the exchange that should be used instead of the default worker's exchange name.
-     * @param AMQPChannel $_channel [optional] The channel that should be used instead of the default worker's channel.
+     * @param string|null $_exchange [optional] The name of the exchange that should be used instead of the default worker's exchange name.
+     * @param AMQPChannel|null $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
-     * @throws AMQPInvalidArgumentException|AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException
+     * @throws Exception|AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException
      */
-    public function publishBatch(array $messages, int $batchSize = 2500, ?string $_exchange = null, ?AMQPChannel $_channel = null): self
+    public function publishBatch(array $messages, int $batchSize = 2500, ?string $_exchange = null, ?AMQPChannel $_channel = null)
     {
         $channel = $_channel ?: $this->channel;
         $exchange = $_exchange ?: $this->publishOptions['exchange'];
@@ -270,7 +280,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
             if ($messages[$i] instanceof AMQPMessage) {
                 $channel->batch_basic_publish($messages[$i], $exchange);
             } else {
-                throw new AMQPInvalidArgumentException(
+                throw new Exception(
                     sprintf(
                         'Messages array elements must be of type "%s". Element in index "%d" was of type "%s".',
                         AMQPMessage::class,
@@ -291,7 +301,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
                     } while ($this->connection->isBlocked() && $tries >= 60);
 
                     $channel->publish_batch();
-                } catch (AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException $error) {
+                } catch (AMQPChannelClosedException | AMQPConnectionClosedException | AMQPConnectionBlockedException $error) {
                     Exception::rethrow($error);
                     // @codeCoverageIgnoreEnd
                 }
@@ -300,7 +310,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
 
         try {
             $channel->publish_batch();
-        } catch (AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException $error) { // @codeCoverageIgnore
+        } catch (AMQPChannelClosedException | AMQPConnectionClosedException | AMQPConnectionBlockedException $error) { // @codeCoverageIgnore
             Exception::rethrow($error); // @codeCoverageIgnore
         }
 
@@ -311,7 +321,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
      * Executes `self::connect()`, `self::queue()`, `self::exchange`, and `self::bind()` respectively.
      * @return self
      */
-    public function prepare(): self
+    public function prepare()
     {
         $this->connect();
         $this->queue();
@@ -325,6 +335,7 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
      * Executes `self::connect()`, `self::queue()`, `self::exchange`, and `self::bind()`, `self::publish()`, and `self::disconnect()` respectively.
      * @param string[] $messages An array of strings.
      * @return bool
+     * @throws Exception
      */
     public function work($messages): bool
     {

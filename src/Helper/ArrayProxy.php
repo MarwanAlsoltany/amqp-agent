@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
  * @copyright Marwan Al-Soltany 2020
@@ -6,20 +7,22 @@
  * the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace MAKS\AmqpAgent\Helper;
 
 use MAKS\AmqpAgent\Helper\ArrayProxyTrait;
 
 /**
- * A class containing methods for for manipulating and working arrays.
+ * A class containing methods for for manipulating and working with arrays.
  *
  * Get example:
  * ```
- * ArrayProxy::get($array, 'some.key', 'Default/Fallback Value');
+ * ArrayProxy::get($array, 'someKey', 'this is a default/fallback value to use instead if not found');
  * ```
  * Set example:
  * ```
- * ArrayProxy::set($array, 'some.key', $newValue);
+ * ArrayProxy::set($array, 'someKey', $newValue);
  * ```
  * Cast (array to string) example:
  * ```

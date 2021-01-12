@@ -65,7 +65,7 @@
             <a href="#return">Return</a>
           </li>
           <li>
-            <a href="../../source/Worker/ConsumerInterface.php.html#line93">Source</a>
+            <a href="../../source/Worker/ConsumerInterface.php.html#line96">Source</a>
           </li>
         </ul>
       </nav>
@@ -76,7 +76,7 @@
         <ul/>
         <h2 id="signature">Signature</h2>
         <div class="styled synopsis">
-          <code>public function consume([<a title="MAKS\AmqpAgent\Worker\callback|array|string" href="../../interfaces/MAKS_AmqpAgent_Worker_callback|array|string.html">callback|array|string</a>
+          <code>public function consume([<a title="MAKS\AmqpAgent\Worker\callback|array|string|null" href="../../interfaces/MAKS_AmqpAgent_Worker_callback|array|string|null.html">callback|array|string|null</a>
         $callback = NULL,
             [array
         $variables = NULL,
@@ -95,14 +95,14 @@
           <dt><code>$variables</code>
                 —
                 array</dt>
-          <dd>[optional] The variables that should be passed to the callback.</dd>
+          <dd>[optional] The variables that should be passed to the callback.<br/><br/><br/>      </dd>
           <dt><code>$parameters</code>
                 —
                 array</dt>
-          <dd>[optional] The overrides for the default exchange options of the worker.</dd>
+          <dd>[optional] The overrides for the default exchange options of the worker.<br/><br/><br/>      </dd>
           <dt><code>$_channel</code>
                 —
-                <a title="PhpAmqpLib\Channel\AMQPChannel" href="../../interfaces/PhpAmqpLib_Channel_AMQPChannel.html">PhpAmqpLib\Channel\AMQPChannel</a></dt>
+                <a title="MAKS\AmqpAgent\Worker\AMQPChannel|null" href="../../interfaces/MAKS_AmqpAgent_Worker_AMQPChannel|null.html">MAKS\AmqpAgent\Worker\AMQPChannel|null</a></dt>
           <dd>[optional] The channel that should be used instead of the default worker's channel.<br/><br/><br/>      </dd>
         </dl>
         <h2 id="return">Returns</h2>
@@ -114,7 +114,7 @@
       </section>
     </div>
     <footer>
-      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2021 by Arne Blankerts and Contributors</span>
     </footer>
   </body>
 </html>

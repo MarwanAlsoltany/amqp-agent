@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
  * @copyright Marwan Al-Soltany 2020
@@ -6,12 +7,15 @@
  * the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace MAKS\AmqpAgent\Helper;
 
 use Closure;
 use Exception;
 use ReflectionClass;
 use ReflectionObject;
+use ReflectionException;
 use MAKS\AmqpAgent\Exception\AmqpAgentException;
 
 /**
@@ -42,7 +46,7 @@ trait ClassProxyTrait
                             $arguments
                         );
                     } catch (Exception $error) {
-                        AmqpAgentException::rethrow($error, sprintf('%s::%s() failed!', static::class, __FUNCTION__));
+                        AmqpAgentException::rethrow($error, sprintf('%s::%s() failed!', static::class, __FUNCTION__), false);
                     }
                 },
                 null,
@@ -81,7 +85,7 @@ trait ClassProxyTrait
                             );
                         }
                     } catch (Exception $error) {
-                        AmqpAgentException::rethrow($error, sprintf('%s::%s() failed!', static::class, __FUNCTION__));
+                        AmqpAgentException::rethrow($error, sprintf('%s::%s() failed!', static::class, __FUNCTION__), false);
                     }
                     return $return;
                 },
@@ -119,7 +123,7 @@ trait ClassProxyTrait
                             );
                         }
                     } catch (Exception $error) {
-                        AmqpAgentException::rethrow($error, sprintf('%s::%s() failed!', static::class, __FUNCTION__));
+                        AmqpAgentException::rethrow($error, sprintf('%s::%s() failed!', static::class, __FUNCTION__), false);
                     }
                     return $return;
                 },
@@ -131,8 +135,9 @@ trait ClassProxyTrait
 
     /**
      * Returns a reflection class instance on a class.
-     * @param object|string $class Class FQN, or a class instance.
+     * @param object|string $class Class instance or class FQN.
      * @return ReflectionClass
+     * @throws ReflectionException
      */
     public static function reflectOnClass($class)
     {
@@ -154,10 +159,19 @@ trait ClassProxyTrait
      * @param object $fromObject Class instance.
      * @param string $toClass Class FQN.
      * @return object
-     * @throws AmqpAgentException On failure.
+     * @throws AmqpAgentException When passing a wrong argument or on failure.
      */
     public static function castObjectToClass($fromObject, string $toClass)
     {
+        if (!is_object($fromObject)) {
+            throw new AmqpAgentException(
+                sprintf(
+                    'The first parameter must be an instance of class, a wrong parameter with (data-type: %s) was passed instead.',
+                    gettype($fromObject)
+                )
+            );
+        }
+
         if (!class_exists($toClass)) {
             throw new AmqpAgentException(
                 sprintf(
@@ -196,7 +210,7 @@ trait ClassProxyTrait
 
             return $toClass;
         } catch (Exception $error) {
-            AmqpAgentException::rethrow($error, sprintf('%s::%s() failed!', static::class, __FUNCTION__));
+            AmqpAgentException::rethrow($error, sprintf('%s::%s() failed!', static::class, __FUNCTION__), false);
         }
     }
 }

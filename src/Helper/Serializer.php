@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
  * @copyright Marwan Al-Soltany 2020
@@ -6,6 +7,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types=1);
 
 namespace MAKS\AmqpAgent\Helper;
 
@@ -84,8 +86,9 @@ class Serializer
     /**
      * Serializer object constructor.
      * @param mixed $data [optional] The data to (un)serialize. Defaults to null.
-     * @param string $type [optional] The type of (un)serialization. Defaults to JSON.
-     * @param bool $strict [optional] Wether or not to assert that no errors have occurred while executing (un)serialization functions. Defaults to true.
+     * @param string|null $type [optional] The type of (un)serialization. Defaults to JSON.
+     * @param bool $strict [optional] Whether or not to assert that no errors have occurred while executing (un)serialization functions. Defaults to true.
+     * @throws SerializerViolationException
      */
     public function __construct($data = null, ?string $type = null, ?bool $strict = null)
     {
@@ -97,9 +100,10 @@ class Serializer
     /**
      * Executes when calling the class like a function.
      * @param mixed $data The data to (un)serialize.
-     * @param string $type [optional] The type of (un)serialization. Defaults to JSON.
-     * @param bool $strict [optional] Wether or not to assert that no errors have occurred while executing (un)serialization functions. Defaults to true.
+     * @param string|null $type [optional] The type of (un)serialization. Defaults to JSON.
+     * @param bool $strict [optional] Whether or not to assert that no errors have occurred while executing (un)serialization functions. Defaults to true.
      * @return mixed Serialized or unserialized data depending on the passed parameters.
+     * @throws SerializerViolationException
      */
     public function __invoke($data, ?string $type = self::DEFAULT_TYPE, ?bool $strict = self::DEFAULT_STRICT)
     {
@@ -128,8 +132,8 @@ class Serializer
     /**
      * Serializes the passed or registered data. When no parameters are passed, it uses the registered ones.
      * @param mixed $data [optional] The data to serialize.
-     * @param string $type [optional] The type of serialization.
-     * @param bool $strict [optional] Wether or not to assert that no errors have occurred while executing serialization functions.
+     * @param string|null $type [optional] The type of serialization.
+     * @param bool $strict [optional] Whether or not to assert that no errors have occurred while executing serialization functions.
      * @return string|null A serialized representation of the passed or registered data or null on failure.
      * @throws SerializerViolationException
      */
@@ -164,9 +168,9 @@ class Serializer
 
     /**
      * Unserializes the passed or registered data. When no parameters are passed, it uses the registered ones.
-     * @param string $data [optional] The data to unserialize.
-     * @param string $type [optional] The type of unserialization.
-     * @param bool $strict [optional] Wether or not to assert that no errors have occurred while executing unserialization functions.
+     * @param string|null $data [optional] The data to unserialize.
+     * @param string|null $type [optional] The type of unserialization.
+     * @param bool $strict [optional] Whether or not to assert that no errors have occurred while executing unserialization functions.
      * @return mixed A PHP type on success or false or null on failure.
      * @throws SerializerViolationException
      */
@@ -202,9 +206,9 @@ class Serializer
     /**
      * Deserializes the passed or registered data. When no parameters are passed, it uses the registered ones.
      * @since 1.2.2 Alias for `self::unserialize()`.
-     * @param string $data [optional] The data to unserialize.
-     * @param string $type [optional] The type of unserialization.
-     * @param bool $strict [optional] Wether or not to assert that no errors have occurred while executing unserialization functions.
+     * @param string|null $data [optional] The data to unserialize.
+     * @param string|null $type [optional] The type of unserialization.
+     * @param bool $strict [optional] Whether or not to assert that no errors have occurred while executing unserialization functions.
      * @return mixed A PHP type on success or false or null on failure.
      * @throws SerializerViolationException
      */
@@ -218,7 +222,7 @@ class Serializer
      * @param mixed $data The data wished to be registered.
      * @return self
      */
-    public function setData($data): self
+    public function setData($data)
     {
         $this->data = $data;
 
@@ -238,8 +242,9 @@ class Serializer
      * Registers the passed type in the object.
      * @param string $type The type wished to be registered.
      * @return self
+     * @throws SerializerViolationException
      */
-    public function setType(string $type): self
+    public function setType(string $type)
     {
         $type = strtoupper($type);
 
@@ -273,7 +278,7 @@ class Serializer
      * @param bool $strict The strict value wished to be registered.
      * @return self
      */
-    public function setStrict(bool $strict): self
+    public function setStrict(bool $strict)
     {
         $this->strict = $strict;
 
@@ -293,6 +298,7 @@ class Serializer
     /**
      * Alias for `self::serialize()` that does not accept any parameters (works with currently registered parameters).
      * @return string The serialized data.
+     * @throws SerializerViolationException
      */
     public function getSerialized(): string
     {
@@ -302,6 +308,7 @@ class Serializer
     /**
      * Alias for `self::unserialize()` that does not accept any parameters (works with currently registered parameters).
      * @return mixed The unserialized data.
+     * @throws SerializerViolationException
      */
     public function getUnserialized()
     {
@@ -313,6 +320,7 @@ class Serializer
      * @since 1.2.2
      * @param Closure $callback The (un)serialization callback to execute.
      * @return void
+     * @throws SerializerViolationException
      */
     protected function assertNoPhpSerializationError(Closure $callback): void
     {
@@ -339,6 +347,7 @@ class Serializer
      * @since 1.2.2
      * @param Closure $callback The (un)serialization callback to execute.
      * @return void
+     * @throws SerializerViolationException
      */
     protected function assertNoJsonSerializationError(Closure $callback): void
     {

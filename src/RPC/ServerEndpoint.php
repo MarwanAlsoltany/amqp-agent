@@ -1,10 +1,13 @@
 <?php
+
 /**
  * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
  * @copyright Marwan Al-Soltany 2020
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
+
+declare(strict_types=1);
 
 namespace MAKS\AmqpAgent\RPC;
 
@@ -106,6 +109,7 @@ class ServerEndpoint extends AbstractEndpoint implements ServerEndpointInterface
      * Replies to the client.
      * @param AMQPMessage $request
      * @return void
+     * @throws RPCEndpointException
      */
     protected function onRequest(AMQPMessage $request): void
     {
@@ -144,6 +148,7 @@ class ServerEndpoint extends AbstractEndpoint implements ServerEndpointInterface
 
     /**
      * Returns the final request body. This method will be ignored if a callback in `self::respond()` is specified.
+     * @param AMQPMessage $message
      * @return string
      */
     protected function callback(AMQPMessage $message): string

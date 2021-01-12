@@ -1,10 +1,13 @@
 <?php
+
 /**
  * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
  * @copyright Marwan Al-Soltany 2020
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
+
+declare(strict_types=1);
 
 namespace MAKS\AmqpAgent\Config;
 
@@ -13,7 +16,7 @@ use PhpAmqpLib\Exchange\AMQPExchangeType;
 use MAKS\AmqpAgent\Config\AbstractParameters;
 
 /**
- * A class that encapsulates all AMQP Agent parameters as constants.
+ * A class that contains all AMQP Agent parameters as constants.
  * @since 1.2.0
  */
 final class AmqpAgentParameters extends AbstractParameters

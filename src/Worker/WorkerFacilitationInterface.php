@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
  * @copyright Marwan Al-Soltany 2020
@@ -6,6 +7,7 @@
  * the LICENSE file that was distributed with this source code.
  */
 
+declare(strict_types=1);
 
 namespace MAKS\AmqpAgent\Worker;
 
@@ -23,6 +25,7 @@ interface WorkerFacilitationInterface
 
     /**
      * A function that takes the entire overhead of running a worker and wraps it in one single method with a possibility to change only the prime parameter of the worker (messages/callback).
+     * @param mixed $parameter
      * @return bool True on finish.
      */
     public function work($parameter): bool;

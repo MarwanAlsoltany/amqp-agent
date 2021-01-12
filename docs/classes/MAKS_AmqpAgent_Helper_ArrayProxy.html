@@ -65,14 +65,17 @@
             <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="../source/Helper/ArrayProxy.php.html#line39">Source</a>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/Helper/ArrayProxy.php.html#line42">Source</a>
           </li>
         </ul>
       </nav>
       <section>
         <h1 id="introduction"><small>MAKS\AmqpAgent\Helper\</small>ArrayProxy</h1>
-        <h4>A class containing methods for for manipulating and working arrays.</h4>
-        <p>Get example:<br/>```<br/>ArrayProxy::get($array, 'some.key', 'Default/Fallback Value');<br/>```<br/>Set example:<br/>```<br/>ArrayProxy::set($array, 'some.key', $newValue);<br/>```<br/>Cast (array to string) example:<br/>```<br/>ArrayProxy::arrayToString($array);<br/>```<br/>Cast (array to object) example:<br/>```<br/>ArrayProxy::arrayToObject($array);<br/>```<br/>Cast (object to array) example:<br/>```<br/>ArrayProxy::objectToArray($object);<br/>```</p>
+        <h4>A class containing methods for for manipulating and working with arrays.</h4>
+        <p>Get example:<br/>```<br/>ArrayProxy::get($array, 'someKey', 'this is a default/fallback value to use instead if not found');<br/>```<br/>Set example:<br/>```<br/>ArrayProxy::set($array, 'someKey', $newValue);<br/>```<br/>Cast (array to string) example:<br/>```<br/>ArrayProxy::arrayToString($array);<br/>```<br/>Cast (array to object) example:<br/>```<br/>ArrayProxy::arrayToObject($array);<br/>```<br/>Cast (object to array) example:<br/>```<br/>ArrayProxy::objectToArray($object);<br/>```</p>
         <ul/>
         <h2 id="synopsis">Synopsis</h2>
         <div class="synopsis">class ArrayProxy
@@ -135,10 +138,49 @@
                 — Sets a value of an array via dot-notation representation.</li>
           </ul>
         </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2021-01-12T14:28:52+00:00 (commit #<span title="3944d97c8adc9d95ea561e5c0f69517f2b0e87c2">3944d97</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update array proxy class
+* Fix typos
+* Update DocBlocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2021-01-11T14:31:31+00:00 (commit #<span title="ca1996b058a8841c1df7443af775a41da6ca36b4">ca1996b</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Add strict types declaration
+* Add declare(strict_types=1) to all files
+* Fix file header DocBlock spacing of all files</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-12-03T22:40:12+00:00 (commit #<span title="73fb09a488d895ca75d4b70ba085afc16f0106b8">73fb09a</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Add array proxy class
+* Add ArrayProxy.php
+* Add ArrayProxyTrait.php</pre>
+            </div>
+          </li>
+        </ul>
       </section>
     </div>
     <footer>
-      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2021 by Arne Blankerts and Contributors</span>
     </footer>
   </body>
 </html>

@@ -65,7 +65,7 @@
             <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="../source/Worker/ConsumerInterface.php.html#line20">Source</a>
+            <a href="../source/Worker/ConsumerInterface.php.html#line23">Source</a>
           </li>
         </ul>
       </nav>
@@ -126,7 +126,7 @@
             <li id="get"><a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/get.html">get()</a>
                 — Gets a message object from a channel, direct access to a queue.</li>
             <li id="isConsuming"><a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/isConsuming.html">isConsuming()</a>
-                — Checks wether the default channel is consuming.</li>
+                — Checks whether the default channel is consuming.</li>
             <li id="nack"><a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/nack.html">nack()</a>
                 — Unacknowledges an AMQP message object.</li>
             <li id="qos"><a title="MAKS\AmqpAgent\Worker\ConsumerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_ConsumerInterface/qos.html">qos()</a>
@@ -162,7 +162,7 @@
             <li id="queue"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/queue.html">queue()</a>
                 — Declares a queue on the default channel of the worker's connection with RabbitMQ server.</li>
             <li id="reconnect"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/reconnect.html">reconnect()</a>
-                — Executes `self::disconnect()` and `self::connect()` respectively.</li>
+                — Executes `self::disconnect()` and `self::connect()` respectively. Note that this method will not restore old channels.</li>
             <li id="setChannel"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/setChannel.html">setChannel()</a>
                 — Sets the passed channel as the default channel of the worker.</li>
             <li id="setConnection"><a title="MAKS\AmqpAgent\Worker\AbstractWorkerInterface" href="../interfaces/MAKS_AmqpAgent_Worker_AbstractWorkerInterface/setConnection.html">setConnection()</a>
@@ -174,7 +174,7 @@
       </section>
     </div>
     <footer>
-      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2021 by Arne Blankerts and Contributors</span>
     </footer>
   </body>
 </html>

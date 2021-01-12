@@ -1,10 +1,13 @@
 <?php
+
 /**
  * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
  * @copyright Marwan Al-Soltany 2020
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
+
+declare(strict_types=1);
 
 namespace MAKS\AmqpAgent\Helper;
 
@@ -30,8 +33,8 @@ final class IDGenerator
     /**
      * Generates a crypto safe unique token. Note that this function is pretty expensive.
      * @param int $length The length of the token. If the token is hashed this will not be the length of the returned string.
-     * @param string $charset [optional] A string of characters to generate the token from. Defaults to alphanumeric.
-     * @param string $hashing [optional] A name of hashing algorithm to hash the generated token with. Defaults to no hashing.
+     * @param string|null $charset [optional] A string of characters to generate the token from. Defaults to alphanumeric.
+     * @param string|null $hashing [optional] A name of hashing algorithm to hash the generated token with. Defaults to no hashing.
      * @return string
      */
     public static function generateToken(int $length = 32, ?string $charset = null, ?string $hashing = null): string

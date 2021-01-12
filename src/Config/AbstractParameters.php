@@ -1,10 +1,13 @@
 <?php
+
 /**
  * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
  * @copyright Marwan Al-Soltany 2020
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
+
+declare(strict_types=1);
 
 namespace MAKS\AmqpAgent\Config;
 
@@ -20,8 +23,9 @@ abstract class AbstractParameters
      * Patches the passed array with a class constant.
      * @param array $options The partial array.
      * @param string $const The constant name.
-     * @param bool $values Wether to return values only or an associative array.
+     * @param bool $values Whether to return values only or an associative array.
      * @return array The final patched array.
+     * @throws ConstantDoesNotExistException
      */
     final public static function patch(array $options, string $const, bool $values = false): array
     {
@@ -50,7 +54,7 @@ abstract class AbstractParameters
      * Patches the passed array with another array.
      * @param array $partialArray The partial array.
      * @param array $fullArray The full array.
-     * @param bool $values Wether to return values only or an associative array.
+     * @param bool $values Whether to return values only or an associative array.
      * @return array The final patched array.
      */
     final public static function patchWith(array $partialArray, array $fullArray, bool $values = false): array

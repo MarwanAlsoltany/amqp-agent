@@ -1,11 +1,10 @@
 <?xml version="1.0"?>
-<ruleset name="My first PHPMD rule set"
+<ruleset name="AMQP Agent PHPMD rule set"
          xmlns="http://pmd.sf.net/ruleset/1.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0
                      http://pmd.sf.net/ruleset_xml_schema.xsd"
-         xsi:noNamespaceSchemaLocation="
-                     http://pmd.sf.net/ruleset_xml_schema.xsd">
+         xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
     <description>
         AMQP Agent mess detector
     </description>
@@ -14,16 +13,15 @@
     <rule ref="rulesets/naming.xml" />
     <rule ref="rulesets/unusedcode.xml" />
 
-    <rule ref="rulesets/cleancode.xml/Else" />
-        <exclude name="ElseExpression" />
-    </rule>
-
     <rule ref="rulesets/codesize.xml">
         <exclude name="NPathComplexity" />
         <exclude name="TooManyPublicMethods" />
     </rule>
 
     <rule ref="rulesets/cleancode.xml" />
+    <rule ref="rulesets/cleancode.xml/Else">
+        <exclude name="ElseExpression" />
+    </rule>
     <rule ref="rulesets/cleancode.xml/CamelCaseParameterName">
         <properties>
             <property name="allow-underscore" value="true" />

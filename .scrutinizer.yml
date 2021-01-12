@@ -1,4 +1,7 @@
 build:
+  environment:
+    variables:
+      COMPOSER_FLAGS: '--prefer-stable --prefer-dist'
   nodes:
     analysis:
       project_setup:
@@ -10,7 +13,7 @@ filter:
   excluded_paths: [build/*, docs/*, tests/*, vendor/*]
 
 before_commands:
-  - "composer install --dev --prefer-source"
+  - "composer install $COMPOSER_FLAGS"
 
 checks:
   php:

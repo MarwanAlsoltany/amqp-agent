@@ -6,7 +6,7 @@
     <arg value="s" />
     <config name="ignore_warnings_on_exit" value="1" />
     <config name="ignore_errors_on_exit" value="1" />
-    <rule ref="PSR2" />
+    <rule ref="PSR12" />
     <rule ref="Generic.NamingConventions.ConstructorName"/>
     <rule ref="Generic.Functions.FunctionCallArgumentSpacing" />
     <rule ref="Generic.Commenting.Todo"/>
@@ -28,7 +28,9 @@
             <property name="eolChar" value="\n"/>
         </properties>
     </rule>
-    <rule ref="PEAR.NamingConventions.ValidClassName"/>
-    <rule ref="PEAR.Functions.ValidDefaultValue"/>
-    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="192"/>
+        </properties>
+    </rule>
 </ruleset>

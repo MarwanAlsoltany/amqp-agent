@@ -71,7 +71,10 @@
             <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="../source/Config.php.html#line38">Source</a>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/Config.php.html#line41">Source</a>
           </li>
         </ul>
       </nav>
@@ -94,9 +97,9 @@
                     </li><li>public Config <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/set.html">set</a>()
                     </li><li>public array <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/getDefaultConfig.html">getDefaultConfig</a>()
                     </li><li>public array <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/getConfig.html">getConfig</a>()
-                    </li><li>public <span title="Config">Config</span> <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/setConfig.html">setConfig</a>()
+                    </li><li>public Config <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/setConfig.html">setConfig</a>()
                     </li><li>public string <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/getConfigPath.html">getConfigPath</a>()
-                    </li><li>public <span title="Config">Config</span> <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/setConfigPath.html">setConfigPath</a>()
+                    </li><li>public Config <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/setConfigPath.html">setConfigPath</a>()
                     </li></ul>
 
             }<br/></div>
@@ -125,7 +128,7 @@
               </tr>
             </thead>
             <tr>
-              <td class="line">124</td>
+              <td class="line">128</td>
               <td>
                 <a href="https://phpmd.org/rules/unusedcode.html#unusedlocalvariable" target="_blank" title="Unused Code Rules">UnusedLocalVariable</a>
               </td>
@@ -190,19 +193,141 @@
             <li id="getDefaultConfig"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/getDefaultConfig.html">getDefaultConfig()</a>
                 — Returns the default configuration array.</li>
             <li id="has"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/has.html">has()</a>
-                — Checks wether a value exists in the configuration array via dot-notation representation.</li>
+                — Checks whether a value exists in the configuration array via dot-notation representation.</li>
             <li id="set"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/set.html">set()</a>
                 — Sets a value of a key from the configuration array via dot-notation representation.</li>
             <li id="setConfig"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/setConfig.html">setConfig()</a>
-                — Sets a new configuration array to be used instead of the current and generates a new flat version of it.</li>
+                — Sets a new configuration array to be used instead of the current.</li>
             <li id="setConfigPath"><a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config/setConfigPath.html">setConfigPath()</a>
                 — Sets the path of the configuration file and rebuilds the internal state of the object.</li>
           </ul>
         </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2021-01-12T16:35:21+00:00 (commit #<span title="4bd97010a75f0d7ada6a64d59be21c8b44a47f25">4bd9701</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update config class
+* Remove return value type hint "self" from methods signature due to unexpected behavior with different PHP versions</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2021-01-12T14:22:21+00:00 (commit #<span title="342b4549d12ce3922e86c1aa25f38170b9ca0720">342b454</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update config class
+* Fix typos
+* Update DocBlocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2021-01-12T04:39:00+00:00 (commit #<span title="9eaec7b0d1c5ed44f839c69c75eb977863d6d710">9eaec7b</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update config class
+* Add additional check for return value of realpath() function in the constructor</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2021-01-11T14:31:31+00:00 (commit #<span title="ca1996b058a8841c1df7443af775a41da6ca36b4">ca1996b</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Add strict types declaration
+* Add declare(strict_types=1) to all files
+* Fix file header DocBlock spacing of all files</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-12-03T22:52:56+00:00 (commit #<span title="294665a22e075d511c87d98e972a7f74b7bf5e3d">294665a</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update config class
+* Change internal method calls due to last code refactoring</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-12-02T23:38:57+00:00 (commit #<span title="04ace7173082662f25966a1c82cf83843cb47ace">04ace71</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update config class
+* Add references to RPC endpoints properties</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-11-29T09:04:02+00:00 (commit #<span title="bc035fefc60cd3264b6adeb150672de39037166e">bc035fe</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update config class
+* Add has() method
+* Add get() method
+* Add set() method</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-11-29T09:00:10+00:00 (commit #<span title="ee8ea8d7b98d3bc2548daf73b7358e3ddbd6354c">ee8ea8d</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update config class
+* Remove deprecated method get()
+* Remove $configFlat property and all of its references
+* Update $configPath property to be a realpath
+* Fix some coding style issues</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-09-23T18:47:06+00:00 (commit #<span title="1a3f203ce5fb96c8baeaf9bb3c9181cc22881bc0">1a3f203</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Fix typos and update DocBlocks
+* Fix some typos in DockBlocks and other parts of the codebase
+* Add examples to classes DocBlocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-13T06:00:57+00:00 (commit #<span title="5f20c41cfb5e6075a5ae6b661a6e6c066295e239">5f20c41</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Add config class
+* Add Config.php
+* Add ConfigFileNotFoundException.php</pre>
+            </div>
+          </li>
+        </ul>
       </section>
     </div>
     <footer>
-      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2021 by Arne Blankerts and Contributors</span>
     </footer>
   </body>
 </html>

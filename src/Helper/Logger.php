@@ -1,10 +1,13 @@
 <?php
+
 /**
  * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
  * @copyright Marwan Al-Soltany 2020
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
+
+declare(strict_types=1);
 
 namespace MAKS\AmqpAgent\Helper;
 
@@ -44,8 +47,8 @@ class Logger
 
     /**
      * Passing null for $directory will raise a warning and force the logger to find a reasonable directory to write the file in.
-     * @param string $filename The name wished to be given to the file. Pass null for auto-generate.
-     * @param string $directory The directory where the log file should be written.
+     * @param string|null $filename The name wished to be given to the file. Pass null for auto-generate.
+     * @param string|null $directory The directory where the log file should be written.
      */
     public function __construct(?string $filename, ?string $directory)
     {
@@ -75,7 +78,7 @@ class Logger
 
     /**
      * Sets filename property.
-     * @param string $filename  Filename
+     * @param string $filename The filename.
      * @return self
      */
     public function setFilename(string $filename)
@@ -95,7 +98,7 @@ class Logger
 
     /**
      * Sets directory property.
-     * @param string $directory  Directory
+     * @param string $directory The directory.
      * @return self
      */
     public function setDirectory(string $directory)
@@ -108,8 +111,8 @@ class Logger
     /**
      * Logs a message to a file, generates it if it does not exist and raises a user-level warning and/or notice on misuse.
      * @param string $message The message wished to be logged.
-     * @param string $filename [optional] The name wished to be given to the file.
-     * @param string $directory [optional] The directory where the log file should be written.
+     * @param string|null $filename [optional] The name wished to be given to the file. If not provided a Notice will be raised with the auto-generated filename.
+     * @param string|null $directory [optional] The directory where the log file should be written. If not provided a Warning will be raised with the used path.
      * @return bool True if message was written.
      */
     public static function log(string $message, ?string $filename = null, ?string $directory = null): bool
@@ -145,7 +148,7 @@ class Logger
         // create log file if it does not exist
         if (!is_file($file) && is_writable($directory)) {
             $signature = 'Created by ' . __METHOD__ . date('() \o\\n l jS \of F Y h:i:s A (Ymdhis)') . PHP_EOL;
-            file_put_contents($file, $signature, null, stream_context_create());
+            file_put_contents($file, $signature, 0, stream_context_create());
             chmod($file, 0775);
         }
 
@@ -159,7 +162,7 @@ class Logger
                 if (is_resource($stream)) {
                     $signature = fgets($stream) . 'For exceeding 64MB, it was overwritten on ' . date('l jS \of F Y h:i:s A (Ymdhis)') . PHP_EOL;
                     fclose($stream);
-                    file_put_contents($file, $signature, null, stream_context_create());
+                    file_put_contents($file, $signature, 0, stream_context_create());
                     chmod($file, 0775);
                 }
             }

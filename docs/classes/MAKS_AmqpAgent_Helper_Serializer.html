@@ -68,7 +68,10 @@
             <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="../source/Helper/Serializer.php.html#line20">Source</a>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/Helper/Serializer.php.html#line22">Source</a>
           </li>
         </ul>
       </nav>
@@ -88,11 +91,11 @@
                     </li><li>public string <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/serialize.html">serialize</a>()
                     </li><li>public mixed <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/unserialize.html">unserialize</a>()
                     </li><li>public mixed <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/deserialize.html">deserialize</a>()
-                    </li><li>public <span title="Serializer">Serializer</span> <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/setData.html">setData</a>()
+                    </li><li>public Serializer <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/setData.html">setData</a>()
                     </li><li>public mixed <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/getData.html">getData</a>()
-                    </li><li>public <span title="Serializer">Serializer</span> <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/setType.html">setType</a>()
+                    </li><li>public Serializer <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/setType.html">setType</a>()
                     </li><li>public string <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/getType.html">getType</a>()
-                    </li><li>public <span title="Serializer">Serializer</span> <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/setStrict.html">setStrict</a>()
+                    </li><li>public Serializer <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/setStrict.html">setStrict</a>()
                     </li><li>public bool <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/isStrict.html">isStrict</a>()
                     </li><li>public string <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/getSerialized.html">getSerialized</a>()
                     </li><li>public mixed <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer/getUnserialized.html">getUnserialized</a>()
@@ -206,10 +209,124 @@
                 — Unserializes the passed or registered data. When no parameters are passed, it uses the registered ones.</li>
           </ul>
         </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2021-01-12T16:33:36+00:00 (commit #<span title="4a9196388d7637b66d4c5c0c6a02da75e37587bd">4a91963</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update serilaizer class
+* Remove return value type hint "self" from methods signature due to unexpected behavior with different PHP versions</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2021-01-12T14:46:38+00:00 (commit #<span title="1a60ba32d92af30cf1b2e43ed3c0c9a86c3fba8c">1a60ba3</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update serializer class
+* Fix typos
+* Update DocBlocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2021-01-11T14:31:31+00:00 (commit #<span title="ca1996b058a8841c1df7443af775a41da6ca36b4">ca1996b</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Add strict types declaration
+* Add declare(strict_types=1) to all files
+* Fix file header DocBlock spacing of all files</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-11-29T12:23:23+00:00 (commit #<span title="d0f45aca9fd9d4098122a898d7986f7ca54330f3">d0f45ac</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update serializer class
+* Remove the check for PHP version in assertNoJsonSerializationError() method
+* Remove catch block contents in assertNoJsonSerializationError() method
+* Fix some typos in DocBlocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-11-29T10:36:58+00:00 (commit #<span title="dca659310ea35a7549ffdceb44b50f79e44d929d">dca6593</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update serializer class
+* TLDR: almost a complete rewrite
+* Add serializations types as class constants
+* Add methods to assert for PHP und JSON (un)serializations errors
+* Add a new $strict property to determine serialization strictness
+* Add a isStrict() and setStrict() methods
+* Add $strict parameter to serialize() and unserialize() methods</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-09-30T14:28:06+00:00 (commit #<span title="1986938e72b56c75e523f4713a5c8957819a0add">1986938</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update serializer class
+* Fix mistake of writing [optional] before variable name in DocBlocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-09-23T18:47:06+00:00 (commit #<span title="1a3f203ce5fb96c8baeaf9bb3c9181cc22881bc0">1a3f203</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Fix typos and update DocBlocks
+* Fix some typos in DockBlocks and other parts of the codebase
+* Add examples to classes DocBlocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-15T00:00:38+00:00 (commit #<span title="c153401f1f808f3b418d0263509e4b327b2559b5">c153401</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Fix typos in docblocks
+* Fix typo in Example class
+* Fix typos in Serializer class</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-13T05:55:10+00:00 (commit #<span title="2dd737e02167e5a3dc5f23cf2ef5ab7ed18c2053">2dd737e</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Add serializer class
+* Add Serilaizer.php
+* Add SerializerViolationException.php</pre>
+            </div>
+          </li>
+        </ul>
       </section>
     </div>
     <footer>
-      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2021 by Arne Blankerts and Contributors</span>
     </footer>
   </body>
 </html>

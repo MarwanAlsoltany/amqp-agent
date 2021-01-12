@@ -1,10 +1,13 @@
 <?php
+
 /**
  * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
  * @copyright Marwan Al-Soltany 2020
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
+
+declare(strict_types=1);
 
 namespace MAKS\AmqpAgent\Worker;
 
@@ -47,7 +50,7 @@ interface AbstractWorkerInterface
     public function disconnect();
 
     /**
-     * Executes `self::disconnect()` and `self::connect()` respectively.
+     * Executes `self::disconnect()` and `self::connect()` respectively. Note that this method will not restore old channels.
      * @return self
      */
     public function reconnect();
@@ -62,12 +65,14 @@ interface AbstractWorkerInterface
 
     /**
      * Returns the default connection of the worker. If the worker is not connected, it returns null.
+     * @since 1.1.0
      * @return AMQPStreamConnection|null
      */
     public function getConnection(): ?AMQPStreamConnection;
 
     /**
      * Sets the passed connection as the default connection of the worker.
+     * @since 1.1.0
      * @param AMQPStreamConnection $connection The connection that should be as the default connection of the worker.
      * @return self
      */
@@ -75,6 +80,8 @@ interface AbstractWorkerInterface
 
     /**
      * Opens a new connection to RabbitMQ server and returns it. Connections returned by this method pushed to connections array and are not set as default automatically.
+     * @since 1.1.0
+     * @param array|null $parameters
      * @return AMQPStreamConnection
      */
     public function getNewConnection(array $parameters = null): AMQPStreamConnection;
@@ -87,6 +94,7 @@ interface AbstractWorkerInterface
 
     /**
      * Sets the passed channel as the default channel of the worker.
+     * @since 1.1.0
      * @param AMQPChannel $channel The channel that should be as the default channel of the worker.
      * @return self
      */
@@ -94,8 +102,8 @@ interface AbstractWorkerInterface
 
     /**
      * Returns a new channel on the the passed connection of the worker. If no connection is passed, it uses the default connection. If the worker is not connected, it returns null.
-     * @param array $parameters [optional] The overrides for the default channel options of the worker.
-     * @param AMQPStreamConnection $_connection [optional] The connection that should be used instead of the default worker's connection.
+     * @param array|null $parameters [optional] The overrides for the default channel options of the worker.
+     * @param AMQPStreamConnection|null $_connection [optional] The connection that should be used instead of the default worker's connection.
      * @return AMQPChannel|null
      */
     public function getNewChannel(array $parameters = null, ?AMQPStreamConnection $_connection = null): ?AMQPChannel;
@@ -103,7 +111,7 @@ interface AbstractWorkerInterface
     /**
      * Fetches a channel object identified by the passed id (channel_id). If not found, it returns null.
      * @param int $channelId The id of the channel wished to be fetched.
-     * @param AMQPStreamConnection $_connection [optional] The connection that should be used instead of the default worker's connection.
+     * @param AMQPStreamConnection|null $_connection [optional] The connection that should be used instead of the default worker's connection.
      * @return AMQPChannel|null
      */
     public function getChannelById(int $channelId): ?AMQPChannel;

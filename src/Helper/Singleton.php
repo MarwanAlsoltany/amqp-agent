@@ -1,10 +1,13 @@
 <?php
+
 /**
  * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
  * @copyright Marwan Al-Soltany 2020
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
+
+declare(strict_types=1);
 
 namespace MAKS\AmqpAgent\Helper;
 
@@ -64,7 +67,7 @@ abstract class Singleton
     {
         $subclass = static::class;
         if (!isset(self::$instances[$subclass])) {
-            self::$instances[$subclass] = new static;
+            self::$instances[$subclass] = new static();
         }
         return self::$instances[$subclass];
     }
@@ -72,7 +75,7 @@ abstract class Singleton
 
     /**
      * Destroys the singleton's instance it was called on.
-     * @param self $object The instance it was called on.
+     * @param self &$object The instance it was called on.
      * @return void
      */
     public function destroyInstance(&$object)

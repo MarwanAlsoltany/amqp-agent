@@ -1,8 +1,22 @@
 <?php
 
+/**
+ * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
+ * @copyright Marwan Al-Soltany 2020
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
 namespace MAKS\AmqpAgent\Worker;
 
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Channel\AMQPChannel;
+use PhpAmqpLib\Message\AMQPMessage;
+use PhpAmqpLib\Wire\AMQPTable;
 use MAKS\AmqpAgent\Worker\Consumer;
+use MAKS\AmqpAgent\Worker\AbstractWorkerSingleton;
 
 /**
  * A singleton version of the Consumer class.

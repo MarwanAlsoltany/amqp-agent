@@ -107,7 +107,7 @@ class ConsumerTest extends TestCase
         // this will use maks.amqp.agent.queue, 4 start commands, 5 close commands
         $this->consumer->prepare();
         $this->consumer->consume(
-            __CLASS__.'::consumerTestCallback',
+            __CLASS__ . '::consumerTestCallback',
             [
                 &$this->messages,
                 &$this->serializer,
@@ -194,7 +194,7 @@ class ConsumerTest extends TestCase
     {
         $this->consumer->prepare();
         $this->consumer->consume(
-            __CLASS__.'::consumerTestCallback',
+            __CLASS__ . '::consumerTestCallback',
             [
                 &$this->messages,
                 &$this->serializer

@@ -1,10 +1,13 @@
 <?php
+
 /**
  * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
  * @copyright Marwan Al-Soltany 2020
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
+
+declare(strict_types=1);
 
 namespace MAKS\AmqpAgent\Worker;
 
@@ -101,7 +104,7 @@ abstract class AbstractWorkerSingleton extends Singleton
 
     /**
      * Calls a method on a class that extend AbstractWorker and throws an exception for calls to undefined methods.
-     * @param string $function Function name.
+     * @param string $method Function name.
      * @param array $arguments Function arguments.
      * @return mixed
      */
@@ -120,7 +123,7 @@ abstract class AbstractWorkerSingleton extends Singleton
 
     /**
      * Calls a method on a class that extend AbstractWorker and throws an exception for calls to undefined static methods.
-     * @param string $function Function name.
+     * @param string $method Function name.
      * @param array $arguments Function arguments.
      * @return mixed
      */

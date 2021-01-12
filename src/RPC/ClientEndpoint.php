@@ -1,10 +1,13 @@
 <?php
+
 /**
  * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
  * @copyright Marwan Al-Soltany 2020
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
+
+declare(strict_types=1);
 
 namespace MAKS\AmqpAgent\RPC;
 
@@ -36,6 +39,7 @@ class ClientEndpoint extends AbstractEndpoint implements ClientEndpointInterface
      * Opens a connection with RabbitMQ server.
      * @param array|null $connectionOptions
      * @return self
+     * @throws RPCEndpointException
      */
     public function connect(?array $connectionOptions = [])
     {
@@ -132,6 +136,7 @@ class ClientEndpoint extends AbstractEndpoint implements ClientEndpointInterface
      * Validates the response.
      * @param AMQPMessage $response
      * @return void
+     * @throws RPCEndpointException
      */
     protected function onResponse(AMQPMessage $response): void
     {
@@ -154,6 +159,7 @@ class ClientEndpoint extends AbstractEndpoint implements ClientEndpointInterface
 
     /**
      * Returns the final response body.
+     * @param AMQPMessage $message
      * @return string
      */
     protected function callback(AMQPMessage $message): string

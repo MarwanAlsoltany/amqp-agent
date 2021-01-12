@@ -6,16 +6,22 @@ All notable changes to **AMQP Agent** will be documented in this file.
 ## [Unreleased]
 
 
-## [1.0.0] - 2020-06-15
+<br />
+
+## [[1.0.0] - 2020-06-15](https://github.com/MarwanAlsoltany/amqp-agent/commits/v1.0.0)
 - Initial release.
 
 
-## [1.0.1] - 2020-06-23
+<br />
+
+## [[1.0.1] - 2020-06-23](https://github.com/MarwanAlsoltany/amqp-agent/compare/v1.0.0...v1.0.1)
 - Fix issue with Logger class:
     - Fix additional line breaks when writing to log file.
 
 
-## [1.1.0] - 2020-08-10
+<br />
+
+## [[1.1.0] - 2020-08-10](https://github.com/MarwanAlsoltany/amqp-agent/compare/v1.0.1...v1.1.0)
 - Add the possibility to open multiple connection by a worker.
 - Update `AbstractWorker` class:
     - Add connections array and channels array.
@@ -27,7 +33,9 @@ All notable changes to **AMQP Agent** will be documented in this file.
     - Rebuild documentation.
 
 
-## [1.1.1] - 2020-09-14
+<br />
+
+## [[1.1.1] - 2020-09-14](https://github.com/MarwanAlsoltany/amqp-agent/compare/v1.0.1...v1.1.1)
 - Update `composer.json`:
     - Pump minimum **php-amqplib** version.
     - Downgrade minimum php version.
@@ -46,7 +54,9 @@ All notable changes to **AMQP Agent** will be documented in this file.
 - Rebuild documentation.
 
 
-## [1.2.0] - 2020-09-26
+<br />
+
+## [[1.2.0] - 2020-09-26](https://github.com/MarwanAlsoltany/amqp-agent/compare/v1.1.1...v1.2.0)
 - Update `composer.json`:
     - Add a link for the documentation.
     - Add some suggestions.
@@ -86,7 +96,9 @@ All notable changes to **AMQP Agent** will be documented in this file.
 - Update formatting of `CHANGELOG.md`.
 
 
-## [1.2.1] - 2020-09-30
+<br />
+
+## [[1.2.1] - 2020-09-30](https://github.com/MarwanAlsoltany/amqp-agent/compare/v1.2.0...v1.2.1)
 - Update `composer.json`:
     - Update `branch-alias` version.
 - Update `Utility` class:
@@ -105,7 +117,9 @@ All notable changes to **AMQP Agent** will be documented in this file.
 - Rebuild documentation.
 
 
-## [1.2.2] - 2020-11-29
+<br />
+
+## [[1.2.2] - 2020-11-29](https://github.com/MarwanAlsoltany/amqp-agent/compare/v1.2.1...v1.2.2)
 - Update `Config` class:
     - Remove deprecated method `get()`.
     - Remove `$configFlat` property and all of its references.
@@ -137,7 +151,9 @@ All notable changes to **AMQP Agent** will be documented in this file.
 - Rebuild documentation.
 
 
-## [2.0.0] - 2020-12-03
+<br />
+
+## [[2.0.0] - 2020-12-03](https://github.com/MarwanAlsoltany/amqp-agent/compare/v1.2.2...v2.0.0)
 - Update `composer.json`:
     - Update `branch-alias` version.
 - Add RPC endpoints interfaces:
@@ -178,4 +194,52 @@ All notable changes to **AMQP Agent** will be documented in this file.
   - Add `bin/endpoint` executable to help with endpoints testing.
   - Update old tests to cover the new changes.
   - Update `phpunit.xml.dist` to run the new tests.
+- Rebuild documentation.
+
+
+<br />
+
+## [[2.1.0] - 2021-01-12](https://github.com/MarwanAlsoltany/amqp-agent/compare/v2.0.0...v2.1.0)
+- Update `composer.json`:
+    - Update `branch-alias` version.
+    - Update `scripts` field.
+- Update `AbstractWorker` class
+  - Remove some useless code.
+  - Change exception type of `shutdown()` method to `AmqpAgentException`.
+  - Remove return value type hint `self` from methods signature due to unexpected behavior with different PHP versions.
+- Update `Publisher` class
+  - Remove some useless code.
+  - Change exception type of `publish()` and `publishBatch()` methods to `AmqpAgentException`.
+  - Remove return value type hint `self` from methods signature due to unexpected behavior with different PHP versions.
+- Update `Consumer` class
+  - Change `nack()` method wrong signature (remove default value from first parameter as it's useless).
+  - Update method signature on the corresponding interface (`ConsumerInterface`).
+  - Remove return value type hint `self` from methods signature due to unexpected behavior with different PHP versions.
+- Update `WorkerCommandTrait`
+  - Remove some useless code.
+- Update `WorkerMutationTrait`
+  - Change signature of `mutateClass()` method (remove default value from second parameter as it's useless).
+  - Change visibility of `mutateClass()` from protected to private (this method should never be used directly).
+- Update `Config` class
+  - Add additional check for return value of `realpath()` function in class constructor.
+  - Remove return value type hint `self` from methods signature due to unexpected behavior with different PHP versions.
+- Update `Utility` class
+  - Add additional check for script execution path in `execute()` method.
+- Update `Logger` class
+  - Fix a wrong parameter type passed to third argument of `file_put_contents()` function.
+- Update `Serializer` class
+  - Remove return value type hint `self` from methods signature due to unexpected behavior with different PHP versions.
+- Update `ClassProxyTrait`
+  - Add additional check for `$fromObject` parameter of the `castObjectToClass()` method.
+  - Add a third parameter to the call of `AmqpAgentException::rethrow()` method.
+- Update `AmqpAgentException`
+  - Change default value of `$wrap` parameter from `false` to `true` (this is the expected behavior according to parameter's description).
+- Update tests to cover the new minor changes.
+- Add `declare(strict_types=1)` to all files of the package.
+- Update coding style to PSR12.
+- Fix coding style issues in all files of the package.
+- Fix DocBlocks in all files of the package.
+- Fix typos in all files of the package.
+- Update Continuous Integration config files.
+- Update Development Dependencies config files.
 - Rebuild documentation.

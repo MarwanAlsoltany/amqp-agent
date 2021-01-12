@@ -65,7 +65,10 @@
             <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="../source/Client.php.html#line35">Source</a>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/Client.php.html#line38">Source</a>
           </li>
         </ul>
       </nav>
@@ -107,7 +110,7 @@
           <tr>
             <td>Lines</td>
             <td class="percent">100%</td>
-            <td class="nummeric">57 / 57</td>
+            <td class="nummeric">61 / 61</td>
           </tr>
         </table>
         <h2 id="members">Members</h2>
@@ -122,13 +125,13 @@
                 <a title="MAKS\AmqpAgent\Config" href="../classes/MAKS_AmqpAgent_Config.html">MAKS\AmqpAgent\Config</a><br/><span class="indent">An instance of the configuration object.</span></li>
             <li id="consumer"><strong>$consumer</strong>
                 —
-                <a title="MAKS\AmqpAgent\Worker\Consumer" href="../classes/MAKS_AmqpAgent_Worker_Consumer.html">MAKS\AmqpAgent\Worker\Consumer</a><br/><span class="indent">An instance of the Consumer worker class.</span></li>
+                <a title="MAKS\AmqpAgent\Worker\Consumer" href="../classes/MAKS_AmqpAgent_Worker_Consumer.html">MAKS\AmqpAgent\Worker\Consumer</a><br/><span class="indent">An instance of the Consumer class.</span></li>
             <li id="logger"><strong>$logger</strong>
                 —
                 <a title="MAKS\AmqpAgent\Helper\Logger" href="../classes/MAKS_AmqpAgent_Helper_Logger.html">MAKS\AmqpAgent\Helper\Logger</a><br/><span class="indent">An instance of the Logger class.</span></li>
             <li id="publisher"><strong>$publisher</strong>
                 —
-                <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher.html">MAKS\AmqpAgent\Worker\Publisher</a><br/><span class="indent">An instance of the Publisher worker class.</span></li>
+                <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher.html">MAKS\AmqpAgent\Worker\Publisher</a><br/><span class="indent">An instance of the Publisher class.</span></li>
             <li id="serializer"><strong>$serializer</strong>
                 —
                 <a title="MAKS\AmqpAgent\Helper\Serializer" href="../classes/MAKS_AmqpAgent_Helper_Serializer.html">MAKS\AmqpAgent\Helper\Serializer</a><br/><span class="indent">An instance of the Serializer class.</span></li>
@@ -148,27 +151,171 @@
             <li id="get"><a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/get.html">get()</a>
                 — Returns an instance of a class by its name (lowercase, UPPERCASE, PascalCase, camelCase, dot.case, kebab-case, or snake_case representation of class name).</li>
             <li id="getClientEndpoint"><a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/getClientEndpoint.html">getClientEndpoint()</a>
-                — Returns an instance of the Consumer class.</li>
+                — Returns an instance of the RPC Client class.</li>
             <li id="getConfig"><a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/getConfig.html">getConfig()</a>
                 — Returns the currently used config object.</li>
             <li id="getConsumer"><a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/getConsumer.html">getConsumer()</a>
                 — Returns an instance of the Consumer class.</li>
             <li id="getLogger"><a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/getLogger.html">getLogger()</a>
-                — Returns an instance of the Logger class. Filename and directory must be set through setters.</li>
+                — Returns an instance of the Logger class.</li>
             <li id="getPublisher"><a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/getPublisher.html">getPublisher()</a>
                 — Returns an instance of the Publisher class.</li>
             <li id="getSerializer"><a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/getSerializer.html">getSerializer()</a>
                 — Returns an instance of the Serializer class.</li>
             <li id="getServerEndpoint"><a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/getServerEndpoint.html">getServerEndpoint()</a>
-                — Returns an instance of the Consumer class.</li>
+                — Returns an instance of the RPC Server class.</li>
             <li id="gettable"><a title="MAKS\AmqpAgent\Client" href="../classes/MAKS_AmqpAgent_Client/gettable.html">gettable()</a>
                 — Returns an array of available members that can be obtained via `self::get()`.</li>
           </ul>
         </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2021-01-12T14:21:43+00:00 (commit #<span title="3f28e02c4e25ef92561c42ecd3b5055da1cc0bf8">3f28e02</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update client class
+* Fix typos
+* Update DocBlocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2021-01-12T04:37:11+00:00 (commit #<span title="861e7c31dcff65d67632fc77bd461db1d537f660">861e7c3</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update client class
+* Fix coding style issue</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2021-01-11T14:31:31+00:00 (commit #<span title="ca1996b058a8841c1df7443af775a41da6ca36b4">ca1996b</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Add strict types declaration
+* Add declare(strict_types=1) to all files
+* Fix file header DocBlock spacing of all files</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-12-03T22:51:36+00:00 (commit #<span title="c3f5beb48b2b65448b4979611ffd141e67d03584">c3f5beb</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update client class
+* Change an internal method call due to last code refactoring</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-12-03T00:34:47+00:00 (commit #<span title="51d3a614a7ebf3de56ec562a624ff6c473e6abbd">51d3a61</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update client class
+* Add $clientEndpoint property
+* Add $serverEndpoint property
+* Add getClientEndpoint() method
+* Add getServerEndpoint() method</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-11-27T21:09:36+00:00 (commit #<span title="e34d90fe604aba78ea3bb24f6080c060304812f6">e34d90f</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update client class
+* Add @since to gettable() method DocBlock</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-09-30T12:58:21+00:00 (commit #<span title="2b772d332cc958a7d8d25908d1a0410a68b74f68">2b772d3</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update client class
+* Remove not implemented yet return types from DocBlock introduced by last commit
+* Fix coding style issue</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-09-30T12:04:05+00:00 (commit #<span title="438815a0f7ac291fc9922d0c8e09cae0c7241fa1">438815a</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update client class
+* Add gettable method
+* Refactor get method</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-09-23T18:47:06+00:00 (commit #<span title="1a3f203ce5fb96c8baeaf9bb3c9181cc22881bc0">1a3f203</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Fix typos and update DocBlocks
+* Fix some typos in DockBlocks and other parts of the codebase
+* Add examples to classes DocBlocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-09-13T22:05:15+00:00 (commit #<span title="e6bf8080e8d109f9ce60ca9d37f63b3299e25a55">e6bf808</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update client class
+* Refactor an if statement
+* Change visibility of class properties to allow inheritance</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-15T00:28:43+00:00 (commit #<span title="09a31c01a71c9dcd2350bb4f8522666dacb5f3ed">09a31c0</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Fix client class
+* Remove optional parameter from client class constructor</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-13T06:01:42+00:00 (commit #<span title="2fc3ca5fb1c4b950fafccdca2c1c06a12b4ccb21">2fc3ca5</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Add client class
+* Add Client.php</pre>
+            </div>
+          </li>
+        </ul>
       </section>
     </div>
     <footer>
-      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2021 by Arne Blankerts and Contributors</span>
     </footer>
   </body>
 </html>

@@ -1,10 +1,13 @@
 <?php
+
 /**
  * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
  * @copyright Marwan Al-Soltany 2020
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
+
+declare(strict_types=1);
 
 namespace MAKS\AmqpAgent;
 
@@ -41,13 +44,13 @@ class Client
     protected $config;
 
     /**
-     * An instance of the Publisher worker class.
+     * An instance of the Publisher class.
      * @var Publisher
      */
     protected $publisher;
 
     /**
-     * An instance of the Consumer worker class.
+     * An instance of the Consumer class.
      * @var Consumer
      */
     protected $consumer;
@@ -99,10 +102,11 @@ class Client
      * Gets a class member via public property access notation.
      * @param string $member Property name.
      * @return mixed
+     * @throws AmqpAgentException
      */
     public function __get(string $member)
     {
-        // using $this->get() to reuse the logic in class methods.
+        // using $this->get() to reuse the logic in get() method.
         return $this->get($member);
     }
 
@@ -141,7 +145,13 @@ class Client
 
         foreach ($methods as $method) {
             if (preg_match('/get[A-Z][a-z]+/', $method)) {
-                $gettable[] = strtolower(preg_replace(['/get/', '/([a-z])([A-Z])/'], ['', '$1'.$separator.'$2'], $method));
+                $gettable[] = strtolower(
+                    preg_replace(
+                        ['/get/', '/([a-z])([A-Z])/'],
+                        ['', '$1' . $separator . '$2'],
+                        $method
+                    )
+                );
             }
         }
 
@@ -192,7 +202,7 @@ class Client
     }
 
     /**
-     * Returns an instance of the Consumer class.
+     * Returns an instance of the RPC Client class.
      * @return ClientEndpoint
      */
     public function getClientEndpoint(): ClientEndpoint
@@ -208,7 +218,7 @@ class Client
     }
 
     /**
-     * Returns an instance of the Consumer class.
+     * Returns an instance of the RPC Server class.
      * @return ServerEndpoint
      */
     public function getServerEndpoint(): ServerEndpoint
@@ -237,7 +247,8 @@ class Client
     }
 
     /**
-     * Returns an instance of the Logger class. Filename and directory must be set through setters.
+     * Returns an instance of the Logger class.
+     * Filename and directory must be set through setters.
      * @return Logger
      */
     public function getLogger(): Logger

@@ -1,10 +1,13 @@
 <?php
+
 /**
  * @author Marwan Al-Soltany <MarwanAlsoltany@gmail.com>
  * @copyright Marwan Al-Soltany 2020
  * For the full copyright and license information, please view
  * the LICENSE file that was distributed with this source code.
  */
+
+declare(strict_types=1);
 
 namespace MAKS\AmqpAgent\RPC;
 
@@ -41,7 +44,7 @@ abstract class AbstractEndpoint implements AbstractEndpointInterface
     protected $queueName;
 
     /**
-     * Wether the endpoint is connected to RabbitMQ server or not.
+     * Whether the endpoint is connected to RabbitMQ server or not.
      * @var bool
      */
     protected $connected;
@@ -155,7 +158,7 @@ abstract class AbstractEndpoint implements AbstractEndpointInterface
     }
 
     /**
-     * Returns wether the endpoint is connected or not.
+     * Returns whether the endpoint is connected or not.
      * @return bool
      */
     public function isConnected(): bool
@@ -172,7 +175,7 @@ abstract class AbstractEndpoint implements AbstractEndpointInterface
 
     /**
      * Returns the connection used by the endpoint.
-     * @return bool
+     * @return AMQPStreamConnection
      */
     public function getConnection(): AMQPStreamConnection
     {
@@ -286,6 +289,7 @@ abstract class AbstractEndpoint implements AbstractEndpointInterface
 
     /**
      * Hook method to manipulate the message (request/response) when extending the class.
+     * @param AMQPMessage $message
      * @return string
      */
     abstract protected function callback(AMQPMessage $message): string;

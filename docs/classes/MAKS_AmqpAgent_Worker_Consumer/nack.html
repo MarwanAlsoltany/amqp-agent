@@ -74,7 +74,7 @@
             <a href="#tests">Tests</a>
           </li>
           <li>
-            <a href="../../source/Worker/Consumer.php.html#line133">Source</a>
+            <a href="../../source/Worker/Consumer.php.html#line142">Source</a>
           </li>
         </ul>
       </nav>
@@ -85,19 +85,19 @@
         <ul/>
         <h2 id="signature">Signature</h2>
         <div class="styled synopsis">
-          <code>public function nack([<a title="PhpAmqpLib\Channel\AMQPChannel" href="../../classes/PhpAmqpLib_Channel_AMQPChannel.html">AMQPChannel</a>
-        $_channel = NULL,
+          <code>public function nack(<a title="PhpAmqpLib\Channel\AMQPChannel" href="../../classes/PhpAmqpLib_Channel_AMQPChannel.html">AMQPChannel</a>
+        $_channel,
             <a title="PhpAmqpLib\Message\AMQPMessage" href="../../classes/PhpAmqpLib_Message_AMQPMessage.html">AMQPMessage</a>
         $_message,
             [array
-        $parameters = NULL]] )
+        $parameters = NULL] )
             </code>
         </div>
         <h2 id="parameterlist">Parameters</h2>
         <dl class="styled">
           <dt><code>$_channel</code>
                 —
-                <a title="PhpAmqpLib\Channel\AMQPChannel" href="../../classes/PhpAmqpLib_Channel_AMQPChannel.html">PhpAmqpLib\Channel\AMQPChannel</a></dt>
+                <a title="MAKS\AmqpAgent\Worker\AMQPChannel|null" href="../../classes/MAKS_AmqpAgent_Worker_AMQPChannel|null.html">MAKS\AmqpAgent\Worker\AMQPChannel|null</a></dt>
           <dd>[optional] The channel that should be used. The method will try using the channel attached with the message if no channel was specified, although there is no guarantee this will work as this depends on the way the message was fetched.<br/><br/><br/>      </dd>
           <dt><code>$_message</code>
                 —
@@ -106,7 +106,7 @@
           <dt><code>$parameters</code>
                 —
                 array</dt>
-          <dd>[optional] The overrides for the default exchange options.</dd>
+          <dd>[optional] The overrides for the default exchange options.<br/><br/><br/>      </dd>
         </dl>
         <h2 id="return">Returns</h2>
         <dl class="styled">
@@ -145,7 +145,7 @@
       </section>
     </div>
     <footer>
-      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2021 by Arne Blankerts and Contributors</span>
     </footer>
   </body>
 </html>
