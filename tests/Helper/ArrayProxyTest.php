@@ -17,7 +17,7 @@ class ArrayProxyTest extends TestCase
             9.7,
             'string',
             ['a', 'b', 'c'],
-            new \stdClass
+            new \stdClass()
         ];
 
         $string = ArrayProxy::castArrayToString($array);
