@@ -15,7 +15,7 @@ use MAKS\AmqpAgent\Config\AbstractParameters;
 use MAKS\AmqpAgent\Config\AmqpAgentParameters;
 
 /**
- * A subset of AmqpAgentParameters class for RPC Endpoints class.
+ * A subset of AmqpAgentParameters class for RPC Endpoints classes.
  * @since 2.0.0
  */
 final class RPCEndpointParameters extends AbstractParameters
