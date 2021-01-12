@@ -222,7 +222,7 @@ class Serializer
      * @param mixed $data The data wished to be registered.
      * @return self
      */
-    public function setData($data): self
+    public function setData($data)
     {
         $this->data = $data;
 
@@ -244,7 +244,7 @@ class Serializer
      * @return self
      * @throws SerializerViolationException
      */
-    public function setType(string $type): self
+    public function setType(string $type)
     {
         $type = strtoupper($type);
 
@@ -278,7 +278,7 @@ class Serializer
      * @param bool $strict The strict value wished to be registered.
      * @return self
      */
-    public function setStrict(bool $strict): self
+    public function setStrict(bool $strict)
     {
         $this->strict = $strict;
 
