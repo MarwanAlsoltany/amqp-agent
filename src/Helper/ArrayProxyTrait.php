@@ -116,7 +116,7 @@ trait ArrayProxyTrait
             }
         }
 
-        return '[' . implode(', ', $pieces). ']';
+        return '[' . implode(', ', $pieces) . ']';
     }
 
     /**
