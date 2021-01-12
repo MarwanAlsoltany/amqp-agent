@@ -47,7 +47,7 @@ final class Config
     public const DEFAULT_CONFIG_FILE_NAME = 'maks-amqp-agent-config';
 
     /**
-     * The default name of the configuration file.
+     * The default path of the configuration file.
      * @var string
      */
     public const DEFAULT_CONFIG_FILE_PATH = __DIR__ . DIRECTORY_SEPARATOR . 'Config' . DIRECTORY_SEPARATOR . self::DEFAULT_CONFIG_FILE_NAME . '.php';
@@ -68,6 +68,7 @@ final class Config
     /**
      * Config object constructor.
      * @param string|null $configPath [optional] The path to AMQP Agent configuration file.
+     * @throws ConfigFileNotFoundException
      */
     public function __construct(?string $configPath = null)
     {
@@ -134,7 +135,7 @@ final class Config
     }
 
     /**
-     * Checks wether a value exists in the configuration array via dot-notation representation.
+     * Checks whether a value exists in the configuration array via dot-notation representation.
      * @since 1.2.2
      * @param string $key The dotted key representation.
      * @return bool True if key is set otherwise false.
@@ -163,7 +164,7 @@ final class Config
      * Sets a value of a key from the configuration array via dot-notation representation.
      * @since 1.2.2
      * @param string $key The dotted key representation.
-     * @param string $value The value to set.
+     * @param mixed $value The value to set.
      * @return self
      */
     public function set(string $key, $value)
@@ -192,7 +193,7 @@ final class Config
     }
 
     /**
-     * Sets a new configuration array to be used instead of the current and generates a new flat version of it.
+     * Sets a new configuration array to be used instead of the current.
      * @param array $config
      * @return self
      */
@@ -218,6 +219,7 @@ final class Config
      * Sets the path of the configuration file and rebuilds the internal state of the object.
      * @param string $configPath
      * @return self
+     * @throws ConfigFileNotFoundException
      */
     public function setConfigPath(string $configPath): self
     {
