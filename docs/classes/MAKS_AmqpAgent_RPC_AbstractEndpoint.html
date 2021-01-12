@@ -71,7 +71,10 @@
             <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="../source/RPC/AbstractEndpoint.php.html#line26">Source</a>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/RPC/AbstractEndpoint.php.html#line29">Source</a>
           </li>
         </ul>
       </nav>
@@ -156,14 +159,7 @@
               </tr>
             </thead>
             <tr>
-              <td class="line">177 - 180</td>
-              <td>
-                <a href="https://phpmd.org/rules/naming.html#booleangetmethodname" target="_blank" title="Naming Rules">BooleanGetMethodName</a>
-              </td>
-              <td>The 'getConnection()' method which returns a boolean should be named 'is...()' or 'has...()'</td>
-            </tr>
-            <tr>
-              <td class="line">272 - 285</td>
+              <td class="line">275 - 288</td>
               <td>
                 <a href="https://phpmd.org/rules/naming.html#shortmethodname" target="_blank" title="Naming Rules">ShortMethodName</a>
               </td>
@@ -180,7 +176,7 @@
                 <a title="PhpAmqpLib\Channel\AMQPChannel" href="../classes/PhpAmqpLib_Channel_AMQPChannel.html">PhpAmqpLib\Channel\AMQPChannel</a><br/><span class="indent">The endpoint channel.</span></li>
             <li id="connected"><strong>$connected</strong>
                 —
-                <a title="MAKS\AmqpAgent\RPC\bool" href="../classes/MAKS_AmqpAgent_RPC_bool.html">MAKS\AmqpAgent\RPC\bool</a><br/><span class="indent">Wether the endpoint is connected to RabbitMQ server or not.</span></li>
+                <a title="MAKS\AmqpAgent\RPC\bool" href="../classes/MAKS_AmqpAgent_RPC_bool.html">MAKS\AmqpAgent\RPC\bool</a><br/><span class="indent">Whether the endpoint is connected to RabbitMQ server or not.</span></li>
             <li id="connection"><strong>$connection</strong>
                 —
                 <a title="PhpAmqpLib\Connection\AMQPStreamConnection" href="../classes/PhpAmqpLib_Connection_AMQPStreamConnection.html">PhpAmqpLib\Connection\AMQPStreamConnection</a><br/><span class="indent">The endpoint connection.</span></li>
@@ -230,7 +226,7 @@
             <li id="getConnection"><a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/getConnection.html">getConnection()</a>
                 — Returns the connection used by the endpoint.</li>
             <li id="isConnected"><a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/isConnected.html">isConnected()</a>
-                — Returns wether the endpoint is connected or not.</li>
+                — Returns whether the endpoint is connected or not.</li>
             <li id="on"><a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/on.html">on()</a>
                 — Hooking method based on events to manipulate the request/response during the endpoint/message life cycle.</li>
             <li id="ping"><a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/ping.html">ping()</a>
@@ -262,10 +258,62 @@
                 — Returns array of all registered events as an array `['event.name' =&gt; [$cb1, $cb2, ...]]`.</li>
           </ul>
         </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2021-01-12T14:52:51+00:00 (commit #<span title="a38ea1f2a414b226c4f5a94e4b34e0c01026490c">a38ea1f</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update abstract endpoint class
+* Fix typos
+* Update DocBlocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2021-01-11T14:31:31+00:00 (commit #<span title="ca1996b058a8841c1df7443af775a41da6ca36b4">ca1996b</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Add strict types declaration
+* Add declare(strict_types=1) to all files
+* Fix file header DocBlock spacing of all files</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-12-03T21:44:11+00:00 (commit #<span title="717aea44b1958c86a4e0c7924032ce5e9ff1dfd7">717aea4</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update abstract endpoint class
+* Fix a wrong type in DocBlocks
+* Change some properties names for better code readability
+* Remove self return type from some method signatures</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-12-02T22:59:19+00:00 (commit #<span title="8540f3a34caeabec3927ced3610d6964bbc588d4">8540f3a</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Add abstract endpoint class
+* Add AbstractEndpoint.php
+* Add RPCEndpointException.php</pre>
+            </div>
+          </li>
+        </ul>
       </section>
     </div>
     <footer>
-      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2021 by Arne Blankerts and Contributors</span>
     </footer>
   </body>
 </html>

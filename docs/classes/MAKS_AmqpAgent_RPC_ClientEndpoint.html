@@ -68,7 +68,10 @@
             <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="../source/RPC/ClientEndpoint.php.html#line33">Source</a>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/RPC/ClientEndpoint.php.html#line36">Source</a>
           </li>
         </ul>
       </nav>
@@ -102,7 +105,7 @@
                         </li><li>public AbstractEndpoint <a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/connect.html">connect</a>()
                         </li><li>public void <a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/disconnect.html">disconnect</a>()
                         </li><li>public bool <a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/isConnected.html">isConnected</a>()
-                        </li><li>public bool <a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/getConnection.html">getConnection</a>()
+                        </li><li>public AMQPStreamConnection <a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/getConnection.html">getConnection</a>()
                         </li><li>public final float <a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/ping.html">ping</a>()
                         </li><li>public final AbstractEndpoint <a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/on.html">on</a>()
                         </li><li>protected abstract string <a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/callback.html">callback</a>()
@@ -153,7 +156,7 @@
                 <a title="PhpAmqpLib\Channel\AMQPChannel" href="../classes/PhpAmqpLib_Channel_AMQPChannel.html">PhpAmqpLib\Channel\AMQPChannel</a><br/><span class="indent">The endpoint channel.</span></li>
             <li id="connected"><strong>$connected</strong>
                 —
-                <a title="MAKS\AmqpAgent\RPC\bool" href="../classes/MAKS_AmqpAgent_RPC_bool.html">MAKS\AmqpAgent\RPC\bool</a><br/><span class="indent">Wether the endpoint is connected to RabbitMQ server or not.</span></li>
+                <a title="MAKS\AmqpAgent\RPC\bool" href="../classes/MAKS_AmqpAgent_RPC_bool.html">MAKS\AmqpAgent\RPC\bool</a><br/><span class="indent">Whether the endpoint is connected to RabbitMQ server or not.</span></li>
             <li id="connection"><strong>$connection</strong>
                 —
                 <a title="PhpAmqpLib\Connection\AMQPStreamConnection" href="../classes/PhpAmqpLib_Connection_AMQPStreamConnection.html">PhpAmqpLib\Connection\AMQPStreamConnection</a><br/><span class="indent">The endpoint connection.</span></li>
@@ -216,7 +219,7 @@
             <li id="getConnection"><a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/getConnection.html">getConnection()</a>
                 — Returns the connection used by the endpoint.</li>
             <li id="isConnected"><a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/isConnected.html">isConnected()</a>
-                — Returns wether the endpoint is connected or not.</li>
+                — Returns whether the endpoint is connected or not.</li>
             <li id="on"><a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/on.html">on()</a>
                 — Hooking method based on events to manipulate the request/response during the endpoint/message life cycle.</li>
             <li id="ping"><a title="MAKS\AmqpAgent\RPC\AbstractEndpoint" href="../classes/MAKS_AmqpAgent_RPC_AbstractEndpoint/ping.html">ping()</a>
@@ -248,10 +251,72 @@
                 — Returns array of all registered events as an array `['event.name' =&gt; [$cb1, $cb2, ...]]`.</li>
           </ul>
         </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2021-01-12T14:54:22+00:00 (commit #<span title="62f9f0fc06ef0acc21236ee5d24114e6fd974c8d">62f9f0f</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update client endpoint class
+* Update DocBlocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2021-01-11T14:31:31+00:00 (commit #<span title="ca1996b058a8841c1df7443af775a41da6ca36b4">ca1996b</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Add strict types declaration
+* Add declare(strict_types=1) to all files
+* Fix file header DocBlock spacing of all files</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-12-03T22:53:33+00:00 (commit #<span title="c0218b51594db46f0d29f524c090bd7f402785a3">c0218b5</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update client endpoint class
+* Change an internal method call due to last code refactoring</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-12-03T21:47:07+00:00 (commit #<span title="6556fcd06414326a1714caed74be47f7c63bb21d">6556fcd</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update client endpoint class
+* Change some properties names to match parent class
+* Fix a coding style issue
+* Remove self return type from some method signatures
+* Add type castings to some unexpected return values from php-amqplib</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-12-02T23:00:24+00:00 (commit #<span title="c75c892c5e52c32abac8d58f03c2c6bc0d870d39">c75c892</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Add client endpoint class
+* Add ClientEndpoint.php</pre>
+            </div>
+          </li>
+        </ul>
       </section>
     </div>
     <footer>
-      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2021 by Arne Blankerts and Contributors</span>
     </footer>
   </body>
 </html>

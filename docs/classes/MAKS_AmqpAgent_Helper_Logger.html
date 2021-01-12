@@ -65,7 +65,10 @@
             <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="../source/Helper/Logger.php.html#line30">Source</a>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/Helper/Logger.php.html#line33">Source</a>
           </li>
         </ul>
       </nav>
@@ -145,10 +148,165 @@
                 — Logs a message to a file, generates it if it does not exist and raises a user-level warning and/or notice on misuse.</li>
           </ul>
         </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2021-01-12T14:46:13+00:00 (commit #<span title="f74acb0eb6072ad51c02cebcf5186dae564c7c3c">f74acb0</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update logger class
+* Fix typos
+* Update DocBlocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2021-01-12T04:30:35+00:00 (commit #<span title="313fbaa6ea3032e71056020aed06a9cb5a877edf">313fbaa</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update logger class
+* Fix a wrong parameter type passed to file_put_contents() function</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2021-01-11T14:31:31+00:00 (commit #<span title="ca1996b058a8841c1df7443af775a41da6ca36b4">ca1996b</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Add strict types declaration
+* Add declare(strict_types=1) to all files
+* Fix file header DocBlock spacing of all files</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-11-29T09:05:57+00:00 (commit #<span title="e91aecf45e3557a9874ca3f711230fdd17c775e7">e91aecf</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update logger class
+* Fix an issue with log() method when checking for file size</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-09-30T13:01:27+00:00 (commit #<span title="5561105cbcfe9544d9493610bb90e5b6ef7e9b13">5561105</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update logger class
+* Fix coding style issue</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-09-30T11:49:41+00:00 (commit #<span title="4699ce463655092bc2bc997713de0e12159ad4a9">4699ce4</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Refactor logger class
+* Add getFallbackFilename method
+* Add getFallbackDirectory method
+* Add getNormalizedPath method</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-09-26T21:02:40+00:00 (commit #<span title="082fd7a0a78c4aa69b52a1dbbc30e823d454954b">082fd7a</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update logger class
+* Refactor fallback path guessing when no path is specified.
+* Fix an issue introduced by mistake in ba308fc834160a9d27e72e1bb43ff7f4645d9111</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-09-26T17:47:14+00:00 (commit #<span title="ba308fc834160a9d27e72e1bb43ff7f4645d9111">ba308fc</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update logger class
+* Refactor fallback path guessing when no path is specified.</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-09-25T19:19:36+00:00 (commit #<span title="035aa9340232ed9e8cbf34592de0a00c036c13d6">035aa93</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update logger class
+* Refactor logger class to make use of the newly created utility class
+* Remove an internal method as it is provided now the utility class</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-09-23T18:47:06+00:00 (commit #<span title="1a3f203ce5fb96c8baeaf9bb3c9181cc22881bc0">1a3f203</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Fix typos and update DocBlocks
+* Fix some typos in DockBlocks and other parts of the codebase
+* Add examples to classes DocBlocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-09-13T22:04:52+00:00 (commit #<span title="a9dd4050b91001ceec3a0218ef6cc348a08a477d">a9dd405</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update logger class
+* Refactor an internal method
+* Update class DocBlock</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-23T00:50:44+00:00 (commit #<span title="e73b13f6e2ef7976f854e9b5ff7f7bcaf1e342bc">e73b13f</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Fix logger class
+* Fix addtional line breaks when writing to log file</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-13T05:59:31+00:00 (commit #<span title="26e55aaa9814ae91a376801af4cbfd118ae883f3">26e55aa</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Add helper classes
+* Add Logger.php
+* Add Example.php</pre>
+            </div>
+          </li>
+        </ul>
       </section>
     </div>
     <footer>
-      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2021 by Arne Blankerts and Contributors</span>
     </footer>
   </body>
 </html>

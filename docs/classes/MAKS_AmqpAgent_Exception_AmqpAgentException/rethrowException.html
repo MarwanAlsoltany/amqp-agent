@@ -65,10 +65,13 @@
             <a href="#return">Return</a>
           </li>
           <li>
+            <a href="#throws">Throws</a>
+          </li>
+          <li>
             <a href="#tests">Tests</a>
           </li>
           <li>
-            <a href="../../source/Exception/AmqpAgentException.php.html#line81">Source</a>
+            <a href="../../source/Exception/AmqpAgentException.php.html#line86">Source</a>
           </li>
         </ul>
       </nav>
@@ -84,7 +87,7 @@
             [string
         $message = NULL,
             [boolean
-        $wrap = false]] )
+        $wrap = true]] )
             </code>
         </div>
         <h2 id="parameterlist">Parameters</h2>
@@ -96,17 +99,26 @@
           <dt><code>$message</code>
                 —
                 string</dt>
-          <dd>An additional message to add to the wrapping exception before the message of the passed exception.<br/><br/><br/>      </dd>
+          <dd>[optional] An additional message to add to the wrapping exception before the message of the passed exception.<br/><br/><br/>      </dd>
           <dt><code>$wrap</code>
                 —
                 boolean</dt>
-          <dd>Wether to throw the exception using the passed class (FQN), in the same exception type (true), or wrap it with the class this method was called on (false). Any other value will be translated to false.<br/><br/><br/>      </dd>
+          <dd>[optional] Whether to throw the exception using the passed class (FQN), in the same exception type (true), or wrap it with the class this method was called on (false). Any other value will be translated to false.<br/><br/><br/>      </dd>
         </dl>
         <h2 id="return">Returns</h2>
         <dl class="styled">
           <dt>void</dt>
           <dd><br/>
         </dd>
+        </dl>
+        <h2 id="throws">Errors/Exceptions</h2>
+        <dl class="styled">
+          <dt>
+            <code>
+              <a title="Exception" href="../../classes/Exception.html">Exception</a>
+            </code>
+          </dt>
+          <dd/>
         </dl>
         <h2 id="tests">Test Coverage</h2>
         <div class="styled">
@@ -124,7 +136,7 @@
       </section>
     </div>
     <footer>
-      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2021 by Arne Blankerts and Contributors</span>
     </footer>
   </body>
 </html>

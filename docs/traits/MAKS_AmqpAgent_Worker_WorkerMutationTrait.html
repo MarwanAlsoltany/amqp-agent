@@ -65,7 +65,10 @@
             <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="../source/Worker/WorkerMutationTrait.php.html#line15">Source</a>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/Worker/WorkerMutationTrait.php.html#line18">Source</a>
           </li>
         </ul>
       </nav>
@@ -80,7 +83,7 @@
                         ;
                     </li></ul><ul class="none"><li>// methods</li><li>protected array <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassMember.html">mutateClassMember</a>()
                     </li><li>protected array <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassSubMember.html">mutateClassSubMember</a>()
-                    </li><li>protected array <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClass.html">mutateClass</a>()
+                    </li><li>private array <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClass.html">mutateClass</a>()
                     </li></ul>
 
             }<br/></div>
@@ -123,20 +126,86 @@
         </div>
         <h2 id="methods">Methods</h2>
         <div class="styled">
-          <h4>protected</h4>
+          <h4>private</h4>
           <ul>
             <li id="mutateClass"><a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClass.html">mutateClass()</a>
                 — Mutates a class property nested or not and returns the replaced subset.</li>
+          </ul>
+          <h4>protected</h4>
+          <ul>
             <li id="mutateClassMember"><a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassMember.html">mutateClassMember()</a>
                 — Mutates a subset of an array (class property) and returns the replaced subset.</li>
             <li id="mutateClassSubMember"><a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassSubMember.html">mutateClassSubMember()</a>
                 — Mutates a subset of an array inside a class property (nested array inside a property) and returns the replaced subset.</li>
           </ul>
         </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2021-01-12T16:24:17+00:00 (commit #<span title="be27436bbbf860ce5efea65fc98d48e72d09e3a4">be27436</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update worker mutation trait
+* Change signature of mutateClass() method
+* Update DocBlocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2021-01-11T14:31:31+00:00 (commit #<span title="ca1996b058a8841c1df7443af775a41da6ca36b4">ca1996b</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Add strict types declaration
+* Add declare(strict_types=1) to all files
+* Fix file header DocBlock spacing of all files</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-09-25T20:23:50+00:00 (commit #<span title="72486c29df27edd703a834f3653c643c58e1861d">72486c2</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update worker mutation trait
+* Remove mutateClassConst method as it is not used anymore</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-09-23T18:47:06+00:00 (commit #<span title="1a3f203ce5fb96c8baeaf9bb3c9181cc22881bc0">1a3f203</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Fix typos and update DocBlocks
+* Fix some typos in DockBlocks and other parts of the codebase
+* Add examples to classes DocBlocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-13T05:50:47+00:00 (commit #<span title="afcd511c574a95c4e32b3b26c9171b4c342bdb3d">afcd511</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Implement the abstract worker
+* Add AbstractWorker.php
+* Add WorkerMutationTrait.php
+* Add WorkerCommandTrait.php</pre>
+            </div>
+          </li>
+        </ul>
       </section>
     </div>
     <footer>
-      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2021 by Arne Blankerts and Contributors</span>
     </footer>
   </body>
 </html>

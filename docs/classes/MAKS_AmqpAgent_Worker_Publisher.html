@@ -68,7 +68,10 @@
             <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="../source/Worker/Publisher.php.html#line41">Source</a>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/Worker/Publisher.php.html#line44">Source</a>
           </li>
         </ul>
       </nav>
@@ -94,12 +97,12 @@
                         </li><li>public array <a href="#members">$connections</a>;
                         </li><li>public array <a href="#members">$channels</a>;
                         </li></ul><ul class="none"><li>// methods</li><li>public void <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/__construct.html">__construct</a>()
-                    </li><li>public <span title="Publisher">Publisher</span> <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/exchange.html">exchange</a>()
-                    </li><li>public <span title="Publisher">Publisher</span> <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/bind.html">bind</a>()
+                    </li><li>public Publisher <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/exchange.html">exchange</a>()
+                    </li><li>public Publisher <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/bind.html">bind</a>()
                     </li><li>public <span title="AMQPMessage">AMQPMessage</span> <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/message.html">message</a>()
-                    </li><li>public <span title="Publisher">Publisher</span> <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/publish.html">publish</a>()
-                    </li><li>public <span title="Publisher">Publisher</span> <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/publishBatch.html">publishBatch</a>()
-                    </li><li>public <span title="Publisher">Publisher</span> <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/prepare.html">prepare</a>()
+                    </li><li>public Publisher <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/publish.html">publish</a>()
+                    </li><li>public Publisher <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/publishBatch.html">publishBatch</a>()
+                    </li><li>public Publisher <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/prepare.html">prepare</a>()
                     </li><li>public bool <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/work.html">work</a>()
                     </li></ul><ul class="none"><li>// Inherited methods from <span title="MAKS\AmqpAgent\Worker\AbstractWorker">AbstractWorker</span></li><li>public void <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__construct.html">__construct</a>()
                         </li><li>public void <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__destruct.html">__destruct</a>()
@@ -124,7 +127,6 @@
                         </li><li>public static mixed <a title="MAKS\AmqpAgent\Exception\MagicMethodsExceptionsTrait" href="../traits/MAKS_AmqpAgent_Exception_MagicMethodsExceptionsTrait/__callStatic.html">__callStatic</a>()
                         </li></ul><ul class="none"><li>// Inherited methods from <span title="MAKS\AmqpAgent\Worker\WorkerMutationTrait">WorkerMutationTrait</span></li><li>protected array <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassMember.html">mutateClassMember</a>()
                         </li><li>protected array <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassSubMember.html">mutateClassSubMember</a>()
-                        </li><li>protected array <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClass.html">mutateClass</a>()
                         </li></ul><ul class="none"><li>// Inherited methods from <span title="MAKS\AmqpAgent\Worker\WorkerCommandTrait">WorkerCommandTrait</span></li><li>public static array <a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait/makeCommand.html">makeCommand</a>()
                         </li><li>public static bool <a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait/isCommand.html">isCommand</a>()
                         </li><li>public static bool <a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait/hasCommand.html">hasCommand</a>()
@@ -284,8 +286,6 @@
           <h3>Inherited from <a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait.html">MAKS\AmqpAgent\Worker\WorkerMutationTrait</a></h3>
           <h4>protected</h4>
           <ul>
-            <li id="mutateClass"><a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClass.html">mutateClass()</a>
-                — Mutates a class property nested or not and returns the replaced subset.</li>
             <li id="mutateClassMember"><a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassMember.html">mutateClassMember()</a>
                 — Mutates a subset of an array (class property) and returns the replaced subset.</li>
             <li id="mutateClassSubMember"><a title="MAKS\AmqpAgent\Worker\WorkerMutationTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerMutationTrait/mutateClassSubMember.html">mutateClassSubMember()</a>
@@ -297,17 +297,129 @@
             <li id="getCommand"><a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait/getCommand.html">getCommand()</a>
                 — Returns the content of a specific key in the command array, used for example to get the additional parameters.</li>
             <li id="hasCommand"><a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait/hasCommand.html">hasCommand()</a>
-                — Checks wether a specific command (command name) exists in the command array.</li>
+                — Checks whether a specific command (command name) exists in the command array.</li>
             <li id="isCommand"><a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait/isCommand.html">isCommand()</a>
-                — Checks wether an array is a command following the recommended pattern.</li>
+                — Checks whether an array is a command following the recommended pattern.</li>
             <li id="makeCommand"><a title="MAKS\AmqpAgent\Worker\WorkerCommandTrait" href="../traits/MAKS_AmqpAgent_Worker_WorkerCommandTrait/makeCommand.html">makeCommand()</a>
                 — Constructs a command from passed data to a command array following the recommended pattern.</li>
           </ul>
         </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2021-01-12T16:34:33+00:00 (commit #<span title="a7c93d5e67eae2d369710d8b15c4fe63702ab584">a7c93d5</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update publisher class
+* Remove return value type hint "self" from methods signature due to unexpected behavior with different PHP versions</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2021-01-12T16:11:24+00:00 (commit #<span title="625c1b8e4161129ebba06f8af533d464b1581e67">625c1b8</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update publisher class
+* Change exception type of publish() and publishBatch() methods
+* Fix typos
+* Update DocBlocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2021-01-12T04:35:12+00:00 (commit #<span title="ea8042802f299ac06421cc7ee8a22748b657ebf6">ea80428</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update publisher class
+* Fix some coding style issues</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2021-01-11T14:31:31+00:00 (commit #<span title="ca1996b058a8841c1df7443af775a41da6ca36b4">ca1996b</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Add strict types declaration
+* Add declare(strict_types=1) to all files
+* Fix file header DocBlock spacing of all files</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-09-25T20:16:49+00:00 (commit #<span title="62bc03b442fad207aff8cc10d1fa04bc4b97fbc1">62bc03b</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Refactor publisher class
+* Make use of the newly created PublisherParameters class
+* Make use of the newly created MagicMethodsExceptionsTrait
+* Update the class in different places to make use of the new additions</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-09-23T19:26:04+00:00 (commit #<span title="cd6ed4fc9f4c88a3aec26b9572c405149dcf72b6">cd6ed4f</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Remove PHPUnit annotations
+* Remove @codeCoverageIgnore annotations from the workers</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-09-23T18:47:06+00:00 (commit #<span title="1a3f203ce5fb96c8baeaf9bb3c9181cc22881bc0">1a3f203</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Fix typos and update DocBlocks
+* Fix some typos in DockBlocks and other parts of the codebase
+* Add examples to classes DocBlocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-15T00:21:34+00:00 (commit #<span title="66070626cbd25f322a88cbd3276a079941f473fa">6607062</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update publisher class
+* Change publishBatch() default exchange name
+* Update prepare() method docblock
+* Add disconnect() to work() method
+* Update work() method docblock</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2020-06-13T05:51:13+00:00 (commit #<span title="031d1134b4e4cc53e5cb732a384070c9dfab25c4">031d113</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Implement the publisher
+* Add WorkerFacilitationInterface.php
+* Add Publisher.php</pre>
+            </div>
+          </li>
+        </ul>
       </section>
     </div>
     <footer>
-      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2020 by Arne Blankerts and Contributors</span>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2021 by Arne Blankerts and Contributors</span>
     </footer>
   </body>
 </html>
