@@ -161,6 +161,15 @@ trait ClassProxyTrait
      */
     public static function castObjectToClass($fromObject, string $toClass)
     {
+        if (!is_object($fromObject)) {
+            throw new AmqpAgentException(
+                sprintf(
+                    'The first parameter must be an instance of of class, a wrong parameter with (data-type: %s) was passed instead.',
+                    gettype($fromObject)
+                )
+            );
+        }
+
         if (!class_exists($toClass)) {
             throw new AmqpAgentException(
                 sprintf(
