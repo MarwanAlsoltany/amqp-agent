@@ -61,7 +61,7 @@ trait WorkerCommandTrait
     }
 
     /**
-     * Checks wether an array is a command following the recommended pattern.
+     * Checks whether an array is a command following the recommended pattern.
      * @param mixed $data The data that should be checked.
      * @return bool
      */
@@ -69,18 +69,16 @@ trait WorkerCommandTrait
     {
         $prefix = static::$commandPrefix;
 
-        $result = ($data && is_array($data) && array_key_exists($prefix, $data))
-            ? true
-            : false;
+        $result = $data && is_array($data) && array_key_exists($prefix, $data);
 
         return $result;
     }
 
     /**
-     * Checks wether a specific command (command name) exists in the command array.
+     * Checks whether a specific command (command name) exists in the command array.
      * @param array $data The array that should be checked.
-     * @param string $name The name of the command.
-     * @param string $value The value of the command.
+     * @param string|null $name The name of the command.
+     * @param string|null $value The value of the command.
      * @return bool
      */
     public static function hasCommand(array $data, string $name = null, ?string $value = null): bool
@@ -93,9 +91,7 @@ trait WorkerCommandTrait
             : $result;
 
         if ($result && $name && $value) {
-            $result = (isset($data[$prefix][$name]) && $data[$prefix][$name] === $value)
-                ? true
-                : false;
+            $result = isset($data[$prefix][$name]) && $data[$prefix][$name] === $value;
         }
 
         return $result;
@@ -105,7 +101,7 @@ trait WorkerCommandTrait
      * Returns the content of a specific key in the command array, used for example to get the additional parameters.
      * @param array $data The array that should be checked.
      * @param string $key [optional] The array key name.
-     * @param string $sub [optional] The array nested array key name.
+     * @param string|null $sub [optional] The array nested array key name.
      * @return mixed
      */
     public static function getCommand(array $data, string $key = 'params', ?string $sub = null)
