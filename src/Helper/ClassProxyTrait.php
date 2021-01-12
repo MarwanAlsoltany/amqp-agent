@@ -15,6 +15,7 @@ use Closure;
 use Exception;
 use ReflectionClass;
 use ReflectionObject;
+use ReflectionException;
 use MAKS\AmqpAgent\Exception\AmqpAgentException;
 
 /**
@@ -134,8 +135,9 @@ trait ClassProxyTrait
 
     /**
      * Returns a reflection class instance on a class.
-     * @param object|string $class Class FQN, or a class instance.
+     * @param object|string $class Class instance or class FQN.
      * @return ReflectionClass
+     * @throws ReflectionException
      */
     public static function reflectOnClass($class)
     {
@@ -157,14 +159,14 @@ trait ClassProxyTrait
      * @param object $fromObject Class instance.
      * @param string $toClass Class FQN.
      * @return object
-     * @throws AmqpAgentException On failure.
+     * @throws AmqpAgentException When passing a wrong argument or on failure.
      */
     public static function castObjectToClass($fromObject, string $toClass)
     {
         if (!is_object($fromObject)) {
             throw new AmqpAgentException(
                 sprintf(
-                    'The first parameter must be an instance of of class, a wrong parameter with (data-type: %s) was passed instead.',
+                    'The first parameter must be an instance of class, a wrong parameter with (data-type: %s) was passed instead.',
                     gettype($fromObject)
                 )
             );
