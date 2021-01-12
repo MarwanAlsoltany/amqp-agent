@@ -144,7 +144,13 @@ class Client
 
         foreach ($methods as $method) {
             if (preg_match('/get[A-Z][a-z]+/', $method)) {
-                $gettable[] = strtolower(preg_replace(['/get/', '/([a-z])([A-Z])/'], ['', '$1'.$separator.'$2'], $method));
+                $gettable[] = strtolower(
+                    preg_replace(
+                        ['/get/', '/([a-z])([A-Z])/'],
+                        ['', '$1' . $separator . '$2'],
+                        $method
+                    )
+                );
             }
         }
 
