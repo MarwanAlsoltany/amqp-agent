@@ -15,14 +15,14 @@ use stdClass;
 use ReflectionObject;
 
 /**
- * A trait containing methods for for manipulating and working arrays.
+ * A trait containing methods for for manipulating and working with arrays.
  * @since 2.0.0
  */
 trait ArrayProxyTrait
 {
     /**
      * Gets a value from an array via dot-notation representation.
-     * @param array $array The array to get the value from.
+     * @param array &$array The array to get the value from.
      * @param string $key The dotted key representation.
      * @param mixed $default [optional] The default fallback value.
      * @return mixed The requested value if found otherwise the default parameter.
@@ -122,7 +122,7 @@ trait ArrayProxyTrait
     /**
      * Converts (casts) an array to an object (stdClass).
      * @param array $array The array to convert.
-     * @param bool $useJson [optional] Wether to use json_decode/json_encode to cast the array, default is via iteration.
+     * @param bool $useJson [optional] Whether to use json_decode/json_encode to cast the array, default is via iteration.
      * @return stdClass The result object.
      */
     public static function castArrayToObject(array $array, bool $useJson = false): stdClass
@@ -145,7 +145,7 @@ trait ArrayProxyTrait
     /**
      * Converts (casts) an object to an associative array.
      * @param object $object The object to convert.
-     * @param bool $useJson [optional] Wether to use json_decode/json_encode to cast the object, default is via reflection.
+     * @param bool $useJson [optional] Whether to use json_decode/json_encode to cast the object, default is via reflection.
      * @return array The result array.
      */
     public static function castObjectToArray($object, bool $useJson = false): array
