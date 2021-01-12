@@ -24,7 +24,7 @@ class AmqpAgentException extends CoreException
      * Redefine the exception so message is not an optional parameter.
      * @param string $message
      * @param int $code
-     * @param CoreException $previous
+     * @param CoreException|null $previous
      */
     public function __construct(string $message, int $code = 0, CoreException $previous = null)
     {
@@ -43,9 +43,10 @@ class AmqpAgentException extends CoreException
     /**
      * Rethrows an exception with an additional message.
      * @param CoreException $exception The exception to rethrow.
-     * @param string|null $message An additional message to add to the wrapping exception before the message of the passed exception.
-     * @param string|bool $wrap Wether to throw the exception using the passed class (FQN), in the same exception type (true), or wrap it with the class this method was called on (false). Any other value will be translated to false.
+     * @param string|null $message [optional] An additional message to add to the wrapping exception before the message of the passed exception.
+     * @param string|bool $wrap [optional] Whether to throw the exception using the passed class (FQN), in the same exception type (true), or wrap it with the class this method was called on (false). Any other value will be translated to false. Defaults to true.
      * @return void
+     * @throws CoreException
      */
     public static function rethrow(CoreException $exception, ?string $message = null, $wrap = false): void
     {
@@ -77,9 +78,10 @@ class AmqpAgentException extends CoreException
      * Rethrows an exception with an additional message.
      * @deprecated 1.2.0 Use `self::rethrow()` instead.
      * @param CoreException $exception The exception to rethrow.
-     * @param string|null $message An additional message to add to the wrapping exception before the message of the passed exception.
-     * @param string|bool $wrap Wether to throw the exception using the passed class (FQN), in the same exception type (true), or wrap it with the class this method was called on (false). Any other value will be translated to false.
+     * @param string|null $message [optional] An additional message to add to the wrapping exception before the message of the passed exception.
+     * @param string|bool $wrap [optional] Whether to throw the exception using the passed class (FQN), in the same exception type (true), or wrap it with the class this method was called on (false). Any other value will be translated to false.
      * @return void
+     * @throws CoreException
      */
     public static function rethrowException(CoreException $exception, ?string $message = null, $wrap = false): void
     {
