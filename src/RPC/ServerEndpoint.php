@@ -109,6 +109,7 @@ class ServerEndpoint extends AbstractEndpoint implements ServerEndpointInterface
      * Replies to the client.
      * @param AMQPMessage $request
      * @return void
+     * @throws RPCEndpointException
      */
     protected function onRequest(AMQPMessage $request): void
     {
@@ -147,6 +148,7 @@ class ServerEndpoint extends AbstractEndpoint implements ServerEndpointInterface
 
     /**
      * Returns the final request body. This method will be ignored if a callback in `self::respond()` is specified.
+     * @param AMQPMessage $message
      * @return string
      */
     protected function callback(AMQPMessage $message): string
