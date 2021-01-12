@@ -6,16 +6,22 @@ All notable changes to **AMQP Agent** will be documented in this file.
 ## [Unreleased]
 
 
-## [1.0.0] - 2020-06-15
+<br />
+
+## [[1.0.0] - 2020-06-15](https://github.com/MarwanAlsoltany/amqp-agent/commits/v1.0.0)
 - Initial release.
 
 
-## [1.0.1] - 2020-06-23
+<br />
+
+## [[1.0.1] - 2020-06-23](https://github.com/MarwanAlsoltany/amqp-agent/compare/v1.0.0...v1.0.1)
 - Fix issue with Logger class:
     - Fix additional line breaks when writing to log file.
 
 
-## [1.1.0] - 2020-08-10
+<br />
+
+## [[1.1.0] - 2020-08-10](https://github.com/MarwanAlsoltany/amqp-agent/compare/v1.0.1...v1.1.0)
 - Add the possibility to open multiple connection by a worker.
 - Update `AbstractWorker` class:
     - Add connections array and channels array.
@@ -27,7 +33,9 @@ All notable changes to **AMQP Agent** will be documented in this file.
     - Rebuild documentation.
 
 
-## [1.1.1] - 2020-09-14
+<br />
+
+## [[1.1.1] - 2020-09-14](https://github.com/MarwanAlsoltany/amqp-agent/compare/v1.0.1...v1.1.1)
 - Update `composer.json`:
     - Pump minimum **php-amqplib** version.
     - Downgrade minimum php version.
@@ -46,7 +54,9 @@ All notable changes to **AMQP Agent** will be documented in this file.
 - Rebuild documentation.
 
 
-## [1.2.0] - 2020-09-26
+<br />
+
+## [[1.2.0] - 2020-09-26](https://github.com/MarwanAlsoltany/amqp-agent/compare/v1.1.1...v1.2.0)
 - Update `composer.json`:
     - Add a link for the documentation.
     - Add some suggestions.
@@ -86,7 +96,9 @@ All notable changes to **AMQP Agent** will be documented in this file.
 - Update formatting of `CHANGELOG.md`.
 
 
-## [1.2.1] - 2020-09-30
+<br />
+
+## [[1.2.1] - 2020-09-30](https://github.com/MarwanAlsoltany/amqp-agent/compare/v1.2.0...v1.2.1)
 - Update `composer.json`:
     - Update `branch-alias` version.
 - Update `Utility` class:
@@ -105,7 +117,9 @@ All notable changes to **AMQP Agent** will be documented in this file.
 - Rebuild documentation.
 
 
-## [1.2.2] - 2020-11-29
+<br />
+
+## [[1.2.2] - 2020-11-29](https://github.com/MarwanAlsoltany/amqp-agent/compare/v1.2.1...v1.2.2)
 - Update `Config` class:
     - Remove deprecated method `get()`.
     - Remove `$configFlat` property and all of its references.
@@ -137,7 +151,9 @@ All notable changes to **AMQP Agent** will be documented in this file.
 - Rebuild documentation.
 
 
-## [2.0.0] - 2020-12-03
+<br />
+
+## [[2.0.0] - 2020-12-03](https://github.com/MarwanAlsoltany/amqp-agent/compare/v1.2.2...v2.0.0)
 - Update `composer.json`:
     - Update `branch-alias` version.
 - Add RPC endpoints interfaces:
