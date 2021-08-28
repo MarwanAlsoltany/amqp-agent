@@ -11,9 +11,7 @@ declare(strict_types=1);
 
 namespace MAKS\AmqpAgent\Helper;
 
-use stdClass;
 use Exception;
-use ReflectionObject;
 use DateTime;
 use DateTimeZone;
 
@@ -163,5 +161,85 @@ final class Utility
         }
 
         return shell_exec($command);
+    }
+
+    /**
+     * Returns an HTTP Response to the browser and lets blocking code that comes after this function to continue executing in the background.
+     * This function is useful for example in Controllers that do some long-running tasks, and you just want to inform the client that the job has been started.
+     * Please note that this function is tested MANUALLY ONLY, it is provided as is, there is no guarantee that it will work as expected nor on all platforms.
+     * @param string $body The response body.
+     * @param int $status [optional] The response status code.
+     * @param array $headers [optional] An associative array of additional response headers `['headerName' => 'headerValue']`.
+     * @return void
+     * @since 2.2.0
+     * @codeCoverageIgnore
+     */
+    public static function respond(string $body, int $status = 200, array $headers = []): void
+    {
+        // client disconnection should not abort script execution
+        ignore_user_abort(true);
+        // makes the rest of the script not bound by a timeout
+        set_time_limit(0);
+
+        // closes writing to the session, this prevents subsequent requests from hanging
+        if (session_id()) {
+            session_write_close();
+        }
+
+        // clean (erase) the output buffer and turn off output buffering
+        ob_end_clean();
+        // turn on output buffering and buffer all upcoming output
+        ob_start();
+
+        // echo out response body (message)
+        echo($body);
+
+        // only keep the last buffer if nested and get the length of the output buffer
+        while (ob_get_level() > 1) {
+            ob_end_flush();
+        }
+        $length = ob_get_level() ? ob_get_length() : 0;
+
+        // build up response headers
+        $reservedHeaders = [
+            'Connection' => 'close',
+            'Content-Encoding' => 'none',
+            'Content-Length' => $length
+        ];
+
+        $immutable = array_map('strtolower', array_keys($reservedHeaders));
+        $filteredHeaders = array_filter($headers, function ($key) use ($immutable) {
+            return !in_array(strtolower($key), $immutable);
+        }, ARRAY_FILTER_USE_KEY);
+
+        $finalHeaders = array_merge($reservedHeaders, $filteredHeaders);
+
+        // send headers to tell the browser to close the connection
+        foreach ($finalHeaders as $headerName => $headerValue) {
+            $currentHeader = sprintf("%s: %s\r\n", $headerName, $headerValue);
+            header($currentHeader);
+        }
+
+        // set the HTTP response code
+        http_response_code($status);
+
+
+        // flush (send) the output buffer and turn off output buffering
+        ob_end_flush();
+
+        // flush (send) the output buffer (to be sure)
+        if (ob_get_level()) {
+            @ob_flush();
+        }
+
+        // flush system output buffer
+        flush();
+
+        // to be sure one last time
+        if (ob_get_contents()) {
+            ob_end_clean();
+        }
+
+        echo('You should not be seeing this, if you see this, this means that something has gone wrong!');
     }
 }
