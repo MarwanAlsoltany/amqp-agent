@@ -47,8 +47,8 @@ interface PublisherInterface extends AbstractWorkerInterface
 
     /**
      * Publishes a message to the default exchange on the default channel of the worker's connection to RabbitMQ server.
-     * @param string|array|AMQPMessage $payload The body of the message or an array of body and properties for the message or a message object.
-     * @param array|null $parameters [optional] The overrides for the default exchange options of the worker.
+     * @param string|array|AMQPMessage $payload A string of the body of the message or an array of body and properties for the message or a AMQPMessage object.
+     * @param array|null $parameters [optional] The overrides for the default publish options of the worker.
      * @param AMQPChannel|null $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
      */
@@ -56,11 +56,11 @@ interface PublisherInterface extends AbstractWorkerInterface
 
     /**
      * Publishes a batch of messages to the default exchange on the default channel of the worker's connection to RabbitMQ server.
-     * @param AMQPMessage[] $messages An array of AMQPMessage objects.
+     * @param string[]|array[]|AMQPMessage[] $messages An array of bodies of the messages or an array of arrays of body and properties for the messages or an array of message objects.
      * @param int $batchSize [optional] The number of messages that should be published per batch.
-     * @param string|null $_exchange [optional] The name of the exchange that should be used instead of the default worker's exchange name.
+     * @param array|null $parameters [optional] The overrides for the default exchange options of the worker.
      * @param AMQPChannel|null $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
      */
-    public function publishBatch(array $messages, int $batchSize = 2500, ?string $_exchange = null, ?AMQPChannel $_channel = null);
+    public function publishBatch(array $messages, int $batchSize = 1000, ?array $parameters = null, ?AMQPChannel $_channel = null);
 }
