@@ -6,6 +6,7 @@ use MAKS\AmqpAgent\Tests\TestCase;
 use MAKS\AmqpAgent\Worker\Consumer;
 use MAKS\AmqpAgent\Helper\Serializer;
 use MAKS\AmqpAgent\Helper\Example;
+use MAKS\AmqpAgent\Exception\AmqpAgentException;
 use MAKS\AmqpAgent\Exception\CallbackDoesNotExistException;
 use PhpAmqpLib\Message\AMQPMessage;
 
@@ -128,12 +129,18 @@ class ConsumerTest extends TestCase
         // since Consumer::work() takes only a callback, there is no way to check
         // if any messages were consumed. A workaround is publishing only a command message
         // to close the channel and using Consumer::shutdown() as a callback. This will
-        // result in Consumer::work() finishing executing and returning true.
+        // result in Consumer::work() finishing executing and returning null (void).
 
         // this will use maks.amqp.agent.queue, 1 or 0 close command
-        $true = $this->consumer->work([Consumer::class, 'shutdown']);
+        $null = $this->consumer->work([Consumer::class, 'shutdown']);
 
-        $this->assertTrue($true);
+        $this->assertNull($null);
+    }
+
+    public function testWorkRaisesAnExceptionIfUnexpectedParameterIsPassed()
+    {
+        $this->expectException(AmqpAgentException::class);
+        $this->consumer->work(['NonExisting', 'callback']);
     }
 
     public function testGetGetsAMessageFromRabbitMQServer()
