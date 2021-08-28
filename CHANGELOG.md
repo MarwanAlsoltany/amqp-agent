@@ -37,7 +37,7 @@ All notable changes to **AMQP Agent** will be documented in this file.
 
 ## [[1.1.1] - 2020-09-14](https://github.com/MarwanAlsoltany/amqp-agent/compare/v1.0.1...v1.1.1)
 - Update `composer.json`:
-    - Pump minimum **php-amqplib** version.
+    - Bump minimum **php-amqplib** version.
     - Downgrade minimum php version.
     - Update dev requirements versions to match php version.
     - Update branch-alias.
@@ -242,4 +242,30 @@ All notable changes to **AMQP Agent** will be documented in this file.
 - Fix typos in all files of the package.
 - Update Continuous Integration config files.
 - Update Development Dependencies config files.
+- Rebuild documentation.
+
+
+<br />
+
+## [[2.2.0] - 2021-08-28](https://github.com/MarwanAlsoltany/amqp-agent/compare/v2.1.0...v2.2.0)
+
+- Update `composer.json`:
+    - Bump minimum **php-amqplib** version.
+    - Update **php** requirement.
+    - Update branch-alias.
+- Update `WorkerFacilitationInterface`
+  - Change `work()` method return value type hint (from `bool` to `void`).
+- Update `Publisher` class
+  - Update `publishBatch()` method, it takes now `$parameters` (array) instead of `$_exchange` (string) just like the `publish()` method.
+  - Update `publishBatch()` method signature on the corresponding interface (`PublisherInterface`).
+  - Update `work()` method implementation to cover the new changes introduced to the `WorkerFacilitationInterface`.
+  - Update DocBlock on the corresponding `PublisherSingleton` class of the affected methods.
+- Update `Consumer` class
+  - Update `work()` method implementation to cover the new changes introduced to the `WorkerFacilitationInterface`.
+  - Update `consume()` method to shut down all opened channels and connections.
+  - Update DocBlock on the corresponding `ConsumerSingleton` class of the affected methods.
+- Update `Utility` class
+  - Add `respond()` method.
+- Update tests to cover the new changes.
+- Fix some typos in DocBlocks and other parts of the codebase.
 - Rebuild documentation.
