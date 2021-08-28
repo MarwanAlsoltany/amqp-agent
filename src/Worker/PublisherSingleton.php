@@ -44,7 +44,7 @@ use MAKS\AmqpAgent\Worker\AbstractWorkerSingleton;
  * @method self bind(?array $parameters = null, ?AMQPChannel $_channel = null)
  * @method AMQPMessage message(string $body, ?array $properties = null)
  * @method self publish($payload, ?array $parameters = null, ?AMQPChannel $_channel = null)
- * @method self publishBatch(array $messages, int $batchSize = 2500, ?string $_exchange = null, ?AMQPChannel $_channel = null)
+ * @method self publishBatch(array $messages, int $batchSize = 2500, ?array $parameters = null, ?AMQPChannel $_channel = null)
  * @method self prepare()
  * @method void work($messages)
  * @method static AMQPTable arguments(array $array)
