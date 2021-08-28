@@ -122,7 +122,9 @@ class PublisherTest extends TestCase
         $publisher = $this->publisher->publishBatch(
             $messages,
             250,
-            'maks.amqp.agent.exchange.test'
+            [
+                'exchange' => 'maks.amqp.agent.exchange.test'
+            ]
         );
 
         // Publishing channel closing command and making
@@ -258,10 +260,18 @@ class PublisherTest extends TestCase
             $i--;
         }
 
-        $true = $this->publisher->work($messages);
+        $null = $this->publisher->work($messages);
 
-        // CONFIRMED: 4000 + 9 messages where published to the queue successfuly.
+        // CONFIRMED: 4000 + 9 messages where published to the queue successfully.
         // Note that ConsumerTest will fail if the messages were not published
-        $this->assertTrue($true);
+        $this->assertNull($null);
+    }
+
+    public function testWorkRaisesAnExceptionIfUnexpectedParameterIsPassed()
+    {
+        $messages = [true, false, null, 0, ''];
+
+        $this->expectException(AmqpAgentException::class);
+        $this->publisher->work($messages);
     }
 }
