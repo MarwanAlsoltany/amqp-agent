@@ -2,7 +2,7 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <title>phpDox - MAKS\AmqpAgent\Worker\PublisherInterface::publishBatch</title>
+    <title>phpDox - MAKS\AmqpAgent\Helper\Utility::respond</title>
     <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
@@ -42,12 +42,12 @@
             <a href="../../classes.html">Classes</a>
           </li>
           <li class="separator">
-            <a href="../../classes.html#MAKS_AmqpAgent_Worker">MAKS\AmqpAgent\Worker</a>
+            <a href="../../classes.html#MAKS_AmqpAgent_Helper">MAKS\AmqpAgent\Helper</a>
           </li>
           <li class="separator">
-            <a title="MAKS\AmqpAgent\Worker\PublisherInterface" href="../../interfaces/MAKS_AmqpAgent_Worker_PublisherInterface.html">PublisherInterface</a>
+            <a title="MAKS\AmqpAgent\Helper\Utility" href="../../classes/MAKS_AmqpAgent_Helper_Utility.html">Utility</a>
           </li>
-          <li class="separator">publishBatch</li>
+          <li class="separator">respond</li>
         </ul>
       </div>
       <nav class="box">
@@ -65,52 +65,59 @@
             <a href="#return">Return</a>
           </li>
           <li>
-            <a href="../../source/Worker/PublisherInterface.php.html#line65">Source</a>
+            <a href="#tests">Tests</a>
+          </li>
+          <li>
+            <a href="../../source/Helper/Utility.php.html#line177">Source</a>
           </li>
         </ul>
       </nav>
       <section>
-        <h1><small>MAKS\AmqpAgent\Worker\PublisherInterface::</small>publishBatch</h1>
-        <h4>Publishes a batch of messages to the default exchange on the default channel of the worker's connection to RabbitMQ server.</h4>
-        <p/>
+        <h1><small>MAKS\AmqpAgent\Helper\Utility::</small>respond</h1>
+        <h4>Returns an HTTP Response to the browser and lets blocking code that comes after this function to continue executing in the background.</h4>
+        <p>This function is useful for example in Controllers that do some long-running tasks, and you just want to inform the client that the job has been started.
+Please note that this function is tested MANUALLY ONLY, it is provided as is, there is no guarantee that it will work as expected nor on all platforms.</p>
         <ul/>
         <h2 id="signature">Signature</h2>
         <div class="styled synopsis">
-          <code>public function publishBatch(array
-        $messages,
+          <code>public function respond(string
+        $body,
             [integer
-        $batchSize = 1000,
+        $status = 200,
             [array
-        $parameters = NULL,
-            [<a title="PhpAmqpLib\Channel\AMQPChannel" href="../../interfaces/PhpAmqpLib_Channel_AMQPChannel.html">AMQPChannel</a>
-        $_channel = NULL]]] )
+        $headers = ]] )
             </code>
         </div>
         <h2 id="parameterlist">Parameters</h2>
         <dl class="styled">
-          <dt><code>$messages</code>
+          <dt><code>$body</code>
                 —
-                array</dt>
-          <dd>An array of bodies of the messages or an array of arrays of body and properties for the messages or an array of message objects.<br/><br/><br/>      </dd>
-          <dt><code>$batchSize</code>
+                string</dt>
+          <dd>The response body.</dd>
+          <dt><code>$status</code>
                 —
                 integer</dt>
-          <dd>[optional] The number of messages that should be published per batch.</dd>
-          <dt><code>$parameters</code>
+          <dd>[optional] The response status code.</dd>
+          <dt><code>$headers</code>
                 —
                 array</dt>
-          <dd>[optional] The overrides for the default exchange options of the worker.<br/><br/><br/>      </dd>
-          <dt><code>$_channel</code>
-                —
-                <a title="MAKS\AmqpAgent\Worker\AMQPChannel|null" href="../../interfaces/MAKS_AmqpAgent_Worker_AMQPChannel|null.html">MAKS\AmqpAgent\Worker\AMQPChannel|null</a></dt>
-          <dd>[optional] The channel that should be used instead of the default worker's channel.<br/><br/><br/>      </dd>
+          <dd>[optional] An associative array of additional response headers `['headerName' =&gt; 'headerValue']`.</dd>
         </dl>
         <h2 id="return">Returns</h2>
         <dl class="styled">
-          <dt>PublisherInterface</dt>
+          <dt>void</dt>
           <dd><br/>
         </dd>
         </dl>
+        <h2 id="tests">Test Coverage</h2>
+        <div class="styled">
+          <h3>Information</h3>
+          <ul class="styled">
+            <li>Coverage: 0/0 Lines (100%)</li>
+            <li>Tests: 0</li>
+            <li>Passed: 0 (0%)</li>
+          </ul>
+        </div>
       </section>
     </div>
     <footer>

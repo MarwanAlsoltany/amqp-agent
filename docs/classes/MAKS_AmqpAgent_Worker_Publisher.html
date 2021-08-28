@@ -103,7 +103,7 @@
                     </li><li>public Publisher <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/publish.html">publish</a>()
                     </li><li>public Publisher <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/publishBatch.html">publishBatch</a>()
                     </li><li>public Publisher <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/prepare.html">prepare</a>()
-                    </li><li>public bool <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/work.html">work</a>()
+                    </li><li>public void <a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/work.html">work</a>()
                     </li></ul><ul class="none"><li>// Inherited methods from <span title="MAKS\AmqpAgent\Worker\AbstractWorker">AbstractWorker</span></li><li>public void <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__construct.html">__construct</a>()
                         </li><li>public void <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__destruct.html">__destruct</a>()
                         </li><li>public mixed <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker/__get.html">__get</a>()
@@ -156,13 +156,13 @@
         <table class="styled">
           <tr>
             <td>Methods</td>
-            <td class="percent">100%</td>
-            <td class="nummeric">8 / 8</td>
+            <td class="percent">87.5%</td>
+            <td class="nummeric">7 / 8</td>
           </tr>
           <tr>
             <td>Lines</td>
-            <td class="percent">100%</td>
-            <td class="nummeric">104 / 104</td>
+            <td class="percent">98.43%</td>
+            <td class="nummeric">125 / 127</td>
           </tr>
         </table>
         <h2 id="members">Members</h2>
@@ -235,7 +235,7 @@
             <li id="publishBatch"><a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/publishBatch.html">publishBatch()</a>
                 — Publishes a batch of messages to the default exchange on the default channel of the worker's connection to RabbitMQ server.</li>
             <li id="work"><a title="MAKS\AmqpAgent\Worker\Publisher" href="../classes/MAKS_AmqpAgent_Worker_Publisher/work.html">work()</a>
-                — Executes `self::connect()`, `self::queue()`, `self::exchange`, and `self::bind()`, `self::publish()`, and `self::disconnect()` respectively.</li>
+                — Executes `self::connect()`, `self::queue()`, `self::exchange`, `self::bind()`, `self::publish()`, and `self::disconnect()` respectively.</li>
           </ul>
           <h3>Inherited from <a title="MAKS\AmqpAgent\Worker\AbstractWorker" href="../classes/MAKS_AmqpAgent_Worker_AbstractWorker.html">MAKS\AmqpAgent\Worker\AbstractWorker</a></h3>
           <h4>public</h4>
@@ -307,7 +307,20 @@
         <h2 id="history">History</h2>
         <ul class="styled history">
           <li>
-            <h3>2021-01-12T16:34:33+00:00 (commit #<span title="a7c93d5e67eae2d369710d8b15c4fe63702ab584">a7c93d5</span>)</h3>
+            <h3>2021-08-28T07:33:40+00:00 (commit #<span title="72b4b62e3fe94bac109fb5078e74a5ca97d5ee54">72b4b62</span>)</h3>
+            <div>
+              <p>
+                        Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
+                        Commiter: Marwan Al-Soltany (MarwanAlsoltany@gmail.com)
+                    </p>
+              <pre class="wrapped">Update publisher class
+* Change publishBatch() method $_exchange parameter to $parameters
+* Update work() method implemenation
+* Fix some typos in DocBlocks</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2021-01-12T21:10:22+00:00 (commit #<span title="cd40b968b6016159bd578dcd38ca2d109b1ad530">cd40b96</span>)</h3>
             <div>
               <p>
                         Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
@@ -318,7 +331,7 @@
             </div>
           </li>
           <li>
-            <h3>2021-01-12T16:11:24+00:00 (commit #<span title="625c1b8e4161129ebba06f8af533d464b1581e67">625c1b8</span>)</h3>
+            <h3>2021-01-12T21:10:22+00:00 (commit #<span title="74b7284bbbbbdf651f521dd5ccfb9453a1df4242">74b7284</span>)</h3>
             <div>
               <p>
                         Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
@@ -331,7 +344,7 @@
             </div>
           </li>
           <li>
-            <h3>2021-01-12T04:35:12+00:00 (commit #<span title="ea8042802f299ac06421cc7ee8a22748b657ebf6">ea80428</span>)</h3>
+            <h3>2021-01-12T21:10:21+00:00 (commit #<span title="206cd882b3b698317b25c09d94611a319518be1d">206cd88</span>)</h3>
             <div>
               <p>
                         Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
@@ -342,7 +355,7 @@
             </div>
           </li>
           <li>
-            <h3>2021-01-11T14:31:31+00:00 (commit #<span title="ca1996b058a8841c1df7443af775a41da6ca36b4">ca1996b</span>)</h3>
+            <h3>2021-01-12T21:10:21+00:00 (commit #<span title="d09424b5b493da3afb38d515714cc695e7afbeb9">d09424b</span>)</h3>
             <div>
               <p>
                         Author: Marwan Al-Soltany (MarwanAlsoltany@gmail.com) /
