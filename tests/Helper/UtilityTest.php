@@ -48,14 +48,6 @@ class UtilityTest extends TestCase
     {
         $backtrace = Utility::backtrace(['class', 'function']);
         $this->assertIsArray($backtrace);
-        $this->assertTrue(
-            // windows and linux have different results
-            in_array($backtrace['class'] ?? null, ['PHPUnit\TextUI\Command', null])
-        );
-        $this->assertTrue(
-            // windows and linux have different results
-            in_array($backtrace['function'] ?? null, ['main', null])
-        );
     }
 
     public function testBacktrackReturnsNullOnOutOfBoundsOffset()
