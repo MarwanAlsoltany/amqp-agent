@@ -247,7 +247,7 @@ All notable changes to **AMQP Agent** will be documented in this file.
 
 <br />
 
-## [[2.2.0] - 2021-08-28](https://github.com/MarwanAlsoltany/amqp-agent/compare/v2.1.0...v2.2.0)
+## [[2.2.0] - 2022-05-12](https://github.com/MarwanAlsoltany/amqp-agent/compare/v2.1.0...v2.2.0)
 
 - Update `composer.json`:
     - Bump minimum **php-amqplib** version.
