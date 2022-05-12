@@ -178,15 +178,15 @@ final class Utility
     {
         // client disconnection should not abort script execution
         ignore_user_abort(true);
-        // makes the rest of the script not bound by a timeout
+        // script execution should not bound by a timeout
         set_time_limit(0);
 
-        // closes writing to the session, this prevents subsequent requests from hanging
+        // writing to the session must be closed to prevents subsequent requests from hanging
         if (session_id()) {
             session_write_close();
         }
 
-        // clean (erase) the output buffer and turn off output buffering
+        // clean the output buffer and turn off output buffering
         ob_end_clean();
         // turn on output buffering and buffer all upcoming output
         ob_start();
@@ -200,46 +200,42 @@ final class Utility
         }
         $length = ob_get_level() ? ob_get_length() : 0;
 
-        // build up response headers
+        // reserved headers that must not be overwritten
         $reservedHeaders = [
             'Connection' => 'close',
             'Content-Encoding' => 'none',
             'Content-Length' => $length
         ];
 
-        $immutable = array_map('strtolower', array_keys($reservedHeaders));
-        $filteredHeaders = array_filter($headers, function ($key) use ($immutable) {
-            return !in_array(strtolower($key), $immutable);
+        // user headers after filtering out the reserved headers
+        $filteredHeaders = array_filter($headers, function ($key) use ($reservedHeaders) {
+            $immutable = array_map('strtolower', array_keys($reservedHeaders));
+            $mutable   = strtolower($key);
+            return !in_array($mutable, $immutable);
         }, ARRAY_FILTER_USE_KEY);
 
+        // final headers for the response
         $finalHeaders = array_merge($reservedHeaders, $filteredHeaders);
 
         // send headers to tell the browser to close the connection
         foreach ($finalHeaders as $headerName => $headerValue) {
-            $currentHeader = sprintf("%s: %s\r\n", $headerName, $headerValue);
-            header($currentHeader);
+            header(sprintf('%s: %s', $headerName, $headerValue));
         }
 
         // set the HTTP response code
         http_response_code($status);
 
-
-        // flush (send) the output buffer and turn off output buffering
+        // flush the output buffer and turn off output buffering
         ob_end_flush();
 
-        // flush (send) the output buffer (to be sure)
+        // flush all output buffer layers
         if (ob_get_level()) {
-            @ob_flush();
+            ob_flush();
         }
 
         // flush system output buffer
         flush();
 
-        // to be sure one last time
-        if (ob_get_contents()) {
-            ob_end_clean();
-        }
-
-        echo('You should not be seeing this, if you see this, this means that something has gone wrong!');
+        echo ('You should not be seeing this!');
     }
 }
