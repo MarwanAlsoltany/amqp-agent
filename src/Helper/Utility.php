@@ -236,6 +236,6 @@ final class Utility
         // flush system output buffer
         flush();
 
-        echo ('You should not be seeing this!');
+        echo('You should not be seeing this!');
     }
 }
