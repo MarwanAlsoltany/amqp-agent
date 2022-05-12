@@ -202,8 +202,8 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
 
     /**
      * Publishes a message to the default exchange on the default channel of the worker's connection to RabbitMQ server.
-     * @param string|array|AMQPMessage $payload The body of the message or an array of body and properties for the message or a message object.
-     * @param array|null $parameters [optional] The overrides for the default exchange options of the worker.
+     * @param string|array|AMQPMessage $payload A string of the body of the message or an array of body and properties for the message or a AMQPMessage object.
+     * @param array|null $parameters [optional] The overrides for the default publish options of the worker.
      * @param AMQPChannel|null $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
      * @throws Exception|AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException
@@ -263,32 +263,57 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
 
     /**
      * Publishes a batch of messages to the default exchange on the default channel of the worker's connection to RabbitMQ server.
-     * @param AMQPMessage[] $messages An array of AMQPMessage objects.
+     * @param string[]|array[]|AMQPMessage[] $messages An array of bodies of the messages or an array of arrays of body and properties for the messages or an array of AMQPMessage objects.
      * @param int $batchSize [optional] The number of messages that should be published per batch.
-     * @param string|null $_exchange [optional] The name of the exchange that should be used instead of the default worker's exchange name.
+     * @param array|null $parameters [optional] The overrides for the default publish options of the worker.
      * @param AMQPChannel|null $_channel [optional] The channel that should be used instead of the default worker's channel.
      * @return self
      * @throws Exception|AMQPChannelClosedException|AMQPConnectionClosedException|AMQPConnectionBlockedException
      */
-    public function publishBatch(array $messages, int $batchSize = 2500, ?string $_exchange = null, ?AMQPChannel $_channel = null)
+    public function publishBatch(array $messages, int $batchSize = 2500, ?array $parameters = null, ?AMQPChannel $_channel = null)
     {
+        $changes = null;
+        if ($parameters) {
+            $changes = $this->mutateClassMember('publishOptions', $parameters);
+        }
+
         $channel = $_channel ?: $this->channel;
-        $exchange = $_exchange ?: $this->publishOptions['exchange'];
+
+        $originalMessage = $this->publishOptions['msg'];
 
         $count = count($messages);
         for ($i = 0; $i < $count; $i++) {
-            if ($messages[$i] instanceof AMQPMessage) {
-                $channel->batch_basic_publish($messages[$i], $exchange);
+            $payload = $messages[$i];
+
+            $message = $payload ?: $originalMessage;
+
+            if ($message instanceof AMQPMessage) {
+                $this->publishOptions['msg'] = $message;
+            } elseif (is_array($message) && isset($message['body']) && isset($message['properties'])) {
+                $this->publishOptions['msg'] = $this->message($message['body'], $message['properties']);
+            } elseif (is_string($message)) {
+                $this->publishOptions['msg'] = $this->message($message);
             } else {
                 throw new Exception(
                     sprintf(
-                        'Messages array elements must be of type "%s". Element in index "%d" was of type "%s".',
+                        'Messages array elements must be either a string, an array like %s, or an instance of "%s". Element in index "%d" (data-type: %s) was none of them.',
+                        '["body" => "Message body!", "properties" ["key" => "value"]]',
                         AMQPMessage::class,
                         $i,
-                        is_object($messages[$i]) ? get_class($messages[$i]) : gettype($messages[$i])
+                        is_object($payload) ? get_class($payload) : gettype($payload)
                     )
                 );
             }
+
+            $channel->batch_basic_publish(
+                $this->publishOptions['msg'],
+                $this->publishOptions['exchange'],
+                $this->publishOptions['routing_key'],
+                $this->publishOptions['mandatory'],
+                $this->publishOptions['immediate'],
+                $this->publishOptions['ticket']
+            );
+
             if ($i % $batchSize == 0) {
                 try {
                     $channel->publish_batch();
@@ -312,6 +337,13 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
             $channel->publish_batch();
         } catch (AMQPChannelClosedException | AMQPConnectionClosedException | AMQPConnectionBlockedException $error) { // @codeCoverageIgnore
             Exception::rethrow($error); // @codeCoverageIgnore
+        } finally {
+            // reverting messageOptions back to its state.
+            $this->publishOptions['msg'] = $originalMessage;
+        }
+
+        if ($changes) {
+            $this->mutateClassMember('publishOptions', $changes);
         }
 
         return $this;
@@ -332,19 +364,21 @@ class Publisher extends AbstractWorker implements PublisherInterface, WorkerFaci
     }
 
     /**
-     * Executes `self::connect()`, `self::queue()`, `self::exchange`, and `self::bind()`, `self::publish()`, and `self::disconnect()` respectively.
-     * @param string[] $messages An array of strings.
-     * @return bool
+     * Executes `self::connect()`, `self::queue()`, `self::exchange`, `self::bind()`, `self::publish()`, and `self::disconnect()` respectively.
+     * @param string[]|array[]|AMQPMessage[] $messages An array of strings, arrays, or AMQPMessage objects (same as `self::publishBatch()`).
+     * @return void
      * @throws Exception
      */
-    public function work($messages): bool
+    public function work($messages): void
     {
-        $this->prepare();
-        foreach ($messages as $message) {
-            $this->publish($message);
+        try {
+            $this->prepare();
+            foreach ($messages as $message) {
+                $this->publish($message);
+            }
+            $this->disconnect();
+        } catch (Exception $error) {
+            Exception::rethrow($error, null, false);
         }
-        $this->disconnect();
-
-        return true;
     }
 }

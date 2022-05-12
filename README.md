@@ -146,7 +146,7 @@ AMQP Agent exposes a number of concrete classes that can be directly used and ot
 | [AbstractEndpoint](./src/RPC/AbstractEndpoint.php) <sup><code>*A</code></sup> | An abstract class implementing the basic functionality of an endpoint. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_RPC_AbstractEndpoint.html) |
 | [ClientEndpoint](./src/RPC/ClientEndpoint.php) <sup><code>*C</code></sup> | A class specialized in requesting. Implementing only the methods needed for a client. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_RPC_ClientEndpoint.html) |
 | [ServerEndpoint](./src/RPC/ServerEndpoint.php) <sup><code>*C</code></sup> | A class specialized in responding. Implementing only the methods needed for a server. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_RPC_ServerEndpoint.html) |
-| [AmqpAgentParameters](./src/Config/Utility.php) <sup><code>*C\*H</code></sup> | A class that contains all AMQP Agent parameters as constants. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Config_AmqpAgentParameters.html) |
+| [AmqpAgentParameters](./src/Config/AmqpAgentParameters.php) <sup><code>*C\*H</code></sup> | A class that contains all AMQP Agent parameters as constants. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Config_AmqpAgentParameters.html) |
 | [Utility](./src/Helper/Utility.php) <sup><code>*C\*H</code></sup> | A class containing miscellaneous helper functions. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Helper_Utility.html) |
 | [Event](./src/Helper/Event.php) <sup><code>*C\*H</code></sup> | A simple class for handling events (dispatching and listening). | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Helper_Event.html) |
 | [ArrayProxy](./src/Helper/ArrayProxy.php) <sup><code>*C\*H</code></sup> | A class containing methods for for manipulating and working arrays. | [Doc](https://marwanalsoltany.github.io/amqp-agent/classes/MAKS_AmqpAgent_Helper_ArrayProxy.html) |
@@ -375,7 +375,7 @@ $publisher = new Publisher();
 // connect() method does not take any parameters.
 // Public assignment notation is used instead.
 // Starting from v1.1.0, you can use getNewConnection(),
-// setConnection(), getNewChannel, and setChannel() instead.
+// setConnection(), getNewChannel(), and setChannel() instead.
 $publisher->connectionOptions = [
     'host' => 'localhost',
     'user' => 'guest',
@@ -477,7 +477,7 @@ $consumer = new Consumer();
 // connect() method does not take any parameters.
 // Public assignment notation is used instead.
 // Starting from v1.1.0, you can use getNewConnection(),
-// setConnection(), getNewChannel, and setChannel() instead.
+// setConnection(), getNewChannel(), and setChannel() instead.
 $consumer->connectionOptions = [
     'host' => 'localhost',
     'user' => 'guest',

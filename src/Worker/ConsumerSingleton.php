@@ -53,7 +53,7 @@ use MAKS\AmqpAgent\Worker\AbstractWorkerSingleton;
  * @method static bool isCommand($data)
  * @method static bool hasCommand(array $data, string $name = null, ?string $value = null)
  * @method static mixed getCommand(array $data, string $key = 'params', ?string $sub = null)
- * @method static void ack(AMQPMessage $_message, ?array $parameters)
+ * @method static void ack(AMQPMessage $_message, ?array $parameters = null)
  * @method static void nack(?AMQPChannel $_channel = null, AMQPMessage $_message, ?array $parameters = null)
  * @method static ?AMQPMessage get(AMQPChannel $_channel, ?array $parameters = null)
  * @method static mixed cancel(AMQPChannel $_channel, ?array $parameters = null)

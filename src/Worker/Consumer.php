@@ -358,7 +358,7 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
             $this->mutateClassMember('consumeOptions', $changes);
         }
 
-        register_shutdown_function([__CLASS__, 'shutdown'], $this->channel, $this->connection);
+        register_shutdown_function([__CLASS__, 'shutdown'], ...array_values(array_merge($this->channels, $this->connections)));
 
         return $this;
     }
@@ -493,17 +493,19 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
 
     /**
      * Executes `self::connect()`, `self::queue()`, `self::qos()`, `self::consume()`, `self::wait()`, and `self::disconnect()` respectively.
-     * @param callback|array|string $callback The callback that the consumer should use to process the messages.
-     * @return bool
-     * @throws CallbackDoesNotExistException
+     * @param callback|array|string $callback The callback that the consumer should use to process the messages (same as `self::consume()`).
+     * @return void
+     * @throws Exception
      */
-    public function work($callback): bool
+    public function work($callback): void
     {
-        $this->prepare();
-        $this->consume($callback);
-        $this->wait();
-        $this->disconnect();
-
-        return true;
+        try {
+            $this->prepare();
+            $this->consume($callback);
+            $this->wait();
+            $this->disconnect();
+        } catch (Exception $error) {
+            Exception::rethrow($error, null, false);
+        }
     }
 }

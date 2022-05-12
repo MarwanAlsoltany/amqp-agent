@@ -89,8 +89,8 @@
         $messages,
             [integer
         $batchSize = 2500,
-            [string
-        $_exchange = NULL,
+            [array
+        $parameters = NULL,
             [<a title="PhpAmqpLib\Channel\AMQPChannel" href="../../classes/PhpAmqpLib_Channel_AMQPChannel.html">AMQPChannel</a>
         $_channel = NULL]]] )
             </code>
@@ -100,15 +100,15 @@
           <dt><code>$messages</code>
                 —
                 array</dt>
-          <dd>An array of AMQPMessage objects.<br/><br/><br/>      </dd>
+          <dd>An array of bodies of the messages or an array of arrays of body and properties for the messages or an array of AMQPMessage objects.<br/><br/><br/>      </dd>
           <dt><code>$batchSize</code>
                 —
                 integer</dt>
           <dd>[optional] The number of messages that should be published per batch.</dd>
-          <dt><code>$_exchange</code>
+          <dt><code>$parameters</code>
                 —
-                string</dt>
-          <dd>[optional] The name of the exchange that should be used instead of the default worker's exchange name.<br/><br/><br/>      </dd>
+                array</dt>
+          <dd>[optional] The overrides for the default publish options of the worker.<br/><br/><br/>      </dd>
           <dt><code>$_channel</code>
                 —
                 <a title="MAKS\AmqpAgent\Worker\AMQPChannel|null" href="../../classes/MAKS_AmqpAgent_Worker_AMQPChannel|null.html">MAKS\AmqpAgent\Worker\AMQPChannel|null</a></dt>
@@ -139,7 +139,7 @@
         <div class="styled">
           <h3>Information</h3>
           <ul class="styled">
-            <li>Coverage: 16/16 Lines (100%)</li>
+            <li>Coverage: 34/36 Lines (94.444444444444%)</li>
             <li>Tests: 2</li>
             <li>Passed: 2 (100%)</li>
           </ul>
@@ -152,7 +152,7 @@
       </section>
     </div>
     <footer>
-      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2021 by Arne Blankerts and Contributors</span>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
     </footer>
   </body>
 </html>

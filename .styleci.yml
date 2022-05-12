@@ -1,1 +1,11 @@
+risky: false
+version: 7
 preset: psr12
+finder:
+    exclude:
+        - build
+        - demo
+        - docs
+        - tests
+        - vendor
+    name: '*.php'

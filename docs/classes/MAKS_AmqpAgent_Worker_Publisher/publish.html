@@ -98,11 +98,11 @@
           <dt><code>$payload</code>
                 —
                 object</dt>
-          <dd>The body of the message or an array of body and properties for the message or a message object.<br/><br/><br/>      </dd>
+          <dd>A string of the body of the message or an array of body and properties for the message or a AMQPMessage object.<br/><br/><br/>      </dd>
           <dt><code>$parameters</code>
                 —
                 array</dt>
-          <dd>[optional] The overrides for the default exchange options of the worker.<br/><br/><br/>      </dd>
+          <dd>[optional] The overrides for the default publish options of the worker.<br/><br/><br/>      </dd>
           <dt><code>$_channel</code>
                 —
                 <a title="MAKS\AmqpAgent\Worker\AMQPChannel|null" href="../../classes/MAKS_AmqpAgent_Worker_AMQPChannel|null.html">MAKS\AmqpAgent\Worker\AMQPChannel|null</a></dt>
@@ -134,8 +134,8 @@
           <h3>Information</h3>
           <ul class="styled">
             <li>Coverage: 30/30 Lines (100%)</li>
-            <li>Tests: 4</li>
-            <li>Passed: 4 (100%)</li>
+            <li>Tests: 5</li>
+            <li>Passed: 5 (100%)</li>
           </ul>
           <h3>Tests</h3>
           <ul class="styled">
@@ -143,12 +143,13 @@
             <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testPublishBatchAndPublishPublishesMessagesToRabbitMQServerAndOverrideParametersTakeEffect</li>
             <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testPublishPublishesMessagesToRabbitMQServerWithDifferentTypesOfMessages</li>
             <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testPublishingMessagesToRabbitMQServerViaWorkMethod</li>
+            <li>[ <span class="testresult-PASSED">PASSED</span> ] — MAKS\AmqpAgent\Tests\Worker\PublisherTest::testWorkRaisesAnExceptionIfUnexpectedParameterIsPassed</li>
           </ul>
         </div>
       </section>
     </div>
     <footer>
-      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2021 by Arne Blankerts and Contributors</span>
+      <span>Generated using phpDox 0.12.0-dev - Copyright (C) 2010 - 2022 by Arne Blankerts and Contributors</span>
     </footer>
   </body>
 </html>
