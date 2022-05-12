@@ -253,18 +253,18 @@ All notable changes to **AMQP Agent** will be documented in this file.
     - Bump minimum **php-amqplib** version.
     - Update **php** requirement.
     - Update branch-alias.
-- Update `WorkerFacilitationInterface`
+- Update `WorkerFacilitationInterface`:
   - Change `work()` method return value type hint (from `bool` to `void`).
-- Update `Publisher` class
+- Update `Publisher` class:
   - Update `publishBatch()` method, it takes now `$parameters` (array) instead of `$_exchange` (string) just like the `publish()` method.
   - Update `publishBatch()` method signature on the corresponding interface (`PublisherInterface`).
   - Update `work()` method implementation to cover the new changes introduced to the `WorkerFacilitationInterface`.
   - Update DocBlock on the corresponding `PublisherSingleton` class of the affected methods.
-- Update `Consumer` class
+- Update `Consumer` class:
   - Update `work()` method implementation to cover the new changes introduced to the `WorkerFacilitationInterface`.
   - Update `consume()` method to shut down all opened channels and connections.
   - Update DocBlock on the corresponding `ConsumerSingleton` class of the affected methods.
-- Update `Utility` class
+- Update `Utility` class:
   - Add `respond()` method.
 - Update tests to cover the new changes.
 - Fix some typos in DocBlocks and other parts of the codebase.
