@@ -269,3 +269,10 @@ All notable changes to **AMQP Agent** will be documented in this file.
 - Update tests to cover the new changes.
 - Fix some typos in DocBlocks and other parts of the codebase.
 - Rebuild documentation.
+
+## [[2.2.1] - 2022-05-23](https://github.com/MarwanAlsoltany/amqp-agent/compare/v2.2.0...v2.2.1)
+
+- Update `Consumer` class:
+  * Fix an issue with `waitForAll()` method when the first channel is closed.
+  * Refactor `waitForAll()` method.
+- Rebuild documentation.
