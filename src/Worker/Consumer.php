@@ -428,17 +428,9 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
 
         $connection = $_connection ?: $this->connection;
 
-        $active = false;
-        $count = count($connection->channels);
-
-        // $i starts with 1 because the first channel is the connection itself.
+        // count must is >= 1 because the first channel is the connection itself.
         // this means there are always at least two, one connection and one channel.
-        for ($i = 1; $i < $count; $i++) {
-            if (isset($connection->channels[$i])) {
-                $active = true;
-                break;
-            }
-        }
+        $active = count($connection->channels) > 1;
 
         ignore_user_abort(true);
         set_time_limit(0);
@@ -446,24 +438,26 @@ class Consumer extends AbstractWorker implements ConsumerInterface, WorkerFacili
         while ($active) {
             try {
                 $breaks = 0;
-                for ($i = 1; $i < $count; $i++) {
-                    if (isset($connection->channels[$i])) {
-                        $channel = $connection->channels[$i];
+
+                foreach ($connection->channels as $channel) {
+                    if ($channel instanceof AMQPChannel) {
                         if ($channel->is_consuming()) {
                             $channel->wait(
                                 $this->waitOptions['allowed_methods'],
                                 $this->waitOptions['non_blocking'],
                                 $this->waitOptions['timeout']
                             );
+                        } else {
+                            $breaks++;
                         }
-                    } else {
-                        $breaks++;
                     }
-                    // refresh channels count
-                    $count = count($connection->channels);
                 }
+
+                // refresh channels count to allow waiting for new channels.
+                $count = count($connection->channels);
+
                 if ($breaks === $count - 1) {
-                    // $active = false;
+                    $active = false;
                     break;
                 }
             } catch (AMQPOutOfBoundsException | AMQPRuntimeException | AMQPTimeoutException $error) { // @codeCoverageIgnore
